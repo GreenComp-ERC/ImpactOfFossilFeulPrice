@@ -1,8 +1,29 @@
-# Publication PDFs
+# Publication links and citation
 
-- [`fossil-fuel-wacc-paper.pdf`](fossil-fuel-wacc-paper.pdf) — compiled research paper (10 pages).
-- [`fossil-fuel-wacc-poster.pdf`](fossil-fuel-wacc-poster.pdf) — compiled academic poster (1 page).
+**Fossil Fuel Prices and Capital Cost: A Machine Learning Driven Study on Energy Transition**
 
-These PDFs were compiled from the corresponding Overleaf sources on 2026-09-20.
+- Paper: [OpenReview](https://openreview.net/forum?id=ary7hTgqkx)
+- Official workshop website: [AAAI-26 AI for Environmental Science Workshop](https://sites.google.com/view/ai4es/home)
 
-Build note: the paper source currently contains one unresolved citation key, `Frontiers2024`.
+The repository does not distribute manuscript or manuscript-supplement PDFs. Use the official paper links above when available.
+
+## Citation
+
+```bibtex
+@inproceedings{
+ou2026fossil,
+title={Fossil Fuel Prices and Capital Cost: A Machine Learning Driven Study on Energy Transition},
+author={Shilin Ou and Luyao Zhang and Ming-Chun Huang},
+booktitle={AAAI-26 AI for Environmental Science Workshop},
+year={2026},
+url={https://openreview.net/forum?id=ary7hTgqkx}
+}
+```
+
+Machine-readable citation: [`CITATION.bib`](../../CITATION.bib).
+
+## Presentation materials
+
+Posters and presentation slides remain available separately from the manuscript.
+
+- [`fossil-fuel-wacc-poster.pdf`](fossil-fuel-wacc-poster.pdf)

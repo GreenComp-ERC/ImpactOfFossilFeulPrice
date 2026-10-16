@@ -8,7 +8,7 @@
 Duke Kunshan University
 
 <p>
-  <a href="docs/publications/fossil-fuel-wacc-paper.pdf"><img alt="Read the paper" src="https://img.shields.io/badge/Paper-PDF-8B1E3F?style=for-the-badge"></a>
+  <a href="https://openreview.net/forum?id=ary7hTgqkx"><img alt="Read the paper" src="https://img.shields.io/badge/Paper-OpenReview-8B1E3F?style=for-the-badge"></a>
   <a href="docs/publications/fossil-fuel-wacc-poster.pdf"><img alt="View the poster" src="https://img.shields.io/badge/Poster-PDF-1F5C99?style=for-the-badge"></a>
   <a href="docs/publications/README.md"><img alt="Publication archive" src="https://img.shields.io/badge/Publication_Archive-Details-4B5563?style=for-the-badge"></a>
 </p>
@@ -24,22 +24,25 @@ Duke Kunshan University
 
 ---
 
+## Official publication links
+
+- [AAAI-26 AI for Environmental Science Workshop](https://sites.google.com/view/ai4es/home)
+- [Read the paper](https://openreview.net/forum?id=ary7hTgqkx)
+- [Citation and publication details](docs/publications/README.md) · [BibTeX](CITATION.bib)
+
 ## Research overview
 
 This repository supports a study of how fossil-fuel price volatility propagates through inflation and the weighted average cost of capital (WACC) for energy-transition projects. The analysis uses a three-stage modeling pipeline: fossil-fuel price forecasting, inflation prediction, and sector- and region-level WACC estimation.
 
-The public artifact is organized to keep the manuscript, presentation materials, code, and data documentation directly connected. The links above open the compiled research outputs; the folders below contain the corresponding computational materials.
+The public artifact is organized to keep the manuscript, presentation materials, code, and data documentation directly connected. The links above open the official paper record and presentation materials; the folders below contain the corresponding computational materials.
 
 ## Research outputs
 
 | Output | Description | Access |
 |---|---|:---:|
-| Research paper | Full compiled manuscript (10 pages) | [PDF](docs/publications/fossil-fuel-wacc-paper.pdf) |
+| Research paper | Official AAAI-26 AI4ES paper record | [OpenReview](https://openreview.net/forum?id=ary7hTgqkx) |
 | Academic poster | One-page visual summary | [PDF](docs/publications/fossil-fuel-wacc-poster.pdf) |
-| Publication archive | File notes and compilation provenance | [Open](docs/publications/README.md) |
-
-> [!NOTE]
-> The current paper build contains one unresolved citation key, `Frontiers2024`. This is documented in the publication archive so that the public artifact does not imply a fully resolved bibliography.
+| Publication archive | Official paper links and citation | [Open](docs/publications/README.md) |
 
 ## Repository structure
 
@@ -47,7 +50,7 @@ The public artifact is organized to keep the manuscript, presentation materials,
 |---|---|
 | [`code/`](code) | Analysis notebooks, implementation notes, prerequisites, expected outputs, and system configuration |
 | [`data/`](data) | Dataset sources, preprocessing steps, and the data dictionary |
-| [`docs/publications/`](docs/publications) | Compiled paper and poster PDFs |
+| [`docs/publications/`](docs/publications) | Official paper links, citation, and poster |
 
 ## Reproducibility guide
 

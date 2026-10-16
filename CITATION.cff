@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "Please cite the paper using the preferred citation below."
+type: software
+title: "Fossil Fuel Prices and Capital Cost: A Machine Learning Driven Study on Energy Transition"
+repository-code: "https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice"
+authors:
+  - family-names: Ou
+    given-names: Shilin
+  - family-names: Zhang
+    given-names: Luyao
+  - family-names: Huang
+    given-names: Ming-Chun
+preferred-citation:
+  type: conference-paper
+  title: "Fossil Fuel Prices and Capital Cost: A Machine Learning Driven Study on Energy Transition"
+  authors:
+    - family-names: Ou
+      given-names: Shilin
+    - family-names: Zhang
+      given-names: Luyao
+    - family-names: Huang
+      given-names: Ming-Chun
+  year: 2026
+  collection-title: "AAAI-26 AI for Environmental Science Workshop"
+  url: "https://openreview.net/forum?id=ary7hTgqkx"
