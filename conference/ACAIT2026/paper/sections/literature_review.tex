@@ -1,0 +1,66 @@
+\section{Literature Review}
+
+\subsection{Calculation of WACC}
+
+For the WACC data, this study mainly uses the dataset from Calcaterra et al. \cite{calcaterra2024reducing}, which contains predictions for WACC across different regions. The calculation begins with analyzing past financial data at the enterprise level, calculating the cost of debt and equity, and incorporating the leverage ratio and tax rate to determine each company's WACC as follows \cite{calcaterra2024reducing}:
+\begin{equation}
+WACC_{it}=L_{it}\times r_{Dit}\times (1-\mathrm{TaxRate}_{it})+(1-L_{it})\times r_{Eit}.
+\end{equation}
+where $WACC_{it}$ represents the weighted average cost of capital for firm $i$ at time $t$, $L_{it}$ is the leverage ratio, $r_{Dit}$ is the cost of debt, $r_{Eit}$ is the cost of equity, and $\mathrm{TaxRate}_{it}$ is the tax rate for firm $i$ at time $t$.
+
+The national WACC is then derived by weighting and averaging each company's WACC based on its share of the national utilities-market revenue \cite{calcaterra2024reducing}:
+\begin{equation}
+WACC_{ct}=\sum_i\left(\frac{\mathrm{Revenue}_{it}}{\mathrm{TotalRevenue}_{ct}}\right)\times WACC_{it}.
+\end{equation}
+where $WACC_{ct}$ represents the weighted average cost of capital for country $c$ at time $t$, $\mathrm{Revenue}_{it}$ is the revenue of firm $i$ at time $t$, and $\mathrm{TotalRevenue}_{ct}$ is the total revenue of country $c$ at time $t$.
+
+After that, Calcaterra et al. \cite{calcaterra2024reducing} introduce a time dimension and financial learning, simulating how technological progress and experience accumulation can lower WACC by reducing technological risks and the required safety margin. In their financial-learning reference scenario, capital costs decrease with cumulative deployment:
+\begin{equation}
+\mathrm{CoC}_{tnT}=\mathrm{CoC}_{0n,T}\times\left(\frac{Y_{tn,T}}{Y_{0n,T}}\right)^{b_T}.
+\end{equation}
+where $\mathrm{CoC}_{tnT}$ is the cost of capital for country $n$ at time $t$ and technology $T$, $\mathrm{CoC}_{0n,T}$ is the initial cost of capital, $Y_{tn,T}$ is cumulative technology deployment, $Y_{0n,T}$ is initial technology deployment, and $b_T=\log_2(1-0.05)<0$ is the financial-learning exponent. The separate CoC-convergence scenario reduces country-risk differences toward developed-country levels by 2050.
+
+Utilizing the aforementioned data and assumptions, it can employ a suite of climate-energy-economy models to simulate the WACC across various regions and energy sectors.
+
+\subsection{Impact of Fossil Fuel Prices on WACC Components}
+
+The previous subsection outlines the calculation of $WACC_{it}$ using firm-level data, in which the cost of equity ($r_{Eit}$) and the cost of debt ($r_{Dit}$) are not static. They are profoundly influenced by broader market dynamics, among which fossil fuel prices play a critical role \cite{melodia2022energy}.
+
+The cost of equity ($r_{Eit}$) is estimated using the Capital Asset Pricing Model (CAPM), defining the expected return as:
+\begin{equation}
+r_{Eit}=r_{f,t}+\beta_i(r_{m,t}-r_{f,t}).
+\end{equation}
+where $r_{f,t}$ is the risk-free rate at time $t$, $\beta_i$ is the firm's systematic risk, and $(r_{m,t}-r_{f,t})$ is the equity risk premium (ERP).
+
+Fossil fuel prices can influence renewable-energy financing through several channels. Higher fossil fuel prices can improve the relative competitiveness of renewable generation, while renewables can provide a hedge against fuel-price exposure \cite{Lieberman2007RenewableHedge}. Stock-market evidence is mixed: Vr\^inceanu et al. find no significant effect of oil-price volatility on renewable-stock return volatility in their sample \cite{vrinceanu2020influence}. These observations do not imply a uniform change in CAPM $\beta$ across projects or regions. In India, Shrimali reports different risk and return profiles for renewable and fossil power portfolios \cite{su13052573}.
+
+The cost of debt ($r_{Dit}$) may also respond to the macroeconomic consequences of energy-price changes. Fossil fuel prices are relevant to inflation \cite{melodia2022energy,millischer2024renewables}, and the interest-rate environment matters for WACC \cite{dobrowolski2022weighted}. Project contracts, counterparty risk, and risk-transfer instruments can affect financing conditions \cite{duma2023risk}. Evidence on environmental financial premia is conditional: Wilberg et al. find no association for aggregate ESG scores but a lower cost of capital for a stronger environmental component in their sample \cite{kjellevoll2023impact}. Green-bond issuance and certification provide an additional financing channel \cite{ehlers2017green,flammer2021corporate}.
+
+Therefore, the final calculated $WACC_{it}$ for a renewable energy firm is a function not only of its internal financial structure ($L_{it}$) but also of these external pressures that alter the fundamental costs of its capital ($r_{Eit}$ and $r_{Dit}$). The interplay of these mechanisms is summarized in Table~\ref{tab:channels}. Ultimately, the net impact on the WACC of renewable energy projects hinges on the relative magnitude of these opposing forces: the project-level advantages stemming from higher fossil fuel prices versus the detrimental consequences of macroeconomic contagion.
+
+\begin{table}[t]
+\centering
+\caption{Theoretical Channels of Fossil Fuel Price Transmission to Renewable Energy WACC}
+\label{tab:channels}
+\scriptsize
+\begin{tabular}{P{0.27\linewidth}P{0.27\linewidth}P{0.34\linewidth}}
+\toprule
+\textbf{Price Signal} & \textbf{Affected Component} & \textbf{Transmission Channel} \\
+\midrule
+Level increase & $r_E$ (cost of equity) & Substitution effect \\
+Level/volatility & $r_E$ (cost of equity) & Market correlation \\
+Volatility increase & $r_E$ (cost of equity) & Hedging property \\
+Volatility increase & $r_E$ (cost of equity) & Climate risk pricing \\
+Volatility increase & $r_D$ (cost of debt) & Macroeconomic contagion \\
+Level increase & $r_D$ (cost of debt) & Off-taker stability \\
+Level increase & $r_D$ (cost of debt) & PPA contract value \\
+Volatility increase & $r_D$ (cost of debt) & Debt market green premium \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{AI-Based Forecasting for Energy and Climate Applications}
+
+Recent ACAIT proceedings include deep-learning studies of environmental and carbon-related forecasting. Xie et al. \cite{acaitXie2024carbon} study carbon-emission prediction using deep time-series models. Chen et al. \cite{acaitChen2023transfer} present a transfer-based adaptive recurrent neural-network model for enterprise carbon-emission prediction. These examples illustrate the use of AI forecasting for climate-related indicators.
+
+These studies are relevant because they position AI forecasting as a decision-support tool for climate and energy management rather than as a purely technical prediction exercise. The two cited ACAIT studies focus on carbon emissions as the prediction target. They do not explicitly connect fossil fuel price forecasts to macroeconomic transmission channels, regional financing conditions, or project-level WACC. This gap motivates the present study's three-stage design: fossil fuel prices are first predicted with a hybrid sequential model, inflation is then modeled as a macroeconomic covariate, and the resulting signals are finally linked to capital-cost sensitivity for energy transition projects.

@@ -1,0 +1,83 @@
+{
+  "paper": {
+    "pages": 11,
+    "page_size_mm": [
+      215.9,
+      279.4
+    ],
+    "fonts_embedded": true,
+    "font_count": 22,
+    "type3_fonts": false,
+    "overfull_or_unresolved_references": [],
+    "author_and_contact_checks": true,
+    "sha256": "345d0eb6919f84cd4f16ec519bc5d806af5feb445c2288ef6f253e65124b406e"
+  },
+  "slides": {
+    "pages": 16,
+    "page_size_mm": [
+      160.0,
+      90.0
+    ],
+    "fonts_embedded": true,
+    "font_count": 28,
+    "type3_fonts": false,
+    "overfull_or_unresolved_references": [],
+    "author_and_contact_checks": true,
+    "sha256": "03981c40fa84c17634445765c87243d8ad6615947df52cbda11445502dd4c86c"
+  },
+  "poster": {
+    "pages": 1,
+    "page_size_mm": [
+      841.0,
+      1189.0
+    ],
+    "fonts_embedded": true,
+    "font_count": 21,
+    "type3_fonts": false,
+    "overfull_or_unresolved_references": [],
+    "author_and_contact_checks": true,
+    "sha256": "4bd9259c9014bed9237bd9a8539b22dc31c1af449ee56a677b89cfd6274a58dc"
+  },
+  "exact_author_notes_and_funding_match": true,
+  "citations": {
+    "unique_sources": 40,
+    "undefined": [],
+    "uncited_bib_entries": [],
+    "all_sources_have_evidence_scope": true,
+    "metadata_only_ACAIT_sources": 2
+  },
+  "qr_codes": {
+    "decoded_from_final_renderings": true,
+    "images": [
+      {
+        "image": "poster-final.png",
+        "decoded": [
+          "https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice",
+          "https://huggingface.co/datasets/global-nomad-nexus/ImpactOfFossilFuelPrice-WACC"
+        ]
+      },
+      {
+        "image": "slide-16.png",
+        "decoded": [
+          "https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice",
+          "https://huggingface.co/datasets/global-nomad-nexus/ImpactOfFossilFuelPrice-WACC"
+        ]
+      }
+    ]
+  },
+  "data_provenance": {
+    "archived_fit_rows": 81,
+    "cleaned_diagnostics_recomputed": true,
+    "sensitivity_coefficient_back_transformation_test": "PASS",
+    "neural_or_AutoGluon_retraining_performed": false,
+    "historical_forecast_common_training_provenance_reestablished": false
+  },
+  "presentation_duration": "15 minutes, confirmed by author",
+  "visual_review": "All final pages rendered; paper and slides inspected as contact sheets and detailed pages; poster inspected at full-page and detail scales.",
+  "status": "PASS_WITH_DOCUMENTED_EVIDENCE_SCOPE",
+  "portable_source_zip_compilation": {
+    "Paper": "PASS",
+    "Slides": "PASS",
+    "Poster": "PASS"
+  }
+}

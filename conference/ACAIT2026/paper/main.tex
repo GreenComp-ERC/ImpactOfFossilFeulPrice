@@ -1,0 +1,71 @@
+%% Paper Overleaf: https://www.overleaf.com/project/6ad46327aacec45bf553b9c0
+%% Slides editable source: https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice/tree/main/conference/ACAIT2026/slides
+%% Poster editable source: https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice/tree/main/conference/ACAIT2026/poster
+%% Slides Overleaf-ready ZIP: https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice/raw/refs/heads/main/conference/ACAIT2026/source_archives/ACAIT2026_Slides_Source.zip
+%% Poster Overleaf-ready ZIP: https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice/raw/refs/heads/main/conference/ACAIT2026/source_archives/ACAIT2026_Poster_Source.zip
+%% Overleaf import instructions: see SOURCES.md.
+%% Build: latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+\documentclass[conference]{IEEEtran}
+
+\IEEEoverridecommandlockouts
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{capt-of}
+\usepackage{cite}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{flushend}
+\usepackage{array}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\setlength{\tabcolsep}{3.5pt}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\hypersetup{pdftitle={Fossil Fuel Prices and Capital Cost: A Machine Learning Driven Study on Energy Transition},pdfauthor={Shilin Ou, Luyao Zhang, Ming-Chun Huang}}
+
+\graphicspath{{figures/}}
+
+\title{Fossil Fuel Prices and Capital Cost: A Machine Learning Driven Study on Energy Transition}
+
+
+\author{
+\IEEEauthorblockN{Shilin Ou\IEEEauthorrefmark{2},
+Luyao Zhang\IEEEauthorrefmark{1},
+and Ming-Chun Huang\IEEEauthorrefmark{1}}
+\IEEEauthorblockA{Duke Kunshan University\\
+Suzhou, China}
+\thanks{\IEEEauthorrefmark{1}Corresponding authors: Zhang: luyao.zhang@dukekunshan.edu.cn, Social Science Division and Digital Innovation Research Center; Huang: mingchun.huang@dukekunshan.edu.cn, Natural and Applied Science Division and Digital Innovation Research Center, Duke Kunshan University. Address: No.8 Duke Ave., Kunshan, Jiangsu 215316, China.}
+\thanks{\textbf{Acknowledgments}: The Duke Kunshan University Education Development Foundation supports the research. The research results of this article are also sponsored by the Kunshan Municipal Government research funding. \IEEEauthorrefmark{2} Shilin benefited from scholarly exchange with participants in the AAAI-26 Workshop on AI for Environmental Science, held on January 27, 2026, at the Singapore EXPO in Singapore. Shilin gratefully acknowledges the Travel Grant provided by the Duke Kunshan University Office of Academic Services, which supported participation in the workshop.
+ }
+}
+
+
+
+
+
+\begin{document}
+
+\maketitle
+
+\input{sections/abstract}
+\input{sections/introduction}
+\input{sections/literature_review}
+\input{sections/framework}
+\input{sections/methodology}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusion}
+\input{sections/acknowledgments}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\clearpage
+\appendices
+\input{sections/appendix}
+
+\end{document}

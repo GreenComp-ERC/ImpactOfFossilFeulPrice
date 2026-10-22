@@ -1,0 +1,339 @@
+% !TEX program = xelatex
+% Editable LaTeX source for the 15-minute presentation.
+% Compile main.tex with XeLaTeX for the confirmed 15-minute talk.
+\RequirePackage{fix-cm}
+\documentclass[11pt,aspectratio=169,xcolor={dvipsnames}]{beamer}
+\usetheme[progressbar=frametitle,block=fill]{metropolis}
+\usefonttheme{professionalfonts}
+\usepackage{lmodern}
+\usepackage{fontspec}
+\setsansfont{texgyreheros}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\usepackage{booktabs,tabularx,graphicx,amsmath,tikz,qrcode}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\input{../shared/metadata.tex}
+\definecolor{DukeNavyBlue}{HTML}{012169}
+\definecolor{DukeRoyalBlue}{HTML}{00539B}
+\definecolor{Teal}{HTML}{247F83}
+\definecolor{Gold}{HTML}{B3853A}
+\definecolor{SoftBlue}{HTML}{EAF3FF}
+\definecolor{PaperGray}{HTML}{4E5A66}
+\setbeamercolor{normal text}{fg=black!88,bg=white}
+\setbeamercolor{frametitle}{bg=DukeRoyalBlue,fg=white}
+\setbeamercolor{progress bar}{fg=Teal,bg=black!10}
+\setbeamercolor{title separator}{fg=DukeRoyalBlue}
+\setbeamercolor{alerted text}{fg=DukeRoyalBlue}
+\setbeamercolor{block title}{fg=DukeRoyalBlue,bg=SoftBlue}
+\setbeamercolor{block body}{fg=black!88,bg=SoftBlue}
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=0.65cm,text margin right=0.65cm}
+\setbeamertemplate{frame footer}{\textcolor{PaperGray}{\EventShort\quad|\quad\PresenterName}}
+\setbeamerfont{frame footer}{size=\tiny}
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+\setbeamerfont{title}{size=\LARGE,series=\bfseries}
+\setbeamerfont{subtitle}{size=\small}
+\hypersetup{pdftitle={\PaperTitle},pdfauthor={Shilin Ou, Luyao Zhang, Ming-Chun Huang},colorlinks=true,urlcolor=DukeRoyalBlue}
+\newcommand{\source}[1]{\par\vfill{\fontsize{6.3}{7.5}\selectfont\color{PaperGray}\raggedright #1\par}}
+\newcommand{\lead}[1]{{\large\color{DukeNavyBlue}\bfseries #1}\par\medskip}
+\newcommand{\smalllabel}[1]{{\scriptsize\color{PaperGray}#1}}
+\graphicspath{{../shared/figures/}}
+
+\begin{document}
+
+\begin{frame}[plain]
+\begin{columns}[T,onlytextwidth]
+\column{0.72\textwidth}
+\vspace{0.25cm}
+\includegraphics[height=0.65cm]{acait_logo.png}\hspace{0.5cm}
+\smalllabel{\EventShort\quad\EventPlace}
+\vspace{0.7cm}
+
+{\LARGE\bfseries\color{DukeNavyBlue}Fossil Fuel Prices\\[0.15cm]and Capital Cost}
+\vspace{0.3cm}
+
+{\large A Machine Learning Driven Study\\on Energy Transition}
+\vspace{0.6cm}
+
+{\small\AuthorNamesMarked}\\[0.18cm]
+{\small\PaperAffiliation}
+\vspace{0.35cm}
+
+\smalllabel{Presented by \PresenterName}
+\column{0.25\textwidth}
+\vspace{0.3cm}
+\includegraphics[width=\linewidth]{dku_logo.png}
+\vspace{1.1cm}
+\begin{tikzpicture}[x=0.8cm,y=0.8cm,draw=Teal,line width=0.85pt]
+\draw[draw=black!15] (-0.25,0)--(3.5,0);
+\foreach \x/\y in {0/0.1,0.52/0.1,1.04/0.1,0/0.35,0.52/0.35,1.04/0.35}{\draw[fill=SoftBlue] (\x,\y)--++(0.42,0)--++(0.14,0.18)--++(-0.42,0)--cycle;}
+\draw (2,0)--(2,1.4);\fill[Teal] (2,1.4) circle (0.04);
+\foreach \a in {90,210,330}{\draw (2,1.4)--++(\a:0.65);}
+\draw (3.1,0)--(3.1,1);\fill[Teal] (3.1,1) circle (0.035);
+\foreach \a in {90,210,330}{\draw (3.1,1)--++(\a:0.45);}
+\end{tikzpicture}
+\end{columns}
+\vfill
+{\tiny\textsuperscript{*}Corresponding authors: Luyao Zhang and Ming-Chun Huang.\quad\textsuperscript{\dag}Presenting-author acknowledgment appears in the credits.}
+\end{frame}
+
+\begin{frame}{Financing conditions matter for the energy transition}
+\lead{Wind and solar concentrate spending at the start of a project.}
+\begin{columns}[T,onlytextwidth]
+\column{0.55\textwidth}
+\begin{itemize}
+\item Debt and equity providers require a return on the capital they commit.
+\item A higher financing cost raises the revenue a project must earn.
+\item Regional financing differences can change modeled transition pathways.
+\end{itemize}
+\column{0.40\textwidth}
+\vspace{0.35cm}
+{\color{DukeRoyalBlue}\Large WACC}\\[0.3cm]
+\small Weighted average cost of capital
+\[
+\underbrace{Lr_D(1-\tau)}_{\text{debt}}+
+\underbrace{(1-L)r_E}_{\text{equity}}
+\]
+\end{columns}
+\source{Ameli et al., Nature Communications (2021); Calcaterra et al., Nature Energy (2024).}
+\end{frame}
+
+\begin{frame}{One price signal, several financing channels}
+\lead{What links fossil fuel prices to energy-project WACC?}
+\begin{tikzpicture}[>=Latex,font=\footnotesize,
+ b/.style={align=center,text width=3.5cm,minimum height=1.0cm,draw=black!25,fill=white,inner sep=7pt},
+ a/.style={->,thick,draw=DukeRoyalBlue}]
+\node[b,fill=SoftBlue] (fuel) {Coal, oil, and gas\\price fluctuations};
+\node[b,right=0.9cm of fuel,yshift=1.25cm] (macro) {Inflation and\\interest-rate conditions};
+\node[b,right=0.9cm of fuel,yshift=-1.25cm] (project) {Relative competitiveness,\\contracts, and perceived risk};
+\node[b,right=0.9cm of macro,yshift=-1.25cm,fill=SoftBlue] (wacc) {Debt and equity costs\\Project WACC};
+\draw[a] (fuel.east)--++(0.35,0)|-(macro.west);
+\draw[a] (fuel.east)--++(0.35,0)|-(project.west);
+\draw[a] (macro.east)--++(0.35,0)|-(wacc.west);
+\draw[a] (project.east)--++(0.35,0)|-(wacc.west);
+\end{tikzpicture}
+\par
+\medskip
+\small We compare these signals across China, Europe, and the Middle East.
+\source{Mechanisms from Melodia and Karlsson (2022), Lieberman and Doherty (2007), and Duma and Muñoz Cabré (2023).}
+\end{frame}
+
+\begin{frame}{Data connect historical signals with future WACC scenarios}
+\begin{tabularx}{\linewidth}{@{}p{0.20\linewidth}X p{0.24\linewidth}@{}}
+\toprule
+\textbf{Input} & \textbf{Content} & \textbf{Role}\\
+\midrule
+Fuel prices & Monthly coal, oil, and natural gas series & Price-forecast inputs\\[0.2cm]
+Macroeconomy & Inflation, growth, unemployment, interest-rate and monetary indicators & Regional inflation forecasts\\[0.2cm]
+WACC & Calcaterra et al. model projections, aligned to 2026--2035 & Financing scenarios\\
+\bottomrule
+\end{tabularx}
+\vspace{0.25cm}
+\begin{columns}[T,onlytextwidth]
+\column{0.46\linewidth}
+\textbf{3 regions}\quad China, Europe, Middle East\\
+\textbf{120 monthly rows}\quad per cleaned region
+\column{0.50\linewidth}
+\textbf{9 technologies}\quad wind, solar, hydro, biomass, nuclear, CCS, coal, and gas
+\end{columns}
+\source{WACC values are modeled scenarios, rather than future realized financing observations. Coal and gas generation serve as conventional-technology comparisons.}
+\end{frame}
+
+\begin{frame}{A three-stage machine-learning framework}
+\begin{tikzpicture}[>=Latex,font=\small,
+ b/.style={align=left,text width=3.65cm,minimum height=2.2cm,inner sep=10pt,draw=black!20},
+ a/.style={->,line width=1.1pt,draw=DukeRoyalBlue}]
+\node[b,fill=SoftBlue] (p) {\textbf{1\quad Fuel prices}\\[0.35cm]Sequence model\\CNN + LSTM/GRU\\Attention + GPR smoothing};
+\node[b,right=0.5cm of p,fill=Teal!7] (i) {\textbf{2\quad Inflation}\\[0.35cm]Regional LSTM\\Feed-forward predictor\\Five-model ensemble};
+\node[b,right=0.5cm of i,fill=Gold!8] (w) {\textbf{3\quad WACC}\\[0.35cm]Fuel price + inflation\\AutoGluon regression\\Region--technology comparisons};
+\draw[a] (p.north)--++(0,0.35)-|(w.north);\draw[a] (i)--(w);
+\end{tikzpicture}\par
+\vspace{0.55cm}
+\textbf{Comparison structure}\quad 3 regions $\times$ 3 fuels $\times$ 9 technologies = 81 combinations
+\source{The region, fuel, and technology axes organize the comparisons. Separate chronological diagnostics examine the stability of fitted relationships.}
+\end{frame}
+
+\begin{frame}{Fuel-price forecasting combines temporal learning and smoothing}
+\begin{columns}[T,onlytextwidth]
+\column{0.53\textwidth}
+\lead{Sequence model}
+\begin{itemize}
+\item A 12-month input window captures recent price dynamics.
+\item Seasonal sine/cosine features represent the month of year.
+\item CNN, recurrent layers, and attention learn temporal representations.
+\end{itemize}
+\column{0.42\textwidth}
+\lead{Gaussian process}
+\begin{itemize}
+\item An RBF kernel smooths the neural forecast path.
+\item The resulting path feeds the WACC comparison.
+\end{itemize}
+\smalllabel{Its conditional variance does not represent the full uncertainty of the neural forecasting stage.}
+\end{columns}
+\source{Lindemann et al. (2021); Lahmiri (2024); Rasmussen (2004). Implementation settings are provided in the paper appendix.}
+\end{frame}
+
+\begin{frame}{The archived oil-price comparison favors LSTM-GPR}
+\begin{columns}[c,onlytextwidth]
+\column{0.73\textwidth}
+\includegraphics[width=\linewidth]{oil_comparison.pdf}
+\column{0.24\textwidth}
+{\Large\color{DukeRoyalBlue}0.963}\\[-0.1cm]
+\small $R^2$\\[0.35cm]
+{\Large\color{DukeRoyalBlue}1.86\%}\\[-0.1cm]
+\small MAPE\\[0.35cm]
+{\Large\color{DukeRoyalBlue}2.416}\\[-0.1cm]
+\small RMSE (USD/bbl)
+\end{columns}
+\source{47 observations in the archived 2021--2024 workbook. Metrics were recomputed from saved outputs; separate fixed-origin baselines are retained in the repository.}
+\end{frame}
+
+\begin{frame}{WACC regressions and chronological checks serve different roles}
+\begin{columns}[T,onlytextwidth]
+\column{0.47\textwidth}
+\lead{Original AutoGluon fits}
+\[
+\mathrm{WACC}_{r,p,t}=f_{r,p,e}(P_{e,t},\pi_{r,t})
+\]
+\begin{itemize}
+\item One fuel price and an inflation covariate
+\item Bagging and stacking
+\item In-sample $R^2$, MAPE, and RMSE
+\end{itemize}
+\column{0.48\textwidth}
+\lead{Additional diagnostics}
+\begin{itemize}
+\item OLS/Ridge with cleaned regional inputs
+\item Train 2026--2032; test 2033--2035
+\item Rolling one-year-ahead checks
+\item Compare fuel + inflation + trend against a time trend
+\end{itemize}
+\end{columns}
+\source{Fit describes the modeled relationship. Chronological tests measure how that relationship transfers to later scenario years.}
+\end{frame}
+
+\begin{frame}{Regional fit differs across the original specifications}
+\begin{columns}[c,onlytextwidth]
+\column{0.64\textwidth}
+\includegraphics[width=\linewidth]{region_fit.pdf}
+\column{0.32\textwidth}
+\lead{Europe and China show stronger fit.}
+\small Middle Eastern specifications have a lower average fit and larger percentage errors.
+\par\vspace{0.25cm}
+{\scriptsize\color{PaperGray}These comparisons describe joint fuel-price and inflation fits. $R^2$ does not measure the magnitude of a price shock.\par}
+\end{columns}
+\source{Recalculated regional means from the archived 81-row AutoGluon results workbook.}
+\end{frame}
+
+\begin{frame}{Wind and solar have the strongest average fits}
+\centering\includegraphics[width=0.88\linewidth]{technology_fit.pdf}\par
+\smallskip
+\begin{columns}[T,onlytextwidth]
+\column{0.53\textwidth}
+\textbf{Solar}\quad 0.718\qquad\textbf{Offshore wind}\quad 0.706
+\column{0.43\textwidth}
+\textbf{Onshore wind}\quad 0.700
+\end{columns}
+\source{Technology means across three fuels and three regions; heatmap cells average across fuels. Nuclear, hydro, biomass, CCS, coal, and gas are around 0.58 overall.}
+\end{frame}
+
+\begin{frame}{Later-year checks show limited gains beyond a time trend}
+\begin{columns}[c,onlytextwidth]
+\column{0.62\textwidth}
+\includegraphics[width=\linewidth]{holdout_comparison.pdf}
+\column{0.34\textwidth}
+\lead{Additional information varies by specification.}
+\small Positive incremental out-of-sample $R^2$:\\[0.25cm]
+\begin{tabular}{@{}lr@{}}
+China & 8/27\\
+Europe & 6/27\\
+Middle East & 6/27
+\end{tabular}
+\par\vspace{0.25cm}
+{\scriptsize\color{PaperGray}Small MAPE can coexist with negative $R^2$ when the test-period WACC range is narrow.\par}
+\end{columns}
+\source{Ridge diagnostics on cleaned scenario panels; fixed holdout: 2033--2035. Counts compare fuel + inflation + trend against time trend alone.}
+\end{frame}
+
+\begin{frame}{Historical diagnostics identify selected macroeconomic links}
+\begin{tabularx}{\linewidth}{@{}Xllr@{}}
+\toprule
+\textbf{Target} & \textbf{Fuel} & \textbf{Lag} & \textbf{$p$-value}\\
+\midrule
+China real interest rate & Coal & 1 year & 0.00018\\[0.15cm]
+China real interest rate & Coal & 2 years & 0.00691\\[0.15cm]
+China real interest rate & Gas & 1 year & 0.01915\\[0.15cm]
+Europe inflation & Gas & 2 years & 0.00952\\
+\bottomrule
+\end{tabularx}
+\vspace{0.4cm}
+\lead{Energy-price changes can contain information about later macro conditions.}
+\source{Selected exploratory Granger-style tests on annual historical data. Targets are first-differenced and prices log-differenced; displayed $p$-values are unadjusted. These are transmission diagnostics.}
+\end{frame}
+
+\begin{frame}{Regional institutions guide the next financing scenarios}
+\begin{tabularx}{\linewidth}{@{}p{0.18\linewidth}X X@{}}
+\toprule
+\textbf{Region} & \textbf{Relevant context} & \textbf{Financing question}\\
+\midrule
+Europe & Imported energy and policy credibility & How can predictable contracts and risk transfer support investment?\\[0.25cm]
+China & International spillovers and domestic price regulation & How do public finance and price rules alter exposure?\\[0.25cm]
+Middle East & Oil dependence and domestic energy-pricing institutions & How can financing capacity support diversification?\\
+\bottomrule
+\end{tabularx}
+\source{Polzin et al. (2019); He and Lin (2017); Karanfil and Omgba (2023); Fattouh and El-Katiri (2013). The paper motivates these scenarios rather than estimating their policy effects.}
+\end{frame}
+
+\begin{frame}{Selected references}
+\footnotesize
+\begin{enumerate}
+\item N. Ameli et al., ``Higher cost of finance exacerbates a climate investment trap in developing economies,'' \textit{Nature Communications}, 12, 4046, 2021.\quad\href{https://doi.org/10.1038/s41467-021-24305-3}{doi:10.1038/s41467-021-24305-3}
+\item M. Calcaterra et al., ``Reducing the cost of capital to finance the energy transition in developing countries,'' \textit{Nature Energy}, 9, 1241--1251, 2024.\quad\href{https://doi.org/10.1038/s41560-024-01606-7}{doi:10.1038/s41560-024-01606-7}
+\item L. Paranhos, ``Predicting inflation with recurrent neural networks,'' \textit{International Journal of Forecasting}, online 2025.\quad\href{https://doi.org/10.1016/j.ijforecast.2024.07.010}{doi:10.1016/j.ijforecast.2024.07.010}
+\item F. Polzin et al., ``How do policies mobilize private finance for renewable energy?'' \textit{Applied Energy}, 236, 1249--1268, 2019.\quad\href{https://doi.org/10.1016/j.apenergy.2018.11.098}{doi:10.1016/j.apenergy.2018.11.098}
+\end{enumerate}
+\source{The complete checked bibliography is provided with the paper and editable source package.}
+\end{frame}
+
+\begin{frame}{Authorship, author notes, and acknowledgments}
+\noindent
+{\small\textbf{\AuthorNamesMarked}\\[0.12cm]\PaperAffiliation\par}
+\medskip
+
+{\fontsize{7.4}{9.3}\selectfont
+\textsuperscript{*}\CorrespondenceText\par
+\medskip
+\textbf{Acknowledgments.} \FundingText\par
+\medskip
+\textsuperscript{\dag}\AuthorNoteText\par
+\medskip
+\textbf{Preparation.} \PreparationText
+}
+\end{frame}
+
+\begin{frame}{Financing comparisons benefit from regional detail}
+\begin{columns}[T,onlytextwidth]
+\column{0.53\textwidth}
+\lead{Three takeaways}
+\begin{enumerate}
+\item A reproducible pipeline connects price forecasts, inflation, and WACC scenarios.
+\item Fit varies across regions and technologies; wind and solar fit most closely.
+\item Time-split tests show where fuel signals add information beyond a trend.
+\end{enumerate}
+\vspace{0.1cm}
+{\small\textbf{\PresenterName}\\\PaperAffiliation\\
+\href{mailto:shilin.ou@dukekunshan.edu.cn}{\PresenterEmail}\par}
+\column{0.42\textwidth}
+\vspace{0.15cm}
+\begin{columns}[T,onlytextwidth]
+\column{0.48\textwidth}\centering
+\qrcode[height=2.25cm]{https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice}\\[0.25cm]
+\scriptsize\textbf{Code + materials}
+\column{0.48\textwidth}\centering
+\qrcode[height=2.25cm]{https://huggingface.co/datasets/global-nomad-nexus/ImpactOfFossilFuelPrice-WACC}\\[0.25cm]
+\scriptsize\textbf{Dataset snapshot}
+\end{columns}
+\vspace{0.45cm}
+\smalllabel{Corrected diagnostics and editable LaTeX sources are in the GitHub repository.}
+\end{columns}
+\end{frame}
+
+\end{document}

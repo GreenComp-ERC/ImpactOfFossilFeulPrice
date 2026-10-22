@@ -1,0 +1,15 @@
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[font=\footnotesize,>=Latex,
+ box/.style={draw=black!45,rounded corners=2pt,minimum height=1.18cm,text width=4.65cm,align=center,inner sep=6pt},
+ arr/.style={->,thick,black!65}]
+\node[box,fill=blue!4] (prices) {\textbf{1. Fuel-price forecasts}\\Historical coal, oil, and gas prices\\CNN--LSTM/GRU + attention; GPR smoothing};
+\node[box,fill=blue!4,right=0.45cm of prices] (macro) {\textbf{2. Regional inflation}\\Macroeconomic predictors\\LSTM + feed-forward ensemble};
+\node[box,fill=blue!4,right=0.45cm of macro] (wacc) {\textbf{3. WACC comparisons}\\Fuel price + regional inflation\\AutoGluon; 3 regions $\times$ 3 fuels $\times$ 9 technologies};
+\draw[arr] (prices.north)--++(0,0.35)-|(wacc.north);
+\draw[arr] (macro)--(wacc);
+\node[below=0.3cm of macro,align=center,text width=15cm] (checks) {\textbf{Data and diagnostics:} 2026--2035 projected WACC panels; archived fit summaries;\\chronological OLS/Ridge checks; corrected log-linear sensitivity; historical transmission diagnostics.};
+\end{tikzpicture}
+\caption{Three-stage framework for fuel-price, inflation, and regional WACC analysis. The region--fuel--technology axes organize comparisons; the chronological diagnostics are separate from the original AutoGluon fits.}
+\label{fig:tensor-framework}
+\end{figure*}

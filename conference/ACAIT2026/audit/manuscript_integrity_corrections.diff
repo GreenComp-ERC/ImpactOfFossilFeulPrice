@@ -1,0 +1,2140 @@
+--- original/main.tex
++++ checked/main.tex
+@@ -1,5 +1,10 @@
+-%%%poster overleaf:
+-%% slides overleaf: 
++%% Paper Overleaf: https://www.overleaf.com/project/6ad46327aacec45bf553b9c0
++%% Slides editable source: https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice/tree/main/conference/ACAIT2026/slides
++%% Poster editable source: https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice/tree/main/conference/ACAIT2026/poster
++%% Slides Overleaf-ready ZIP: https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice/raw/refs/heads/main/conference/ACAIT2026/source_archives/ACAIT2026_Slides_Source.zip
++%% Poster Overleaf-ready ZIP: https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice/raw/refs/heads/main/conference/ACAIT2026/source_archives/ACAIT2026_Poster_Source.zip
++%% Overleaf import instructions: see SOURCES.md.
++%% Build: latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+ \documentclass[conference]{IEEEtran}
+ 
+ \IEEEoverridecommandlockouts
+@@ -12,8 +17,15 @@
+ \usepackage[T1]{fontenc}
+ \usepackage{graphicx}
+ \usepackage{multirow}
++\usepackage{flushend}
+ \usepackage{array}
+ \usepackage{url}
++\usepackage[hidelinks]{hyperref}
++\usepackage{tikz}
++\usetikzlibrary{arrows.meta,positioning,calc}
++\setlength{\tabcolsep}{3.5pt}
++\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
++\hypersetup{pdftitle={Fossil Fuel Prices and Capital Cost: A Machine Learning Driven Study on Energy Transition},pdfauthor={Shilin Ou, Luyao Zhang, Ming-Chun Huang}}
+ 
+ \graphicspath{{figures/}}
+ 
+@@ -23,7 +35,7 @@
+ \author{
+ \IEEEauthorblockN{Shilin Ou\IEEEauthorrefmark{2},
+ Luyao Zhang\IEEEauthorrefmark{1},
+-and Ming-Chun Huang\IEEEauthorrefmark{1},}
++and Ming-Chun Huang\IEEEauthorrefmark{1}}
+ \IEEEauthorblockA{Duke Kunshan University\\
+ Suzhou, China}
+ \thanks{\IEEEauthorrefmark{1}Corresponding authors: Zhang: luyao.zhang@dukekunshan.edu.cn, Social Science Division and Digital Innovation Research Center; Huang: mingchun.huang@dukekunshan.edu.cn, Natural and Applied Science Division and Digital Innovation Research Center, Duke Kunshan University. Address: No.8 Duke Ave., Kunshan, Jiangsu 215316, China.}
+@@ -35,19 +47,6 @@
+ 
+ 
+ 
+-\IEEEaftertitletext{%
+-\vspace{-1.0em}
+-\begin{center}
+-\begin{minipage}{0.96\textwidth}
+-\centering
+-\includegraphics[width=\linewidth]{fossilfuel_wacc_tensor_framework.drawio-3.pdf}
+-\captionof{figure}{End-to-end tensor framework for weighted average cost of capital (WACC) sensitivity analysis. Cleaned fuel, macroeconomic, and regional WACC panels feed a region x fuel x project tensor, regression layer, validation diagnostics, and reproducibility outputs.}
+-\label{fig:tensor-framework}
+-\end{minipage}
+-\end{center}
+-\vspace{-0.6em}
+-}
+-
+ \begin{document}
+ 
+ \maketitle
+@@ -55,11 +54,12 @@
+ \input{sections/abstract}
+ \input{sections/introduction}
+ \input{sections/literature_review}
++\input{sections/framework}
+ \input{sections/methodology}
+ \input{sections/results}
+ \input{sections/discussion}
+ \input{sections/conclusion}
+-%\input{sections/acknowledgments}
++\input{sections/acknowledgments}
+ 
+ \bibliographystyle{IEEEtran}
+ \bibliography{references}
+--- original/references.bib
++++ checked/references.bib
+@@ -1,1099 +1,402 @@
+-@article{messerli2019global,
+-  title={Global sustainable development report 2019: the future is now--science for achieving sustainable development},
+-  author={Messerli, Peter and Murniningtyas, Endah and Eloundou-Enyegue, Parfait and Foli, Ernest G and Furman, Eeva and Glassman, Amanda and Hern{\'a}ndez Licona, Gonzalo and Kim, Eun Mee and Lutz, Wolfgang and Moatti, J-P and others},
+-  year={2019},
+-  publisher={United Nations},
+-  url={https://sustainabledevelopment.un.org/content/documents/24797GSDR_report_2019.pdf}
++@article{ROMANCOLLADO2024108009,
++  author = {Rom{\'a}n-Collado, Roc{\'i}o and Casado Ru{\'i}z, Virginia},
++  title = {{Key effects contributing to changes in energy imports in the EU-27 between 2000 and 2020: A decomposition analysis based on the Sankey diagram}},
++  year = {2024},
++  doi = {10.1016/j.eneco.2024.108009},
++  journal = {Energy Economics},
++  volume = {140},
++  pages = {108009},
++}
++
++@article{LI20211712,
++  author = {Li, Raymond and Leung, Guy C.K.},
++  title = {{The relationship between energy prices, economic growth and renewable energy consumption: Evidence from Europe}},
++  year = {2021},
++  doi = {10.1016/j.egyr.2021.03.030},
++  journal = {Energy Reports},
++  volume = {7},
++  pages = {1712--1719},
++}
++
++@article{EUETS,
++  author = {Verbruggen, Aviel and Laes, Erik and Woerdman, Edwin},
++  title = {{Anatomy of Emissions Trading Systems: What is the EU ETS?}},
++  year = {2019},
++  doi = {10.1016/j.envsci.2019.05.001},
++  journal = {Environmental Science \& Policy},
++  volume = {98},
++  pages = {11--19},
++}
++
++@misc{RenewableEnergyDirective,
++  author = {{European Parliament and Council of the European Union}},
++  title = {Directive ({EU}) 2023/2413 as regards the promotion of energy from renewable sources},
++  year = {2023},
++  howpublished = {Official Journal of the European Union, L 2023/2413},
++  url = {https://eur-lex.europa.eu/eli/dir/2023/2413/oj/eng},
++}
++
++@article{POLZIN20191249,
++  author = {Polzin, Friedemann and Egli, Florian and Steffen, Bjarne and Schmidt, Tobias S.},
++  title = {{How do policies mobilize private finance for renewable energy?---A systematic review with an investor perspective}},
++  year = {2019},
++  doi = {10.1016/j.apenergy.2018.11.098},
++  journal = {Applied Energy},
++  volume = {236},
++  pages = {1249--1268},
++}
++
++@article{WEI2024110522,
++  author = {Wei, Xinxing and Shi, Xilin and Li, Yinping and Ma, Hongling and Ban, Shengnan and Liu, Xin and Liu, Hejuan and Yang, Chunhe},
++  title = {{Analysis of the European energy crisis and its implications for the development of strategic energy storage in China}},
++  year = {2024},
++  doi = {10.1016/j.est.2024.110522},
++  journal = {Journal of Energy Storage},
++  volume = {82},
++  pages = {110522},
++}
++
++@article{GLOCKER2024103201,
++  author = {Glocker, Christian and Wegm{\"u}ller, Philipp},
++  title = {{Energy price surges and inflation: Fiscal policy to the rescue?}},
++  year = {2024},
++  doi = {10.1016/j.jimonfin.2024.103201},
++  journal = {Journal of International Money and Finance},
++  volume = {149},
++  pages = {103201},
++}
++
++@article{ehlers2017green,
++  author = {Ehlers, Torsten and Packer, Frank},
++  title = {Green bond finance and certification},
++  journal = {BIS Quarterly Review},
++  year = {2017},
++  month = {sep},
++  pages = {89--104},
++  url = {https://www.bis.org/publ/qtrpdf/r_qt1709h.htm},
++}
++
++@article{flammer2021corporate,
++  author = {Flammer, Caroline},
++  title = {Corporate green bonds},
++  journal = {Journal of Financial Economics},
++  volume = {142},
++  number = {2},
++  year = {2021},
++  pages = {499--516},
++  doi = {10.1016/j.jfineco.2021.01.010},
++}
++
++@article{SUN2022121642,
++  author = {Sun, Guanglin and Li, Jianfeng and Shang, Zezhong},
++  title = {{Return and volatility linkages between international energy markets and Chinese commodity market}},
++  year = {2022},
++  doi = {10.1016/j.techfore.2022.121642},
++  journal = {Technological Forecasting and Social Change},
++  volume = {179},
++  pages = {121642},
++}
++
++@article{WANG2023128724,
++  author = {Wang, Xiaoyu and Wang, Jiaojiao and Wang, Wenhuan and Zhang, Shuquan},
++  title = {{International and Chinese energy markets: Dynamic spillover effects}},
++  year = {2023},
++  doi = {10.1016/j.energy.2023.128724},
++  journal = {Energy},
++  volume = {282},
++  pages = {128724},
++}
++
++@article{ben2022assessing,
++  author = {Ben-Salha, Ousama and Hakimi, Abdelaziz and Zaghdoudi, Taha and Soltani, Hassan and Nsaibi, Mariem},
++  title = {{Assessing the Impact of Fossil Fuel Prices on Renewable Energy in China Using the Novel Dynamic ARDL Simulations Approach}},
++  year = {2022},
++  doi = {10.3390/su141610439},
++  journal = {Sustainability},
++  volume = {14},
++  number = {16},
++  pages = {10439},
++}
++
++@article{HE2017524,
++  author = {He, Yongda and Lin, Boqiang},
++  title = {{The impact of natural gas price control in China: A computable general equilibrium approach}},
++  year = {2017},
++  doi = {10.1016/j.enpol.2017.05.015},
++  journal = {Energy Policy},
++  volume = {107},
++  pages = {524--531},
++}
++
++@techreport{duma2023risk,
++  author = {Duma, Daniel and Mu{\~n}oz Cabr{\'e}, Miquel},
++  title = {Risk mitigation and transfer for renewable energy investments: A conceptual review},
++  institution = {Stockholm Environment Institute},
++  year = {2023},
++  doi = {10.51414/sei2023.042},
++  url = {https://www.sei.org/publications/risk-mitigation-transfer-investments/},
++}
++
++@article{karanfil2023energy,
++  author = {Karanfil, Fatih and Omgba, Luc D{\'e}sir{\'e}},
++  title = {{The energy transition and export diversification in oil-dependent countries: The role of structural factors}},
++  year = {2023},
++  doi = {10.1016/j.ecolecon.2022.107681},
++  journal = {Ecological Economics},
++  volume = {204},
++  pages = {107681},
++}
++
++@article{FATTOUH2013108,
++  author = {Fattouh, Bassam and El-Katiri, Laura},
++  title = {{Energy subsidies in the Middle East and North Africa}},
++  year = {2013},
++  doi = {10.1016/j.esr.2012.11.004},
++  journal = {Energy Strategy Reviews},
++  volume = {2},
++  number = {1},
++  pages = {108--115},
++}
++
++@article{ameli2021higher,
++  author = {Ameli, Nadia and Dessens, Olivier and Winning, Matthew and Cronin, Jennifer and Chenet, Hugues and Drummond, Paul and Calzadilla, Alvaro and Anandarajah, Gabrial and Grubb, Michael},
++  title = {{Higher cost of finance exacerbates a climate investment trap in developing economies}},
++  year = {2021},
++  doi = {10.1038/s41467-021-24305-3},
++  journal = {Nature Communications},
++  volume = {12},
++  number = {1},
++  pages = {4046},
++}
++
++@article{calcaterra2024reducing,
++  author = {Calcaterra, M. and Aleluia Reis, L. and Fragkos, P. and Briera, T. and de Boer, H. S. and Egli, F. and Emmerling, J. and Iyer, G. and Mittal, S. and Polzin, F. H. J. and Sanders, M. W. J. L. and Schmidt, T. S. and Serebriakova, A. and Steffen, B. and van de Ven, D. J. and van Vuuren, D. P. and Waidelich, P. and Tavoni, M.},
++  title = {{Reducing the cost of capital to finance the energy transition in developing countries}},
++  year = {2024},
++  doi = {10.1038/s41560-024-01606-7},
++  journal = {Nature Energy},
++  volume = {9},
++  number = {10},
++  pages = {1241--1251},
++}
++
++@article{bouzarovski2017energy,
++  author = {Bouzarovski, Stefan and Tirado Herrero, Sergio},
++  title = {{The energy divide: Integrating energy transitions, regional inequalities and poverty trends in the European Union}},
++  year = {2017},
++  doi = {10.1177/0969776415596449},
++  journal = {European Urban and Regional Studies},
++  volume = {24},
++  number = {1},
++  pages = {69--86},
++}
++
++@techreport{oecd2021financing,
++  author = {{OECD}},
++  title = {Financing climate objectives in cities and regions to deliver sustainable and inclusive growth},
++  institution = {OECD Publishing},
++  type = {OECD Environment Policy Papers},
++  number = {17},
++  year = {2019},
++  doi = {10.1787/ee3ce00b-en},
++}
++
++@techreport{messerli2019global,
++  author = {{Independent Group of Scientists appointed by the Secretary-General}},
++  title = {Global Sustainable Development Report 2019: The Future Is Now---Science for Achieving Sustainable Development},
++  institution = {United Nations},
++  year = {2019},
++  address = {New York},
++  url = {https://digitallibrary.un.org/record/3829242},
+ }
+ 
+ @article{BOGDANOV2021120467,
+-  title = {Low-cost renewable electricity as the key driver of the global energy transition towards sustainability},
++  author = {Bogdanov, Dmitrii and Ram, Manish and Aghahosseini, Arman and Gulagi, Ashish and Oyewo, Ayobami Solomon and Child, Michael and Caldera, Upeksha and Sadovskaia, Kristina and Farfan, Javier and De Souza Noel Simas Barbosa, Larissa and Fasihi, Mahdi and Khalili, Siavash and Traber, Thure and Breyer, Christian},
++  title = {{Low-cost renewable electricity as the key driver of the global energy transition towards sustainability}},
++  year = {2021},
++  doi = {10.1016/j.energy.2021.120467},
+   journal = {Energy},
+   volume = {227},
+-  year = {2021},
+-  issn = {0360-5442},
+-  author = {Dmitrii Bogdanov and Manish Ram and Arman Aghahosseini and Ashish Gulagi and Ayobami Solomon Oyewo and Michael Child and Upeksha Caldera and Kristina Sadovskaia and Javier Farfan and Larissa {De Souza Noel Simas Barbosa} and Mahdi Fasihi and Siavash Khalili and Thure Traber and Christian Breyer},
+-  doi = {https://doi.org/10.1016/j.energy.2021.120467},
+-  url = {https://www.sciencedirect.com/science/article/pii/S0360544221007167}
+-}
+-
+-@article{koseoglu2022green,
+-  title={Green innovation and ecological footprint relationship for a sustainable development: Evidence from top 20 green innovator countries},
+-  author={Koseoglu, Ahmet and Yucel, Ali Gokhan and Ulucak, Recep},
+-  journal={Sustainable development},
+-  volume={30},
+-  number={5},
+-  pages={976--988},
+-  year={2022},
+-  publisher={Wiley Online Library},
+-  doi = {https://doi.org/10.1002/sd.2294},
+-}
+-
+-@article{polzin2021effect,
+-  title={The effect of differentiating costs of capital by country and technology on the European energy transition},
+-  author={Polzin, Friedemann and Sanders, Mark and Steffen, Bjarne and Egli, Florian and Schmidt, Tobias S and Karkatsoulis, Panagiotis and Fragkos, Panagiotis and Paroussos, Leonidas},
+-  journal={Climatic Change},
+-  volume={167},
+-  pages={1--21},
+-  year={2021},
+-  publisher={Springer},
+-  doi = {https://doi.org/10.1007/s10584-021-03163-4},
++  pages = {120467},
+ }
+ 
+ @article{CHEN20191564,
+-  title = {Pathways for sustainable energy transition},
++  author = {Chen, Bin and Xiong, Rui and Li, Hailong and Sun, Qie and Yang, Jin},
++  title = {{Pathways for sustainable energy transition}},
++  year = {2019},
++  doi = {10.1016/j.jclepro.2019.04.372},
+   journal = {Journal of Cleaner Production},
+   volume = {228},
+-  pages = {1564-1571},
+-  year = {2019},
+-  issn = {0959-6526},
+-  doi = {https://doi.org/10.1016/j.jclepro.2019.04.372},
+-  author = {Bin Chen and Rui Xiong and Hailong Li and Qie Sun and Jin Yang}
+-}
+-
+-@article{SOLOMON20117422,
+-  title = {The coming sustainable energy transition: History, strategies, and outlook},
+-  journal = {Energy Policy},
+-  volume = {39},
+-  number = {11},
+-  pages = {7422-7431},
+-  year = {2011},
+-  note = {Asian Energy Security},
+-  issn = {0301-4215},
+-  doi = {https://doi.org/10.1016/j.enpol.2011.09.009},
+-  author = {Barry D. Solomon and Karthik Krishna}
++  pages = {1564--1571},
+ }
+ 
+ @article{BACHNER2019100373,
+-  title = {Costs or benefits? Assessing the economy-wide effects of the electricity sector's low carbon transition -- The role of capital costs, divergent risk perceptions and premiums},
++  author = {Bachner, Gabriel and Mayer, Jakob and Steininger, Karl W.},
++  title = {{Costs or benefits? Assessing the economy-wide effects of the electricity sector's low carbon transition -- The role of capital costs, divergent risk perceptions and premiums}},
++  year = {2019},
++  doi = {10.1016/j.esr.2019.100373},
+   journal = {Energy Strategy Reviews},
+   volume = {26},
+   pages = {100373},
+-  year = {2019},
+-  issn = {2211-467X},
+-  doi = {https://doi.org/10.1016/j.esr.2019.100373},
+-  author = {Gabriel Bachner and Jakob Mayer and Karl W. Steininger}
+-}
+-
+-@article{GUO2019757,
+-  title = {Identifying the influencing factors of the sustainable energy transitions in China},
+-  journal = {Journal of Cleaner Production},
+-  volume = {215},
+-  pages = {757-766},
+-  year = {2019},
+-  issn = {0959-6526},
+-  doi = {https://doi.org/10.1016/j.jclepro.2019.01.107},
+-  author = {Pibin Guo and Juan Kong and Yanshan Guo and Xiuli Liu}
+-}
+-
+-@article{JACKSON2021107023,
+-  title = {Modelling energy transition risk: The impact of declining energy return on investment (EROI)},
+-  journal = {Ecological Economics},
+-  volume = {185},
+-  pages = {107023},
+-  year = {2021},
+-  issn = {0921-8009},
+-  doi = {https://doi.org/10.1016/j.ecolecon.2021.107023},
+-  author = {Andrew Jackson and Tim Jackson}
+-}
+-
+-@article{polzin2021effect,
+-  title={The effect of differentiating costs of capital by country and technology on the European energy transition},
+-  author={Polzin, Friedemann and Sanders, Mark and Steffen, Bjarne and Egli, Florian and Schmidt, Tobias S and Karkatsoulis, Panagiotis and Fragkos, Panagiotis and Paroussos, Leonidas},
+-  journal={Climatic Change},
+-  volume={167},
+-  pages={1--21},
+-  year={2021},
+-  publisher={Springer},
+-    doi={https://doi.org/10.1007/s10584-021-03163-4}
+-}
+-
+-@article{steffen2022determinants,
+-  title={Determinants of cost of capital in the electricity sector},
+-  author={Steffen, Bjarne and Waidelich, Paul},
+-  journal={Progress in Energy},
+-  volume={4},
+-  number={3},
+-  pages={033001},
+-  year={2022},
+-  doi={10.1088/2516-1083/ac7936},
+-  url={https://doi.org/10.1088/2516-1083/ac7936},
+-  publisher={IOP Publishing}
+-}
+-
+-@article{zhou2021energy,
+-  title={The energy transition and changing financing costs},
+-  author={Zhou, Xiaoyan and Wilson, Christian and Caldecott, Ben},
+-  journal={Oxford Review of Economic Policy},
+-  volume={37},
+-  number={4},
+-  pages={718--743},
+-  year={2021}
+-}
+-
+-@article{best2017switching,
+-  title={Switching towards coal or renewable energy? The effects of financial capital on energy transitions},
+-  author={Best, Rohan},
+-  journal={Energy Economics},
+-  volume={63},
+-  pages={75--83},
+-  year={2017},
+-  doi={10.1016/j.eneco.2017.01.019},
+-  url={https://doi.org/10.1016/j.eneco.2017.01.019},
+-  publisher={Elsevier}
+-}
+-
+-@article{AYINDE2024100140,
+-  title={Fossil fuel prices and economic policy uncertainty -- A regime-switching approach},
+-  author={Ayinde, Taofeek Olusola and Adeyemi, Farouq Adekunmi},
+-  journal={Energy and Climate Change},
+-  volume={5},
+-  pages={100140},
+-  year={2024},
+-  issn={2666-2787},
+-  doi={10.1016/j.egycc.2024.100140},
+-  url={https://doi.org/10.1016/j.egycc.2024.100140}
+-}
+-
+-@article{en14061613,
+-  title={Energy Sector Risk and Cost of Capital Assessment -- Companies and Investors Perspective},
+-  author={Franc-Dabrowska, Justyna and Madra-Sawicka, Magdalena and Milewska, Anna},
+-  journal={Energies},
+-  volume={14},
+-  number={6},
+-  pages={1613},
+-  year={2021},
+-  doi={10.3390/en14061613},
+-  url={https://doi.org/10.3390/en14061613}
+-}
+-
+-@misc{unfccc2015paris,
+-  author={UNFCCC},
+-  title={Paris Agreement},
+-  year={2015},
+-  month={December},
+-  day={12},
+-  url={https://unfccc.int/process-and-meetings/the-paris-agreement/the-paris-agreement},
+-  note={Adopted in Paris, France, at the United Nations Climate Change Conference (COP21)}
+-}
+-
+-@article{POLZIN20191249,
+-  title={How do policies mobilize private finance for renewable energy? -- A systematic review with an investor perspective},
+-  author={Polzin, Friedemann and Egli, Florian and Steffen, Bjarne and Schmidt, Tobias S.},
+-  journal={Applied Energy},
+-  volume={236},
+-  pages={1249--1268},
+-  year={2019},
+-  doi={10.1016/j.apenergy.2018.11.098},
+-  url={https://doi.org/10.1016/j.apenergy.2018.11.098}
++}
++
++@techreport{melodia2022energy,
++  title = {Energy Price Stability: The Peril of Fossil Fuels and the Promise of Renewables},
++  author = {Melodia, Lauren and Karlsson, Kristina},
++  institution = {Roosevelt Institute},
++  year = {2022},
++  month = {March},
++  url = {https://rooseveltinstitute.org/publications/energy-price-stability/},
++  type = {Report},
+ }
+ 
+ @article{egli2019bias,
+-  title={Bias in energy system models with uniform cost of capital assumption},
+-  author={Egli, Florian and Steffen, Bjarne and Schmidt, Tobias S.},
+-  journal={Nature Communications},
+-  volume={10},
+-  number={1},
+-  pages={4588},
+-  year={2019},
+-  doi={10.1038/s41467-019-12468-z},
+-  url={https://doi.org/10.1038/s41467-019-12468-z},
+-  publisher={Nature Publishing Group}
+-}
+-
+-@article{KLING2021105131,
+-  title={The impact of climate vulnerability on firms' cost of capital and access to finance},
+-  author={Kling, Gerhard and Volz, Ulrich and Murinde, Victor and Ayas, Sibel},
+-  journal={World Development},
+-  volume={137},
+-  pages={105131},
+-  year={2021},
+-  doi={10.1016/j.worlddev.2020.105131},
+-  url={https://doi.org/10.1016/j.worlddev.2020.105131}
+-}
+-
+-@article{calcaterra2024reducing,
+-  title={Reducing the cost of capital to finance the energy transition in developing countries},
+-  author={Calcaterra, Matteo and Aleluia Reis, Lara and Fragkos, Panagiotis and Briera, Thibault and de Boer, Harmen Sytze and Egli, Florian and Emmerling, Johannes and Iyer, Gokul and Mittal, Shivika and Polzin, Friedemann and others},
+-  journal={Nature Energy},
+-  volume={9},
+-  number={1},
+-  pages={103--113},
+-  year={2024},
+-  url={https://www.nature.com/articles/s41560-024-01606-7},
+-  publisher={Nature Publishing Group UK London}
++  author = {Egli, Florian and Steffen, Bjarne and Schmidt, Tobias S.},
++  title = {{Bias in energy system models with uniform cost of capital assumption}},
++  year = {2019},
++  doi = {10.1038/s41467-019-12468-z},
++  journal = {Nature Communications},
++  volume = {10},
++  number = {1},
++  pages = {4588},
++}
++
++@article{dobrowolski2022weighted,
++  author = {Dobrowolski, Zbys{\l}aw and Drozdowski, Grzegorz and Panait, Mirela and Apostu, Simona Andreea},
++  title = {{The Weighted Average Cost of Capital and Its Universality in Crisis Times: Evidence from the Energy Sector}},
++  year = {2022},
++  doi = {10.3390/en15186655},
++  journal = {Energies},
++  volume = {15},
++  number = {18},
++  pages = {6655},
++}
++
++@techreport{Lieberman2007RenewableHedge,
++  author = {Lieberman, Dan and Doherty, Siobhan},
++  title = {Renewable Energy as a Hedge Against Fuel Price Fluctuation: How to Capture the Benefits},
++  institution = {Center for Resource Solutions},
++  year = {2007},
++  month = {jun},
++  url = {https://resource-solutions.org/wp-content/uploads/2015/08/Hedge-Value-of-Renewables.pdf},
++}
++
++@article{vrinceanu2020influence,
++  author = {Vr{\^i}nceanu, Georgiana and Horobe{\c{t}}, Alexandra and Popescu, Consuela and Bela{\c{s}}cu, Lucian},
++  title = {{The Influence of Oil Price on Renewable Energy Stock Prices: An Analysis for Entrepreneurs}},
++  year = {2020},
++  doi = {10.2478/sues-2020-0010},
++  journal = {Studia Universitatis „Vasile Goldis” Arad -- Economics Series},
++  volume = {30},
++  number = {2},
++  pages = {24--35},
++}
++
++@article{su13052573,
++  author = {Shrimali, Gireesh},
++  title = {{Financial Performance of Renewable and Fossil Power Sources in India}},
++  year = {2021},
++  doi = {10.3390/su13052573},
++  journal = {Sustainability},
++  volume = {13},
++  number = {5},
++  pages = {2573},
++}
++
++@techreport{millischer2024renewables,
++  author = {Millischer, Laurent and Fu, Chenxu and Volz, Ulrich and Beirne, John},
++  title = {Do Renewables Shield Inflation from Fossil Fuel-Price Fluctuations?},
++  institution = {International Monetary Fund},
++  type = {IMF Working Paper},
++  number = {WP/24/111},
++  year = {2024},
++  month = {may},
++  doi = {10.5089/9798400277566.001},
++  url = {https://www.elibrary.imf.org/view/journals/001/2024/111/001.2024.issue-111-en.xml},
++}
++
++@article{kjellevoll2023impact,
++  author = {Wilberg, Sindre and Kjellevoll, Vibeke and Holz, Franziska and Neumann, Anne},
++  title = {{Impact of ESG performance on the cost of capital in the energy, utilities, and basic materials sectors}},
++  year = {2025},
++  doi = {10.1016/j.jup.2025.102016},
++  journal = {Utilities Policy},
++  volume = {97},
++  pages = {102016},
++}
++
++@inproceedings{acaitXie2024carbon,
++  author = {Xie, Bingshu and Tang, Long and Yan, Haojun and Huang, Hongliang and Lin, Yihan and Li, Lanhao and Sun, Qingyun and Zhou, Haoyi},
++  title = {{Predicting Carbon Emissions via Deep Learning Time Series Models}},
++  year = {2024},
++  doi = {10.1109/acait63902.2024.11021988},
++  booktitle = {2024 8th Asian Conference on Artificial Intelligence Technology (ACAIT)},
++  pages = {1360--1365},
++}
++
++@inproceedings{acaitChen2023transfer,
++  author = {Chen, Yun and Pan, Zhijun and Wang, Xiaohui and Fu, Chaoran and Cai, Yiwen and Jiang, Jiahang and Du, Haizhou},
++  title = {{A Fast Transfer-Based Adaptive Recurrent Neural Network Model for Enterprise Carbon Emission Prediction}},
++  year = {2023},
++  doi = {10.1109/acait60137.2023.10528509},
++  booktitle = {2023 7th Asian Conference on Artificial Intelligence Technology (ACAIT)},
++  pages = {9--15},
++}
++
++@article{ALSELWI2024102068,
++  author = {Al-Selwi, Safwan Mahmood and Hassan, Mohd Fadzil and Abdulkadir, Said Jadid and Muneer, Amgad and Sumiea, Ebrahim Hamid and Alqushaibi, Alawi and Ragab, Mohammed Gamal},
++  title = {{RNN-LSTM: From applications to modeling techniques and beyond---Systematic review}},
++  year = {2024},
++  doi = {10.1016/j.jksuci.2024.102068},
++  journal = {Journal of King Saud University - Computer and Information Sciences},
++  volume = {36},
++  number = {5},
++  pages = {102068},
++}
++
++@article{LINDEMANN2021650,
++  author = {Lindemann, Benjamin and M{\"u}ller, Timo and Vietz, Hannes and Jazdi, Nasser and Weyrich, Michael},
++  title = {{A survey on long short-term memory networks for time series prediction}},
++  year = {2021},
++  doi = {10.1016/j.procir.2021.03.088},
++  journal = {Procedia CIRP},
++  volume = {99},
++  pages = {650--655},
++}
++
++@article{LAHMIRI2024105008,
++  author = {Lahmiri, Salim},
++  title = {{Fossil energy market price prediction by using machine learning with optimal hyper-parameters: A comparative study}},
++  year = {2024},
++  doi = {10.1016/j.resourpol.2024.105008},
++  journal = {Resources Policy},
++  volume = {92},
++  pages = {105008},
+ }
+ 
+ @incollection{rasmussen2003gaussian,
+-  title={Gaussian processes in machine learning},
+-  author={Rasmussen, Carl Edward},
+-  booktitle={Advanced Lectures on Machine Learning},
+-  series={Lecture Notes in Computer Science},
+-  volume={3176},
+-  pages={63--71},
+-  year={2003},
+-  publisher={Springer},
+-  doi={10.1007/978-3-540-28650-9_4},
+-  url={https://doi.org/10.1007/978-3-540-28650-9_4}
+-}
+-
+-@article{vapnik2000bounds,
+-  title={Bounds on error expectation for support vector machines},
+-  author={Vapnik, Vladimir and Chapelle, Olivier},
+-  journal={Neural computation},
+-  volume={12},
+-  number={9},
+-  pages={2013--2036},
+-  year={2000},
+-  doi={10.1162/089976600300015042},
+-  url={https://doi.org/10.1162/089976600300015042},
+-  publisher={MIT Press}
+-}
+-
+-@article{quinlan1986induction,
+-  title={Induction of decision trees},
+-  author={Quinlan, J. Ross},
+-  journal={Machine learning},
+-  volume={1},
+-  number={1},
+-  pages={81--106},
+-  year={1986},
+-  doi={10.1007/BF00116251},
+-  url={https://doi.org/10.1007/BF00116251},
+-  publisher={Springer}
+-}
+-
+-@article{cover1967nearest,
+-  title={Nearest neighbor pattern classification},
+-  author={Cover, Thomas and Hart, Peter},
+-  journal={IEEE transactions on information theory},
+-  volume={13},
+-  number={1},
+-  pages={21--27},
+-  year={1967},
+-  doi={10.1109/TIT.1967.1053964},
+-  url={https://doi.org/10.1109/TIT.1967.1053964},
+-  publisher={IEEE}
+-}
+-
+-@incollection{ketkar2017feed,
+-  title={Feed forward neural networks},
+-  author={Ketkar, Nikhil},
+-  booktitle={Deep Learning with Python},
+-  pages={17--33},
+-  year={2017},
+-  publisher={Apress, Berkeley, CA},
+-  doi={10.1007/978-1-4842-2766-4_2},
+-  url={https://doi.org/10.1007/978-1-4842-2766-4_2}
+-}
+-
+-@article{LAHMIRI2024105008,
+-  title={Fossil energy market price prediction by using machine learning with optimal hyper-parameters: A comparative study},
+-  author={Lahmiri, Salim},
+-  journal={Resources Policy},
+-  volume={92},
+-  pages={105008},
+-  year={2024},
+-  doi={10.1016/j.resourpol.2024.105008},
+-  url={https://doi.org/10.1016/j.resourpol.2024.105008}
+-}
+-
+-@article{gelbart2014bayesian,
+-  title={Bayesian optimization with unknown constraints},
+-  author={Gelbart, Michael A and Snoek, Jasper and Adams, Ryan P},
+-  journal={arXiv preprint arXiv:1403.5607},
+-  year={2014},
+-  url={https://arxiv.org/abs/1403.5607}
+-}
+-
+-@article{iania2024oil,
+-  title={Oil price shocks and bond risk premia: Evidence from a panel of 15 countries},
+-  author={Iania, Leonardo and Lyrio, Marco and Nersisyan, Liana},
+-  journal={Energy Economics},
+-  volume={139},
+-  pages={107940},
+-  year={2024},
+-  doi={10.1016/j.eneco.2024.107940},
+-  url={https://doi.org/10.1016/j.eneco.2024.107940}
+-}
+-
+-@article{ZHOU2022118601,
+-  title={Carbon price forecasting based on CEEMDAN and LSTM},
+-  author={Zhou, Feite and Huang, Zhehao and Zhang, Changhong},
+-  journal={Applied Energy},
+-  volume={311},
+-  pages={118601},
+-  year={2022},
+-  doi={10.1016/j.apenergy.2022.118601},
+-  url={https://doi.org/10.1016/j.apenergy.2022.118601}
+-}
+-
+-@article{LINDEMANN2021650,
+-  title={A survey on long short-term memory networks for time series prediction},
+-  author={Lindemann, Benjamin and Muller, Timo and Vietz, Hannes and Jazdi, Nasser and Michael Weyrich},
+-  journal={Procedia CIRP},
+-  volume={99},
+-  pages={650--655},
+-  year={2021},
+-  doi={10.1016/j.procir.2021.03.088},
+-  url={https://doi.org/10.1016/j.procir.2021.03.088}
+-}
+-
+-@article{ALSELWI2024102068,
+-  title={RNN-LSTM: From applications to modeling techniques and beyond -- Systematic review},
+-  author={Al-Selwi, Safwan Mahmood and Hassan, Mohd Fadzil and Abdulkadir, Said Jadid and Muneer, Amgad and Sumiea, Ebrahim Hamid and Alqushaibi, Alawi and Ragab, Mohammed Gamal},
+-  journal={Journal of King Saud University - Computer and Information Sciences},
+-  volume={36},
+-  number={5},
+-  pages={102068},
+-  year={2024},
+-  doi={10.1016/j.jksuci.2024.102068},
+-  url={https://doi.org/10.1016/j.jksuci.2024.102068}
+-}
+-
+-@article{Rolnick2022,
+-  title={Tackling Climate Change with Machine Learning},
+-  author={Rolnick, David and Donti, Priya L. and Kaack, Lynn H. and others},
+-  journal={ACM Computing Surveys},
+-  volume={55},
+-  number={2},
+-  pages={1--96},
+-  year={2022},
+-  doi={10.1145/3485128},
+-  url={https://doi.org/10.1145/3485128}
+-}
+-
+-@article{Nammouchi2024,
+-  title={Quantum Machine Learning in Climate Change and Sustainability: A Short Review},
+-  author={Nammouchi, Amal and Kassler, Andreas and Theocharis, Andreas},
+-  journal={Proceedings of the AAAI Symposium Series},
+-  volume={2},
+-  number={1},
+-  pages={107--114},
+-  year={2024},
+-  doi={10.1609/aaaiss.v2i1.27657},
+-  url={https://doi.org/10.1609/aaaiss.v2i1.27657}
+-}
+----
+-@article{REUTER2012249,
+-title = {Renewable energy investment: Policy and market impacts},
+-journal = {Applied Energy},
+-volume = {97},
+-pages = {249-254},
+-year = {2012},
+-note = {Energy Solutions for a Sustainable World - Proceedings of the Third International Conference on Applied Energy, May 16-18, 2011 - Perugia, Italy},
+-issn = {0306-2619},
+-doi = {https://doi.org/10.1016/j.apenergy.2012.01.021},
+-url = {https://www.sciencedirect.com/science/article/pii/S030626191200027X},
+-author = {Wolf Heinrich Reuter and Jana Szolgayova and Sabine Fuss and Michael Obersteiner},
+-}
+-
+-@article{ALMAAMARY2017989,
+-title = {The impact of oil price fluctuations on common renewable energies in GCC countries},
+-journal = {Renewable and Sustainable Energy Reviews},
+-volume = {75},
+-pages = {989-1007},
+-year = {2017},
+-issn = {1364-0321},
+-doi = {https://doi.org/10.1016/j.rser.2016.11.079},
+-url = {https://www.sciencedirect.com/science/article/pii/S1364032116308243},
+-author = {Hilal M.S. Al-Maamary and Hussein A. Kazem and Miqdam T. Chaichan},
+-}
+-
+-@article{STEWART2022111880,
+-title = {Capital cost estimation for advanced nuclear power plants},
+-journal = {Renewable and Sustainable Energy Reviews},
+-volume = {155},
+-pages = {111880},
+-year = {2022},
+-issn = {1364-0321},
+-doi = {https://doi.org/10.1016/j.rser.2021.111880},
+-url = {https://www.sciencedirect.com/science/article/pii/S1364032121011473},
+-author = {W.R. Stewart and K. Shirvan},
+-}
+-
+-@article{GUNGOR2022112839,
+-title = {Nuclear power and climate policy integration in developed and developing countries},
+-journal = {Renewable and Sustainable Energy Reviews},
+-volume = {169},
+-pages = {112839},
+-year = {2022},
+-issn = {1364-0321},
+-doi = {https://doi.org/10.1016/j.rser.2022.112839},
+-url = {https://www.sciencedirect.com/science/article/pii/S1364032122007225},
+-author = {Gorkem Gungor and Ramazan Sari},
+-}
+-
+-@techreport{irena2012,
+-  author       = "{IRENA}",
+-  title        = "{Renewable Energy Cost Analysis: Hydropower}",
+-  institution  = "{International Renewable Energy Agency}",
+-  year         = 2012,
+-  url          = "{https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2012/RE_Technologies_Cost_Analysis-HYDROPOWER.pdf}",
+-}
+-
+-@article{KUMAR2022102704,
+-title = {Economic analysis of operation and maintenance costs of hydropower plants},
+-journal = {Sustainable Energy Technologies and Assessments},
+-volume = {53},
+-pages = {102704},
+-year = {2022},
+-issn = {2213-1388},
+-doi = {https://doi.org/10.1016/j.seta.2022.102704},
+-url = {https://www.sciencedirect.com/science/article/pii/S2213138822007524},
+-author = {Krishna Kumar and R.P. Saini},
+-}
+-
+-
+-@article{CAMPBELL2018330,
+-title = {Financial viability of biofuel and biochar production from forest biomass in the face of market price volatility and uncertainty},
+-journal = {Applied Energy},
+-volume = {230},
+-pages = {330-343},
+-year = {2018},
+-issn = {0306-2619},
+-doi = {https://doi.org/10.1016/j.apenergy.2018.08.085},
+-url = {https://www.sciencedirect.com/science/article/pii/S0306261918312558},
+-author = {Robert M. Campbell and Nathaniel M. Anderson and Daren E. Daugaard and Helen T. Naughton},
+-}
+-
+-@techreport{EPRS2023,
+-  author       = "{European Parliamentary Research Service}",
+-  title        = "{Energy transition in the EU}",
+-  institution  = "{European Parliament}",
+-  year         = 2023,
+-  number       = "{EPRS2023}",
+-  address      = "{Luxembourg}",
+- note         = "{\url{//www.europarl.europa.eu/RegData/etudes/BRIE/2023/754623/EPRS_BRI(2023)754623_EN.pdf}}"
+-}
+-
+-@techreport{RenewableEnergyDirective,
+-  author       = "{European Commission}",
+-  title        = "{Renewable Energy Directive}",
+-  institution  = "{European Commission}",
+-  year         = 2023,
+-  number       = "{COM(2021) 129 final}",
+-  address      = "{Brussels}",
+-}
+-
+-@article{WEI2024110522,
+-title = {Analysis of the European energy crisis and its implications for the development of strategic energy storage in China},
+-journal = {Journal of Energy Storage},
+-volume = {82},
+-pages = {110522},
+-year = {2024},
+-issn = {2352-152X},
+-doi = {https://doi.org/10.1016/j.est.2024.110522},
+-url = {https://www.sciencedirect.com/science/article/pii/S2352152X24001075},
+-author = {Xinxing Wei and Xilin Shi and Yinping Li and Hongling Ma and Shengnan Ban and Xin Liu and Hejuan Liu and Chunhe Yang},
+-}
+-
+-@article{EUETS,
+-  title={Anatomy of emissions trading systems: what is the EU ETS?},
+-  author={Verbruggen, Aviel and Laes, Erik and Woerdman, Edwin},
+-  journal={Environmental Science \& Policy},
+-  volume={98},
+-  pages={11--19},
+-  year={2019},
+-  publisher={Elsevier},
+-doi={https://doi.org/10.1016/j.envsci.2019.05.001}
+-}
+-
+-@article{ROMANCOLLADO2024108009,
+-title = {Key effects contributing to changes in energy imports in the EU-27 between 2000 and 2020: A decomposition analysis based on the Sankey diagram},
+-journal = {Energy Economics},
+-volume = {140},
+-pages = {108009},
+-year = {2024},
+-issn = {0140-9883},
+-doi = {https://doi.org/10.1016/j.eneco.2024.108009},
+-url = {https://www.sciencedirect.com/science/article/pii/S0140988324007175},
+-author = {Rocio Roman-Collado and Virginia {Casado Ruiz}},
+-}
+-
+-@article{LI20211712,
+-title = {The relationship between energy prices, economic growth and renewable energy consumption: Evidence from Europe},
+-journal = {Energy Reports},
+-volume = {7},
+-pages = {1712-1719},
+-year = {2021},
+-issn = {2352-4847},
+-doi = {https://doi.org/10.1016/j.egyr.2021.03.030},
+-url = {https://www.sciencedirect.com/science/article/pii/S2352484721001992},
+-author = {Raymond Li and Guy C.K. Leung},
+-}
+-
+-@article{SUN2022121642,
+-title = {Return and volatility linkages between international energy markets and Chinese commodity market},
+-journal = {Technological Forecasting and Social Change},
+-volume = {179},
+-pages = {121642},
+-year = {2022},
+-issn = {0040-1625},
+-doi = {https://doi.org/10.1016/j.techfore.2022.121642},
+-url = {https://www.sciencedirect.com/science/article/pii/S0040162522001743},
+-author = {Guanglin Sun and Jianfeng Li and Zezhong Shang},
+-}
+-
+-@article{WANG2023128724,
+-title = {International and Chinese energy markets: Dynamic spillover effects},
+-journal = {Energy},
+-volume = {282},
+-pages = {128724},
+-year = {2023},
+-issn = {0360-5442},
+-doi = {https://doi.org/10.1016/j.energy.2023.128724},
+-url = {https://www.sciencedirect.com/science/article/pii/S0360544223021187},
+-author = {Xiaoyu Wang and Jiaojiao Wang and Wenhuan Wang and Shuquan Zhang},
+-keywords = {Energy market, Spillover effect, Wavelet coherence, Driving factors},
+-}
+-
+-@article{GLOCKER2024103201,
+-title = {Energy price surges and inflation: Fiscal policy to the rescue?},
+-journal = {Journal of International Money and Finance},
+-volume = {149},
+-pages = {103201},
+-year = {2024},
+-issn = {0261-5606},
+-doi = {https://doi.org/10.1016/j.jimonfin.2024.103201},
+-author = {Christian Glocker and Philipp Wegmuller},
+-}
+-
+-@article{HE2017524,
+-title = {The impact of natural gas price control in China: A computable general equilibrium approach},
+-journal = {Energy Policy},
+-volume = {107},
+-pages = {524-531},
+-year = {2017},
+-issn = {0301-4215},
+-doi = {https://doi.org/10.1016/j.enpol.2017.05.015},
+-url = {https://www.sciencedirect.com/science/article/pii/S0301421517302999},
+-author = {Yongda He and Boqiang Lin},
+-}
+-1111
+-@article{karanfil2023energy,
+-  title={The energy transition and export diversification in oil-dependent countries: The role of structural factors},
+-  author={Karanfil, Fatih and Omgba, Luc D{\'e}sir{\'e}},
+-  journal={Ecological Economics},
+-  volume={204},
+-  pages={107681},
+-  year={2023},
+-  publisher={Elsevier}
+-}
+-
+-@article{TAZIKEH2025119124,
+-title = {Energy development and management in the Middle East: A holistic analysis},
+-journal = {Energy Conversion and Management},
+-volume = {323},
+-pages = {119124},
+-year = {2025},
+-issn = {0196-8904},
+-doi = {https://doi.org/10.1016/j.enconman.2024.119124},
+-url = {https://www.sciencedirect.com/science/article/pii/S0196890424010653},
+-author = {Simin Tazikeh and Omid Mohammadzadeh and Sohrab Zendehboudi and Noori M. Cata Saady and Talib M. Albayati and Ioannis Chatzis},
+-}
+-
+-@incollection{surkov2023middle,
+-  title={Middle East Energy Policy Transformation: Saudi Case},
+-  author={Surkov, Andrey N and Simonov, Alexander G},
+-  booktitle={Sustainable Development Risks and Risk Management: A Systemic View from the Positions of Economics and Law},
+-  pages={463--467},
+-  year={2023},
+-  publisher={Springer},
+-doi={https://doi.org/10.1007/978-3-031-34256-1_81}
+-}
+-
+-@article{FATTOUH2013108,
+-title = {Energy subsidies in the Middle East and North Africa},
+-journal = {Energy Strategy Reviews},
+-volume = {2},
+-number = {1},
+-pages = {108-115},
+-year = {2013},
+-note = {Strategy Options and Models for the Middle East and North Africa (MENA) Energy Transition},
+-issn = {2211-467X},
+-doi = {https://doi.org/10.1016/j.esr.2012.11.004},
+-url = {https://www.sciencedirect.com/science/article/pii/S2211467X12000399},
+-author = {Bassam Fattouh and Laura El-Katiri},
+-}
+-
+-
+-
+-@incollection{Ersoy2024,
+-  title = {Stacking Regression for Time-Series, with an Application to Forecasting Quarterly US GDP Growth},
+-  author = {Ersoy, Erkal and Li, Haoyang and Schaffer, Mark E. and Szendrei, Tibor},
+-  booktitle = {Optimal Transport Statistics for Economics and Related Topics},
+-  series = {Studies in Systems, Decision and Control},
+-  volume = {483},
+-  pages = {145--160},
+-  year = {2024},
+-  publisher = {Springer},
+-  doi = {10.1007/978-3-031-35763-3_7},
+-  url = {https://link.springer.com/chapter/10.1007/978-3-031-35763-3_7}
+-}
+-
+-@article{Achuo2024,
+-  title = {Switching towards coal or renewable energy? The effects of financial capital on energy transitions},
+-  author = {Achuo, Elvis and Kakeu, Pilag and Asongu, Simplice},
+-  journal = {Frontiers in Pharmacology},
+-  volume = {12},
+-  pages = {975855},
+-  year = {2022},
+-  publisher = {Frontiers Media SA},
+-  doi = {10.3389/fphar.2022.975855},
+-  url = {https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2022.975855/full}
+-}
+-
+-
+-@techreport{OECD2019,
+-  author       = "{OECD Nuclear Energy Agency}",
+-  title        = "{The Economics of Long-term Operation of Nuclear Power Plants}",
+-  institution  = "{Organisation for Economic Co-operation and Development}",
+-  year         = 2019,
+-  address      = "{Paris}",
+-  url          = "{https://www.oecd-nea.org/upload/docs/application/pdf/2019-12/7054-long-term-operation-npps.pdf}"
+-}
+-
+-@article{THELLUFSEN2024123705,
+-title = {Cost and system effects of nuclear power in carbon-neutral energy systems},
+-journal = {Applied Energy},
+-volume = {371},
+-pages = {123705},
+-year = {2024},
+-issn = {0306-2619},
+-doi = {https://doi.org/10.1016/j.apenergy.2024.123705},
+-url = {https://www.sciencedirect.com/science/article/pii/S0306261924010882},
+-author = {Jakob Zinck Thellufsen and Henrik Lund and Brian Vad Mathiesen and Poul Alberg Ostergaard and Peter Sorknaes and Steffen Nielsen and Poul Thois Madsen and Gorm Bruun Andresen},
+-}
+-
+-@INPROCEEDINGS{9131331,
+-  author={Wu, Qiaoling},
+-  booktitle={2020 3rd International Conference on Advanced Electronic Materials, Computers and Software Engineering (AEMCSE)}, 
+-  title={Analysis and Research on Generation Cost of Hydropower Enterprise}, 
+-  year={2020},
+-  volume={},
+-  number={},
+-  pages={694-696},
+-  keywords={hydropower enterprise;generation cost;cost analysis;cost management},
+-  doi={10.1109/AEMCSE50948.2020.00152}}
+-
+-@article{QADIR20213590,
+-title = {Incentives and strategies for financing the renewable energy transition: A review},
+-journal = {Energy Reports},
+-volume = {7},
+-pages = {3590-3606},
+-year = {2021},
+-issn = {2352-4847},
+-doi = {https://doi.org/10.1016/j.egyr.2021.06.041},
+-url = {https://www.sciencedirect.com/science/article/pii/S2352484721004066},
+-author = {Sikandar Abdul Qadir and Hessah Al-Motairi and Furqan Tahir and Luluwah Al-Fagih},
+-}
+-
+-@article{KO2018205,
+-title = {Securing the feedstock procurement for bioenergy products: a literature review on the biomass transportation and logistics},
+-journal = {Journal of Cleaner Production},
+-volume = {200},
+-pages = {205-218},
+-year = {2018},
+-issn = {0959-6526},
+-doi = {https://doi.org/10.1016/j.jclepro.2018.07.241},
+-url = {https://www.sciencedirect.com/science/article/pii/S0959652618322303},
+-author = {Sangpil Ko and Pasi Lautala and Robert M. Handler},
+-}
+-
+-@article{LOCHHEAD2016184,
+-title = {Price trends and volatility scenarios for designing forest sector transformation},
+-journal = {Energy Economics},
+-volume = {57},
+-pages = {184-191},
+-year = {2016},
+-issn = {0140-9883},
+-doi = {https://doi.org/10.1016/j.eneco.2016.05.001},
+-url = {https://www.sciencedirect.com/science/article/pii/S0140988316300986},
+-author = {Kyle Lochhead and Saeed Ghafghazi and Petr Havlik and Nicklas Forsell and Michael Obersteiner and Gary Bull and Warren Mabee},
+-keywords = {Forest sector scenario analysis, GLOBIOM, Price trends, mGARCH model, Biomass price volatility, Investment decision making},
+-}
+-
+-@article{dobrowolski2022weighted,
+-  title={The weighted average cost of capital and its universality in crisis times: Evidence from the energy sector},
+-  author={Dobrowolski, Zbys{\l}aw and Drozdowski, Grzegorz and Panait, Mirela and Apostu, Simona Andreea},
+-  journal={Energies},
+-  volume={15},
+-  number={18},
+-  pages={6655},
+-  year={2022},
+-  publisher={MDPI},
+-doi={https://doi.org/10.3390/en15186655}
+-}
+-
+-@article{bouzarovski2017energy,
+-  title={The energy divide: Integrating energy transitions, regional inequalities and poverty trends in the European Union},
+-  author={Bouzarovski, Stefan and Tirado Herrero, Sergio},
+-  journal={European urban and regional studies},
+-  volume={24},
+-  number={1},
+-  pages={69--86},
+-  year={2017},
+-  publisher={Sage Publications Sage UK: London, England},
+-doi={https://doi.org/10.1177/0969776415596449}
+-}
+-
+-@techreport{eea2022trends,
+-  author  = {EEA},
+-  title   = {Trends and projections in Europe 2022},
+-  year    = {2022},
+-  institution = {European Environment Agency},
+-  url     = {https://www.eea.europa.eu/publications/trends-and-projections-in-europe-2022}
+-}
+-
+-@article{schmidt2019projecting,
+-  title={Projecting the future levelized cost of electricity storage technologies},
+-  author={Schmidt, Oliver and Melchior, Sylvain and Hawkes, Adam and Staffell, Iain},
+-  journal={Joule},
+-  volume={3},
+-  number={1},
+-  pages={81--100},
+-  year={2019},
+-  publisher={Elsevier},
+-doi={https://doi.org/10.1016/j.joule.2018.12.008}
+-}
+-
+-@article{COOPER2017115,
+-title = {Building a socio-technical energy research community: Theory, practice and impact},
+-journal = {Energy Research \& Social Science},
+-volume = {26},
+-pages = {115-120},
+-year = {2017},
+-issn = {2214-6296},
+-doi = {https://doi.org/10.1016/j.erss.2017.02.001},
+-url = {https://www.sciencedirect.com/science/article/pii/S2214629617300427},
+-author = {Adam C.G. Cooper}
+-}
+-
+-@book{oecd2021financing,
+-  author  = {{OECD}},
+-  title   = {Financing climate objectives in cities and regions to deliver sustainable and inclusive growth},
+-  year    = {2021},
+-  publisher = {OECD Publishing},
+-  doi     = {10.1787/ee3ce00b-en}
+-}
+-
+-@techreport{irena2023renewable,
+-  author  = {{International Renewable Energy Agency}},
+-  title   = {Renewable power generation costs in 2022},
+-  year    = {2023},
+-  institution = {IRENA},
+-  url     = {https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2023/Aug/IRENA_Renewable_power_generation_costs_in_2022.pdf}
+-}
+-
+-@article{ehlers2017green,
+-  title={Green bond finance and certification},
+-  author={Ehlers, Torsten and Packer, Frank},
+-  journal={BIS Quarterly Review September},
+-  year={2017},
+-url={https://www.bis.org/publ/qtrpdf/r_qt1709h.htm}
+-}
+-
+-
+-@article{flammer2021corporate,
+-title = {Corporate green bonds},
+-journal = {Journal of Financial Economics},
+-volume = {142},
+-number = {2},
+-pages = {499-516},
+-year = {2021},
+-issn = {0304-405X},
+-doi = {https://doi.org/10.1016/j.jfineco.2021.01.010},
+-url = {https://www.sciencedirect.com/science/article/pii/S0304405X21000337},
+-author = {Caroline Flammer},
+-}
+-
+-@article{peng2017electricity,
+-  title={Electricity market design for a decarbonised future: An integrated approach},
+-  author={Peng, Donna and Poudineh, Rahmatallah},
+-  year={2017},
+-  publisher={Oxford Institute for Energy Studies},
+-doi={https://doi.org/10.26889/9781784670948}
+-}
+-
+-@article{ben2022assessing,
+-  title={Assessing the impact of fossil fuel prices on renewable energy in China using the novel dynamic ARDL simulations approach},
+-  author={Ben-Salha, Ousama and Hakimi, Abdelaziz and Zaghdoudi, Taha and Soltani, Hassan and Nsaibi, Mariem},
+-  journal={Sustainability},
+-  volume={14},
+-  number={16},
+-  pages={10439},
+-  year={2022},
+-  publisher={MDPI},
+-  doi={10.3390/su141610439},
+-  url={https://doi.org/10.3390/su141610439}
+-}
+-
+-@techreport{IEA2023renewables,
+-  author={IEA},
+-  title={Renewables 2023: Analysis and Forecasts to 2028},
+-  institution={International Energy Agency},
+-  year={2023},
+-  address={Paris},
+-  url={https://www.iea.org/reports/renewables-2023},
+-  note={Accessed: 2023-12-20}
+-}
+-
+-@article{zhang2019can,
+-  title={Can energy-price regulations smooth price fluctuations? Evidence from China's coal sector},
+-  author={Zhang, Yanfang and Nie, Rui and Shi, Xunpeng and Qian, Xiangyan and Wang, Ke},
+-  journal={Energy Policy},
+-  volume={128},
+-  pages={125--135},
+-  year={2019},
+-  doi={10.1016/j.enpol.2018.12.046},
+-}
+-@report{IEA2023,
+-  title={Global Wind Energy Outlook 2023},
+-  author={IEA},
+-  year={2023},
+-  institution={IEA},
+-  url={https://www.iea.org/energy-system/renewables/wind}
+-}
+-
+-@article{Stewart2022,
+-  title={Capital Cost Estimation for Advanced Nuclear Power Plants},
+-  author={Stewart, W. and Shirvan, K.},
+-  journal={Renewable and Sustainable Energy Reviews},
+-  volume={155},
+-  pages={111880},
+-  year={2022},
+-  publisher={Elsevier},
+-  url={https://doi.org/10.1016/j.rser.2021.111880}
+-}
+-
+-@article{taylor2008market,
+-  title={Market competition in the nuclear industry},
+-  author={Taylor, Martin},
+-  journal={NEA News},
+-  volume={26},
+-  year={2008}
+-}
+-
+-
+-@misc{WorldBank2023MENAUpdate,
+-  author       = {{World Bank}},
+-  title        = {Middle East and North Africa Economic Update},
+-  month        = apr,
+-  year         = 2023,
+-  url          = {https://www.worldbank.org}
+-}
+-
+-@misc{GECF2023AGMR,
+-  author = {GECF},
+-  title= {GECF Annual Gas Market Report 2023},
+-  year= 2023,
+-  url= {https://www.gecf.org/_resources/files/flipbook/agmr2023/}
+-}
+-
+-@book{IRENA2023Statistics,
+-  author    = {IRENA},
+-  title     = {Renewable Energy Statistics 2023},
+-  year      = {2023},
+-  publisher = {International Renewable Energy Agency},
+-  address   = {Abu Dhabi},
+-  isbn      = {978-92-9260-537-7},
+-  url       = {https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2023/Jul/IRENA_Renewable_energy_statistics_2023.pdf}
+-}
+-
+-
+-@report{SPGlobal2024GCCInfrastructureOutlook,
+-  author       = {{S\&P Global Ratings}},
+-  title        = {{GCC Corporate And Infrastructure Outlook 2024: Holding Up Against Refinancing Needs}},
+-  year         = {2024},
+-  month        = {March},
+-  url          = {https://www.spglobal.com}
+-}
+-
+-@article{fattouh2013energy,
+-title = {Energy subsidies in the Middle East and North Africa},
+-journal = {Energy Strategy Reviews},
+-volume = {2},
+-number = {1},
+-pages = {108-115},
+-year = {2013},
+-note = {Strategy Options and Models for the Middle East and North Africa (MENA) Energy Transition},
+-issn = {2211-467X},
+-doi = {https://doi.org/10.1016/j.esr.2012.11.004},
+-url = {https://www.sciencedirect.com/science/article/pii/S2211467X12000399},
+-author = {Bassam Fattouh and Laura El-Katiri},
+-}
+-
+-@techreport{IMF2023FossilFuelSubsidies,
+-  author       = {IMF},
+-  title        = {Fossil Fuel Subsidies: 2023 Update},
+-  year         = {2023},
+-  institution  = {International Monetary Fund},
+-  url          = {https://www.imf.org/en/Publications/WP/Issues/2023/08/22/IMF-Fossil-Fuel-Subsidies-Data-2023-Update-537281},
+-  note         = {Accessed: 2025-04-04}
+-}
+-
+-@book{OECDNEA2019LTO,
+-  author    = {{OECD}},
+-  title     = {The Economics of Long-term Operation of Nuclear Power Plants},
+-  year      = {2019},
+-  publisher = {OECD Publishing},
+-  address   = {Paris},
+-  url       = {https://www.oecd-nea.org/jcms/pl_14752/the-economics-of-long-term-operation-of-nuclear-power-plants}
+-}
+-
+-@book{IPCC2018,
+-  title     = {Global Warming of 1.5 Degrees C: An IPCC Special Report on the Impacts of Global Warming of 1.5 Degrees C above Pre-Industrial Levels and Related Global Greenhouse Gas Emission Pathways},
+-  author    = {{Intergovernmental Panel on Climate Change}},
+-  year      = {2018},
+-  publisher = {Cambridge University Press},
+-  url       = {https://www.ipcc.ch/report/sr15/}
+-}
+-
++  author = {Rasmussen, Carl Edward},
++  title = {{Gaussian Processes in Machine Learning}},
++  year = {2004},
++  doi = {10.1007/978-3-540-28650-9_4},
++  booktitle = {Advanced Lectures on Machine Learning},
++  pages = {63--71},
++  publisher = {Springer Berlin Heidelberg},
++}
+ 
+ @article{PARANHOS2025,
+-title = {Predicting inflation with recurrent neural networks},
+-journal = {International Journal of Forecasting},
+-year = {2025},
+-issn = {0169-2070},
+-doi = {https://doi.org/10.1016/j.ijforecast.2024.07.010},
+-author = {Livia Paranhos},
+-}
+-
+-@book{goodfellow2016deep,
+-  title={Deep Learning},
+-  author={Goodfellow, Ian and Bengio, Yoshua and Courville, Aaron},
+-  publisher={MIT Press},
+-  year={2016},
+-  address={Cambridge, MA},
+-  url={https://www.deeplearningbook.org/},
+-}
+-
+-
+-@Article{en15186655,
+-AUTHOR = {Dobrowolski, Zbyslaw and Drozdowski, Grzegorz and Panait, Mirela and Apostu, Simona Andreea},
+-TITLE = {The Weighted Average Cost of Capital and Its Universality in Crisis Times: Evidence from the Energy Sector},
+-JOURNAL = {Energies},
+-VOLUME = {15},
+-YEAR = {2022},
+-NUMBER = {18},
+-URL = {https://www.mdpi.com/1996-1073/15/18/6655},
+-ISSN = {1996-1073},
+-}
+-
+-@article{KANG2020103257,
+-title = {The rise of part-time employment in the great recession: Its causes and macroeconomic effects},
+-journal = {Journal of Macroeconomics},
+-volume = {66},
+-year = {2020},
+-issn = {0164-0704},
+-doi = {https://doi.org/10.1016/j.jmacro.2020.103257},
+-url = {https://www.sciencedirect.com/science/article/pii/S0164070420301828},
+-author = {Hyunju Kang and Jaevin Park and Hyunduk Suh},
+-}
+-
+-@techreport{melodia2022energy,
+-  title={Energy Price Stability: The Peril of Fossil Fuels and the Promise of Renewables},
+-  author={Melodia, Lauren and Karlsson, Kristina},
+-  institution={Roosevelt Institute},
+-  year={2022},
+-  month={March},
+-  url={https://rooseveltinstitute.org/publications/energy-price-stability/},
+-  type={Report}
+-}
+-
+-@techreport{millischer2024renewables,
+-  title={Do Renewables Shield Inflation from Fossil Fuel-Price Fluctuations?},
+-  author={Millischer, Laurent and Fu, Chenxu and Volz, Ulrich and Beirne, John},
+-  year={2024},
+-  month={February},
+-  number={WP/24/37},
+-  institution={International Monetary Fund},
+-  series={IMF Working Papers},
+-}
+-
+-@report{Lieberman2007RenewableHedge,
+-  title        = {Renewable Energy as a Hedge Against Fuel Price Fluctuation: How to Capture the Benefits},
+-  author       = {Lieberman, Dan and Doherty, Siobhan},
+-  year         = {2007},
+-  month        = jun,
+-  institution  = {Center for Resource Solutions},
+-  url          = {https://resource-solutions.org},
+-}
+-
+-
+-@Article{su13052573,
+-AUTHOR = {Shrimali, Gireesh},
+-TITLE = {Financial Performance of Renewable and Fossil Power Sources in India},
+-JOURNAL = {Sustainability},
+-VOLUME = {13},
+-YEAR = {2021},
+-NUMBER = {5},
+-URL = {https://www.mdpi.com/2071-1050/13/5/2573},
+-ISSN = {2071-1050}
+-}
+-
+-@article{vrinceanu2020influence,
+-  title={The influence of oil price on renewable energy stock prices: an analysis for entrepreneurs},
+-  author={Vr{\^\i}nceanu, Georgiana and Horobet, Alexandra and Popescu, Consuela and Bela{\c{s}}cu, Lucian},
+-  journal={Studia Universitatis Vasile Goldis Arad, Seria Stiinte Economice},
+-  volume={30},
+-  number={2},
+-  pages={24--35},
+-  year={2020},
+-  url={https://doi.org/10.2478/sues-2020-0010},
+-  publisher={Sciendo}
+-}
+-
+-@article{kjellevoll2023impact,
+-title = {Impact of ESG performance on the cost of capital in the energy, utilities, and basic materials sectors},
+-journal = {Utilities Policy},
+-volume = {97},
+-pages = {102016},
+-year = {2025},
+-issn = {0957-1787},
+-doi = {https://doi.org/10.1016/j.jup.2025.102016}
+-}
+-
+-@techreport{duma2023risk,
+-  title={Risk mitigation and transfer for renewable energy investments},
+-  author={Duma, Daniel and Cabr{\'e}, Miquel Mu{\~n}oz and Kruger, Wikus},
+-  institution={Stockholm Environment Institute (SEI)},
+-  year={2023},
+-  month={September},
+-  url={https://www.sei.org/wp-content/uploads/2023/08/risk-mitigation-transfer-investments.pdf},
+-  note={SEI Report}
+-}
+-
+-@article{ameli2021higher,
+-  title={Higher cost of finance exacerbates a climate investment trap in developing economies},
+-  author={Ameli, Nadia and Dessens, Olivier and Winning, Matthew and Cronin, Jennifer and Chenet, Hugues and Drummond, Paul and Calzadilla, Alvaro and Anandarajah, Gabrial and Grubb, Michael},
+-  journal={Nature Communications},
+-  volume={12},
+-  number={1},
+-  pages={4046},
+-  year={2021},
+-  doi={10.1038/s41467-021-24305-3},
+-  url={https://doi.org/10.1038/s41467-021-24305-3},
+-publisher={Nature Publishing Group UK London}
+-}
+-
+-@inproceedings{acaitXie2024carbon,
+-  title={Predicting Carbon Emissions via Deep Learning Time Series Models},
+-  author={Xie, Bingshu and Tang, Long and Yan, Haojun and Huang, Hongliang and Lin, Yihan and Li, Lanhao and Sun, Qingyun and Zhou, Haoyi},
+-  booktitle={2024 8th Asian Conference on Artificial Intelligence Technology (ACAIT)},
+-  pages={1360--1365},
+-  year={2024},
+-  publisher={IEEE},
+-  doi={10.1109/ACAIT63902.2024.11021988}
+-}
+-
+-@inproceedings{acaitChen2023transfer,
+-  title={A Fast Transfer-Based Adaptive Recurrent Neural Network Model for Enterprise Carbon Emission Prediction},
+-  author={Chen, Yun and Pan, Zhijun and Wang, Xiaohui and Fu, Chaoran and Cai, Yiwen and Jiang, Jiahang and Du, Haizhou},
+-  booktitle={2023 7th Asian Conference on Artificial Intelligence Technology (ACAIT)},
+-  pages={9--15},
+-  year={2023},
+-  publisher={IEEE},
+-  doi={10.1109/ACAIT60137.2023.10528509}
+-}
++  author = {Paranhos, Livia},
++  title = {{Predicting inflation with recurrent neural networks}},
++  year = {2025},
++  doi = {10.1016/j.ijforecast.2024.07.010},
++  journal = {International Journal of Forecasting},
++  note = {Available online Mar. 19, 2025, corrected proof},
++}
++
++@misc{autogluon2025docs,
++  author = {{AutoGluon Developers}},
++  title = {{AutoGluon} 1.4.0 documentation: Tabular prediction},
++  year = {2025},
++  url = {https://auto.gluon.ai/1.4.0/tutorials/tabular/index.html},
++  note = {Accessed: Oct. 22, 2026},
++}
+--- original/sections/abstract.tex
++++ checked/sections/abstract.tex
+@@ -1,7 +1,7 @@
+ \begin{abstract}
+ Financial risk assessment plays a vital role in accelerating the global energy transition and achieving the 1.5$^\circ$C climate target. This study develops a three-stage machine learning framework to analyze the impact of fossil fuel price volatility on the weighted average cost of capital (WACC) for energy transition projects. First, a hybrid Long Short-Term Memory-Gaussian Process Regression (LSTM-GPR) model forecasts fossil fuel prices, followed by an LSTM-based inflation predictor. In the final stage, an AutoML (AutoGluon) regression model evaluates how variations in fossil fuel prices and inflation influence WACC across nine energy sectors and multiple global regions.
+ 
+-The results show that WACC in energy-importing regions like Europe ($R^2$=0.67) and China ($R^2$=0.64) is highly sensitive to price shocks, making their decarbonization pathways vulnerable to external market instability. Conversely, the energy-exporting countries in the Middle East ($R^2$=0.54) exhibit lower sensitivity, indicating a fiscal cushion that may reduce the economic impetus for transition. Additional holdout, rolling-origin, and transmission-diagnostic checks are used to interpret these findings as predictive sensitivity and mechanism evidence rather than as formal causal identification. The approach integrates AI-driven forecasting with climate finance modeling, providing an interpretable and data-driven tool to support policy design, green investment strategies, and climate-resilient energy planning.
++The results show regional differences in model fit: average $R^2$ is 0.670 for Europe, 0.650 for China, and 0.547 for the Middle East, with stronger fit for solar and wind projects. These fit statistics describe the joint fuel-price and inflation specifications and do not measure the magnitude of price-shock responses. Additional holdout, rolling-origin, and transmission-diagnostic checks are used to interpret these findings as scenario comparisons and mechanism evidence rather than as formal causal identification. The approach integrates AI-driven forecasting with climate finance modeling, providing an interpretable and data-driven tool to support policy design, green investment strategies, and climate-resilient energy planning.
+ \end{abstract}
+ 
+ \begin{IEEEkeywords}
+--- original/sections/acknowledgments.tex
++++ checked/sections/acknowledgments.tex
+@@ -1,6 +1,2 @@
+ \section*{Acknowledgment}
+-
+-The Duke Kunshan University Education Development Foundation supports the research. The research results of this article are also sponsored by the Kunshan Municipal Government research funding. 
+-
+-Shilin not the authors, only you. 
+-The authors benefited from scholarly exchange with participants in the AAAI-26 Workshop on AI for Environmental Science, held on January 27, 2026, at the Singapore EXPO in Singapore. The presenting author gratefully acknowledges the AAAI AI4ES Travel Grant for supporting participation in the workshop from Duke Kunshan University Office of Academic Service.
++OpenAI Codex assisted language and consistency revisions throughout the manuscript, preparation of Fig.~\ref{fig:tensor-framework}, and correction of the sensitivity-analysis code. Funding and presenting-author acknowledgments are stated on the first page.
+--- original/sections/appendix.tex
++++ checked/sections/appendix.tex
+@@ -4,21 +4,22 @@
+ 
+ \subsection{Repository and Execution Environment}
+ 
+-All experiments follow the repository workflow used in the original submission. The primary notebooks are \texttt{Price\_Prediction.ipynb}, \texttt{Prediction\_Inflation.ipynb}, and \texttt{Impact\_FossilFuel.ipynb}. The revision diagnostics are generated by \texttt{code/revision\_experiments.py}. The release repository is prepared for \url{https://github.com/Global-Nomad-Nexus/ImpactOfFossilFuelPrice-WACC}. Experiments were run on macOS with an Apple arm64 10-core CPU and 16GB RAM. The software environment used Python 3.11.4, AutoGluon 1.4.0, TensorFlow 2.5.0+, Keras 2.4.3+, scikit-learn, pandas, NumPy, and statsmodels.
+-
+-\begin{table}[!h]
++\begingroup\raggedright
++All experiments follow the repository workflow used in the original submission. The primary notebooks are \texttt{Price\_Prediction.ipynb}, \texttt{Prediction\_Inflation.ipynb}, and \texttt{Impact\_FossilFuel.ipynb}. The revision diagnostics are generated by \texttt{code/revision\_experiments.py}. The versioned source and corrected diagnostics are available in the \href{https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice}{organization repository}. Experiments were run on macOS with an Apple arm64 10-core CPU and 16GB RAM. The original notebooks specify Python, AutoGluon, TensorFlow/Keras, and scikit-learn. The corrected diagnostic script depends on pandas, NumPy, and openpyxl; its rerun environment and checks are recorded in the versioned repository. Historical notebook environment labels are not an exact lockfile.\par\endgroup
++
++\begin{table}[!ht]
+ \centering
+ \caption{Files Included in the IEEE Source Folder}
+ \label{tab:appendix-file-inventory}
+ \scriptsize
+-\begin{tabular}{p{0.24\columnwidth}p{0.28\columnwidth}p{0.36\columnwidth}}
++\begin{tabular}{P{0.24\columnwidth}P{0.28\columnwidth}P{0.36\columnwidth}}
+ \toprule
+ \textbf{Folder} & \textbf{File} & \textbf{Purpose} \\
+ \midrule
+ \texttt{figures/} & \texttt{LSTM.png} & Stage 1 architecture figure \\
+ \texttt{figures/} & \texttt{Accuracy.png} & Oil price forecast comparison \\
+ \texttt{figures/} & \texttt{figure.png} & Stage 3 regional/project metrics \\
+-\texttt{figures/} & Tensor framework PDF & First-page tensor workflow figure \\
++\texttt{sections/} & \texttt{framework.tex} & Editable tensor workflow figure \\
+ \texttt{figures/} & Methodology relations PDF & Three-stage method and model-relation figure \\
+ \texttt{data/} & Stage 1 metrics & Forecast metric table \\
+ \texttt{data/} & Stage 3 holdout & 2033-2035 holdout checks \\
+@@ -33,7 +34,7 @@
+ 
+ Stage 1 uses historical coal, gas, and oil prices from World Bank commodity data. Stage 2 uses macroeconomic indicators, including consumer price inflation, gross domestic product growth, unemployment, real interest rate, money supply, and trade-balance indicators. Stage 3 combines predicted fuel prices and inflation with WACC projections derived from Calcaterra et al. The cleaned WACC inputs keep a common monthly horizon from 2026-01 to 2035-12 for China, Europe, and the Middle East.
+ 
+-\begin{table}[!h]
++\begin{table}[!ht]
+ \centering
+ \caption{Cleaned WACC Panel Coverage}
+ \label{tab:appendix-cleaned-wacc}
+@@ -50,15 +51,15 @@
+ \vspace{2pt}
+ 
+ \raggedright\scriptsize
+-\textit{Note:} ``Mean Fix'' is the mean absolute correction to the inflation column. Missing values after cleaning are zero for all regions.
+-\end{table}
+-
+-\begin{table}[!h]
++\textit{Note:} ``Mean Fix'' is the mean absolute correction to the inflation column, in percentage points. Missing values after cleaning are zero for all regions. The original Europe and Middle East workbooks used China's inflation series; cleaning replaces it with the respective regional forecasts. The original AutoGluon fit summaries remain archived separately from the cleaned-panel diagnostics.
++\end{table}
++
++\begin{table}[!ht]
+ \centering
+ \caption{Core Variables Used by Stage}
+ \label{tab:appendix-core-variables}
+ \scriptsize
+-\begin{tabular}{p{0.23\columnwidth}p{0.35\columnwidth}p{0.30\columnwidth}}
++\begin{tabular}{P{0.23\columnwidth}P{0.35\columnwidth}P{0.30\columnwidth}}
+ \toprule
+ \textbf{Stage} & \textbf{Variables} & \textbf{Role} \\
+ \midrule
+@@ -74,13 +75,13 @@
+ 
+ The Stage 1 LSTM-GPR model first learns temporal fuel-price patterns and then smooths the neural forecasts with Gaussian Process Regression. The GPR uses a constant kernel multiplied by a radial basis function kernel plus a white-noise term, with \texttt{alpha=0.01}, \texttt{n\_restarts\_optimizer=10}, and \texttt{random\_state=42}. Stage 2 uses an LSTM and feed-forward inflation predictor with an ensemble size of five. Stage 3 uses AutoGluon-Tabular with bagging and stacking enabled.
+ 
+-\begin{table}[!h]
++\begin{table}[!ht]
+ \centering
+ \caption{Stage 1 Price-Forecasting Settings}
+ \label{tab:hyperparameter-summary}
+ \label{tab:appendix-stage1-settings}
+ \scriptsize
+-\begin{tabular}{p{0.48\columnwidth}p{0.36\columnwidth}}
++\begin{tabular}{P{0.48\columnwidth}P{0.36\columnwidth}}
+ \toprule
+ \textbf{Parameter} & \textbf{Value} \\
+ \midrule
+@@ -101,12 +102,12 @@
+ \end{tabular}
+ \end{table}
+ 
+-\begin{table}[!h]
++\begin{table}[!ht]
+ \centering
+ \caption{Stage 2 and Stage 3 Settings}
+ \label{tab:appendix-stage23-settings}
+ \scriptsize
+-\begin{tabular}{p{0.16\columnwidth}p{0.43\columnwidth}p{0.25\columnwidth}}
++\begin{tabular}{P{0.16\columnwidth}P{0.43\columnwidth}P{0.25\columnwidth}}
+ \toprule
+ \textbf{Stage} & \textbf{Parameter} & \textbf{Value} \\
+ \midrule
+@@ -130,9 +131,9 @@
+ 
+ \subsection{Forecasting and Robustness Outputs}
+ 
+-The oil-price forecast comparison uses the 2021-2024 period, with data through 2020 used for training. The LSTM-GPR model has the strongest performance among the four compared forecasting models. In Stage 3, the holdout split trains on 2026-01 to 2032-12 and tests on 2033-01 to 2035-12. Rolling-origin checks train through one calendar year and test the following year. These checks are used to separate predictive sensitivity from causal identification.
+-
+-\begin{table}[!h]
++The archived oil-price comparison covers 47 observations in 2021--2024. Separate fixed-origin baseline forecasts use training data through 2020. The LSTM-GPR series has the smallest errors among the four archived comparison outputs. In Stage 3, the holdout split trains on 2026-01 to 2032-12 and tests on 2033-01 to 2035-12. Rolling-origin checks train through one calendar year and test the following year. These checks are used to separate predictive sensitivity from causal identification.
++
++\begin{table}[!ht]
+ \centering
+ \caption{Stage 1 Oil-Price Forecast Metrics}
+ \label{tab:appendix-stage1-metrics}
+@@ -149,7 +150,7 @@
+ \end{tabular}
+ \end{table}
+ 
+-\begin{table}[!h]
++\begin{table}[!ht]
+ \centering
+ \caption{Stage 3 Validation Summary}
+ \label{tab:appendix-validation}
+@@ -171,9 +172,9 @@
+ 
+ \subsection{Scenario Sensitivity and Transmission Diagnostics}
+ 
+-The price-shock table converts log-linear elasticities into average basis-point changes in WACC under a 10\% fuel-price shock. These values are not causal effects; they are scenario sensitivities around the modeled WACC mean. The largest absolute sensitivities appear in Middle East onshore and solar cases, especially for gas-price shocks, while China cases have smaller basis-point movements in the cleaned panel.
+-
+-\begin{table}[!h]
++The price-shock table converts log-linear elasticities into average basis-point changes in WACC under a 10\% fuel-price shock. These values are conditional scenario sensitivities around the modeled WACC mean. The coefficient on log price is divided by the standard deviation of log price before conversion to original units. After reversing input standardization, the largest absolute responses in the cleaned panel occur in Middle East coal-price specifications. The table reports exact log-linear 10\% shock conversions around the modeled mean.
++
++\begin{table}[!ht]
+ \centering
+ \caption{Largest 10\% Price-Shock Sensitivities}
+ \label{tab:appendix-elasticities}
+@@ -182,24 +183,24 @@
+ \toprule
+ \textbf{Region/Project} & \textbf{Fuel} & \textbf{WACC} & \textbf{bp} \\
+ \midrule
+-Middle East Onshore & Gas & 8.56\% & 0.665 \\
+-Middle East Solar & Gas & 7.54\% & 0.474 \\
+-Middle East Onshore & Coal & 8.56\% & -0.460 \\
+-Middle East Offshore & Gas & 7.60\% & 0.415 \\
+-Middle East Solar & Coal & 7.54\% & -0.413 \\
+-Middle East Nuclear & Gas & 7.31\% & 0.372 \\
+-Middle East Hydro & Gas & 6.52\% & 0.370 \\
+-Middle East Biomass & Gas & 7.66\% & 0.369 \\
+-\bottomrule
+-\end{tabular}
+-\end{table}
+-
+-\begin{table}[!h]
++Middle East Onshore & Coal & 8.56\% & -26.058 \\
++Middle East Solar & Coal & 7.54\% & -23.359 \\
++Middle East Offshore & Coal & 7.60\% & -20.513 \\
++Middle East Nuclear & Coal & 7.31\% & -14.954 \\
++Middle East CCS & Coal & 7.54\% & -14.843 \\
++Middle East Biomass & Coal & 7.66\% & -14.815 \\
++Middle East Hydro & Coal & 6.52\% & -14.638 \\
++China Offshore & Coal & 5.76\% & -7.500 \\
++\bottomrule
++\end{tabular}
++\end{table}
++
++\begin{table}[!ht]
+ \centering
+ \caption{Selected Granger-Style Transmission Diagnostics}
+ \label{tab:appendix-granger}
+ \scriptsize
+-\begin{tabular}{p{0.35\columnwidth}lrr}
++\begin{tabular}{P{0.35\columnwidth}lrr}
+ \toprule
+ \textbf{Target} & \textbf{Fuel} & \textbf{Lag} & \textbf{$p$} \\
+ \midrule
+--- original/sections/conclusion.tex
++++ checked/sections/conclusion.tex
+@@ -1,5 +1,5 @@
+ \section{Conclusion and Future Work}
+ 
+-This study introduces a three-stage machine learning model to assess the effects of fossil fuel price volatility on the WACC of energy transition projects. The findings emphasize that achieving the 1.5$^\circ$C target requires region-specific climate finance solutions. Policymakers and investors need to tailor their strategies to address the unique challenges posed by fossil fuel price volatility, since this can promote renewable energy investments that remain financially viable and resilient amid global market shifts. The results also reinforce the SDG framing introduced at the outset: de-risking clean-energy finance supports affordable and clean energy (SDG 7), climate action (SDG 13), open and reproducible innovation infrastructure (SDG 9), and cross-regional research partnerships (SDG 17).
++This study introduces a three-stage machine learning model to examine relationships between fossil fuel price fluctuations and the WACC of energy transition projects. The regional comparisons motivate climate-finance analysis that accounts for local financing conditions and policy institutions. Policymakers and investors need to tailor their strategies to address the unique challenges posed by fossil fuel price volatility, since this can promote renewable energy investments that remain financially viable and resilient amid global market shifts. The results also reinforce the SDG framing introduced at the outset: de-risking clean-energy finance supports affordable and clean energy (SDG 7), climate action (SDG 13), open and reproducible innovation infrastructure (SDG 9), and cross-regional research partnerships (SDG 17).
+ 
+-While this study provides some insights into the financial dynamics of the energy transition, further research is also needed. Initially, some datasets and assumptions rely on secondary sources. Future work could enhance the robustness of these findings by incorporating firm-level financial data and longer regional panels. Additionally, future work could transition from quantifying predictive sensitivity to formal causal inference, using techniques such as fixed effects, instrumental variables, Granger causality, or Structural Equation Models to handle policy variables, financial mechanisms, and technological learning rates. Finally, the framework itself can be enhanced by benchmarking against advanced architectures such as Transformers or state-space models and leveraging the GPR model's predictive variance to conduct full uncertainty quantification and stress-testing.
++While this study provides some insights into the financial dynamics of the energy transition, further research is also needed. Initially, some datasets and assumptions rely on secondary sources. Future work could enhance the robustness of these findings by incorporating firm-level financial data and longer regional panels. Additionally, future work could transition from quantifying predictive sensitivity to formal causal inference, using techniques such as fixed effects, instrumental variables, or Structural Equation Models, with appropriate identifying assumptions, to handle policy variables, financial mechanisms, and technological learning rates. Finally, the framework itself can be enhanced by benchmarking against advanced architectures such as Transformers or state-space models and extending the GPR model's predictive variance to propagate uncertainty across all three stages and conduct stress-testing.
+--- original/sections/discussion.tex
++++ checked/sections/discussion.tex
+@@ -4,79 +4,40 @@
+ \subsection{Regional Differences}
+ 
+ \subsubsection{Europe}
+-
+-As shown in Fig.~\ref{fig:result9}, the WACC of European energy transition projects will continue to be influenced by the volatility of fossil fuel prices ($R^2$=0.67). This conclusion is supported not only by the high $R^2$ calculated by this study, but also by the structural characteristics of Europe's energy system \cite{ROMANCOLLADO2024108009}, limitations in policy regulation \cite{EUETS,RenewableEnergyDirective}, and the amplification of external risks \cite{oecd2021financing}.
++The original European specifications have the strongest average in-sample fit ($R^2=0.670$). Europe's reliance on imported energy provides a relevant context for examining international price exposure. Rom\'an-Collado and Casado Ru\'iz identify energy dependence, economic activity, and efficiency as drivers of EU-27 energy imports over 2000--2020 \cite{ROMANCOLLADO2024108009}. Li and Leung examine links between energy prices, economic growth, and renewable-energy consumption in Europe \cite{LI20211712}. These studies support the regional context, rather than a specific WACC response inferred from the fit statistic.
+ 
+ \subsubsection{Structural Dependence and Policy Limitations}
+-
+-Despite Europe's global leadership in renewable energy technology promotion, its short-term reliance on fossil fuel imports remains difficult to reverse \cite{LI20211712}. Data indicates that the proportion of fossil fuel imports in Europe increased from 70\% in 2018 to 82\% in 2024 (Table~\ref{tab:energy_import}). This allows global price fluctuations to directly affect the energy market and, consequently, capital costs. Furthermore, the elasticity coefficient of WACC volatility with respect to import ratios in Europe is 0.48, the highest globally \cite{egli2019bias}, underscoring Europe's heightened sensitivity to price transmission.
+-
+-On the other hand, the regulatory effectiveness of the EU Emissions Trading System exhibits diminishing marginal returns. Research shows that for every 10-euro increase in carbon prices per ton, WACC sensitivity decreases by 0.15 $R^2$ points. However, when carbon prices exceed 100 euros per ton, the smoothing effect diminishes by 40\% \cite{bouzarovski2017energy,eea2022trends}. Additionally, the diffusion of technological innovation faces constraints due to infrastructure bottlenecks \cite{RenewableEnergyDirective}. For example, Germany experienced a wind power curtailment rate of up to 6\% in 2023 due to grid congestion, weakening the optimization potential of accumulated wind power patents on capital costs \cite{schmidt2019projecting}.
++Carbon pricing and renewable-energy policy shape the investment environment. The EU ETS literature emphasizes the importance of policy design and innovation incentives \cite{EUETS}, while the Renewable Energy Directive provides a framework for renewable deployment \cite{RenewableEnergyDirective}. Policy credibility and predictability matter for both investment risk and expected returns \cite{POLZIN20191249}. These mechanisms motivate explicit policy scenarios in future financing analysis.
+ 
+ \subsubsection{External Shocks and Financial Risks}
++The European energy crisis illustrates the importance of energy security and storage planning \cite{WEI2024110522}. Fiscal instruments can also alter the pass-through of energy-price shocks to inflation and output in energy-importing economies \cite{GLOCKER2024103201}. Financing instruments provide a complementary channel: green-bond certification and issuance can influence investor participation and the credibility of environmental commitments \cite{ehlers2017green,flammer2021corporate}. The present regressions do not quantify the separate effects of these policies or instruments.
+ 
+-Geopolitical risks further amplify the impacts of price fluctuations: during the 2022 Russia-Ukraine conflict, European natural gas prices surged by 380\%, causing a 58-basis-point spike in the WACCs of offshore wind projects. Model simulations indicate that similar crises could raise WACC peaks by an additional 70 basis points \cite{WEI2024110522,COOPER2017115}.
++\subsubsection{China}
++China's original average fit is $R^2=0.650$. Research finds time-varying spillovers between international and Chinese energy and commodity markets \cite{SUN2022121642,WANG2023128724}. These links provide a rationale for including international fuel-price signals in regional financing analysis.
+ 
+-Moreover, international capital flows supporting Europe's energy transition amplify risk transmission effects. With 62\% of green bonds denominated in US dollars, Fed interest rate hikes may add 25-40 basis points to financing costs \cite{ehlers2017green}. A \$10-per-barrel increase in oil prices triggers a \$120-million outflow from European clean energy ETFs, further elevating financing costs \cite{flammer2021corporate}.
++\subsubsection{Import Dependence}
++Ben-Salha et al. find long-run relationships between fossil fuel prices and renewable-energy consumption in China, but no significant short-run effects in their specification \cite{ben2022assessing}. Their results support a distinction between short-run price exposure and longer-run substitution toward renewables; they do not provide project-level WACC elasticities.
++
++\subsubsection{Government Intervention}
++Price regulation can modify the domestic consequences of international energy-market changes. He and Lin model the economic and emissions effects of natural-gas price control in China \cite{HE2017524}. Policy design, public finance, and risk mitigation are therefore relevant considerations when interpreting regional financing conditions \cite{POLZIN20191249,duma2023risk}.
++
++\subsubsection{Middle East}
++The original Middle Eastern specifications have a lower average fit ($R^2=0.547$). Oil dependence, diversification, and domestic pricing institutions provide possible contextual explanations, but their separate roles are not identified by the regression. Karanfil and Omgba examine structural factors that shape export diversification in oil-dependent economies \cite{karanfil2023energy}.
++
++\subsubsection{Economic Structure}
++Fossil fuel revenues may support public investment and financing capacity, while also exposing public budgets to commodity cycles. A fiscal buffer is therefore a hypothesis to examine using sovereign-finance and project-level data. The corrected sensitivity diagnostics show why this distinction matters: lower model fit in the Middle East can coexist with larger estimated price-response coefficients in some technologies (Appendix Table~\ref{tab:appendix-elasticities}).
++
++\subsubsection{Institutional Design}
++Fattouh and El-Katiri document the importance and economic trade-offs of energy subsidies in the Middle East and North Africa \cite{FATTOUH2013108}. Such arrangements can affect domestic price exposure and investment incentives. Their effects on renewable-project financing should be evaluated together with contract design, counterparty risk, and guarantees \cite{duma2023risk}, rather than inferred solely from regional fit differences.
++
++\subsection{Transmission Diagnostics}
++Historical Granger-style tests use first-differenced macroeconomic targets and log-differenced annual fuel prices. Table~\ref{tab:granger} reports selected lagged associations: coal-price changes with China's real interest rate at one- and two-year lags, gas-price changes with China's real interest rate at one-year lag, and gas-price changes with European inflation at two-year lag. The reported $p$-values are unadjusted exploratory diagnostics; the complete tested set is provided in the repository. The China inflation--coal result ($p=0.09394$) is not significant at the 5\% level. These tests examine the plausibility of macroeconomic transmission channels and do not identify project-level WACC effects.
+ 
+ \begin{table}[t]
+ \centering
+-\caption{Fossil Energy Import Ratios (2018-2024)}
+-\label{tab:energy_import}
+-\scriptsize
+-\begin{tabular}{lrrr}
+-\toprule
+-\textbf{Year} & \textbf{Middle East} & \textbf{China} & \textbf{Europe} \\
+-\midrule
+-2018 & 0\% & 60\% & 70\% \\
+-2019 & 0\% & 62\% & 72\% \\
+-2020 & 0\% & 60\% & 75\% \\
+-2021 & 0\% & 58\% & 73\% \\
+-2022 & 0\% & 55\% & 78\% \\
+-2023 & 0\% & 60\% & 80\% \\
+-2024 & 0\% & 58\% & 82\% \\
+-\bottomrule
+-\end{tabular}
+-\end{table}
+-
+-\subsubsection{China}
+-
+-The WACC of China's energy transition projects also exhibits correlation with international fossil energy prices ($R^2$=0.64). It could be mainly driven by structural dependence, policy intervention, and energy heterogeneity.
+-
+-\subsubsection{Import Dependence}
+-
+-As one of the world's largest fossil energy importers (Table~\ref{tab:energy_import}), China's energy security and price stability rely heavily on international markets \cite{SUN2022121642,WANG2023128724}. In 2022, import dependence for crude oil and natural gas reached 73.5\% and 42\%, respectively \cite{eea2022trends}. This vulnerability causes international price fluctuations to quickly affect domestic markets through the ``imported inflation-financing premium'' mechanism. For example, a \$10 per barrel rise in Brent crude oil prices raises WACC for photovoltaic projects by 12-18 basis points \cite{ben2022assessing}.
+-
+-\subsubsection{Government Intervention}
+-
+-To mitigate the risks of price fluctuations, the Chinese government has developed a distinctive energy price management system \cite{GLOCKER2024103201,HE2017524}. By implementing a ``price corridor,'' the government has constrained thermal coal price fluctuations to within $\pm$15\%. From 2021 to 2023, the standard deviation of China's thermal coal prices was only \$7.2 per ton, markedly lower than the \$18.5 per ton observed in the European API2 index during the same period \cite{GLOCKER2024103201}. Fiscal subsidies have also played a critical role; in 2023, \$44 billion in fossil energy subsidies reduced the volatility of WACC for China's energy transition projects to 3.1\%, equivalent to just 53\% of the volatility in market-oriented countries.
+-
+-\subsubsection{Middle East}
+-
+-The data from the Middle East region exhibit a relatively low model fit, with an average $R^2$ of 0.54 (Fig.~\ref{fig:result9}), lower than that observed in other regions. This phenomenon can be attributed to its unique position as a fossil fuel exporter, the specific institutional framework, and the entrenched technological path dependence.
+-
+-\subsubsection{Economic Structure}
+-
+-In the Middle East, revenues from fossil fuel exports constitute 68\% of total fiscal income \cite{WorldBank2023MENAUpdate,FATTOUH2013108}, and their economies are highly dependent on the stable cash flow generated by oil and gas trade \cite{karanfil2023energy}. For example, Saudi Arabia secures its revenue through long-term export contracts, which account for 82\% of its trade volume \cite{GECF2023AGMR}. Additionally, it leverages sovereign wealth funds, such as the Public Investment Fund (PIF) with assets exceeding \$700 billion, to directly invest in renewable energy projects, thereby mitigating market financing risks. 76\% of green hydrogen and photovoltaic projects in the Middle East are financed through sovereign guarantees \cite{IRENA2023Statistics}, resulting in a WACC with a risk premium of only 1.2\%, significantly lower than that in Europe (3.5\%). This ``fiscal cushion'' ensures the rigidity of capital costs; even if international oil prices fluctuate from \$80 per barrel to \$60 per barrel, the WACC for Saudi photovoltaic projects varies by merely 0.3\% \cite{SPGlobal2024GCCInfrastructureOutlook}.
+-
+-\subsubsection{Institutional Design}
+-
+-Middle Eastern governments use a three-tier framework to reduce the impact of fossil fuel price volatility on energy transition costs \cite{surkov2023middle}, creating a ``policy isolation layer.''
+-\begin{enumerate}
+-    \item Dual-track system: Low domestic energy prices (Saudi gasoline at \$0.6 per liter, one-third of U.S. rates) suppress alternative energy demand \cite{fattouh2013energy}. Subsidies enhance renewable energy competitiveness; for instance, Gulf countries' fossil fuel subsidies account for 8.2\% of GDP \cite{IMF2023FossilFuelSubsidies}. Long-term agreements, like Dubai Solar Park's 20-year fixed electricity price (4.5 cents/kWh), decouple capital costs from short-term price fluctuations.
+-    \item Strategic reserves and production adjustments: Middle East oil reserves cover 214 days of demand \cite{IMF2023FossilFuelSubsidies}. Governments stabilize prices by adjusting production.
+-    \item Sovereign guaranties: Using the Barakah nuclear power plant in the United Arab Emirates as an example, 90\% of its funding originates from state-owned banks, maintaining a stable debt cost of 3.2\%. The correlation coefficient $R^2$ between its financing costs and oil price fluctuations is only 0.02 \cite{OECDNEA2019LTO}.
+-\end{enumerate}
+-
+-\subsection{Transmission Diagnostics}
+-
+-The empirical framework mainly estimates predictive sensitivity, but the hypothesized transmission channels can still be examined through diagnostic time-series tests. The Granger-style tests use first-differenced macro targets and log-differenced annual fuel prices. As shown in Table~\ref{tab:granger}, several channels are consistent with the proposed mechanism: coal price changes are associated with China's real interest rate at one- and two-year lags, gas price changes are associated with China's real interest rate at one-year lag, and gas price changes are associated with European inflation at two-year lag. These results are best interpreted as mechanism diagnostics, not as causal identification.
+-
+-\begin{table}[t]
+-\centering
+-\caption{Selected Transmission Diagnostics}
++\caption{Selected Historical Transmission Diagnostics}
+ \label{tab:granger}
+-\scriptsize
++\footnotesize
+ \begin{tabular}{llrr}
+ \toprule
+ \textbf{Region/target} & \textbf{Fuel} & \textbf{Lag} & \textbf{$p$-value} \\
+@@ -91,23 +52,10 @@
+ \end{table}
+ 
+ \subsection{Environmental Implications of Financial Sensitivity}
+-
+-The regional disparities in WACC sensitivity identified in our results (Fig.~\ref{fig:result9}) are not merely financial metrics; they are proxies for the stability and velocity of decarbonization, linking financial market to tangible climate outcomes.
+-
+-For energy-importing regions like Europe and China (average $R^2$=0.67 and 0.65), the strong correlation means that financial risk translates directly into environmental risk. The resulting uncertainty in financing costs can deter or delay the large-scale, capital-intensive investments. Consequently, the pace of their energy transition becomes hostage to the instability of the very markets they aim to exit, jeopardizing the deployment required to align with a 1.5$^\circ$C trajectory.
+-
+-Conversely, the weaker correlation in the Middle East (average $R^2$=0.54) presents a different environmental paradox. The financial stability afforded to renewable projects by a ``fiscal cushion'' from fossil fuel revenues mutes the urgent market-based incentive to transition. While this de-risks individual projects, it can foster a decarbonization pace driven by deliberate policy choices rather than pressing economic necessities. This decoupling may lead to a slower transition, as the region remains insulated from market signals.
+-
+-Ultimately, our findings reveal that the financial mechanisms shaping climate outcomes are divergent across the globe. It frames the topic for the next subsection: designing policy that can either mitigate market volatility to ensure a stable transition (as needed in Europe and China) or create sufficient incentives to overcome economic inertia (as in the Middle East).
++Financing conditions can influence the affordability and timing of renewable investment. Prior modeling shows that regional differences in capital costs can materially change decarbonization pathways \cite{ameli2021higher,calcaterra2024reducing}. The present study adds a framework for comparing fuel-price and inflation signals across regional WACC scenarios. Translating its outputs into deployment, emissions, or household-price effects requires a linked investment or energy-system model.
+ 
+ \subsection{Regional Community Impact}
+-
+-In Europe, high WACC sensitivity ($R^2 = 0.67$) threatens household energy affordability. The findings support community benefits by justifying green bonds and climate risk insurance that stabilize electricity tariffs and protect vulnerable consumers from fossil price-shock pass-through. In China, as a major fossil fuel importer, volatility affects manufacturing hubs and residential heating; the analysis of government price corridors demonstrates how policy shields 1.4 billion people from imported inflation, ensuring stable energy access. In the Middle East, the fiscal cushion paradox shows that while sovereign wealth stabilizes project finance, it may slow the transition away from fossil fuels; diversifying these funds into local solar and hydrogen projects, such as Dubai Solar Park's 20-year fixed tariffs, creates domestic green jobs and reduces long-term economic dependence on volatile export revenues, directly benefiting local populations.
++Reliable energy finance is relevant to affordability and a just transition. European research documents substantial geographical differences in energy poverty \cite{bouzarovski2017energy}, and the OECD emphasizes aligning local climate finance with inclusive development \cite{oecd2021financing}. These concerns motivate analysis of financing conditions in Europe, China, and the Middle East. Household welfare, employment, and energy access are potential applications of the framework rather than outcomes measured here.
+ 
+ \subsection{Climate Finance \& Policy}
+-
+-In Europe, the WACC for renewable energy projects is highly sensitive to fluctuations in fossil fuel prices. The high $R^2$ and low MAPE values (0.67 and 0.004) indicate that renewable investments remain exposed to energy price volatility. To meet the 1.5$^\circ$C climate target, European policymakers could prioritize developing financial instruments such as green bonds, subsidies, and climate risk insurance. These mechanisms can stabilize financing costs, reduce investor risk, and stimulate greater private investment in renewable energy.
+-
+-China's energy transition exhibits moderate sensitivity ($R^2$=0.64), partly due to government policies. While this intervention brings short-term stability, it may obscure the actual cost competitiveness of renewable energy and potentially deter private sector investment. To align with the 1.5$^\circ$C climate target, policymakers could consider gradually introducing more market-driven price mechanisms, complemented by targeted green finance initiatives to reduce capital costs. Utilizing state-supported low-interest loans to lower WACC can serve as an effective strategy to incentivize private investment in clean energy while preserving broader economic stability.
+-
+-The Middle East's low sensitivity to fossil fuel price fluctuations is indicated by the $R^2$ of 0.54. It presents a potential risk due to the region's heavy dependence on fossil fuel revenues. To ensure long-term economic resilience and align with global decarbonization objectives, policymakers could prioritize the diversification of the energy mix through increased investment in renewable energy. In this context, sovereign wealth funds can serve as a strategic vehicle by providing long-term, low-cost capital for renewable energy projects, thereby reducing overall financing costs. These funds can strategically allocate capital toward renewable energy infrastructure, enhancing financial stability and mitigating project-related risks.
++For Europe, policy credibility, predictable revenue arrangements, and risk-transfer instruments are relevant options for stabilizing renewable investment conditions \cite{POLZIN20191249,duma2023risk}. For China, the interaction between international price signals, domestic price regulation, and public financing merits explicit comparison across policy scenarios \cite{HE2017524}. For oil-dependent economies, diversification and the design of domestic energy-pricing arrangements remain central considerations \cite{karanfil2023energy,FATTOUH2013108}. Across regions, the framework is most useful as a structured comparison of assumptions and financing exposures, alongside institutional and project-level evidence.
+--- original/sections/framework.tex
++++ checked/sections/framework.tex
+@@ -0,0 +1,15 @@
++\begin{figure*}[t]
++\centering
++\begin{tikzpicture}[font=\footnotesize,>=Latex,
++ box/.style={draw=black!45,rounded corners=2pt,minimum height=1.18cm,text width=4.65cm,align=center,inner sep=6pt},
++ arr/.style={->,thick,black!65}]
++\node[box,fill=blue!4] (prices) {\textbf{1. Fuel-price forecasts}\\Historical coal, oil, and gas prices\\CNN--LSTM/GRU + attention; GPR smoothing};
++\node[box,fill=blue!4,right=0.45cm of prices] (macro) {\textbf{2. Regional inflation}\\Macroeconomic predictors\\LSTM + feed-forward ensemble};
++\node[box,fill=blue!4,right=0.45cm of macro] (wacc) {\textbf{3. WACC comparisons}\\Fuel price + regional inflation\\AutoGluon; 3 regions $\times$ 3 fuels $\times$ 9 technologies};
++\draw[arr] (prices.north)--++(0,0.35)-|(wacc.north);
++\draw[arr] (macro)--(wacc);
++\node[below=0.3cm of macro,align=center,text width=15cm] (checks) {\textbf{Data and diagnostics:} 2026--2035 projected WACC panels; archived fit summaries;\\chronological OLS/Ridge checks; corrected log-linear sensitivity; historical transmission diagnostics.};
++\end{tikzpicture}
++\caption{Three-stage framework for fuel-price, inflation, and regional WACC analysis. The region--fuel--technology axes organize comparisons; the chronological diagnostics are separate from the original AutoGluon fits.}
++\label{fig:tensor-framework}
++\end{figure*}
+--- original/sections/introduction.tex
++++ checked/sections/introduction.tex
+@@ -1,20 +1,19 @@
+ \section{Introduction}
+ 
+-The urgency of mitigating global warming necessitates a rapid energy transition to achieve the Sustainable Development Goals (SDGs) \cite{messerli2019global}. Since energy consumption is the primary source of global greenhouse gas emissions \cite{BOGDANOV2021120467}, a transformation of energy systems is essential. This transition is not solely a technological endeavor \cite{CHEN20191564}; it also encompasses critical economic dimensions, among which the weighted average cost of capital (WACC) is a critical metric \cite{STEWART2022111880}. It represents the average return required by capital providers, balancing the costs of debt and equity financing \cite{BACHNER2019100373}. The environmental consequences of this financial indicator are profound; modeling shows that high capital costs in developing economies can reduce green energy production by 35\% and delay the achievement of net-zero emissions by a full decade \cite{ameli2021higher}.
++The urgency of mitigating global warming necessitates a rapid energy transition to achieve the Sustainable Development Goals (SDGs) \cite{messerli2019global}. Energy-system transformation is central to climate-change mitigation \cite{BOGDANOV2021120467}. This transition is not solely a technological endeavor \cite{CHEN20191564}; it also encompasses critical economic dimensions, among which the weighted average cost of capital (WACC) is a critical metric \cite{BACHNER2019100373}. It represents the average return required by capital providers, balancing the costs of debt and equity financing \cite{BACHNER2019100373}. The environmental consequences of this financial indicator are profound; Ameli et al. report 35\% lower green electricity production in Africa under region-specific WACC assumptions in a cost-optimal 2$^\circ$C pathway; their financing-policy scenario allows Africa to reach net-zero emissions approximately ten years earlier \cite{ameli2021higher}.
+ 
+-This study aligns with the UN Sustainable Development Goals (SDGs), specifically SDG 7 (Affordable and Clean Energy) by de-risking renewable project finance, SDG 13 (Climate Action) by quantifying how fossil fuel volatility delays decarbonization and jeopardizes 1.5$^\circ$C trajectories, SDG 9 (Industry, Innovation and Infrastructure) through an open, reproducible three-stage machine learning pipeline, and SDG 17 (Partnerships for the Goals) by releasing harmonized multi-regional panels to support global research collaboration.
++This study aligns with the UN Sustainable Development Goals (SDGs), specifically SDG 7 (Affordable and Clean Energy) through research on renewable project finance, SDG 13 (Climate Action) by examining financing conditions relevant to decarbonization, SDG 9 (Industry, Innovation and Infrastructure) through an open, reproducible three-stage machine learning pipeline, and SDG 17 (Partnerships for the Goals) by releasing harmonized multi-regional panels to support global research collaboration.
+ 
+-A pernicious challenge for the energy transition is its inherent vulnerability to shocks from the legacy fossil fuel system it seeks to replace. Volatility in global oil, gas, and coal prices propagates through the financial system, influencing inflation, interest rates, and investor risk perception, thereby destabilizing the WACC for capital-intensive renewable projects \cite{melodia2022energy}. This financial vulnerability translates directly into environmental risk, as it can slow the pace of decarbonization \cite{egli2019bias}. Existing research has successfully elucidated the impact of fossil fuel price volatility on market risk for energy companies \cite{dobrowolski2022weighted}. However, less attention has been devoted to evaluating its influence on WACC within the context of energy transition projects. Additionally, the varied impacts of fossil fuel price volatility across different energy sectors and regions have not been fully explored.
++A pernicious challenge for the energy transition is its inherent vulnerability to shocks from the legacy fossil fuel system it seeks to replace. Global oil, gas, and coal price fluctuations can affect inflation and financing conditions, creating potential exposure for capital-intensive renewable projects \cite{melodia2022energy}. Financing assumptions can change modeled investment choices and transition pathways \cite{egli2019bias}. Existing research has examined the relationship between WACC, interest rates, and unstable market conditions in the energy sector \cite{dobrowolski2022weighted}. However, less attention has been devoted to evaluating its influence on WACC within the context of energy transition projects. Additionally, the varied impacts of fossil fuel price volatility across different energy sectors and regions have not been fully explored.
+ 
+ Therefore, this study focuses on the upcoming decade and seeks to answer the following questions:
+ \begin{itemize}
+-    \item How do fossil fuel price fluctuations affect the WACC of energy transition projects, influencing the pace of renewable energy deployment?
++    \item How do fossil fuel price fluctuations relate to the WACC of energy transition projects in modeled future scenarios?
+     \item How do these price dynamics relate to capital costs across regions, particularly between fuel-importing and fuel-exporting countries, and how should financing strategies for low-carbon projects be shaped?
+ \end{itemize}
+ 
+-This work contributes an open and reproducible AI framework that translates fossil fuel price signals into actionable climate finance intelligence. By integrating tensor regression with an AutoGluon-based forecasting pipeline, the framework provides decision support for analyzing regional differences in financing conditions, energy costs, and decarbonization pathways. Its outputs can inform efforts to reduce household energy burdens, improve environmental quality, and support more effective climate and energy policy across diverse global regions.
++This work contributes an open and reproducible AI framework that translates fossil fuel price signals into actionable climate finance intelligence. By organizing regional, fuel, and project comparisons within an AutoGluon-based forecasting pipeline, the framework provides decision support for analyzing regional differences in financing conditions, energy costs, and decarbonization pathways. Its outputs can inform efforts to reduce household energy burdens, improve environmental quality, and support more effective climate and energy policy across diverse global regions.
+ 
+ 
+ 
+-\textbf{Open Science Statement:} The code, execution instructions, cleaned WACC panels, and forecast artifacts are prepared for public release under the Global Nomad Nexus namespace on GitHub\footnote{\url{https://github.com/Global-Nomad-Nexus/ImpactOfFossilFuelPrice-WACC}} and Hugging Face\footnote{\url{https://huggingface.co/datasets/Global-Nomad-Nexus/ImpactOfFossilFuelPrice-WACC}}.
+-
++\textbf{Open Science Statement:} Code, data-processing instructions, cleaned WACC scenario panels, archived forecast comparisons, and corrected sensitivity diagnostics for this version are available in the organization repository\footnote{\url{https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice}}. An archived dataset snapshot is hosted on Hugging Face\footnote{\url{https://huggingface.co/datasets/global-nomad-nexus/ImpactOfFossilFuelPrice-WACC}}; the repository records the version and provenance of the diagnostics used in this paper. Editable paper, slides, and poster sources are provided in the repository's \texttt{conference/ACAIT2026/} directory.
+--- original/sections/literature_review.tex
++++ checked/sections/literature_review.tex
+@@ -2,23 +2,23 @@
+ 
+ \subsection{Calculation of WACC}
+ 
+-For the WACC data, this study mainly uses the dataset from Calcaterra et al. \cite{calcaterra2024reducing}, which contains predictions for WACC across different regions. The calculation begins with analyzing past financial data at the enterprise level, calculating the cost of debt and equity, and incorporating the leverage ratio and tax rate to determine each company's WACC as follows \cite{POLZIN20191249}:
++For the WACC data, this study mainly uses the dataset from Calcaterra et al. \cite{calcaterra2024reducing}, which contains predictions for WACC across different regions. The calculation begins with analyzing past financial data at the enterprise level, calculating the cost of debt and equity, and incorporating the leverage ratio and tax rate to determine each company's WACC as follows \cite{calcaterra2024reducing}:
+ \begin{equation}
+ WACC_{it}=L_{it}\times r_{Dit}\times (1-\mathrm{TaxRate}_{it})+(1-L_{it})\times r_{Eit}.
+ \end{equation}
+ where $WACC_{it}$ represents the weighted average cost of capital for firm $i$ at time $t$, $L_{it}$ is the leverage ratio, $r_{Dit}$ is the cost of debt, $r_{Eit}$ is the cost of equity, and $\mathrm{TaxRate}_{it}$ is the tax rate for firm $i$ at time $t$.
+ 
+-The national WACC is then derived by weighting and averaging each company's WACC based on its share of the national market revenue \cite{egli2019bias}:
++The national WACC is then derived by weighting and averaging each company's WACC based on its share of the national utilities-market revenue \cite{calcaterra2024reducing}:
+ \begin{equation}
+ WACC_{ct}=\sum_i\left(\frac{\mathrm{Revenue}_{it}}{\mathrm{TotalRevenue}_{ct}}\right)\times WACC_{it}.
+ \end{equation}
+ where $WACC_{ct}$ represents the weighted average cost of capital for country $c$ at time $t$, $\mathrm{Revenue}_{it}$ is the revenue of firm $i$ at time $t$, and $\mathrm{TotalRevenue}_{ct}$ is the total revenue of country $c$ at time $t$.
+ 
+-After that, Calcaterra et al. \cite{calcaterra2024reducing} introduce a time dimension and financial learning, simulating how technological progress and experience accumulation can lower WACC by reducing technological risks and the required safety margin. The CoC-convergence scenario examines the trend of WACC in developing countries converging towards levels seen in developed countries:
++After that, Calcaterra et al. \cite{calcaterra2024reducing} introduce a time dimension and financial learning, simulating how technological progress and experience accumulation can lower WACC by reducing technological risks and the required safety margin. In their financial-learning reference scenario, capital costs decrease with cumulative deployment:
+ \begin{equation}
+-\mathrm{CoC}_{tnT}=\mathrm{CoC}_{0n,T}\times\left(\frac{Y_{tn,T}}{Y_{0n,T}}\right)^{-b_T}.
++\mathrm{CoC}_{tnT}=\mathrm{CoC}_{0n,T}\times\left(\frac{Y_{tn,T}}{Y_{0n,T}}\right)^{b_T}.
+ \end{equation}
+-where $\mathrm{CoC}_{tnT}$ is the cost of capital for country $n$ at time $t$ and technology $T$, $\mathrm{CoC}_{0n,T}$ is the initial cost of capital, $Y_{tn,T}$ is cumulative technology deployment, $Y_{0n,T}$ is initial technology deployment, and $b_T$ is a parameter.
++where $\mathrm{CoC}_{tnT}$ is the cost of capital for country $n$ at time $t$ and technology $T$, $\mathrm{CoC}_{0n,T}$ is the initial cost of capital, $Y_{tn,T}$ is cumulative technology deployment, $Y_{0n,T}$ is initial technology deployment, and $b_T=\log_2(1-0.05)<0$ is the financial-learning exponent. The separate CoC-convergence scenario reduces country-risk differences toward developed-country levels by 2050.
+ 
+ Utilizing the aforementioned data and assumptions, it can employ a suite of climate-energy-economy models to simulate the WACC across various regions and energy sectors.
+ 
+@@ -32,9 +32,9 @@
+ \end{equation}
+ where $r_{f,t}$ is the risk-free rate at time $t$, $\beta_i$ is the firm's systematic risk, and $(r_{m,t}-r_{f,t})$ is the equity risk premium (ERP).
+ 
+-Fossil fuel price could influence each component of the CAPM equation. The substitution effect shows that higher fossil fuel prices enhance the economic competitiveness of renewable energy projects, lowering their perceived risk and thus the overall required return, $r_{Eit}$ \cite{melodia2022energy}. Additionally, the impact on systematic risk ($\beta_i$) is ambiguous. Renewable assets can act as a hedge against fossil fuel price volatility due to their zero fuel cost, implying a lower $\beta$ \cite{millischer2024renewables}. Conversely, if investors focus on substitution logic, renewable energy stock prices may correlate with oil prices, leading to a higher $\beta$ \cite{Lieberman2007RenewableHedge}. On the other hand, persistent fossil fuel price volatility highlights climate transition risks, leading investors to demand a ``brown penalty'' for fossil fuel assets and offer a ``green premium'' for renewables, effectively lowering the required ERP for green projects \cite{su13052573}.
++Fossil fuel prices can influence renewable-energy financing through several channels. Higher fossil fuel prices can improve the relative competitiveness of renewable generation, while renewables can provide a hedge against fuel-price exposure \cite{Lieberman2007RenewableHedge}. Stock-market evidence is mixed: Vr\^inceanu et al. find no significant effect of oil-price volatility on renewable-stock return volatility in their sample \cite{vrinceanu2020influence}. These observations do not imply a uniform change in CAPM $\beta$ across projects or regions. In India, Shrimali reports different risk and return profiles for renewable and fossil power portfolios \cite{su13052573}.
+ 
+-Similarly, the cost of debt ($r_{Dit}$) is also susceptible to fossil fuel price shocks, which are a major driver of inflation, often compelling central banks to raise policy rates \cite{vrinceanu2020influence}. This directly increases the economy-wide risk-free rate ($r_{f,t}$), which serves as a benchmark for all borrowing and raises $r_{Dit}$ for capital-intensive renewable projects \cite{kjellevoll2023impact}. At the project level, high fossil fuel prices can improve the value of a renewable project's fixed-price Power Purchase Agreement (PPA), reducing its credit risk and potentially lowering the credit spread component of $r_{Dit}$ \cite{duma2023risk}. This is supported by growing evidence of a ``green premium'' in debt markets, where lenders offer more favorable terms to renewable projects.
++The cost of debt ($r_{Dit}$) may also respond to the macroeconomic consequences of energy-price changes. Fossil fuel prices are relevant to inflation \cite{melodia2022energy,millischer2024renewables}, and the interest-rate environment matters for WACC \cite{dobrowolski2022weighted}. Project contracts, counterparty risk, and risk-transfer instruments can affect financing conditions \cite{duma2023risk}. Evidence on environmental financial premia is conditional: Wilberg et al. find no association for aggregate ESG scores but a lower cost of capital for a stronger environmental component in their sample \cite{kjellevoll2023impact}. Green-bond issuance and certification provide an additional financing channel \cite{ehlers2017green,flammer2021corporate}.
+ 
+ Therefore, the final calculated $WACC_{it}$ for a renewable energy firm is a function not only of its internal financial structure ($L_{it}$) but also of these external pressures that alter the fundamental costs of its capital ($r_{Eit}$ and $r_{Dit}$). The interplay of these mechanisms is summarized in Table~\ref{tab:channels}. Ultimately, the net impact on the WACC of renewable energy projects hinges on the relative magnitude of these opposing forces: the project-level advantages stemming from higher fossil fuel prices versus the detrimental consequences of macroeconomic contagion.
+ 
+@@ -43,7 +43,7 @@
+ \caption{Theoretical Channels of Fossil Fuel Price Transmission to Renewable Energy WACC}
+ \label{tab:channels}
+ \scriptsize
+-\begin{tabular}{p{0.27\linewidth}p{0.27\linewidth}p{0.34\linewidth}}
++\begin{tabular}{P{0.27\linewidth}P{0.27\linewidth}P{0.34\linewidth}}
+ \toprule
+ \textbf{Price Signal} & \textbf{Affected Component} & \textbf{Transmission Channel} \\
+ \midrule
+@@ -61,6 +61,6 @@
+ 
+ \subsection{AI-Based Forecasting for Energy and Climate Applications}
+ 
+-Recent ACAIT proceedings show a growing interest in using deep learning for environmental, energy, and carbon-related forecasting tasks. Xie et al. \cite{acaitXie2024carbon} evaluate PatchTST for carbon-emission time-series prediction across Chinese provinces and sectors, comparing it with statistical and machine-learning baselines such as ARIMA and Prophet. Their study supports the broader methodological shift from purely statistical forecasting toward deep sequence models for high-frequency environmental data. Chen et al. \cite{acaitChen2023transfer} propose a transfer-based adaptive recurrent neural network for enterprise carbon-emission prediction, highlighting the value of recurrent representations and transfer learning when target-domain carbon data are limited.
++Recent ACAIT proceedings include deep-learning studies of environmental and carbon-related forecasting. Xie et al. \cite{acaitXie2024carbon} study carbon-emission prediction using deep time-series models. Chen et al. \cite{acaitChen2023transfer} present a transfer-based adaptive recurrent neural-network model for enterprise carbon-emission prediction. These examples illustrate the use of AI forecasting for climate-related indicators.
+ 
+-These studies are relevant because they position AI forecasting as a decision-support tool for climate and energy management rather than as a purely technical prediction exercise. However, most existing ACAIT-aligned forecasting studies focus on emissions, load, or enterprise indicators as the final prediction target. They do not explicitly connect fossil fuel price forecasts to macroeconomic transmission channels, regional financing conditions, or project-level WACC. This gap motivates the present study's three-stage design: fossil fuel prices are first predicted with a hybrid sequential model, inflation is then modeled as a macroeconomic covariate, and the resulting signals are finally linked to capital-cost sensitivity for energy transition projects.
++These studies are relevant because they position AI forecasting as a decision-support tool for climate and energy management rather than as a purely technical prediction exercise. The two cited ACAIT studies focus on carbon emissions as the prediction target. They do not explicitly connect fossil fuel price forecasts to macroeconomic transmission channels, regional financing conditions, or project-level WACC. This gap motivates the present study's three-stage design: fossil fuel prices are first predicted with a hybrid sequential model, inflation is then modeled as a macroeconomic covariate, and the resulting signals are finally linked to capital-cost sensitivity for energy transition projects.
+--- original/sections/methodology.tex
++++ checked/sections/methodology.tex
+@@ -13,7 +13,7 @@
+ 
+ \subsection{Stage 1: Prediction of Fossil Fuel Prices}
+ 
+-Since previous studies have proved the proficiency of Long Short-Term Memory (LSTM) in handling sequence data with long-term dependencies \cite{ALSELWI2024102068,LINDEMANN2021650}, and the advantages of Gaussian Process Regression (GPR) \cite{LAHMIRI2024105008,rasmussen2003gaussian} in predicting fossil energy prices, this study uses a hybrid model combining LSTM and GPR to predict fossil fuel prices (coal, oil, and natural gas) from 2026 to 2035 (Fig.~\ref{fig:lstm}).
++Since previous studies have proved the proficiency of Long Short-Term Memory (LSTM) in handling sequence data with long-term dependencies \cite{ALSELWI2024102068,LINDEMANN2021650}, and evidence on Gaussian Process Regression (GPR) for fossil-energy forecasting \cite{LAHMIRI2024105008}, together with its probabilistic formulation \cite{rasmussen2003gaussian}, this study uses a hybrid model combining LSTM and GPR to predict fossil fuel prices (coal, oil, and natural gas) from 2026 to 2035 (Fig.~\ref{fig:lstm}).
+ 
+ \subsubsection{Step 1.1: LSTM Model}
+ The primary forecasting model is an LSTM network designed to learn intricate non-linear patterns from historical time-series data. To represent the cyclical nature of monthly patterns, we transform the month of the year, $m$, into two continuous sinusoidal features:
+@@ -34,7 +34,7 @@
+ \begin{equation}
+     P_e=K(t,X)[K(X,X)+\sigma_n^2 I]^{-1}\mathbf{y}_{DL}.
+ \end{equation}
+-where $K(t,X)$ is the vector of covariances between the test point $t$ and the training inputs $X$, and $K(X,X)$ is the covariance matrix of the training inputs. The GPR component uses 10 optimizer restarts, a regularization value $\alpha=0.01$, and a fixed random seed of 42. The main LSTM and GPR settings are summarized in Appendix Table~\ref{tab:hyperparameter-summary}.
++where $K(t,X)$ is the vector of covariances between the test point $t$ and the training inputs $X$, and $K(X,X)$ is the covariance matrix of the training inputs. This GPR stage smooths the neural forecast path; its conditional variance does not capture the full uncertainty of the preceding neural forecast. The GPR component uses 10 optimizer restarts, a regularization value $\alpha=0.01$, and a fixed random seed of 42. The main LSTM and GPR settings are summarized in Appendix Table~\ref{tab:hyperparameter-summary}.
+ 
+ \begin{figure}[t]
+     \centering
+@@ -46,30 +46,30 @@
+ \subsection{Stage 2: Calculation of Inflation Rate}
+ 
+ \subsubsection{Inclusion of Inflation Rate as a Covariate}
+-In the model, the inflation rate is included as a crucial covariate. As a macroeconomically sensitive indicator, WACC is directly influenced by the prevailing interest rate environment, and the inflation rate is a primary basis for central banks to adjust monetary policies \cite{en15186655}. Additionally, fossil fuel prices themselves are closely correlated with the macroeconomic inflation levels \cite{KANG2020103257}.
++In the model, the inflation rate is included as a crucial covariate. As a macroeconomically sensitive indicator, WACC is directly influenced by the prevailing interest rate environment, and inflation is relevant to monetary-policy and financing conditions \cite{dobrowolski2022weighted}. Additionally, fossil fuel prices themselves are closely correlated with macroeconomic inflation \cite{millischer2024renewables}.
+ 
+ \subsubsection{Forecasting Framework}
+-This study adopts a methodology proven to be accurate in predicting inflation rate \cite{PARANHOS2025}, which models the inflation rate as a non-linear function fitting problem:
++This study adopts an inflation-forecasting architecture informed by the recurrent-network approach of Paranhos \cite{PARANHOS2025}, which models the inflation rate as a non-linear function fitting problem:
+ \begin{equation}
+-y_{z+h}=G(x_z;\Theta_h)+\epsilon_{z+h}.
++y_{t+h}=G(x_t;\Theta_h)+\epsilon_{t+h}.
+ \end{equation}
+ where $y_{t+h}$ is the inflation rate at a future horizon $h$, and $x_t$ is the vector of predictor variables containing relevant macroeconomic indicators and their lags.
+ 
+ The function $G(\cdot)$ combines an LSTM structure with a fully connected feed-forward (FF) network:
+ \begin{equation}
+-G(x_z;\Theta_h)=g_{FF}(\mathrm{LSTM}(x_z;\Theta_{LSTM});\Theta_{FF}).
++G(x_t;\Theta_h)=g_{FF}(\mathrm{LSTM}(x_t;\Theta_{LSTM});\Theta_{FF}).
+ \end{equation}
+ In this architecture, the LSTM first processes the sequential input data to extract a set of dynamic factors. Subsequently, the feed-forward network takes these dynamic factors as input to generate the final inflation forecast.
+ 
+ To address the high sensitivity of neural network training to random parameter initializations, we employ an ensemble learning strategy for model optimization. Specifically, the final forecast is calculated by averaging the outputs of $N=5$ independently trained models, each with a different initialization:
+ \begin{equation}
+-\hat{y}_{ens,z+h}=\frac{1}{N}\sum_{n=1}^{N}\hat{y}_{n,z+h}.
++\hat{y}_{ens,t+h}=\frac{1}{N}\sum_{n=1}^{N}\hat{y}_{n,t+h}.
+ \end{equation}
+-where $\hat{y}_{n,z+h}$ is the prediction from the $n$-th model.
++where $\hat{y}_{n,t+h}$ is the prediction from the $n$-th model.
+ 
+ The parameters $\Theta_h$ for all models are estimated by minimizing MSE:
+ \begin{equation}
+-\hat{\Theta}_{h}=\arg\min_{\Theta_h}\left\{\frac{1}{z-h}\sum_{z=1}^{z-h}(y_{z+h}-G(x_z;\Theta_h))^2\right\}.
++\hat{\Theta}_{h}=\arg\min_{\Theta_h}\left\{\frac{1}{T-h}\sum_{t=1}^{T-h}(y_{t+h}-G(x_t;\Theta_h))^2\right\}.
+ \end{equation}
+ 
+ \subsection{Stage 3: Evaluation of WACC Based on Fossil Fuel Price}
+@@ -77,14 +77,14 @@
+ To quantify the impact of fossil fuel price fluctuations on the WACC, we employed an Automated Machine Learning (AutoML) model, which can automate model selection, hyperparameter tuning, and ensembling.
+ 
+ \subsubsection{Modeling Design}
+-This assessment model involves three fossil fuel prices (coal, natural gas, and oil) and nine types of energy transition projects. To isolate variables, we constructed and trained a total of $3\times9=27$ independent regression models. In each model, the independent variables consist of an energy price and the contemporaneous inflation rate, while the dependent variable is the WACC for the project. This approach aims to find a function $f$ for each project type $p$ and energy source $e$, such that:
++This assessment model involves three fossil fuel prices (coal, natural gas, and oil) and nine types of energy transition projects. For each region, we constructed $3\times9=27$ separate regression specifications, giving 81 region--fuel--project combinations across the three regions. Coal and gas generation are retained as conventional-technology comparisons. The target WACC series are scenario projections derived from Calcaterra et al. \cite{calcaterra2024reducing}, aligned to 120 monthly rows per region for 2026--2035. In each model, the independent variables consist of an energy price and the contemporaneous inflation rate, while the dependent variable is the WACC for the project. This approach aims to find a function $f$ for each project type $p$ and energy source $e$, such that:
+ \begin{equation}
+     \mathrm{WACC}_{p}=f(P_e,\hat{y}_{ens,t})+\epsilon.
+ \end{equation}
+ where $\mathrm{WACC}_{p}$ is the capital cost for a specific project, $P_e$ is the price, $\hat{y}_{ens,t}$ represents the inflation rate, and $\epsilon$ is the irreducible error term.
+ 
+ \subsubsection{Automated Modeling with AutoGluon}
+-We selected the AutoGluon-Tabular framework to perform training and optimization. Since it could enhance model robustness and accuracy through the following two techniques:
++We selected AutoGluon-Tabular for training and optimization \cite{autogluon2025docs}. The implementation uses two ensembling techniques:
+ \begin{itemize}
+     \item \textbf{$j$-fold Cross-Validation Bagging}: It trains multiple base models $h_j$ on different subsets of the training data created via cross-validation. The final result, $\hat{y}_{bag}$, is the average of the output of all base models:
+     \begin{equation}
+@@ -95,12 +95,12 @@
+     \hat{y}_{stack}(x)=H(h_1(x),h_2(x),\ldots,h_M(x)).
+     \end{equation}
+ \end{itemize}
+-Through this automated process, we generated an optimized model for each of the 27 regressions, best adapted to its data characteristics.
++Through this automated process, we generated an optimized model for each region-specific set of 27 regressions, best adapted to its data characteristics.
+ 
+ \subsubsection{Model Performance Evaluation}
+-Although AutoGluon has built-in optimization targets during its training process, we conducted an independent performance evaluation for each final model after training was complete. The evaluation metrics included $R^2$, MAPE, and RMSE. These three metrics were chosen to provide a comprehensive assessment of the model's performance from different perspectives: $R^2$ measures the extent to which the model explains the variance in WACC, MAPE intuitively reflects the average percentage of prediction deviation, and RMSE quantifies the dispersion of errors between predicted and actual values. Together, these metrics provide a comprehensive basis for evaluating the predictive power of fossil fuel prices on WACC.
++The archived AutoGluon implementation evaluates fitted models on the same input rows used for training. Its $R^2$, MAPE, and RMSE therefore summarize in-sample fit. Here $R^2$ measures variance explained by the joint fuel-price and inflation specification; MAPE is reported as a fraction, and RMSE is in decimal WACC units. Fit statistics do not measure the size of a price response.
+ 
+-In addition to the original fit statistics, this study also uses a fixed holdout split, rolling-origin validation, log-linear price-shock elasticities, and Granger-style transmission diagnostics. These additional checks are designed to distinguish scenario sensitivity from formal causal identification and to examine whether the hypothesized channels through inflation and interest rates are visible in the data.
++Additional diagnostics use cleaned panels with region-specific inflation. OLS and Ridge specifications are evaluated using a fixed chronological holdout (2026--2032 training; 2033--2035 testing) and rolling-origin folds. These checks examine the stability of the modeled relationships rather than serving as an out-of-sample evaluation of AutoGluon itself. Log-linear specifications control for inflation and a time trend. Slopes are transformed back from standardized inputs, giving the elasticity $\beta_e=\partial\log(\mathrm{WACC})/\partial\log(P_e)$. A 10\% price increase is converted into a WACC change as $10^4\overline{\mathrm{WACC}}[\exp(\beta_e\log(1.1))-1]$ basis points. Granger-style tests examine historical lagged macroeconomic associations.
+ 
+ \begin{figure*}[t]
+     \centering
+@@ -110,11 +110,11 @@
+ \end{figure*}
+ 
+ \subsection{Accuracy of the Prediction Models}
+-To validate the accuracy of the LSTM-GPR model, this study employed four models (LSTM-GPR, SARIMA, XGBoost, and LightGBM) to forecast WTI crude oil prices from 2021 to 2024 using data from 1982 to 2020. The predictions generated by these models were subsequently compared with actual oil prices, as shown in Fig.~\ref{fig:accuracy}. Evaluation metrics revealed that the LSTM-GPR model outperformed the other models, achieving a coefficient of determination of 0.963 and MAPE of 0.0186. Additionally, the LSTM-GPR model exhibited lower RMSE and MAE values of 2.416 and 1.425, respectively (Table~\ref{tab:stage1-accuracy}). The accuracy of forecasting the inflation rate has been examined in previous studies \cite{PARANHOS2025}.
++The archived oil-price comparison contains 47 monthly observations from 2021--2024 for LSTM-GPR, SARIMA, XGBoost, and LightGBM (Fig.~\ref{fig:accuracy}). Recomputing metrics from \texttt{Accuracy\_Prediction-Model.xlsx} gives $R^2=0.963$, MAPE=0.0186, RMSE=2.416, and MAE=1.425 for LSTM-GPR (Table~\ref{tab:stage1-accuracy}). The LSTM-GPR series has the smallest errors among these archived outputs. The current release preserves the comparison separately from fixed-origin baseline forecasts trained through 2020; a common backtest of all four fitted models is needed to establish comparable forecast provenance. Paranhos \cite{PARANHOS2025} supplies methodological support for recurrent inflation forecasting, rather than validation of the regional inflation forecasts used here.
+ 
+ \begin{table}[t]
+ \centering
+-\caption{Stage 1 Forecast Accuracy for Oil Price Prediction, 2021-2024}
++\caption{Archived Stage 1 Oil-Price Comparison, 2021--2024}
+ \label{tab:stage1-accuracy}
+ \scriptsize
+ \begin{tabular}{lrrrr}
+--- original/sections/results.tex
++++ checked/sections/results.tex
+@@ -1,34 +1,34 @@
+ \begin{figure*}[t]
+     \centering
+     \includegraphics[width=0.98\textwidth]{figure.png}
+-    \caption{Model performance for each project: comparison of $R^2$, MAPE, and RMSE for estimating WACC across various regions and energy transition projects.}
++    \caption{Archived in-sample AutoGluon fit by region, fuel, and technology. The joint inputs are fuel price and inflation; $R^2$ describes fit, MAPE is a fraction, and RMSE is in decimal WACC units.}
+     \label{fig:result9}
+ \end{figure*}
+ 
+ \section{Results}
+ 
+-As shown in Fig.~\ref{fig:result9}, the experiment results demonstrate that fossil fuel price fluctuations differentially impact various energy transition projects. Solar and wind (both onshore and offshore) projects demonstrate the highest sensitivity, with average $R^2$ values all exceeding 0.7. In contrast, other projects, including hydropower, biomass, and coal, exhibit a lower level of sensitivity. Their average $R^2$ values are generally 0.5, suggesting that their capital costs are likely driven more by other, non-fossil-fuel-price factors.
++As shown in Fig.~\ref{fig:result9}, the archived AutoGluon fits vary by technology. Solar, onshore wind, and offshore wind have average $R^2$ values of 0.718, 0.700, and 0.706, respectively. The remaining technologies have average $R^2$ values around 0.58. These differences describe how closely the joint fuel-price and inflation inputs fit the projected WACC series.
+ 
+-From a regional perspective, the impact of fossil fuel prices exhibits clear geographical characteristics. In major energy-importing regions like Europe and China, the influence is considerably more pronounced, with average $R^2$ values of 0.67 and 0.65. Conversely, the impact is markedly weaker in the Middle East, an energy-exporting region, where the average $R^2$ value is only 0.54. This disparity is also reflected in the prediction error, as the Middle East's average MAPE (0.0209) is substantially higher than that of Europe (0.0050) and China (0.0061), implying greater uncertainty in capital cost.
++The average regional $R^2$ values are 0.670 for Europe, 0.650 for China, and 0.547 for the Middle East. Mean MAPE is 0.00496, 0.00606, and 0.02087, respectively. The fits are stronger for Europe and China, but this ordering does not by itself establish a corresponding ordering of price-shock elasticities.
+ 
+ \subsection{Robustness Checks}
+ 
+-The additional holdout and rolling-origin checks support a more cautious interpretation of these results. The main results in Fig.~\ref{fig:result9} are useful for measuring scenario sensitivity within the constructed 2026-2035 panel, while the time-split tests examine how stable the fitted relationships remain when later years are held out. The fixed holdout uses 2026-01 to 2032-12 as the training period and 2033-01 to 2035-12 as the test period. Rolling-origin validation trains through one calendar year and tests the following year.
++The additional holdout and rolling-origin checks support a more cautious interpretation of these results. The main results in Fig.~\ref{fig:result9} are descriptive of the original fitted scenario panels, while the time-split tests examine how stable the fitted relationships remain when later years are held out. The fixed holdout uses 2026-01 to 2032-12 as the training period and 2033-01 to 2035-12 as the test period. Rolling-origin validation trains through one calendar year and tests the following year.
+ 
+-Across these checks, MAPE remains small for level and trend specifications, but $R^2$ is often unstable because the test-period WACC variation is narrow. Therefore, the paper treats the estimated relationships as predictive sensitivity and stress-scenario evidence rather than as formal causal effects. Table~\ref{tab:robustness} summarizes how the robustness outputs are used in interpreting the findings.
++Across these checks, MAPE remains small for level and trend specifications, but many out-of-sample $R^2$ values are negative. Narrow test-period WACC variation contributes to this behavior, and small percentage errors alone do not establish improvement over a baseline. Therefore, the paper treats the estimated relationships as predictive sensitivity and stress-scenario evidence rather than as formal causal effects. Table~\ref{tab:robustness} summarizes how the robustness outputs are used in interpreting the findings.
+ 
+ \begin{table}[t]
+ \centering
+ \caption{Robustness Checks Used for Interpretation}
+ \label{tab:robustness}
+ \scriptsize
+-\begin{tabular}{p{0.27\linewidth}p{0.30\linewidth}p{0.34\linewidth}}
++\begin{tabular}{P{0.27\linewidth}P{0.30\linewidth}P{0.34\linewidth}}
+ \toprule
+ \textbf{Check} & \textbf{Setup} & \textbf{Interpretation} \\
+ \midrule
+ Fixed holdout & Train 2026-2032; test 2033-2035 & Later-year prediction is sensitive to specification; use the main $R^2$ values as scenario-fit evidence. \\
+ Rolling origin & Train through one year; test the next year & Percentage errors are small in level/trend specifications, but $R^2$ varies under narrow WACC ranges. \\
+-Incremental $R^2$ & Add fuel price and inflation beyond time trend & Positive cases occur for 8/27 China models, 6/27 Europe models, and about 6/27 Middle East models. \\
++Incremental $R^2$ & Add fuel price and inflation beyond time trend & Positive cases occur for 8/27 China models, 6/27 Europe models, and 6/27 Middle East Ridge models. \\
+ Elasticity checks & Log-linear 10\% price shock conversion & Coefficients are interpreted as price-shock sensitivity, not causal effects. \\
+ \bottomrule
+ \end{tabular}

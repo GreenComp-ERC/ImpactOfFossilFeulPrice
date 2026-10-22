@@ -1,0 +1,4 @@
+Region,Raw File,Cleaned File,Raw Rows,Cleaned Rows,Start,End,Original First Inflation,Fixed First Inflation,Mean Abs Inflation Correction,Missing Values After Fix
+China,China_WACC.xlsx,data/revision_cleaned/China_WACC_2026_2035_cleaned.xlsx,120,120,2026-01,2035-12,2.09415112820952,2.09415112820952,0.0,0
+Europe,Euope_WACC.xlsx,data/revision_cleaned/Europe_WACC_2026_2035_cleaned.xlsx,120,120,2026-01,2035-12,2.09415112820952,1.922335796778258,1.0900405415019998,0
+Middle East,Middle_EAST_WACC.xlsx,data/revision_cleaned/Middle_East_WACC_2026_2035_cleaned.xlsx,180,120,2026-01,2035-12,2.09415112820952,2.489898580682937,1.0306797120782711,0

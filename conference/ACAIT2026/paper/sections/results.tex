@@ -1,0 +1,35 @@
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.98\textwidth]{figure.png}
+    \caption{Archived in-sample AutoGluon fit by region, fuel, and technology. The joint inputs are fuel price and inflation; $R^2$ describes fit, MAPE is a fraction, and RMSE is in decimal WACC units.}
+    \label{fig:result9}
+\end{figure*}
+
+\section{Results}
+
+As shown in Fig.~\ref{fig:result9}, the archived AutoGluon fits vary by technology. Solar, onshore wind, and offshore wind have average $R^2$ values of 0.718, 0.700, and 0.706, respectively. The remaining technologies have average $R^2$ values around 0.58. These differences describe how closely the joint fuel-price and inflation inputs fit the projected WACC series.
+
+The average regional $R^2$ values are 0.670 for Europe, 0.650 for China, and 0.547 for the Middle East. Mean MAPE is 0.00496, 0.00606, and 0.02087, respectively. The fits are stronger for Europe and China, but this ordering does not by itself establish a corresponding ordering of price-shock elasticities.
+
+\subsection{Robustness Checks}
+
+The additional holdout and rolling-origin checks support a more cautious interpretation of these results. The main results in Fig.~\ref{fig:result9} are descriptive of the original fitted scenario panels, while the time-split tests examine how stable the fitted relationships remain when later years are held out. The fixed holdout uses 2026-01 to 2032-12 as the training period and 2033-01 to 2035-12 as the test period. Rolling-origin validation trains through one calendar year and tests the following year.
+
+Across these checks, MAPE remains small for level and trend specifications, but many out-of-sample $R^2$ values are negative. Narrow test-period WACC variation contributes to this behavior, and small percentage errors alone do not establish improvement over a baseline. Therefore, the paper treats the estimated relationships as predictive sensitivity and stress-scenario evidence rather than as formal causal effects. Table~\ref{tab:robustness} summarizes how the robustness outputs are used in interpreting the findings.
+
+\begin{table}[t]
+\centering
+\caption{Robustness Checks Used for Interpretation}
+\label{tab:robustness}
+\scriptsize
+\begin{tabular}{P{0.27\linewidth}P{0.30\linewidth}P{0.34\linewidth}}
+\toprule
+\textbf{Check} & \textbf{Setup} & \textbf{Interpretation} \\
+\midrule
+Fixed holdout & Train 2026-2032; test 2033-2035 & Later-year prediction is sensitive to specification; use the main $R^2$ values as scenario-fit evidence. \\
+Rolling origin & Train through one year; test the next year & Percentage errors are small in level/trend specifications, but $R^2$ varies under narrow WACC ranges. \\
+Incremental $R^2$ & Add fuel price and inflation beyond time trend & Positive cases occur for 8/27 China models, 6/27 Europe models, and 6/27 Middle East Ridge models. \\
+Elasticity checks & Log-linear 10\% price shock conversion & Coefficients are interpreted as price-shock sensitivity, not causal effects. \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,27 @@
+Region,Target,Fuel,Lags,N,F Statistic,P Value,DF Num,DF Den,Note
+China,Inflation,Coal Price,1.0,37,2.9746189829273297,0.0939362703342711,1.0,33.0,First-differenced target; log-differenced fuel price
+China,Inflation,Coal Price,2.0,37,1.6122992312313469,0.2162333648006044,2.0,30.0,First-differenced target; log-differenced fuel price
+China,Inflation,Gas Price,1.0,37,0.1897686207719644,0.6659455421784701,1.0,33.0,First-differenced target; log-differenced fuel price
+China,Inflation,Gas Price,2.0,37,0.23901463256720423,0.7888884448510711,2.0,30.0,First-differenced target; log-differenced fuel price
+China,Inflation,Oil Price,1.0,37,0.7706143570047747,0.3863738139515117,1.0,33.0,First-differenced target; log-differenced fuel price
+China,Inflation,Oil Price,2.0,37,0.3290783059217221,0.7221513786797094,2.0,30.0,First-differenced target; log-differenced fuel price
+China,Real Interest Rate,Coal Price,1.0,44,16.993746544074614,0.0001836109497586058,1.0,40.0,First-differenced target; log-differenced fuel price
+China,Real Interest Rate,Coal Price,2.0,44,5.707973492796607,0.006909488931091001,2.0,37.0,First-differenced target; log-differenced fuel price
+China,Real Interest Rate,Gas Price,1.0,44,5.960018624343961,0.019152992172683736,1.0,40.0,First-differenced target; log-differenced fuel price
+China,Real Interest Rate,Gas Price,2.0,44,2.2436987578790144,0.12030462732439917,2.0,37.0,First-differenced target; log-differenced fuel price
+China,Real Interest Rate,Oil Price,1.0,44,2.4651006155295314,0.12427797708547039,1.0,40.0,First-differenced target; log-differenced fuel price
+China,Real Interest Rate,Oil Price,2.0,44,2.3672266289827357,0.1077902352620409,2.0,37.0,First-differenced target; log-differenced fuel price
+Europe,Inflation,Coal Price,1.0,44,1.5469256981353183,0.22082976966280554,1.0,40.0,First-differenced target; log-differenced fuel price
+Europe,Inflation,Coal Price,2.0,44,1.4075868242666778,0.2575327900082064,2.0,37.0,First-differenced target; log-differenced fuel price
+Europe,Inflation,Gas Price,1.0,44,1.4054549348188123,0.2428075393091219,1.0,40.0,First-differenced target; log-differenced fuel price
+Europe,Inflation,Gas Price,2.0,44,5.292167901378602,0.009520235232199803,2.0,37.0,First-differenced target; log-differenced fuel price
+Europe,Inflation,Oil Price,1.0,44,0.0758949567978132,0.7843577022616238,1.0,40.0,First-differenced target; log-differenced fuel price
+Europe,Inflation,Oil Price,2.0,44,1.365989119402009,0.2676938537547644,2.0,37.0,First-differenced target; log-differenced fuel price
+Europe,Real Interest Rate,ALL,,45,,,,,Column FR_INR_RINR unavailable in macro data
+Middle East,Inflation,Coal Price,1.0,44,1.4410478894726644,0.2370310280899104,1.0,40.0,First-differenced target; log-differenced fuel price
+Middle East,Inflation,Coal Price,2.0,44,2.004536626837769,0.14909144651815032,2.0,37.0,First-differenced target; log-differenced fuel price
+Middle East,Inflation,Gas Price,1.0,44,0.2102048255784891,0.649088311701973,1.0,40.0,First-differenced target; log-differenced fuel price
+Middle East,Inflation,Gas Price,2.0,44,0.4726601861492034,0.6270537257273203,2.0,37.0,First-differenced target; log-differenced fuel price
+Middle East,Inflation,Oil Price,1.0,44,0.7270581525700538,0.3989153628948402,1.0,40.0,First-differenced target; log-differenced fuel price
+Middle East,Inflation,Oil Price,2.0,44,0.45034107180903765,0.6408581385950685,2.0,37.0,First-differenced target; log-differenced fuel price
+Middle East,Real Interest Rate,ALL,,45,,,,,Column FR_INR_RINR unavailable in macro data

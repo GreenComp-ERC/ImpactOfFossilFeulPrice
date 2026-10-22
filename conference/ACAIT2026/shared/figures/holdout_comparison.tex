@@ -1,0 +1,21 @@
+\documentclass[tikz,border=3pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{pgfplots,pgfplotstable}
+\pgfplotsset{compat=1.18}
+\definecolor{DukeBlue}{HTML}{00539B}
+\definecolor{Navy}{HTML}{012169}
+\definecolor{Teal}{HTML}{247F83}
+\definecolor{Gold}{HTML}{B3853A}
+\pgfplotsset{every axis/.append style={font=\sffamily\small,axis line style={black!35},tick style={black!35},grid style={black!8},axis x line*=bottom,axis y line*=left}}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[width=12cm,height=6.1cm,ybar,bar width=17pt,
+ ymin=0,ymax=7.2,ylabel={Mean holdout MAPE (\%)},
+ symbolic x coords={Europe,China,Middle East},xtick=data,
+ ymajorgrids,legend image code/.code={\draw[#1] (0cm,-0.07cm) rectangle (0.22cm,0.07cm);},legend style={draw=none,at={(0.5,1.02)},anchor=south,legend columns=2,font=\sffamily\footnotesize}]
+\addplot[fill=black!22,draw=none] coordinates {(Europe,1.03157657)(China,1.41426149)(Middle East,5.54610084)};\addlegendentry{Time trend}
+\addplot[fill=DukeBlue,draw=none] coordinates {(Europe,1.16030843)(China,1.44638289)(Middle East,6.37444087)};\addlegendentry{Fuel + inflation + trend}
+\end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,22 @@
+\documentclass[tikz,border=3pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{pgfplots,pgfplotstable}
+\pgfplotsset{compat=1.18}
+\definecolor{DukeBlue}{HTML}{00539B}
+\definecolor{Navy}{HTML}{012169}
+\definecolor{Teal}{HTML}{247F83}
+\definecolor{Gold}{HTML}{B3853A}
+\pgfplotsset{every axis/.append style={font=\sffamily\small,axis line style={black!35},tick style={black!35},grid style={black!8},axis x line*=bottom,axis y line*=left}}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[width=14cm,height=5.6cm,xmin=1,xmax=47,ymin=20,ymax=125,
+ ylabel={Oil price (USD/bbl)},xtick={1,13,25,37,47},xticklabels={2021,2022,2023,2024,Nov. 2024},
+ ymajorgrids,legend style={draw=none,at={(0.5,1.04)},anchor=south,legend columns=4,font=\sffamily\footnotesize}]
+\addplot[black!75,thick] table[x=Month,y=Actual,col sep=comma]{../data/oil_comparison.csv};\addlegendentry{Actual}
+\addplot[DukeBlue,thick] table[x=Month,y=LSTMGPR,col sep=comma]{../data/oil_comparison.csv};\addlegendentry{LSTM-GPR}
+\addplot[Gold,dashed,thick] table[x=Month,y=SARIMA,col sep=comma]{../data/oil_comparison.csv};\addlegendentry{SARIMA}
+\addplot[Teal,densely dotted,thick] table[x=Month,y=LightGBM,col sep=comma]{../data/oil_comparison.csv};\addlegendentry{LightGBM}
+\end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,9 @@
+{
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "pandas": "2.2.3",
+  "openpyxl": "3.1.5",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "rerun": "python code/revision_experiments.py",
+  "test": "python -m unittest discover -s code -p test_revision_sensitivity.py"
+}
