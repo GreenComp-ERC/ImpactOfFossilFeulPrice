@@ -4,34 +4,34 @@
 \subsection{Regional Differences}
 
 \subsubsection{Europe}
-The original European specifications have the strongest average in-sample fit ($R^2=0.670$). Europe's reliance on imported energy provides a relevant context for examining international price exposure. Rom\'an-Collado and Casado Ru\'iz identify energy dependence, economic activity, and efficiency as drivers of EU-27 energy imports over 2000--2020 \cite{ROMANCOLLADO2024108009}. Li and Leung examine links between energy prices, economic growth, and renewable-energy consumption in Europe \cite{LI20211712}. These studies support the regional context, rather than a specific WACC response inferred from the fit statistic.
+The original European specifications have the strongest average in-sample fit ($R^2=0.670$). Europe's reliance on imported energy provides a relevant context for examining international price exposure. Rom\'an-Collado and Casado Ru\'iz identify energy dependence, economic activity, and efficiency as drivers of EU-27 energy imports over 2000--2020 \cite{ROMANCOLLADO2024108009}. Li and Leung examine links between energy prices, economic growth, and renewable-energy consumption in Europe \cite{LI20211712}.
 
 \subsubsection{Structural Dependence and Policy Limitations}
 Carbon pricing and renewable-energy policy shape the investment environment. The EU ETS literature emphasizes the importance of policy design and innovation incentives \cite{EUETS}, while the Renewable Energy Directive provides a framework for renewable deployment \cite{RenewableEnergyDirective}. Policy credibility and predictability matter for both investment risk and expected returns \cite{POLZIN20191249}. These mechanisms motivate explicit policy scenarios in future financing analysis.
 
 \subsubsection{External Shocks and Financial Risks}
-The European energy crisis illustrates the importance of energy security and storage planning \cite{WEI2024110522}. Fiscal instruments can also alter the pass-through of energy-price shocks to inflation and output in energy-importing economies \cite{GLOCKER2024103201}. Financing instruments provide a complementary channel: green-bond certification and issuance can influence investor participation and the credibility of environmental commitments \cite{ehlers2017green,flammer2021corporate}. The present regressions do not quantify the separate effects of these policies or instruments.
+The European energy crisis illustrates the importance of energy security and storage planning \cite{WEI2024110522}. Fiscal instruments can also alter the pass-through of energy-price shocks to inflation and output in energy-importing economies \cite{GLOCKER2024103201}. Financing instruments provide a complementary channel: green-bond certification and issuance can influence investor participation and the credibility of environmental commitments \cite{ehlers2017green,flammer2021corporate}.
 
 \subsubsection{China}
 China's original average fit is $R^2=0.650$. Research finds time-varying spillovers between international and Chinese energy and commodity markets \cite{SUN2022121642,WANG2023128724}. These links provide a rationale for including international fuel-price signals in regional financing analysis.
 
 \subsubsection{Import Dependence}
-Ben-Salha et al. find long-run relationships between fossil fuel prices and renewable-energy consumption in China, but no significant short-run effects in their specification \cite{ben2022assessing}. Their results support a distinction between short-run price exposure and longer-run substitution toward renewables; they do not provide project-level WACC elasticities.
+Ben-Salha et al. find long-run relationships between fossil fuel prices and renewable-energy consumption in China, but no significant short-run effects in their specification \cite{ben2022assessing}. Their results distinguish short-run price exposure from longer-run substitution toward renewables.
 
 \subsubsection{Government Intervention}
 Price regulation can modify the domestic consequences of international energy-market changes. He and Lin model the economic and emissions effects of natural-gas price control in China \cite{HE2017524}. Policy design, public finance, and risk mitigation are therefore relevant considerations when interpreting regional financing conditions \cite{POLZIN20191249,duma2023risk}.
 
 \subsubsection{Middle East}
-The original Middle Eastern specifications have a lower average fit ($R^2=0.547$). Oil dependence, diversification, and domestic pricing institutions provide possible contextual explanations, but their separate roles are not identified by the regression. Karanfil and Omgba examine structural factors that shape export diversification in oil-dependent economies \cite{karanfil2023energy}.
+The original Middle Eastern specifications have a lower average fit ($R^2=0.547$). Oil dependence, diversification, and domestic pricing institutions provide possible contextual explanations. Karanfil and Omgba examine structural factors that shape export diversification in oil-dependent economies \cite{karanfil2023energy}.
 
 \subsubsection{Economic Structure}
 Fossil fuel revenues may support public investment and financing capacity, while also exposing public budgets to commodity cycles. A fiscal buffer is therefore a hypothesis to examine using sovereign-finance and project-level data. The corrected sensitivity diagnostics show why this distinction matters: lower model fit in the Middle East can coexist with larger estimated price-response coefficients in some technologies (Appendix Table~\ref{tab:appendix-elasticities}).
 
 \subsubsection{Institutional Design}
-Fattouh and El-Katiri document the importance and economic trade-offs of energy subsidies in the Middle East and North Africa \cite{FATTOUH2013108}. Such arrangements can affect domestic price exposure and investment incentives. Their effects on renewable-project financing should be evaluated together with contract design, counterparty risk, and guarantees \cite{duma2023risk}, rather than inferred solely from regional fit differences.
+Fattouh and El-Katiri document the importance and economic trade-offs of energy subsidies in the Middle East and North Africa \cite{FATTOUH2013108}. Such arrangements can affect domestic price exposure and investment incentives. Their effects on renewable-project financing also depend on contract design, counterparty risk, and guarantees \cite{duma2023risk}.
 
 \subsection{Transmission Diagnostics}
-Historical Granger-style tests use first-differenced macroeconomic targets and log-differenced annual fuel prices. Table~\ref{tab:granger} reports selected lagged associations: coal-price changes with China's real interest rate at one- and two-year lags, gas-price changes with China's real interest rate at one-year lag, and gas-price changes with European inflation at two-year lag. The reported $p$-values are unadjusted exploratory diagnostics; the complete tested set is provided in the repository. The China inflation--coal result ($p=0.09394$) is not significant at the 5\% level. These tests examine the plausibility of macroeconomic transmission channels and do not identify project-level WACC effects.
+Historical Granger-style tests use first-differenced macroeconomic targets and log-differenced annual fuel prices. Table~\ref{tab:granger} reports selected lagged associations: coal-price changes with China's real interest rate at one- and two-year lags, gas-price changes with China's real interest rate at one-year lag, and gas-price changes with European inflation at two-year lag. The reported $p$-values are unadjusted exploratory diagnostics; the complete tested set is provided in the repository. These results are interpreted as transmission diagnostics.
 
 \begin{table}[t]
 \centering
@@ -52,10 +52,14 @@ China inflation & Coal & 1 & 0.09394 \\
 \end{table}
 
 \subsection{Environmental Implications of Financial Sensitivity}
-Financing conditions can influence the affordability and timing of renewable investment. Prior modeling shows that regional differences in capital costs can materially change decarbonization pathways \cite{ameli2021higher,calcaterra2024reducing}. The present study adds a framework for comparing fuel-price and inflation signals across regional WACC scenarios. Translating its outputs into deployment, emissions, or household-price effects requires a linked investment or energy-system model.
+Financing conditions can influence the affordability and timing of renewable investment. Prior modeling shows that regional differences in capital costs can materially change decarbonization pathways \cite{ameli2021higher,calcaterra2024reducing}. The present study adds a framework for comparing fuel-price and inflation signals across regional WACC scenarios. A linked investment or energy-system model could extend the analysis to deployment and emissions.
 
 \subsection{Regional Community Impact}
-Reliable energy finance is relevant to affordability and a just transition. European research documents substantial geographical differences in energy poverty \cite{bouzarovski2017energy}, and the OECD emphasizes aligning local climate finance with inclusive development \cite{oecd2021financing}. These concerns motivate analysis of financing conditions in Europe, China, and the Middle East. Household welfare, employment, and energy access are potential applications of the framework rather than outcomes measured here.
+Reliable energy finance is relevant to affordability and a just transition. European research documents substantial geographical differences in energy poverty \cite{bouzarovski2017energy}, and the OECD emphasizes aligning local climate finance with inclusive development \cite{oecd2021financing}. These concerns motivate analysis of financing conditions in Europe, China, and the Middle East.
 
 \subsection{Climate Finance \& Policy}
-For Europe, policy credibility, predictable revenue arrangements, and risk-transfer instruments are relevant options for stabilizing renewable investment conditions \cite{POLZIN20191249,duma2023risk}. For China, the interaction between international price signals, domestic price regulation, and public financing merits explicit comparison across policy scenarios \cite{HE2017524}. For oil-dependent economies, diversification and the design of domestic energy-pricing arrangements remain central considerations \cite{karanfil2023energy,FATTOUH2013108}. Across regions, the framework is most useful as a structured comparison of assumptions and financing exposures, alongside institutional and project-level evidence.
+In Europe, predictable revenue arrangements and financial instruments such as green bonds, subsidies, and climate risk insurance can support renewable investment by reducing financing risks \cite{POLZIN20191249,duma2023risk,ehlers2017green,flammer2021corporate}.
+
+China's energy transition also involves government intervention in energy markets. Policymakers could consider more market-driven price mechanisms, complemented by targeted green finance initiatives to reduce capital costs. State-supported financing can help encourage private investment in clean energy while preserving broader economic stability \cite{HE2017524,POLZIN20191249,duma2023risk}.
+
+For the Middle East, dependence on fossil fuel revenues makes diversification important for long-term economic resilience. Policymakers could prioritize investment in renewable energy, with sovereign financing capacity providing a possible source of long-term capital \cite{karanfil2023energy,FATTOUH2013108}.

@@ -35,7 +35,7 @@ The shared figures are editable TikZ/PGFPlots sources, with precompiled vector P
 
 GitHub contains the corrected sensitivity code and results for this revision. The Hugging Face link, https://huggingface.co/datasets/global-nomad-nexus/ImpactOfFossilFuelPrice-WACC, is an archived dataset snapshot at commit `3ad6b5ba657f8c7d92538395a67a03761be8a533` (2026-08-02). It was not silently replaced. The corrected diagnostic outputs in this GitHub revision take precedence over older diagnostic copies in that snapshot.
 
-The 15-minute presentation has an English speaker script in `slides/SPEAKER_NOTES.md`. The talk is prepared for the confirmed 15-minute presentation slot. The poster is A0 portrait, 841 × 1189 mm, to be printed at actual size.
+The 15-minute presentation has an English speaker script in `slides/SPEAKER_NOTES.md`. The 15-slide talk is prepared for the confirmed 15-minute presentation slot. The dedicated authorship/acknowledgments slide was removed; full matching credit strings remain in the editable presenter notes. Three original scientific graphics from the paper are used in the deck, with native LaTeX corrections to the GPR label. The poster is A0 portrait, 841 × 1189 mm, to be printed at actual size.
 
 ## Audit
 

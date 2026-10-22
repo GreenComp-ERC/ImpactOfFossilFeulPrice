@@ -62,7 +62,7 @@
     "evidence_depth": "PUBLISHER_ABSTRACT",
     "supported_scope": "Widespread MENA energy subsidies and associated institutional/economic trade-offs.",
     "correction_or_scope_control": "Merged duplicate fattouh2013energy; removed unsupported region-wide fiscal shares and gasoline-price comparisons.",
-    "final_locations": "sections/discussion.tex:31; sections/discussion.tex:61",
+    "final_locations": "sections/discussion.tex:31; sections/discussion.tex:65",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -84,7 +84,7 @@
     "evidence_depth": "PUBLISHER_ABSTRACT",
     "supported_scope": "CGE evaluation of economic and emissions consequences of Chinese natural-gas price control.",
     "correction_or_scope_control": "No coal corridor, coal standard deviation or subsidy-induced WACC volatility attributed to this source.",
-    "final_locations": "sections/discussion.tex:22; sections/discussion.tex:61",
+    "final_locations": "sections/discussion.tex:22; sections/discussion.tex:63",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -150,7 +150,7 @@
     "evidence_depth": "PUBLISHER_ABSTRACT",
     "supported_scope": "Policy design, credibility and predictability affect investor risk and return.",
     "correction_or_scope_control": "Moved WACC-equation attribution to Calcaterra; retained policy-review findings.",
-    "final_locations": "sections/discussion.tex:10; sections/discussion.tex:22; sections/discussion.tex:61",
+    "final_locations": "sections/discussion.tex:10; sections/discussion.tex:22; sections/discussion.tex:61; sections/discussion.tex:63",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -304,7 +304,7 @@
     "evidence_depth": "FULL_REPORT_PDF",
     "supported_scope": "Risk-transfer tools, contracts, counterparty risk and guarantees in renewable-project finance.",
     "correction_or_scope_control": "Corrected full title and two-author list; removed incorrectly included Kruger; added DOI.",
-    "final_locations": "sections/discussion.tex:22; sections/discussion.tex:31; sections/discussion.tex:61; sections/literature_review.tex:37",
+    "final_locations": "sections/discussion.tex:22; sections/discussion.tex:31; sections/discussion.tex:61; sections/discussion.tex:63; sections/literature_review.tex:37",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -326,7 +326,7 @@
     "evidence_depth": "FULL_OFFICIAL_HTML_REPORT",
     "supported_scope": "Green-bond markets and certification, including conditional issuance premia.",
     "correction_or_scope_control": "Removed unsupported 62% USD-denomination and interest-rate basis-point claims; report pages 89-104.",
-    "final_locations": "sections/discussion.tex:13; sections/literature_review.tex:37",
+    "final_locations": "sections/discussion.tex:13; sections/discussion.tex:61; sections/literature_review.tex:37",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -337,7 +337,7 @@
     "evidence_depth": "PUBLISHER_ABSTRACT",
     "supported_scope": "Green issuance can signal environmental commitment and attract investors.",
     "correction_or_scope_control": "Removed unsupported oil-price-linked ETF outflow claim; do not describe a guaranteed yield discount.",
-    "final_locations": "sections/discussion.tex:13; sections/literature_review.tex:37",
+    "final_locations": "sections/discussion.tex:13; sections/discussion.tex:61; sections/literature_review.tex:37",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -348,7 +348,7 @@
     "evidence_depth": "PUBLISHER_ABSTRACT",
     "supported_scope": "Structural determinants of export diversification in oil-dependent countries.",
     "correction_or_scope_control": "Added DOI; no claim of 68% region-wide fiscal revenue.",
-    "final_locations": "sections/discussion.tex:25; sections/discussion.tex:61",
+    "final_locations": "sections/discussion.tex:25; sections/discussion.tex:65",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {

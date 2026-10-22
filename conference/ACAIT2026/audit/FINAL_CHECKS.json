@@ -6,14 +6,14 @@
       279.4
     ],
     "fonts_embedded": true,
-    "font_count": 22,
+    "font_count": 24,
     "type3_fonts": false,
     "overfull_or_unresolved_references": [],
     "author_and_contact_checks": true,
-    "sha256": "345d0eb6919f84cd4f16ec519bc5d806af5feb445c2288ef6f253e65124b406e"
+    "sha256": "e7688b376a6d2c1a532b3b75a7f64c0e1c6f58cc5d8e3721d85b0fb36afd2d44"
   },
   "slides": {
-    "pages": 16,
+    "pages": 15,
     "page_size_mm": [
       160.0,
       90.0
@@ -23,7 +23,7 @@
     "type3_fonts": false,
     "overfull_or_unresolved_references": [],
     "author_and_contact_checks": true,
-    "sha256": "03981c40fa84c17634445765c87243d8ad6615947df52cbda11445502dd4c86c"
+    "sha256": "e0db755a6539809349ae1c0eead786f83d5929c8b6a95e85b74d947f455ba8b6"
   },
   "poster": {
     "pages": 1,
@@ -39,6 +39,8 @@
     "sha256": "4bd9259c9014bed9237bd9a8539b22dc31c1af449ee56a677b89cfd6274a58dc"
   },
   "exact_author_notes_and_funding_match": true,
+  "dedicated_authorship_slide_removed": true,
+  "exact_credits_retained_in_presenter_notes": true,
   "citations": {
     "unique_sources": 40,
     "undefined": [],
@@ -57,7 +59,7 @@
         ]
       },
       {
-        "image": "slide-16.png",
+        "image": "round2-slide-15.png",
         "decoded": [
           "https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice",
           "https://huggingface.co/datasets/global-nomad-nexus/ImpactOfFossilFuelPrice-WACC"
@@ -78,6 +80,7 @@
   "portable_source_zip_compilation": {
     "Paper": "PASS",
     "Slides": "PASS",
-    "Poster": "PASS"
-  }
+    "Poster": "PASS (unchanged document; previous isolated build)"
+  },
+  "revision_round": "2026-10-23; minimal manuscript edits and refined 15-slide presentation"
 }

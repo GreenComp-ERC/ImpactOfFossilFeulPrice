@@ -6,7 +6,7 @@ After that, the third stage evaluates the impact of fossil fuel prices on WACC u
 
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=0.98\textwidth]{fossilfuel_wacc_methodology_model_relations.drawio.pdf}
+    \PaperMethodology{0.98\textwidth}{fossilfuel_wacc_methodology_model_relations.drawio.pdf}
     \caption{Methodology and model-relation overview for the three-stage fossil-fuel price, inflation, and WACC assessment pipeline.}
     \label{fig:methodology-model-relations}
 \end{figure*}
@@ -38,7 +38,7 @@ where $K(t,X)$ is the vector of covariances between the test point $t$ and the t
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.92\columnwidth]{LSTM.png}
+    \PaperNetwork{0.92\columnwidth}{LSTM.png}
     \caption{Architecture for the price-prediction model. It includes a network with CNN, LSTM/GRU, attention (A), and normalization (N) layers, which is then smoothed by GPR.}
     \label{fig:lstm}
 \end{figure}
@@ -104,13 +104,13 @@ Additional diagnostics use cleaned panels with region-specific inflation. OLS an
 
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=0.92\textwidth]{Accuracy.png}
+    \PaperOilComparison{0.92\textwidth}{Accuracy.png}
     \caption{Accuracy of the prediction model: forecast results of oil prices from 2021 to 2024 using different models (LSTM-GPR, SARIMA, XGBoost, LightGBM).}
     \label{fig:accuracy}
 \end{figure*}
 
 \subsection{Accuracy of the Prediction Models}
-The archived oil-price comparison contains 47 monthly observations from 2021--2024 for LSTM-GPR, SARIMA, XGBoost, and LightGBM (Fig.~\ref{fig:accuracy}). Recomputing metrics from \texttt{Accuracy\_Prediction-Model.xlsx} gives $R^2=0.963$, MAPE=0.0186, RMSE=2.416, and MAE=1.425 for LSTM-GPR (Table~\ref{tab:stage1-accuracy}). The LSTM-GPR series has the smallest errors among these archived outputs. The current release preserves the comparison separately from fixed-origin baseline forecasts trained through 2020; a common backtest of all four fitted models is needed to establish comparable forecast provenance. Paranhos \cite{PARANHOS2025} supplies methodological support for recurrent inflation forecasting, rather than validation of the regional inflation forecasts used here.
+The archived oil-price comparison contains 47 monthly observations from 2021--2024 for LSTM-GPR, SARIMA, XGBoost, and LightGBM (Fig.~\ref{fig:accuracy}). Recomputing metrics from \texttt{Accuracy\_Prediction-Model.xlsx} gives $R^2=0.963$, MAPE=0.0186, RMSE=2.416, and MAE=1.425 for LSTM-GPR (Table~\ref{tab:stage1-accuracy}). The LSTM-GPR series has the smallest errors among these archived outputs. The saved comparison outputs lack complete training-origin metadata. Fixed-origin baseline forecasts trained through 2020 are therefore reported separately in the repository. The inflation model follows the recurrent-network approach of Paranhos \cite{PARANHOS2025}.
 
 \begin{table}[t]
 \centering

@@ -1,0 +1,48 @@
+[
+  {
+    "file": "sections/abstract.tex",
+    "reason": "Restore the original regional comparison and phrasing; retain correct statistics and fit interpretation, without a second warning sentence.",
+    "before_sha256": "6d6f0c59401c1e5bbd76bc4aaa5c8528145f7f06f9619a49b7a30eba1388d902",
+    "after_sha256": "4a614af0ea6ae34e2a6f06e0030ba281db6d58af90f97ffff8997136a76092e6"
+  },
+  {
+    "file": "sections/introduction.tex",
+    "reason": "Remove editorial wording added in the first check; preserve citation-scope corrections.",
+    "before_sha256": "7d4706326f11d2a3846199dd3e49051fbc6cf8062845e51ae5d08283be0c5c2b",
+    "after_sha256": "64edf56e06b3c5c3ce19200390ff41e1d32823280edf19400251de2b2aaa64fb"
+  },
+  {
+    "file": "sections/conclusion.tex",
+    "reason": "Return to the original conclusion structure and substantive regional policy message.",
+    "before_sha256": "4a92fd285cba017a62695176ebff3ab19c12559709d44bb0f24f6d507451995f",
+    "after_sha256": "041f35d030f474cefce6137dfb44c70dfdc30e4c317a09538a01df996463647d"
+  },
+  {
+    "file": "sections/results.tex",
+    "reason": "Restore the two original result paragraphs and vocabulary, replacing only sensitivity/effect-size errors and incorrect averages.",
+    "before_sha256": "dcb67b966eda1fa937eff9a51e9ac282ea5c6022c255202ac1d7348cf886ce1d",
+    "after_sha256": "f7e24e768848c742c06da7049e19a5aebf806452e0136e5437c007c48315376d"
+  },
+  {
+    "file": "sections/discussion.tex",
+    "reason": "Remove repeated rebuttal-style caveats; recover the original region-specific policy recommendations while keeping the unsupported quantities removed.",
+    "before_sha256": "142461958ebc34198abf7c38a99427b574e9fa0c7cedc5c84cf3696866a84db9",
+    "after_sha256": "0216d026850d60e1377037462926caf72d22caf18fb8f754b58ca1854cb0cec2"
+  },
+  {
+    "file": "sections/methodology.tex",
+    "reason": "State the single relevant provenance limit directly and return to the original method description.",
+    "before_sha256": "d0c3677d3a14f53cfe5c877e35dcc464bb29d9c8059177e7f85ef0830528333b",
+    "after_sha256": "bf6084cd418051c07122fef9080fa82ff227cdbfe9c7be811c20797a9ef6dda6"
+  },
+  {
+    "file": "main.tex",
+    "reason": "Load native figure-label corrections without changing original image data.",
+    "after_sha256": "f9188c51668942a719915833b8f43fa276d4fb02fea4abcf82d7d8a53366434e"
+  },
+  {
+    "file": "sections/figure_labels.tex",
+    "reason": "Correct GRP/GPR spelling and summation dummy index; image geometry and numerical curves unchanged.",
+    "after_sha256": "1abc37e560e79925bcd969c7998b47853b3b279d6357de8af5740e0a139b0620"
+  }
+]

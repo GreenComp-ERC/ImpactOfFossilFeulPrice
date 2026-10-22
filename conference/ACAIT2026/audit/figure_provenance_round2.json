@@ -1,0 +1,35 @@
+[
+  {
+    "paper_source": "figures/LSTM.png",
+    "shared_asset": "shared/figures/paper_LSTM.png",
+    "source_sha256": "56cf3fbfc08fc02516e22d17cda0a4d0b4010ffb4d613b20562278f06b112f54",
+    "usage": "slide 6; original architecture with native GPR text label",
+    "original_file_unchanged": true
+  },
+  {
+    "paper_source": "figures/Accuracy.png",
+    "shared_asset": "shared/figures/paper_Accuracy.png",
+    "source_sha256": "c466923d0493ddfe47fea370cb079496996324ef620f15b10af18514eb388bdf",
+    "usage": "slide 7; original four-model comparison with corrected native legend spelling",
+    "original_file_unchanged": true
+  },
+  {
+    "paper_source": "figures/fossilfuel_wacc_methodology_model_relations.drawio.pdf",
+    "shared_asset": "shared/figures/paper_methodology.pdf",
+    "source_sha256": "a0de8b6bf95d60404a2a45b279d87194e2c1d2956b2427e0fbb04c8dfab1b0b6",
+    "usage": "slide 6; Stage 1 crop via graphicx trim",
+    "original_file_unchanged": true
+  },
+  {
+    "paper_source": "figures/figure.png",
+    "shared_asset": "shared/figures/paper_results.png",
+    "source_sha256": "372536db5fae1111c0137fadd85eb29fa5db9822c3e793b932f78c4b4adde987",
+    "usage": "source asset retained; slide 9/10 plots use matching archived workbook data",
+    "original_file_unchanged": true
+  },
+  {
+    "native_labels": "shared/figures/figure_labels.tex",
+    "sha256": "1abc37e560e79925bcd969c7998b47853b3b279d6357de8af5740e0a139b0620",
+    "purpose": "GPR spelling, exact series legend styles, and MSE dummy-variable correction; source curves unchanged"
+  }
+]

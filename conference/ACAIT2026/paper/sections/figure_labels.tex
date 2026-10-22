@@ -1,0 +1,29 @@
+% Native labels over original artwork. Images and numerical curves are unchanged.
+\definecolor{PaperModelBlue}{HTML}{173C5B}
+\definecolor{PaperXGB}{HTML}{800080}
+\newcommand{\PaperNetwork}[2]{%
+\resizebox{#1}{!}{\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[height=5.10cm]{#2}};
+\node[fill=PaperModelBlue,text=white,minimum width=0.78cm,minimum height=0.20cm,inner sep=0pt,font=\fontsize{6.2}{7}\selectfont] at (2.11,4.42) {GPR};
+\end{tikzpicture}}}
+\newcommand{\PaperOilComparison}[2]{%
+\resizebox{#1}{!}{\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=12.5cm]{#2}};
+\fill[white] (10.97,4.06) rectangle (12.25,5.27);
+\draw[black!15,line width=0.4pt] (10.97,4.06) rectangle (12.25,5.27);
+\draw[blue,line width=0.7pt] (11.05,5.12)--(11.24,5.12);
+\fill[blue] (11.145,5.12) circle (0.018);
+\draw[green!45!black,line width=0.9pt] (11.05,4.90)--(11.24,4.90);
+\draw[red,dash dot,line width=0.7pt] (11.05,4.68)--(11.24,4.68);
+\draw[PaperXGB,densely dotted,line width=0.8pt] (11.05,4.46)--(11.24,4.46);
+\draw[orange,line width=0.7pt] (11.05,4.24)--(11.24,4.24);
+\foreach \y/\lab in {5.12/Actual,4.90/LSTM-GPR,4.68/SARIMA,4.46/XGBoost,4.24/LightGBM}{
+\node[anchor=west,inner sep=0,font=\fontsize{4.7}{5.2}\selectfont] at (11.31,\y) {\lab};}
+\end{tikzpicture}}}
+\newcommand{\PaperMethodology}[2]{%
+\resizebox{#1}{!}{\begin{tikzpicture}[x=1bp,y=1bp]
+\node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=1313.03992bp]{#2}};
+% Correct the summation dummy variable to match the manuscript loss function.
+\fill[white] (207,176) rectangle (402,273);
+\node[align=center,inner sep=0,font=\fontsize{15}{20}\selectfont] at (304,227) {$\widehat\Theta_h=\arg\min_{\Theta_h}\mathcal L_h$\\[3bp]$\displaystyle\mathcal L_h=\frac{1}{T-h}\sum_{t=1}^{T-h}\varepsilon_t^2$\\[3bp]$\varepsilon_t=y_{t+h}-G(x_t;\Theta_h)$};
+\end{tikzpicture}}}

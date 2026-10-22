@@ -5,7 +5,7 @@
     "keys": [
       "ROMANCOLLADO2024108009"
     ],
-    "claim": "The original European specifications have the strongest average in-sample fit ($R^2=0.670$). Europe's reliance on imported energy provides a relevant context for examining international price exposure. Rom\\'an-Collado and Casado Ru\\'iz identify energy dependence, economic activity, and efficiency as drivers of EU-27 energy imports over 2000--2020 \\cite{ROMANCOLLADO2024108009}. Li and Leung examine links between energy prices, economic growth, and renewable-energy consumption in Europe \\cite{LI20211712}. These studies support the regional context, rather than a specific WACC response inferred from the fit statistic."
+    "claim": "The original European specifications have the strongest average in-sample fit ($R^2=0.670$). Europe's reliance on imported energy provides a relevant context for examining international price exposure. Rom\\'an-Collado and Casado Ru\\'iz identify energy dependence, economic activity, and efficiency as drivers of EU-27 energy imports over 2000--2020 \\cite{ROMANCOLLADO2024108009}. Li and Leung examine links between energy prices, economic growth, and renewable-energy consumption in Europe \\cite{LI20211712}."
   },
   {
     "file": "sections/discussion.tex",
@@ -13,7 +13,7 @@
     "keys": [
       "LI20211712"
     ],
-    "claim": "The original European specifications have the strongest average in-sample fit ($R^2=0.670$). Europe's reliance on imported energy provides a relevant context for examining international price exposure. Rom\\'an-Collado and Casado Ru\\'iz identify energy dependence, economic activity, and efficiency as drivers of EU-27 energy imports over 2000--2020 \\cite{ROMANCOLLADO2024108009}. Li and Leung examine links between energy prices, economic growth, and renewable-energy consumption in Europe \\cite{LI20211712}. These studies support the regional context, rather than a specific WACC response inferred from the fit statistic."
+    "claim": "The original European specifications have the strongest average in-sample fit ($R^2=0.670$). Europe's reliance on imported energy provides a relevant context for examining international price exposure. Rom\\'an-Collado and Casado Ru\\'iz identify energy dependence, economic activity, and efficiency as drivers of EU-27 energy imports over 2000--2020 \\cite{ROMANCOLLADO2024108009}. Li and Leung examine links between energy prices, economic growth, and renewable-energy consumption in Europe \\cite{LI20211712}."
   },
   {
     "file": "sections/discussion.tex",
@@ -45,7 +45,7 @@
     "keys": [
       "WEI2024110522"
     ],
-    "claim": "The European energy crisis illustrates the importance of energy security and storage planning \\cite{WEI2024110522}. Fiscal instruments can also alter the pass-through of energy-price shocks to inflation and output in energy-importing economies \\cite{GLOCKER2024103201}. Financing instruments provide a complementary channel: green-bond certification and issuance can influence investor participation and the credibility of environmental commitments \\cite{ehlers2017green,flammer2021corporate}. The present regressions do not quantify the separate effects of these policies or instruments."
+    "claim": "The European energy crisis illustrates the importance of energy security and storage planning \\cite{WEI2024110522}. Fiscal instruments can also alter the pass-through of energy-price shocks to inflation and output in energy-importing economies \\cite{GLOCKER2024103201}. Financing instruments provide a complementary channel: green-bond certification and issuance can influence investor participation and the credibility of environmental commitments \\cite{ehlers2017green,flammer2021corporate}."
   },
   {
     "file": "sections/discussion.tex",
@@ -53,7 +53,7 @@
     "keys": [
       "GLOCKER2024103201"
     ],
-    "claim": "The European energy crisis illustrates the importance of energy security and storage planning \\cite{WEI2024110522}. Fiscal instruments can also alter the pass-through of energy-price shocks to inflation and output in energy-importing economies \\cite{GLOCKER2024103201}. Financing instruments provide a complementary channel: green-bond certification and issuance can influence investor participation and the credibility of environmental commitments \\cite{ehlers2017green,flammer2021corporate}. The present regressions do not quantify the separate effects of these policies or instruments."
+    "claim": "The European energy crisis illustrates the importance of energy security and storage planning \\cite{WEI2024110522}. Fiscal instruments can also alter the pass-through of energy-price shocks to inflation and output in energy-importing economies \\cite{GLOCKER2024103201}. Financing instruments provide a complementary channel: green-bond certification and issuance can influence investor participation and the credibility of environmental commitments \\cite{ehlers2017green,flammer2021corporate}."
   },
   {
     "file": "sections/discussion.tex",
@@ -62,7 +62,7 @@
       "ehlers2017green",
       "flammer2021corporate"
     ],
-    "claim": "The European energy crisis illustrates the importance of energy security and storage planning \\cite{WEI2024110522}. Fiscal instruments can also alter the pass-through of energy-price shocks to inflation and output in energy-importing economies \\cite{GLOCKER2024103201}. Financing instruments provide a complementary channel: green-bond certification and issuance can influence investor participation and the credibility of environmental commitments \\cite{ehlers2017green,flammer2021corporate}. The present regressions do not quantify the separate effects of these policies or instruments."
+    "claim": "The European energy crisis illustrates the importance of energy security and storage planning \\cite{WEI2024110522}. Fiscal instruments can also alter the pass-through of energy-price shocks to inflation and output in energy-importing economies \\cite{GLOCKER2024103201}. Financing instruments provide a complementary channel: green-bond certification and issuance can influence investor participation and the credibility of environmental commitments \\cite{ehlers2017green,flammer2021corporate}."
   },
   {
     "file": "sections/discussion.tex",
@@ -79,7 +79,7 @@
     "keys": [
       "ben2022assessing"
     ],
-    "claim": "Ben-Salha et al. find long-run relationships between fossil fuel prices and renewable-energy consumption in China, but no significant short-run effects in their specification \\cite{ben2022assessing}. Their results support a distinction between short-run price exposure and longer-run substitution toward renewables; they do not provide project-level WACC elasticities."
+    "claim": "Ben-Salha et al. find long-run relationships between fossil fuel prices and renewable-energy consumption in China, but no significant short-run effects in their specification \\cite{ben2022assessing}. Their results distinguish short-run price exposure from longer-run substitution toward renewables."
   },
   {
     "file": "sections/discussion.tex",
@@ -104,7 +104,7 @@
     "keys": [
       "karanfil2023energy"
     ],
-    "claim": "The original Middle Eastern specifications have a lower average fit ($R^2=0.547$). Oil dependence, diversification, and domestic pricing institutions provide possible contextual explanations, but their separate roles are not identified by the regression. Karanfil and Omgba examine structural factors that shape export diversification in oil-dependent economies \\cite{karanfil2023energy}."
+    "claim": "The original Middle Eastern specifications have a lower average fit ($R^2=0.547$). Oil dependence, diversification, and domestic pricing institutions provide possible contextual explanations. Karanfil and Omgba examine structural factors that shape export diversification in oil-dependent economies \\cite{karanfil2023energy}."
   },
   {
     "file": "sections/discussion.tex",
@@ -112,7 +112,7 @@
     "keys": [
       "FATTOUH2013108"
     ],
-    "claim": "Fattouh and El-Katiri document the importance and economic trade-offs of energy subsidies in the Middle East and North Africa \\cite{FATTOUH2013108}. Such arrangements can affect domestic price exposure and investment incentives. Their effects on renewable-project financing should be evaluated together with contract design, counterparty risk, and guarantees \\cite{duma2023risk}, rather than inferred solely from regional fit differences."
+    "claim": "Fattouh and El-Katiri document the importance and economic trade-offs of energy subsidies in the Middle East and North Africa \\cite{FATTOUH2013108}. Such arrangements can affect domestic price exposure and investment incentives. Their effects on renewable-project financing also depend on contract design, counterparty risk, and guarantees \\cite{duma2023risk}."
   },
   {
     "file": "sections/discussion.tex",
@@ -120,7 +120,7 @@
     "keys": [
       "duma2023risk"
     ],
-    "claim": "Fattouh and El-Katiri document the importance and economic trade-offs of energy subsidies in the Middle East and North Africa \\cite{FATTOUH2013108}. Such arrangements can affect domestic price exposure and investment incentives. Their effects on renewable-project financing should be evaluated together with contract design, counterparty risk, and guarantees \\cite{duma2023risk}, rather than inferred solely from regional fit differences."
+    "claim": "Fattouh and El-Katiri document the importance and economic trade-offs of energy subsidies in the Middle East and North Africa \\cite{FATTOUH2013108}. Such arrangements can affect domestic price exposure and investment incentives. Their effects on renewable-project financing also depend on contract design, counterparty risk, and guarantees \\cite{duma2023risk}."
   },
   {
     "file": "sections/discussion.tex",
@@ -129,7 +129,7 @@
       "ameli2021higher",
       "calcaterra2024reducing"
     ],
-    "claim": "Financing conditions can influence the affordability and timing of renewable investment. Prior modeling shows that regional differences in capital costs can materially change decarbonization pathways \\cite{ameli2021higher,calcaterra2024reducing}. The present study adds a framework for comparing fuel-price and inflation signals across regional WACC scenarios. Translating its outputs into deployment, emissions, or household-price effects requires a linked investment or energy-system model."
+    "claim": "Financing conditions can influence the affordability and timing of renewable investment. Prior modeling shows that regional differences in capital costs can materially change decarbonization pathways \\cite{ameli2021higher,calcaterra2024reducing}. The present study adds a framework for comparing fuel-price and inflation signals across regional WACC scenarios. A linked investment or energy-system model could extend the analysis to deployment and emissions."
   },
   {
     "file": "sections/discussion.tex",
@@ -137,7 +137,7 @@
     "keys": [
       "bouzarovski2017energy"
     ],
-    "claim": "Reliable energy finance is relevant to affordability and a just transition. European research documents substantial geographical differences in energy poverty \\cite{bouzarovski2017energy}, and the OECD emphasizes aligning local climate finance with inclusive development \\cite{oecd2021financing}. These concerns motivate analysis of financing conditions in Europe, China, and the Middle East. Household welfare, employment, and energy access are potential applications of the framework rather than outcomes measured here."
+    "claim": "Reliable energy finance is relevant to affordability and a just transition. European research documents substantial geographical differences in energy poverty \\cite{bouzarovski2017energy}, and the OECD emphasizes aligning local climate finance with inclusive development \\cite{oecd2021financing}. These concerns motivate analysis of financing conditions in Europe, China, and the Middle East."
   },
   {
     "file": "sections/discussion.tex",
@@ -145,33 +145,37 @@
     "keys": [
       "oecd2021financing"
     ],
-    "claim": "Reliable energy finance is relevant to affordability and a just transition. European research documents substantial geographical differences in energy poverty \\cite{bouzarovski2017energy}, and the OECD emphasizes aligning local climate finance with inclusive development \\cite{oecd2021financing}. These concerns motivate analysis of financing conditions in Europe, China, and the Middle East. Household welfare, employment, and energy access are potential applications of the framework rather than outcomes measured here."
+    "claim": "Reliable energy finance is relevant to affordability and a just transition. European research documents substantial geographical differences in energy poverty \\cite{bouzarovski2017energy}, and the OECD emphasizes aligning local climate finance with inclusive development \\cite{oecd2021financing}. These concerns motivate analysis of financing conditions in Europe, China, and the Middle East."
   },
   {
     "file": "sections/discussion.tex",
     "line": 61,
     "keys": [
       "POLZIN20191249",
+      "duma2023risk",
+      "ehlers2017green",
+      "flammer2021corporate"
+    ],
+    "claim": "In Europe, predictable revenue arrangements and financial instruments such as green bonds, subsidies, and climate risk insurance can support renewable investment by reducing financing risks \\cite{POLZIN20191249,duma2023risk,ehlers2017green,flammer2021corporate}."
+  },
+  {
+    "file": "sections/discussion.tex",
+    "line": 63,
+    "keys": [
+      "HE2017524",
+      "POLZIN20191249",
       "duma2023risk"
     ],
-    "claim": "For Europe, policy credibility, predictable revenue arrangements, and risk-transfer instruments are relevant options for stabilizing renewable investment conditions \\cite{POLZIN20191249,duma2023risk}. For China, the interaction between international price signals, domestic price regulation, and public financing merits explicit comparison across policy scenarios \\cite{HE2017524}. For oil-dependent economies, diversification and the design of domestic energy-pricing arrangements remain central considerations \\cite{karanfil2023energy,FATTOUH2013108}. Across regions, the framework is most useful as a structured comparison of assumptions and financing exposures, alongside institutional and project-level evidence."
+    "claim": "China's energy transition also involves government intervention in energy markets. Policymakers could consider more market-driven price mechanisms, complemented by targeted green finance initiatives to reduce capital costs. State-supported financing can help encourage private investment in clean energy while preserving broader economic stability \\cite{HE2017524,POLZIN20191249,duma2023risk}."
   },
   {
     "file": "sections/discussion.tex",
-    "line": 61,
-    "keys": [
-      "HE2017524"
-    ],
-    "claim": "For Europe, policy credibility, predictable revenue arrangements, and risk-transfer instruments are relevant options for stabilizing renewable investment conditions \\cite{POLZIN20191249,duma2023risk}. For China, the interaction between international price signals, domestic price regulation, and public financing merits explicit comparison across policy scenarios \\cite{HE2017524}. For oil-dependent economies, diversification and the design of domestic energy-pricing arrangements remain central considerations \\cite{karanfil2023energy,FATTOUH2013108}. Across regions, the framework is most useful as a structured comparison of assumptions and financing exposures, alongside institutional and project-level evidence."
-  },
-  {
-    "file": "sections/discussion.tex",
-    "line": 61,
+    "line": 65,
     "keys": [
       "karanfil2023energy",
       "FATTOUH2013108"
     ],
-    "claim": "For Europe, policy credibility, predictable revenue arrangements, and risk-transfer instruments are relevant options for stabilizing renewable investment conditions \\cite{POLZIN20191249,duma2023risk}. For China, the interaction between international price signals, domestic price regulation, and public financing merits explicit comparison across policy scenarios \\cite{HE2017524}. For oil-dependent economies, diversification and the design of domestic energy-pricing arrangements remain central considerations \\cite{karanfil2023energy,FATTOUH2013108}. Across regions, the framework is most useful as a structured comparison of assumptions and financing exposures, alongside institutional and project-level evidence."
+    "claim": "For the Middle East, dependence on fossil fuel revenues makes diversification important for long-term economic resilience. Policymakers could prioritize investment in renewable energy, with sovereign financing capacity providing a possible source of long-term capital \\cite{karanfil2023energy,FATTOUH2013108}."
   },
   {
     "file": "sections/introduction.tex",
@@ -438,6 +442,6 @@
     "keys": [
       "PARANHOS2025"
     ],
-    "claim": "The archived oil-price comparison contains 47 monthly observations from 2021--2024 for LSTM-GPR, SARIMA, XGBoost, and LightGBM (Fig.~\\ref{fig:accuracy}). Recomputing metrics from \\texttt{Accuracy\\_Prediction-Model.xlsx} gives $R^2=0.963$, MAPE=0.0186, RMSE=2.416, and MAE=1.425 for LSTM-GPR (Table~\\ref{tab:stage1-accuracy}). The LSTM-GPR series has the smallest errors among these archived outputs. The current release preserves the comparison separately from fixed-origin baseline forecasts trained through 2020; a common backtest of all four fitted models is needed to establish comparable forecast provenance. Paranhos \\cite{PARANHOS2025} supplies methodological support for recurrent inflation forecasting, rather than validation of the regional inflation forecasts used here."
+    "claim": "The archived oil-price comparison contains 47 monthly observations from 2021--2024 for LSTM-GPR, SARIMA, XGBoost, and LightGBM (Fig.~\\ref{fig:accuracy}). Recomputing metrics from \\texttt{Accuracy\\_Prediction-Model.xlsx} gives $R^2=0.963$, MAPE=0.0186, RMSE=2.416, and MAE=1.425 for LSTM-GPR (Table~\\ref{tab:stage1-accuracy}). The LSTM-GPR series has the smallest errors among these archived outputs. The saved comparison outputs lack complete training-origin metadata. Fixed-origin baseline forecasts trained through 2020 are therefore reported separately in the repository. The inflation model follows the recurrent-network approach of Paranhos \\cite{PARANHOS2025}."
   }
 ]
