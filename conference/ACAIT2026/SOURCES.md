@@ -29,7 +29,7 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
 latexmk -xelatex -interaction=nonstopmode -halt-on-error main.tex
 ```
 
-The shared figures are editable TikZ/PGFPlots sources, with precompiled vector PDFs included. Their source data are under `shared/data/`. To regenerate a chart, change into `shared/figures/` and compile its `.tex` file with pdfLaTeX. The TeX Gyre Heros font files, Metropolis, IEEEtran, TikZ/PGFPlots and `qrcode` are standard TeX Live packages. All four documents were built with TeX Live 2025.
+The shared figures are editable TikZ/PGFPlots sources, with precompiled vector PDFs included. Their source data are under `shared/data/`. To regenerate a chart, change into `shared/figures/` and compile its `.tex` file with pdfLaTeX. The TeX Gyre Heros font files, Metropolis, IEEEtran, TikZ/PGFPlots and `qrcode` are standard TeX Live packages. All three documents were built with TeX Live 2025.
 
 ## Open science and version correspondence
 
@@ -44,3 +44,7 @@ The 15-minute presentation has an English speaker script in `slides/SPEAKER_NOTE
 ## Visual credits
 
 ACAIT event logo: official 2026 conference website. Duke Kunshan University logo: supplied presentation template. Research diagrams and plots are editable vector artwork; numerical data derive from the supplied archived outputs and the corrected diagnostics. No illustrative photograph is presented as research evidence.
+
+## Original Fig. 1
+
+The paper uses the author's original tensor framework, with its original caption and first-page placement. The original PDF is retained byte-for-byte under `paper/figures/`. A print copy (`fossilfuel_wacc_tensor_framework_print.pdf`) outlines the original Type 3 font glyphs for PDF compatibility without redesigning the graphic. The other original paper images and their label corrections are retained.

@@ -131,5 +131,5 @@ The Duke Kunshan University Education Development Foundation supports the resear
 
 Shilin benefited from scholarly exchange with participants in the AAAI-26 Workshop on AI for Environmental Science, held on January 27, 2026, at the Singapore EXPO in Singapore. Shilin gratefully acknowledges the Travel Grant provided by the Duke Kunshan University Office of Academic Services, which supported participation in the workshop.
 
-OpenAI Codex assisted language and consistency revisions throughout the manuscript, preparation of Fig. 1, and correction of the sensitivity-analysis code.
+OpenAI Codex assisted reference checks, consistency revisions, figure-label corrections, and correction of the sensitivity-analysis code.
 

@@ -1,181 +1,175 @@
 [
   {
     "file": "sections/discussion.tex",
-    "line": 7,
+    "line": 8,
     "keys": [
       "ROMANCOLLADO2024108009"
     ],
-    "claim": "The original European specifications have the strongest average in-sample fit ($R^2=0.670$). Europe's reliance on imported energy provides a relevant context for examining international price exposure. Rom\\'an-Collado and Casado Ru\\'iz identify energy dependence, economic activity, and efficiency as drivers of EU-27 energy imports over 2000--2020 \\cite{ROMANCOLLADO2024108009}. Li and Leung examine links between energy prices, economic growth, and renewable-energy consumption in Europe \\cite{LI20211712}."
+    "claim": "As shown in Fig.~\\ref{fig:result9}, the WACC model for European energy transition projects has an average $R^2$ of 0.67. The structural characteristics of Europe's energy system \\cite{ROMANCOLLADO2024108009}, policy regulation \\cite{EUETS,RenewableEnergyDirective}, and external risks \\cite{WEI2024110522} provide context for interpreting regional financing conditions."
   },
   {
     "file": "sections/discussion.tex",
-    "line": 7,
+    "line": 8,
     "keys": [
-      "LI20211712"
-    ],
-    "claim": "The original European specifications have the strongest average in-sample fit ($R^2=0.670$). Europe's reliance on imported energy provides a relevant context for examining international price exposure. Rom\\'an-Collado and Casado Ru\\'iz identify energy dependence, economic activity, and efficiency as drivers of EU-27 energy imports over 2000--2020 \\cite{ROMANCOLLADO2024108009}. Li and Leung examine links between energy prices, economic growth, and renewable-energy consumption in Europe \\cite{LI20211712}."
-  },
-  {
-    "file": "sections/discussion.tex",
-    "line": 10,
-    "keys": [
-      "EUETS"
-    ],
-    "claim": "Carbon pricing and renewable-energy policy shape the investment environment. The EU ETS literature emphasizes the importance of policy design and innovation incentives \\cite{EUETS}, while the Renewable Energy Directive provides a framework for renewable deployment \\cite{RenewableEnergyDirective}. Policy credibility and predictability matter for both investment risk and expected returns \\cite{POLZIN20191249}. These mechanisms motivate explicit policy scenarios in future financing analysis."
-  },
-  {
-    "file": "sections/discussion.tex",
-    "line": 10,
-    "keys": [
+      "EUETS",
       "RenewableEnergyDirective"
     ],
-    "claim": "Carbon pricing and renewable-energy policy shape the investment environment. The EU ETS literature emphasizes the importance of policy design and innovation incentives \\cite{EUETS}, while the Renewable Energy Directive provides a framework for renewable deployment \\cite{RenewableEnergyDirective}. Policy credibility and predictability matter for both investment risk and expected returns \\cite{POLZIN20191249}. These mechanisms motivate explicit policy scenarios in future financing analysis."
+    "claim": "As shown in Fig.~\\ref{fig:result9}, the WACC model for European energy transition projects has an average $R^2$ of 0.67. The structural characteristics of Europe's energy system \\cite{ROMANCOLLADO2024108009}, policy regulation \\cite{EUETS,RenewableEnergyDirective}, and external risks \\cite{WEI2024110522} provide context for interpreting regional financing conditions."
   },
   {
     "file": "sections/discussion.tex",
-    "line": 10,
-    "keys": [
-      "POLZIN20191249"
-    ],
-    "claim": "Carbon pricing and renewable-energy policy shape the investment environment. The EU ETS literature emphasizes the importance of policy design and innovation incentives \\cite{EUETS}, while the Renewable Energy Directive provides a framework for renewable deployment \\cite{RenewableEnergyDirective}. Policy credibility and predictability matter for both investment risk and expected returns \\cite{POLZIN20191249}. These mechanisms motivate explicit policy scenarios in future financing analysis."
-  },
-  {
-    "file": "sections/discussion.tex",
-    "line": 13,
+    "line": 8,
     "keys": [
       "WEI2024110522"
     ],
-    "claim": "The European energy crisis illustrates the importance of energy security and storage planning \\cite{WEI2024110522}. Fiscal instruments can also alter the pass-through of energy-price shocks to inflation and output in energy-importing economies \\cite{GLOCKER2024103201}. Financing instruments provide a complementary channel: green-bond certification and issuance can influence investor participation and the credibility of environmental commitments \\cite{ehlers2017green,flammer2021corporate}."
+    "claim": "As shown in Fig.~\\ref{fig:result9}, the WACC model for European energy transition projects has an average $R^2$ of 0.67. The structural characteristics of Europe's energy system \\cite{ROMANCOLLADO2024108009}, policy regulation \\cite{EUETS,RenewableEnergyDirective}, and external risks \\cite{WEI2024110522} provide context for interpreting regional financing conditions."
   },
   {
     "file": "sections/discussion.tex",
-    "line": 13,
+    "line": 12,
     "keys": [
-      "GLOCKER2024103201"
+      "LI20211712"
     ],
-    "claim": "The European energy crisis illustrates the importance of energy security and storage planning \\cite{WEI2024110522}. Fiscal instruments can also alter the pass-through of energy-price shocks to inflation and output in energy-importing economies \\cite{GLOCKER2024103201}. Financing instruments provide a complementary channel: green-bond certification and issuance can influence investor participation and the credibility of environmental commitments \\cite{ehlers2017green,flammer2021corporate}."
+    "claim": "Despite Europe's global leadership in renewable energy technology promotion, its short-term reliance on fossil fuel imports remains difficult to reverse \\cite{LI20211712}. This import dependence allows global price fluctuations to affect the energy market and potentially capital costs."
   },
   {
     "file": "sections/discussion.tex",
-    "line": 13,
+    "line": 14,
+    "keys": [
+      "EUETS"
+    ],
+    "claim": "On the other hand, the effectiveness of the EU Emissions Trading System depends on policy design and price incentives \\cite{EUETS}. Additionally, renewable energy deployment requires infrastructure development \\cite{RenewableEnergyDirective}."
+  },
+  {
+    "file": "sections/discussion.tex",
+    "line": 14,
+    "keys": [
+      "RenewableEnergyDirective"
+    ],
+    "claim": "On the other hand, the effectiveness of the EU Emissions Trading System depends on policy design and price incentives \\cite{EUETS}. Additionally, renewable energy deployment requires infrastructure development \\cite{RenewableEnergyDirective}."
+  },
+  {
+    "file": "sections/discussion.tex",
+    "line": 18,
+    "keys": [
+      "WEI2024110522"
+    ],
+    "claim": "Geopolitical risks can amplify energy-market instability, as illustrated by the European energy crisis \\cite{WEI2024110522}."
+  },
+  {
+    "file": "sections/discussion.tex",
+    "line": 20,
     "keys": [
       "ehlers2017green",
       "flammer2021corporate"
     ],
-    "claim": "The European energy crisis illustrates the importance of energy security and storage planning \\cite{WEI2024110522}. Fiscal instruments can also alter the pass-through of energy-price shocks to inflation and output in energy-importing economies \\cite{GLOCKER2024103201}. Financing instruments provide a complementary channel: green-bond certification and issuance can influence investor participation and the credibility of environmental commitments \\cite{ehlers2017green,flammer2021corporate}."
+    "claim": "Moreover, international capital flows supporting Europe's energy transition create additional financing channels. Green bonds and certification can help mobilize this capital \\cite{ehlers2017green,flammer2021corporate}."
   },
   {
     "file": "sections/discussion.tex",
-    "line": 16,
+    "line": 28,
     "keys": [
       "SUN2022121642",
       "WANG2023128724"
     ],
-    "claim": "China's original average fit is $R^2=0.650$. Research finds time-varying spillovers between international and Chinese energy and commodity markets \\cite{SUN2022121642,WANG2023128724}. These links provide a rationale for including international fuel-price signals in regional financing analysis."
+    "claim": "As one of the world's largest fossil energy importers, China's energy security and price stability rely heavily on international markets \\cite{SUN2022121642,WANG2023128724}. These links make international price fluctuations relevant to domestic markets. A positive long-run relationship between fossil fuel prices and renewable energy consumption has also been reported for China \\cite{ben2022assessing}."
   },
   {
     "file": "sections/discussion.tex",
-    "line": 19,
+    "line": 28,
     "keys": [
       "ben2022assessing"
     ],
-    "claim": "Ben-Salha et al. find long-run relationships between fossil fuel prices and renewable-energy consumption in China, but no significant short-run effects in their specification \\cite{ben2022assessing}. Their results distinguish short-run price exposure from longer-run substitution toward renewables."
+    "claim": "As one of the world's largest fossil energy importers, China's energy security and price stability rely heavily on international markets \\cite{SUN2022121642,WANG2023128724}. These links make international price fluctuations relevant to domestic markets. A positive long-run relationship between fossil fuel prices and renewable energy consumption has also been reported for China \\cite{ben2022assessing}."
   },
   {
     "file": "sections/discussion.tex",
-    "line": 22,
+    "line": 32,
     "keys": [
       "HE2017524"
     ],
-    "claim": "Price regulation can modify the domestic consequences of international energy-market changes. He and Lin model the economic and emissions effects of natural-gas price control in China \\cite{HE2017524}. Policy design, public finance, and risk mitigation are therefore relevant considerations when interpreting regional financing conditions \\cite{POLZIN20191249,duma2023risk}."
+    "claim": "To mitigate the risks of price fluctuations, the Chinese government has used energy price controls \\cite{HE2017524}. More generally, fiscal instruments can affect energy-price pass-through, inflation, and output in importing economies \\cite{GLOCKER2024103201}."
   },
   {
     "file": "sections/discussion.tex",
-    "line": 22,
+    "line": 32,
     "keys": [
-      "POLZIN20191249",
-      "duma2023risk"
+      "GLOCKER2024103201"
     ],
-    "claim": "Price regulation can modify the domestic consequences of international energy-market changes. He and Lin model the economic and emissions effects of natural-gas price control in China \\cite{HE2017524}. Policy design, public finance, and risk mitigation are therefore relevant considerations when interpreting regional financing conditions \\cite{POLZIN20191249,duma2023risk}."
+    "claim": "To mitigate the risks of price fluctuations, the Chinese government has used energy price controls \\cite{HE2017524}. More generally, fiscal instruments can affect energy-price pass-through, inflation, and output in importing economies \\cite{GLOCKER2024103201}."
   },
   {
     "file": "sections/discussion.tex",
-    "line": 25,
-    "keys": [
-      "karanfil2023energy"
-    ],
-    "claim": "The original Middle Eastern specifications have a lower average fit ($R^2=0.547$). Oil dependence, diversification, and domestic pricing institutions provide possible contextual explanations. Karanfil and Omgba examine structural factors that shape export diversification in oil-dependent economies \\cite{karanfil2023energy}."
-  },
-  {
-    "file": "sections/discussion.tex",
-    "line": 31,
-    "keys": [
-      "FATTOUH2013108"
-    ],
-    "claim": "Fattouh and El-Katiri document the importance and economic trade-offs of energy subsidies in the Middle East and North Africa \\cite{FATTOUH2013108}. Such arrangements can affect domestic price exposure and investment incentives. Their effects on renewable-project financing also depend on contract design, counterparty risk, and guarantees \\cite{duma2023risk}."
-  },
-  {
-    "file": "sections/discussion.tex",
-    "line": 31,
-    "keys": [
-      "duma2023risk"
-    ],
-    "claim": "Fattouh and El-Katiri document the importance and economic trade-offs of energy subsidies in the Middle East and North Africa \\cite{FATTOUH2013108}. Such arrangements can affect domestic price exposure and investment incentives. Their effects on renewable-project financing also depend on contract design, counterparty risk, and guarantees \\cite{duma2023risk}."
-  },
-  {
-    "file": "sections/discussion.tex",
-    "line": 55,
-    "keys": [
-      "ameli2021higher",
-      "calcaterra2024reducing"
-    ],
-    "claim": "Financing conditions can influence the affordability and timing of renewable investment. Prior modeling shows that regional differences in capital costs can materially change decarbonization pathways \\cite{ameli2021higher,calcaterra2024reducing}. The present study adds a framework for comparing fuel-price and inflation signals across regional WACC scenarios. A linked investment or energy-system model could extend the analysis to deployment and emissions."
-  },
-  {
-    "file": "sections/discussion.tex",
-    "line": 58,
-    "keys": [
-      "bouzarovski2017energy"
-    ],
-    "claim": "Reliable energy finance is relevant to affordability and a just transition. European research documents substantial geographical differences in energy poverty \\cite{bouzarovski2017energy}, and the OECD emphasizes aligning local climate finance with inclusive development \\cite{oecd2021financing}. These concerns motivate analysis of financing conditions in Europe, China, and the Middle East."
-  },
-  {
-    "file": "sections/discussion.tex",
-    "line": 58,
-    "keys": [
-      "oecd2021financing"
-    ],
-    "claim": "Reliable energy finance is relevant to affordability and a just transition. European research documents substantial geographical differences in energy poverty \\cite{bouzarovski2017energy}, and the OECD emphasizes aligning local climate finance with inclusive development \\cite{oecd2021financing}. These concerns motivate analysis of financing conditions in Europe, China, and the Middle East."
-  },
-  {
-    "file": "sections/discussion.tex",
-    "line": 61,
-    "keys": [
-      "POLZIN20191249",
-      "duma2023risk",
-      "ehlers2017green",
-      "flammer2021corporate"
-    ],
-    "claim": "In Europe, predictable revenue arrangements and financial instruments such as green bonds, subsidies, and climate risk insurance can support renewable investment by reducing financing risks \\cite{POLZIN20191249,duma2023risk,ehlers2017green,flammer2021corporate}."
-  },
-  {
-    "file": "sections/discussion.tex",
-    "line": 63,
-    "keys": [
-      "HE2017524",
-      "POLZIN20191249",
-      "duma2023risk"
-    ],
-    "claim": "China's energy transition also involves government intervention in energy markets. Policymakers could consider more market-driven price mechanisms, complemented by targeted green finance initiatives to reduce capital costs. State-supported financing can help encourage private investment in clean energy while preserving broader economic stability \\cite{HE2017524,POLZIN20191249,duma2023risk}."
-  },
-  {
-    "file": "sections/discussion.tex",
-    "line": 65,
+    "line": 36,
     "keys": [
       "karanfil2023energy",
       "FATTOUH2013108"
     ],
-    "claim": "For the Middle East, dependence on fossil fuel revenues makes diversification important for long-term economic resilience. Policymakers could prioritize investment in renewable energy, with sovereign financing capacity providing a possible source of long-term capital \\cite{karanfil2023energy,FATTOUH2013108}."
+    "claim": "The data from the Middle East region exhibit a relatively low model fit, with an average $R^2$ of 0.55 (Fig.~\\ref{fig:result9}), lower than that observed in other regions. This regional difference may reflect its position as a fossil fuel exporter and its institutional framework \\cite{karanfil2023energy,FATTOUH2013108}."
+  },
+  {
+    "file": "sections/discussion.tex",
+    "line": 40,
+    "keys": [
+      "karanfil2023energy"
+    ],
+    "claim": "In the Middle East, economies dependent on oil and gas trade face challenges in export diversification \\cite{karanfil2023energy}. Sovereign wealth funds could directly invest in renewable energy projects, thereby mitigating market financing risks."
+  },
+  {
+    "file": "sections/discussion.tex",
+    "line": 44,
+    "keys": [
+      "FATTOUH2013108"
+    ],
+    "claim": "Domestic energy pricing and subsidies shape transition incentives in the region \\cite{FATTOUH2013108}. Long-term agreements and guarantees can help manage project financing risks \\cite{duma2023risk}. These instruments provide possible channels through which policy can moderate exposure to price fluctuations."
+  },
+  {
+    "file": "sections/discussion.tex",
+    "line": 44,
+    "keys": [
+      "duma2023risk"
+    ],
+    "claim": "Domestic energy pricing and subsidies shape transition incentives in the region \\cite{FATTOUH2013108}. Long-term agreements and guarantees can help manage project financing risks \\cite{duma2023risk}. These instruments provide possible channels through which policy can moderate exposure to price fluctuations."
+  },
+  {
+    "file": "sections/discussion.tex",
+    "line": 72,
+    "keys": [
+      "ameli2021higher"
+    ],
+    "claim": "For energy-importing regions like Europe and China (average $R^2$=0.67 and 0.65), financing risk may have environmental consequences. The resulting uncertainty in financing costs can deter or delay the large-scale, capital-intensive investments. Such delays could affect the deployment required to align with a 1.5$^\\circ$C trajectory \\cite{ameli2021higher}."
+  },
+  {
+    "file": "sections/discussion.tex",
+    "line": 80,
+    "keys": [
+      "bouzarovski2017energy"
+    ],
+    "claim": "In Europe, household energy affordability is an important concern \\cite{bouzarovski2017energy}. Green bonds and climate risk insurance could help manage financing risks, while support for vulnerable consumers remains a policy priority. In China, as a major fossil fuel importer, volatility affects manufacturing hubs and residential heating; managing price pass-through is relevant to stable energy access. In the Middle East, diversifying sovereign wealth funds into local solar and hydrogen projects could support domestic green jobs and reduce long-term economic dependence on volatile export revenues. These community benefits depend on policy design and inclusive access to climate finance \\cite{oecd2021financing}."
+  },
+  {
+    "file": "sections/discussion.tex",
+    "line": 80,
+    "keys": [
+      "oecd2021financing"
+    ],
+    "claim": "In Europe, household energy affordability is an important concern \\cite{bouzarovski2017energy}. Green bonds and climate risk insurance could help manage financing risks, while support for vulnerable consumers remains a policy priority. In China, as a major fossil fuel importer, volatility affects manufacturing hubs and residential heating; managing price pass-through is relevant to stable energy access. In the Middle East, diversifying sovereign wealth funds into local solar and hydrogen projects could support domestic green jobs and reduce long-term economic dependence on volatile export revenues. These community benefits depend on policy design and inclusive access to climate finance \\cite{oecd2021financing}."
+  },
+  {
+    "file": "sections/discussion.tex",
+    "line": 84,
+    "keys": [
+      "POLZIN20191249"
+    ],
+    "claim": "In Europe, the WACC model has a relatively high $R^2$ and low MAPE (0.67 and 0.0050). Energy price volatility remains relevant to renewable investment planning. To meet the 1.5$^\\circ$C climate target, European policymakers could prioritize developing financial instruments such as green bonds, subsidies, and climate risk insurance. These mechanisms can stabilize financing costs, reduce investor risk, and stimulate greater private investment in renewable energy \\cite{POLZIN20191249}."
+  },
+  {
+    "file": "sections/discussion.tex",
+    "line": 88,
+    "keys": [
+      "karanfil2023energy"
+    ],
+    "claim": "The Middle East's heavy dependence on fossil fuel revenues presents a potential risk for the energy transition \\cite{karanfil2023energy}. To ensure long-term economic resilience and align with global decarbonization objectives, policymakers could prioritize the diversification of the energy mix through increased investment in renewable energy. In this context, sovereign wealth funds can serve as a strategic vehicle by providing long-term, low-cost capital for renewable energy projects, thereby reducing overall financing costs. These funds can strategically allocate capital toward renewable energy infrastructure, enhancing financial stability and mitigating project-related risks."
   },
   {
     "file": "sections/introduction.tex",
@@ -183,7 +177,7 @@
     "keys": [
       "messerli2019global"
     ],
-    "claim": "The urgency of mitigating global warming necessitates a rapid energy transition to achieve the Sustainable Development Goals (SDGs) \\cite{messerli2019global}. Energy-system transformation is central to climate-change mitigation \\cite{BOGDANOV2021120467}. This transition is not solely a technological endeavor \\cite{CHEN20191564}; it also encompasses critical economic dimensions, among which the weighted average cost of capital (WACC) is a critical metric \\cite{BACHNER2019100373}. It represents the average return required by capital providers, balancing the costs of debt and equity financing \\cite{BACHNER2019100373}. The environmental consequences of this financial indicator are profound; Ameli et al. report 35\\% lower green electricity production in Africa under region-specific WACC assumptions in a cost-optimal 2$^\\circ$C pathway; their financing-policy scenario allows Africa to reach net-zero emissions approximately ten years earlier \\cite{ameli2021higher}."
+    "claim": "The urgency of mitigating global warming necessitates a rapid energy transition to achieve the Sustainable Development Goals (SDGs) \\cite{messerli2019global}. Since energy consumption is the primary source of global greenhouse gas emissions \\cite{BOGDANOV2021120467}, a transformation of energy systems is essential. This transition is not solely a technological endeavor \\cite{CHEN20191564}; it also encompasses critical economic dimensions, among which the weighted average cost of capital (WACC) is a critical metric \\cite{BACHNER2019100373}. It represents the average return required by capital providers, balancing the costs of debt and equity financing \\cite{BACHNER2019100373}. The environmental consequences of this financial indicator are profound; modeling for Africa shows 35\\% lower green electricity production under high capital costs in a 2$^\\circ$C pathway, while a finance-policy scenario brings net-zero emissions forward by about a decade \\cite{ameli2021higher}."
   },
   {
     "file": "sections/introduction.tex",
@@ -191,7 +185,7 @@
     "keys": [
       "BOGDANOV2021120467"
     ],
-    "claim": "The urgency of mitigating global warming necessitates a rapid energy transition to achieve the Sustainable Development Goals (SDGs) \\cite{messerli2019global}. Energy-system transformation is central to climate-change mitigation \\cite{BOGDANOV2021120467}. This transition is not solely a technological endeavor \\cite{CHEN20191564}; it also encompasses critical economic dimensions, among which the weighted average cost of capital (WACC) is a critical metric \\cite{BACHNER2019100373}. It represents the average return required by capital providers, balancing the costs of debt and equity financing \\cite{BACHNER2019100373}. The environmental consequences of this financial indicator are profound; Ameli et al. report 35\\% lower green electricity production in Africa under region-specific WACC assumptions in a cost-optimal 2$^\\circ$C pathway; their financing-policy scenario allows Africa to reach net-zero emissions approximately ten years earlier \\cite{ameli2021higher}."
+    "claim": "The urgency of mitigating global warming necessitates a rapid energy transition to achieve the Sustainable Development Goals (SDGs) \\cite{messerli2019global}. Since energy consumption is the primary source of global greenhouse gas emissions \\cite{BOGDANOV2021120467}, a transformation of energy systems is essential. This transition is not solely a technological endeavor \\cite{CHEN20191564}; it also encompasses critical economic dimensions, among which the weighted average cost of capital (WACC) is a critical metric \\cite{BACHNER2019100373}. It represents the average return required by capital providers, balancing the costs of debt and equity financing \\cite{BACHNER2019100373}. The environmental consequences of this financial indicator are profound; modeling for Africa shows 35\\% lower green electricity production under high capital costs in a 2$^\\circ$C pathway, while a finance-policy scenario brings net-zero emissions forward by about a decade \\cite{ameli2021higher}."
   },
   {
     "file": "sections/introduction.tex",
@@ -199,7 +193,7 @@
     "keys": [
       "CHEN20191564"
     ],
-    "claim": "The urgency of mitigating global warming necessitates a rapid energy transition to achieve the Sustainable Development Goals (SDGs) \\cite{messerli2019global}. Energy-system transformation is central to climate-change mitigation \\cite{BOGDANOV2021120467}. This transition is not solely a technological endeavor \\cite{CHEN20191564}; it also encompasses critical economic dimensions, among which the weighted average cost of capital (WACC) is a critical metric \\cite{BACHNER2019100373}. It represents the average return required by capital providers, balancing the costs of debt and equity financing \\cite{BACHNER2019100373}. The environmental consequences of this financial indicator are profound; Ameli et al. report 35\\% lower green electricity production in Africa under region-specific WACC assumptions in a cost-optimal 2$^\\circ$C pathway; their financing-policy scenario allows Africa to reach net-zero emissions approximately ten years earlier \\cite{ameli2021higher}."
+    "claim": "The urgency of mitigating global warming necessitates a rapid energy transition to achieve the Sustainable Development Goals (SDGs) \\cite{messerli2019global}. Since energy consumption is the primary source of global greenhouse gas emissions \\cite{BOGDANOV2021120467}, a transformation of energy systems is essential. This transition is not solely a technological endeavor \\cite{CHEN20191564}; it also encompasses critical economic dimensions, among which the weighted average cost of capital (WACC) is a critical metric \\cite{BACHNER2019100373}. It represents the average return required by capital providers, balancing the costs of debt and equity financing \\cite{BACHNER2019100373}. The environmental consequences of this financial indicator are profound; modeling for Africa shows 35\\% lower green electricity production under high capital costs in a 2$^\\circ$C pathway, while a finance-policy scenario brings net-zero emissions forward by about a decade \\cite{ameli2021higher}."
   },
   {
     "file": "sections/introduction.tex",
@@ -207,7 +201,7 @@
     "keys": [
       "BACHNER2019100373"
     ],
-    "claim": "The urgency of mitigating global warming necessitates a rapid energy transition to achieve the Sustainable Development Goals (SDGs) \\cite{messerli2019global}. Energy-system transformation is central to climate-change mitigation \\cite{BOGDANOV2021120467}. This transition is not solely a technological endeavor \\cite{CHEN20191564}; it also encompasses critical economic dimensions, among which the weighted average cost of capital (WACC) is a critical metric \\cite{BACHNER2019100373}. It represents the average return required by capital providers, balancing the costs of debt and equity financing \\cite{BACHNER2019100373}. The environmental consequences of this financial indicator are profound; Ameli et al. report 35\\% lower green electricity production in Africa under region-specific WACC assumptions in a cost-optimal 2$^\\circ$C pathway; their financing-policy scenario allows Africa to reach net-zero emissions approximately ten years earlier \\cite{ameli2021higher}."
+    "claim": "The urgency of mitigating global warming necessitates a rapid energy transition to achieve the Sustainable Development Goals (SDGs) \\cite{messerli2019global}. Since energy consumption is the primary source of global greenhouse gas emissions \\cite{BOGDANOV2021120467}, a transformation of energy systems is essential. This transition is not solely a technological endeavor \\cite{CHEN20191564}; it also encompasses critical economic dimensions, among which the weighted average cost of capital (WACC) is a critical metric \\cite{BACHNER2019100373}. It represents the average return required by capital providers, balancing the costs of debt and equity financing \\cite{BACHNER2019100373}. The environmental consequences of this financial indicator are profound; modeling for Africa shows 35\\% lower green electricity production under high capital costs in a 2$^\\circ$C pathway, while a finance-policy scenario brings net-zero emissions forward by about a decade \\cite{ameli2021higher}."
   },
   {
     "file": "sections/introduction.tex",
@@ -215,7 +209,7 @@
     "keys": [
       "BACHNER2019100373"
     ],
-    "claim": "The urgency of mitigating global warming necessitates a rapid energy transition to achieve the Sustainable Development Goals (SDGs) \\cite{messerli2019global}. Energy-system transformation is central to climate-change mitigation \\cite{BOGDANOV2021120467}. This transition is not solely a technological endeavor \\cite{CHEN20191564}; it also encompasses critical economic dimensions, among which the weighted average cost of capital (WACC) is a critical metric \\cite{BACHNER2019100373}. It represents the average return required by capital providers, balancing the costs of debt and equity financing \\cite{BACHNER2019100373}. The environmental consequences of this financial indicator are profound; Ameli et al. report 35\\% lower green electricity production in Africa under region-specific WACC assumptions in a cost-optimal 2$^\\circ$C pathway; their financing-policy scenario allows Africa to reach net-zero emissions approximately ten years earlier \\cite{ameli2021higher}."
+    "claim": "The urgency of mitigating global warming necessitates a rapid energy transition to achieve the Sustainable Development Goals (SDGs) \\cite{messerli2019global}. Since energy consumption is the primary source of global greenhouse gas emissions \\cite{BOGDANOV2021120467}, a transformation of energy systems is essential. This transition is not solely a technological endeavor \\cite{CHEN20191564}; it also encompasses critical economic dimensions, among which the weighted average cost of capital (WACC) is a critical metric \\cite{BACHNER2019100373}. It represents the average return required by capital providers, balancing the costs of debt and equity financing \\cite{BACHNER2019100373}. The environmental consequences of this financial indicator are profound; modeling for Africa shows 35\\% lower green electricity production under high capital costs in a 2$^\\circ$C pathway, while a finance-policy scenario brings net-zero emissions forward by about a decade \\cite{ameli2021higher}."
   },
   {
     "file": "sections/introduction.tex",
@@ -223,23 +217,25 @@
     "keys": [
       "ameli2021higher"
     ],
-    "claim": "The urgency of mitigating global warming necessitates a rapid energy transition to achieve the Sustainable Development Goals (SDGs) \\cite{messerli2019global}. Energy-system transformation is central to climate-change mitigation \\cite{BOGDANOV2021120467}. This transition is not solely a technological endeavor \\cite{CHEN20191564}; it also encompasses critical economic dimensions, among which the weighted average cost of capital (WACC) is a critical metric \\cite{BACHNER2019100373}. It represents the average return required by capital providers, balancing the costs of debt and equity financing \\cite{BACHNER2019100373}. The environmental consequences of this financial indicator are profound; Ameli et al. report 35\\% lower green electricity production in Africa under region-specific WACC assumptions in a cost-optimal 2$^\\circ$C pathway; their financing-policy scenario allows Africa to reach net-zero emissions approximately ten years earlier \\cite{ameli2021higher}."
+    "claim": "The urgency of mitigating global warming necessitates a rapid energy transition to achieve the Sustainable Development Goals (SDGs) \\cite{messerli2019global}. Since energy consumption is the primary source of global greenhouse gas emissions \\cite{BOGDANOV2021120467}, a transformation of energy systems is essential. This transition is not solely a technological endeavor \\cite{CHEN20191564}; it also encompasses critical economic dimensions, among which the weighted average cost of capital (WACC) is a critical metric \\cite{BACHNER2019100373}. It represents the average return required by capital providers, balancing the costs of debt and equity financing \\cite{BACHNER2019100373}. The environmental consequences of this financial indicator are profound; modeling for Africa shows 35\\% lower green electricity production under high capital costs in a 2$^\\circ$C pathway, while a finance-policy scenario brings net-zero emissions forward by about a decade \\cite{ameli2021higher}."
   },
   {
     "file": "sections/introduction.tex",
     "line": 7,
     "keys": [
-      "melodia2022energy"
+      "melodia2022energy",
+      "dobrowolski2022weighted"
     ],
-    "claim": "A pernicious challenge for the energy transition is its inherent vulnerability to shocks from the legacy fossil fuel system it seeks to replace. Global oil, gas, and coal price fluctuations can affect inflation and financing conditions, creating potential exposure for capital-intensive renewable projects \\cite{melodia2022energy}. Financing assumptions can change modeled investment choices and transition pathways \\cite{egli2019bias}. Existing research has examined the relationship between WACC, interest rates, and unstable market conditions in the energy sector \\cite{dobrowolski2022weighted}. However, less attention has been devoted to evaluating its influence on WACC within the context of energy transition projects. Additionally, the varied impacts of fossil fuel price volatility across different energy sectors and regions have not been fully explored."
+    "claim": "A pernicious challenge for the energy transition is its inherent vulnerability to shocks from the legacy fossil fuel system it seeks to replace. Volatility in global oil, gas, and coal prices propagates through the financial system, influencing inflation, interest rates, and investor risk perception, potentially affecting the WACC for capital-intensive renewable projects \\cite{melodia2022energy,dobrowolski2022weighted}. This financial vulnerability can increase environmental risk, as high capital costs can slow the pace of decarbonization \\cite{egli2019bias,ameli2021higher}. Existing research has examined WACC and interest rates under unstable market conditions \\cite{dobrowolski2022weighted}. However, less attention has been devoted to evaluating its influence on WACC within the context of energy transition projects. Additionally, the varied impacts of fossil fuel price volatility across different energy sectors and regions have not been fully explored."
   },
   {
     "file": "sections/introduction.tex",
     "line": 7,
     "keys": [
-      "egli2019bias"
+      "egli2019bias",
+      "ameli2021higher"
     ],
-    "claim": "A pernicious challenge for the energy transition is its inherent vulnerability to shocks from the legacy fossil fuel system it seeks to replace. Global oil, gas, and coal price fluctuations can affect inflation and financing conditions, creating potential exposure for capital-intensive renewable projects \\cite{melodia2022energy}. Financing assumptions can change modeled investment choices and transition pathways \\cite{egli2019bias}. Existing research has examined the relationship between WACC, interest rates, and unstable market conditions in the energy sector \\cite{dobrowolski2022weighted}. However, less attention has been devoted to evaluating its influence on WACC within the context of energy transition projects. Additionally, the varied impacts of fossil fuel price volatility across different energy sectors and regions have not been fully explored."
+    "claim": "A pernicious challenge for the energy transition is its inherent vulnerability to shocks from the legacy fossil fuel system it seeks to replace. Volatility in global oil, gas, and coal prices propagates through the financial system, influencing inflation, interest rates, and investor risk perception, potentially affecting the WACC for capital-intensive renewable projects \\cite{melodia2022energy,dobrowolski2022weighted}. This financial vulnerability can increase environmental risk, as high capital costs can slow the pace of decarbonization \\cite{egli2019bias,ameli2021higher}. Existing research has examined WACC and interest rates under unstable market conditions \\cite{dobrowolski2022weighted}. However, less attention has been devoted to evaluating its influence on WACC within the context of energy transition projects. Additionally, the varied impacts of fossil fuel price volatility across different energy sectors and regions have not been fully explored."
   },
   {
     "file": "sections/introduction.tex",
@@ -247,7 +243,7 @@
     "keys": [
       "dobrowolski2022weighted"
     ],
-    "claim": "A pernicious challenge for the energy transition is its inherent vulnerability to shocks from the legacy fossil fuel system it seeks to replace. Global oil, gas, and coal price fluctuations can affect inflation and financing conditions, creating potential exposure for capital-intensive renewable projects \\cite{melodia2022energy}. Financing assumptions can change modeled investment choices and transition pathways \\cite{egli2019bias}. Existing research has examined the relationship between WACC, interest rates, and unstable market conditions in the energy sector \\cite{dobrowolski2022weighted}. However, less attention has been devoted to evaluating its influence on WACC within the context of energy transition projects. Additionally, the varied impacts of fossil fuel price volatility across different energy sectors and regions have not been fully explored."
+    "claim": "A pernicious challenge for the energy transition is its inherent vulnerability to shocks from the legacy fossil fuel system it seeks to replace. Volatility in global oil, gas, and coal prices propagates through the financial system, influencing inflation, interest rates, and investor risk perception, potentially affecting the WACC for capital-intensive renewable projects \\cite{melodia2022energy,dobrowolski2022weighted}. This financial vulnerability can increase environmental risk, as high capital costs can slow the pace of decarbonization \\cite{egli2019bias,ameli2021higher}. Existing research has examined WACC and interest rates under unstable market conditions \\cite{dobrowolski2022weighted}. However, less attention has been devoted to evaluating its influence on WACC within the context of energy transition projects. Additionally, the varied impacts of fossil fuel price volatility across different energy sectors and regions have not been fully explored."
   },
   {
     "file": "sections/literature_review.tex",
@@ -279,7 +275,7 @@
     "keys": [
       "calcaterra2024reducing"
     ],
-    "claim": "After that, Calcaterra et al. \\cite{calcaterra2024reducing} introduce a time dimension and financial learning, simulating how technological progress and experience accumulation can lower WACC by reducing technological risks and the required safety margin. In their financial-learning reference scenario, capital costs decrease with cumulative deployment:"
+    "claim": "After that, Calcaterra et al. \\cite{calcaterra2024reducing} introduce a time dimension and financial learning, simulating how technological progress and experience accumulation can lower WACC by reducing technological risks and the required safety margin. The financial-learning scenario models capital costs as a function of cumulative deployment:"
   },
   {
     "file": "sections/literature_review.tex",
@@ -295,7 +291,15 @@
     "keys": [
       "Lieberman2007RenewableHedge"
     ],
-    "claim": "Fossil fuel prices can influence renewable-energy financing through several channels. Higher fossil fuel prices can improve the relative competitiveness of renewable generation, while renewables can provide a hedge against fuel-price exposure \\cite{Lieberman2007RenewableHedge}. Stock-market evidence is mixed: Vr\\^inceanu et al. find no significant effect of oil-price volatility on renewable-stock return volatility in their sample \\cite{vrinceanu2020influence}. These observations do not imply a uniform change in CAPM $\\beta$ across projects or regions. In India, Shrimali reports different risk and return profiles for renewable and fossil power portfolios \\cite{su13052573}."
+    "claim": "Fossil fuel prices could influence the components of the CAPM equation. The substitution effect suggests that higher fossil fuel prices can enhance the economic competitiveness of renewable energy projects and influence perceived risk and the required return, $r_{Eit}$ \\cite{Lieberman2007RenewableHedge}. Additionally, the impact on systematic risk ($\\beta_i$) is ambiguous. Renewable assets can act as a hedge against fossil fuel price volatility due to their zero fuel cost \\cite{Lieberman2007RenewableHedge}. Stock-market evidence varies: Vr\\^inceanu et al. find no significant effect of oil-price volatility on renewable-stock return volatility in their sample \\cite{vrinceanu2020influence}. Renewable and fossil power portfolios can also differ in financial risk and return, as reported for India \\cite{su13052573}."
+  },
+  {
+    "file": "sections/literature_review.tex",
+    "line": 35,
+    "keys": [
+      "Lieberman2007RenewableHedge"
+    ],
+    "claim": "Fossil fuel prices could influence the components of the CAPM equation. The substitution effect suggests that higher fossil fuel prices can enhance the economic competitiveness of renewable energy projects and influence perceived risk and the required return, $r_{Eit}$ \\cite{Lieberman2007RenewableHedge}. Additionally, the impact on systematic risk ($\\beta_i$) is ambiguous. Renewable assets can act as a hedge against fossil fuel price volatility due to their zero fuel cost \\cite{Lieberman2007RenewableHedge}. Stock-market evidence varies: Vr\\^inceanu et al. find no significant effect of oil-price volatility on renewable-stock return volatility in their sample \\cite{vrinceanu2020influence}. Renewable and fossil power portfolios can also differ in financial risk and return, as reported for India \\cite{su13052573}."
   },
   {
     "file": "sections/literature_review.tex",
@@ -303,7 +307,7 @@
     "keys": [
       "vrinceanu2020influence"
     ],
-    "claim": "Fossil fuel prices can influence renewable-energy financing through several channels. Higher fossil fuel prices can improve the relative competitiveness of renewable generation, while renewables can provide a hedge against fuel-price exposure \\cite{Lieberman2007RenewableHedge}. Stock-market evidence is mixed: Vr\\^inceanu et al. find no significant effect of oil-price volatility on renewable-stock return volatility in their sample \\cite{vrinceanu2020influence}. These observations do not imply a uniform change in CAPM $\\beta$ across projects or regions. In India, Shrimali reports different risk and return profiles for renewable and fossil power portfolios \\cite{su13052573}."
+    "claim": "Fossil fuel prices could influence the components of the CAPM equation. The substitution effect suggests that higher fossil fuel prices can enhance the economic competitiveness of renewable energy projects and influence perceived risk and the required return, $r_{Eit}$ \\cite{Lieberman2007RenewableHedge}. Additionally, the impact on systematic risk ($\\beta_i$) is ambiguous. Renewable assets can act as a hedge against fossil fuel price volatility due to their zero fuel cost \\cite{Lieberman2007RenewableHedge}. Stock-market evidence varies: Vr\\^inceanu et al. find no significant effect of oil-price volatility on renewable-stock return volatility in their sample \\cite{vrinceanu2020influence}. Renewable and fossil power portfolios can also differ in financial risk and return, as reported for India \\cite{su13052573}."
   },
   {
     "file": "sections/literature_review.tex",
@@ -311,7 +315,7 @@
     "keys": [
       "su13052573"
     ],
-    "claim": "Fossil fuel prices can influence renewable-energy financing through several channels. Higher fossil fuel prices can improve the relative competitiveness of renewable generation, while renewables can provide a hedge against fuel-price exposure \\cite{Lieberman2007RenewableHedge}. Stock-market evidence is mixed: Vr\\^inceanu et al. find no significant effect of oil-price volatility on renewable-stock return volatility in their sample \\cite{vrinceanu2020influence}. These observations do not imply a uniform change in CAPM $\\beta$ across projects or regions. In India, Shrimali reports different risk and return profiles for renewable and fossil power portfolios \\cite{su13052573}."
+    "claim": "Fossil fuel prices could influence the components of the CAPM equation. The substitution effect suggests that higher fossil fuel prices can enhance the economic competitiveness of renewable energy projects and influence perceived risk and the required return, $r_{Eit}$ \\cite{Lieberman2007RenewableHedge}. Additionally, the impact on systematic risk ($\\beta_i$) is ambiguous. Renewable assets can act as a hedge against fossil fuel price volatility due to their zero fuel cost \\cite{Lieberman2007RenewableHedge}. Stock-market evidence varies: Vr\\^inceanu et al. find no significant effect of oil-price volatility on renewable-stock return volatility in their sample \\cite{vrinceanu2020influence}. Renewable and fossil power portfolios can also differ in financial risk and return, as reported for India \\cite{su13052573}."
   },
   {
     "file": "sections/literature_review.tex",
@@ -320,7 +324,7 @@
       "melodia2022energy",
       "millischer2024renewables"
     ],
-    "claim": "The cost of debt ($r_{Dit}$) may also respond to the macroeconomic consequences of energy-price changes. Fossil fuel prices are relevant to inflation \\cite{melodia2022energy,millischer2024renewables}, and the interest-rate environment matters for WACC \\cite{dobrowolski2022weighted}. Project contracts, counterparty risk, and risk-transfer instruments can affect financing conditions \\cite{duma2023risk}. Evidence on environmental financial premia is conditional: Wilberg et al. find no association for aggregate ESG scores but a lower cost of capital for a stronger environmental component in their sample \\cite{kjellevoll2023impact}. Green-bond issuance and certification provide an additional financing channel \\cite{ehlers2017green,flammer2021corporate}."
+    "claim": "Similarly, the cost of debt ($r_{Dit}$) is also susceptible to fossil fuel price shocks, which can contribute to inflation \\cite{melodia2022energy,millischer2024renewables}. Changes in the interest-rate environment affect economy-wide borrowing costs and WACC \\cite{dobrowolski2022weighted}. At the project level, Power Purchase Agreements (PPAs), counterparty risk, and risk-transfer instruments can affect financing conditions and the credit spread component of $r_{Dit}$ \\cite{duma2023risk}. Evidence on environmental financial premia is conditional: Wilberg et al. find no aggregate ESG-score effect but an association between the environmental component and lower capital costs \\cite{kjellevoll2023impact}."
   },
   {
     "file": "sections/literature_review.tex",
@@ -328,7 +332,7 @@
     "keys": [
       "dobrowolski2022weighted"
     ],
-    "claim": "The cost of debt ($r_{Dit}$) may also respond to the macroeconomic consequences of energy-price changes. Fossil fuel prices are relevant to inflation \\cite{melodia2022energy,millischer2024renewables}, and the interest-rate environment matters for WACC \\cite{dobrowolski2022weighted}. Project contracts, counterparty risk, and risk-transfer instruments can affect financing conditions \\cite{duma2023risk}. Evidence on environmental financial premia is conditional: Wilberg et al. find no association for aggregate ESG scores but a lower cost of capital for a stronger environmental component in their sample \\cite{kjellevoll2023impact}. Green-bond issuance and certification provide an additional financing channel \\cite{ehlers2017green,flammer2021corporate}."
+    "claim": "Similarly, the cost of debt ($r_{Dit}$) is also susceptible to fossil fuel price shocks, which can contribute to inflation \\cite{melodia2022energy,millischer2024renewables}. Changes in the interest-rate environment affect economy-wide borrowing costs and WACC \\cite{dobrowolski2022weighted}. At the project level, Power Purchase Agreements (PPAs), counterparty risk, and risk-transfer instruments can affect financing conditions and the credit spread component of $r_{Dit}$ \\cite{duma2023risk}. Evidence on environmental financial premia is conditional: Wilberg et al. find no aggregate ESG-score effect but an association between the environmental component and lower capital costs \\cite{kjellevoll2023impact}."
   },
   {
     "file": "sections/literature_review.tex",
@@ -336,7 +340,7 @@
     "keys": [
       "duma2023risk"
     ],
-    "claim": "The cost of debt ($r_{Dit}$) may also respond to the macroeconomic consequences of energy-price changes. Fossil fuel prices are relevant to inflation \\cite{melodia2022energy,millischer2024renewables}, and the interest-rate environment matters for WACC \\cite{dobrowolski2022weighted}. Project contracts, counterparty risk, and risk-transfer instruments can affect financing conditions \\cite{duma2023risk}. Evidence on environmental financial premia is conditional: Wilberg et al. find no association for aggregate ESG scores but a lower cost of capital for a stronger environmental component in their sample \\cite{kjellevoll2023impact}. Green-bond issuance and certification provide an additional financing channel \\cite{ehlers2017green,flammer2021corporate}."
+    "claim": "Similarly, the cost of debt ($r_{Dit}$) is also susceptible to fossil fuel price shocks, which can contribute to inflation \\cite{melodia2022energy,millischer2024renewables}. Changes in the interest-rate environment affect economy-wide borrowing costs and WACC \\cite{dobrowolski2022weighted}. At the project level, Power Purchase Agreements (PPAs), counterparty risk, and risk-transfer instruments can affect financing conditions and the credit spread component of $r_{Dit}$ \\cite{duma2023risk}. Evidence on environmental financial premia is conditional: Wilberg et al. find no aggregate ESG-score effect but an association between the environmental component and lower capital costs \\cite{kjellevoll2023impact}."
   },
   {
     "file": "sections/literature_review.tex",
@@ -344,16 +348,7 @@
     "keys": [
       "kjellevoll2023impact"
     ],
-    "claim": "The cost of debt ($r_{Dit}$) may also respond to the macroeconomic consequences of energy-price changes. Fossil fuel prices are relevant to inflation \\cite{melodia2022energy,millischer2024renewables}, and the interest-rate environment matters for WACC \\cite{dobrowolski2022weighted}. Project contracts, counterparty risk, and risk-transfer instruments can affect financing conditions \\cite{duma2023risk}. Evidence on environmental financial premia is conditional: Wilberg et al. find no association for aggregate ESG scores but a lower cost of capital for a stronger environmental component in their sample \\cite{kjellevoll2023impact}. Green-bond issuance and certification provide an additional financing channel \\cite{ehlers2017green,flammer2021corporate}."
-  },
-  {
-    "file": "sections/literature_review.tex",
-    "line": 37,
-    "keys": [
-      "ehlers2017green",
-      "flammer2021corporate"
-    ],
-    "claim": "The cost of debt ($r_{Dit}$) may also respond to the macroeconomic consequences of energy-price changes. Fossil fuel prices are relevant to inflation \\cite{melodia2022energy,millischer2024renewables}, and the interest-rate environment matters for WACC \\cite{dobrowolski2022weighted}. Project contracts, counterparty risk, and risk-transfer instruments can affect financing conditions \\cite{duma2023risk}. Evidence on environmental financial premia is conditional: Wilberg et al. find no association for aggregate ESG scores but a lower cost of capital for a stronger environmental component in their sample \\cite{kjellevoll2023impact}. Green-bond issuance and certification provide an additional financing channel \\cite{ehlers2017green,flammer2021corporate}."
+    "claim": "Similarly, the cost of debt ($r_{Dit}$) is also susceptible to fossil fuel price shocks, which can contribute to inflation \\cite{melodia2022energy,millischer2024renewables}. Changes in the interest-rate environment affect economy-wide borrowing costs and WACC \\cite{dobrowolski2022weighted}. At the project level, Power Purchase Agreements (PPAs), counterparty risk, and risk-transfer instruments can affect financing conditions and the credit spread component of $r_{Dit}$ \\cite{duma2023risk}. Evidence on environmental financial premia is conditional: Wilberg et al. find no aggregate ESG-score effect but an association between the environmental component and lower capital costs \\cite{kjellevoll2023impact}."
   },
   {
     "file": "sections/literature_review.tex",
@@ -361,7 +356,7 @@
     "keys": [
       "acaitXie2024carbon"
     ],
-    "claim": "Recent ACAIT proceedings include deep-learning studies of environmental and carbon-related forecasting. Xie et al. \\cite{acaitXie2024carbon} study carbon-emission prediction using deep time-series models. Chen et al. \\cite{acaitChen2023transfer} present a transfer-based adaptive recurrent neural-network model for enterprise carbon-emission prediction. These examples illustrate the use of AI forecasting for climate-related indicators."
+    "claim": "Recent ACAIT proceedings show a growing interest in using deep learning for environmental, energy, and carbon-related forecasting tasks. Xie et al. \\cite{acaitXie2024carbon} study carbon-emission prediction using deep time-series models. Chen et al. \\cite{acaitChen2023transfer} propose a transfer-based adaptive recurrent neural network for enterprise carbon-emission prediction."
   },
   {
     "file": "sections/literature_review.tex",
@@ -369,7 +364,7 @@
     "keys": [
       "acaitChen2023transfer"
     ],
-    "claim": "Recent ACAIT proceedings include deep-learning studies of environmental and carbon-related forecasting. Xie et al. \\cite{acaitXie2024carbon} study carbon-emission prediction using deep time-series models. Chen et al. \\cite{acaitChen2023transfer} present a transfer-based adaptive recurrent neural-network model for enterprise carbon-emission prediction. These examples illustrate the use of AI forecasting for climate-related indicators."
+    "claim": "Recent ACAIT proceedings show a growing interest in using deep learning for environmental, energy, and carbon-related forecasting tasks. Xie et al. \\cite{acaitXie2024carbon} study carbon-emission prediction using deep time-series models. Chen et al. \\cite{acaitChen2023transfer} propose a transfer-based adaptive recurrent neural network for enterprise carbon-emission prediction."
   },
   {
     "file": "sections/methodology.tex",
@@ -378,7 +373,7 @@
       "ALSELWI2024102068",
       "LINDEMANN2021650"
     ],
-    "claim": "Since previous studies have proved the proficiency of Long Short-Term Memory (LSTM) in handling sequence data with long-term dependencies \\cite{ALSELWI2024102068,LINDEMANN2021650}, and evidence on Gaussian Process Regression (GPR) for fossil-energy forecasting \\cite{LAHMIRI2024105008}, together with its probabilistic formulation \\cite{rasmussen2003gaussian}, this study uses a hybrid model combining LSTM and GPR to predict fossil fuel prices (coal, oil, and natural gas) from 2026 to 2035 (Fig.~\\ref{fig:lstm})."
+    "claim": "Since previous studies have proved the proficiency of Long Short-Term Memory (LSTM) in handling sequence data with long-term dependencies \\cite{ALSELWI2024102068,LINDEMANN2021650}, and the advantages of Gaussian Process Regression (GPR) for fossil-energy forecasting \\cite{LAHMIRI2024105008} and its probabilistic formulation \\cite{rasmussen2003gaussian}, this study uses a hybrid model combining LSTM and GPR to predict fossil fuel prices (coal, oil, and natural gas) from 2026 to 2035 (Fig.~\\ref{fig:lstm})."
   },
   {
     "file": "sections/methodology.tex",
@@ -386,7 +381,7 @@
     "keys": [
       "LAHMIRI2024105008"
     ],
-    "claim": "Since previous studies have proved the proficiency of Long Short-Term Memory (LSTM) in handling sequence data with long-term dependencies \\cite{ALSELWI2024102068,LINDEMANN2021650}, and evidence on Gaussian Process Regression (GPR) for fossil-energy forecasting \\cite{LAHMIRI2024105008}, together with its probabilistic formulation \\cite{rasmussen2003gaussian}, this study uses a hybrid model combining LSTM and GPR to predict fossil fuel prices (coal, oil, and natural gas) from 2026 to 2035 (Fig.~\\ref{fig:lstm})."
+    "claim": "Since previous studies have proved the proficiency of Long Short-Term Memory (LSTM) in handling sequence data with long-term dependencies \\cite{ALSELWI2024102068,LINDEMANN2021650}, and the advantages of Gaussian Process Regression (GPR) for fossil-energy forecasting \\cite{LAHMIRI2024105008} and its probabilistic formulation \\cite{rasmussen2003gaussian}, this study uses a hybrid model combining LSTM and GPR to predict fossil fuel prices (coal, oil, and natural gas) from 2026 to 2035 (Fig.~\\ref{fig:lstm})."
   },
   {
     "file": "sections/methodology.tex",
@@ -394,7 +389,7 @@
     "keys": [
       "rasmussen2003gaussian"
     ],
-    "claim": "Since previous studies have proved the proficiency of Long Short-Term Memory (LSTM) in handling sequence data with long-term dependencies \\cite{ALSELWI2024102068,LINDEMANN2021650}, and evidence on Gaussian Process Regression (GPR) for fossil-energy forecasting \\cite{LAHMIRI2024105008}, together with its probabilistic formulation \\cite{rasmussen2003gaussian}, this study uses a hybrid model combining LSTM and GPR to predict fossil fuel prices (coal, oil, and natural gas) from 2026 to 2035 (Fig.~\\ref{fig:lstm})."
+    "claim": "Since previous studies have proved the proficiency of Long Short-Term Memory (LSTM) in handling sequence data with long-term dependencies \\cite{ALSELWI2024102068,LINDEMANN2021650}, and the advantages of Gaussian Process Regression (GPR) for fossil-energy forecasting \\cite{LAHMIRI2024105008} and its probabilistic formulation \\cite{rasmussen2003gaussian}, this study uses a hybrid model combining LSTM and GPR to predict fossil fuel prices (coal, oil, and natural gas) from 2026 to 2035 (Fig.~\\ref{fig:lstm})."
   },
   {
     "file": "sections/methodology.tex",
@@ -402,7 +397,7 @@
     "keys": [
       "dobrowolski2022weighted"
     ],
-    "claim": "In the model, the inflation rate is included as a crucial covariate. As a macroeconomically sensitive indicator, WACC is directly influenced by the prevailing interest rate environment, and inflation is relevant to monetary-policy and financing conditions \\cite{dobrowolski2022weighted}. Additionally, fossil fuel prices themselves are closely correlated with macroeconomic inflation \\cite{millischer2024renewables}."
+    "claim": "In the model, the inflation rate is included as a crucial covariate. As a macroeconomically sensitive indicator, WACC is directly influenced by the prevailing interest rate environment, and inflation is relevant to financing conditions \\cite{dobrowolski2022weighted}. Additionally, fossil fuel prices themselves are closely correlated with the macroeconomic inflation levels \\cite{millischer2024renewables}."
   },
   {
     "file": "sections/methodology.tex",
@@ -410,7 +405,7 @@
     "keys": [
       "millischer2024renewables"
     ],
-    "claim": "In the model, the inflation rate is included as a crucial covariate. As a macroeconomically sensitive indicator, WACC is directly influenced by the prevailing interest rate environment, and inflation is relevant to monetary-policy and financing conditions \\cite{dobrowolski2022weighted}. Additionally, fossil fuel prices themselves are closely correlated with macroeconomic inflation \\cite{millischer2024renewables}."
+    "claim": "In the model, the inflation rate is included as a crucial covariate. As a macroeconomically sensitive indicator, WACC is directly influenced by the prevailing interest rate environment, and inflation is relevant to financing conditions \\cite{dobrowolski2022weighted}. Additionally, fossil fuel prices themselves are closely correlated with the macroeconomic inflation levels \\cite{millischer2024renewables}."
   },
   {
     "file": "sections/methodology.tex",
@@ -418,15 +413,7 @@
     "keys": [
       "PARANHOS2025"
     ],
-    "claim": "This study adopts an inflation-forecasting architecture informed by the recurrent-network approach of Paranhos \\cite{PARANHOS2025}, which models the inflation rate as a non-linear function fitting problem:"
-  },
-  {
-    "file": "sections/methodology.tex",
-    "line": 80,
-    "keys": [
-      "calcaterra2024reducing"
-    ],
-    "claim": "This assessment model involves three fossil fuel prices (coal, natural gas, and oil) and nine types of energy transition projects. For each region, we constructed $3\\times9=27$ separate regression specifications, giving 81 region--fuel--project combinations across the three regions. Coal and gas generation are retained as conventional-technology comparisons. The target WACC series are scenario projections derived from Calcaterra et al. \\cite{calcaterra2024reducing}, aligned to 120 monthly rows per region for 2026--2035. In each model, the independent variables consist of an energy price and the contemporaneous inflation rate, while the dependent variable is the WACC for the project. This approach aims to find a function $f$ for each project type $p$ and energy source $e$, such that:"
+    "claim": "This study adopts an inflation-forecasting methodology informed by recurrent-network research \\cite{PARANHOS2025}, which models the inflation rate as a non-linear function fitting problem:"
   },
   {
     "file": "sections/methodology.tex",
@@ -434,7 +421,7 @@
     "keys": [
       "autogluon2025docs"
     ],
-    "claim": "We selected AutoGluon-Tabular for training and optimization \\cite{autogluon2025docs}. The implementation uses two ensembling techniques:"
+    "claim": "We selected the AutoGluon-Tabular framework to perform training and optimization \\cite{autogluon2025docs}. Since it could enhance model robustness and accuracy through the following two techniques:"
   },
   {
     "file": "sections/methodology.tex",
@@ -442,6 +429,6 @@
     "keys": [
       "PARANHOS2025"
     ],
-    "claim": "The archived oil-price comparison contains 47 monthly observations from 2021--2024 for LSTM-GPR, SARIMA, XGBoost, and LightGBM (Fig.~\\ref{fig:accuracy}). Recomputing metrics from \\texttt{Accuracy\\_Prediction-Model.xlsx} gives $R^2=0.963$, MAPE=0.0186, RMSE=2.416, and MAE=1.425 for LSTM-GPR (Table~\\ref{tab:stage1-accuracy}). The LSTM-GPR series has the smallest errors among these archived outputs. The saved comparison outputs lack complete training-origin metadata. Fixed-origin baseline forecasts trained through 2020 are therefore reported separately in the repository. The inflation model follows the recurrent-network approach of Paranhos \\cite{PARANHOS2025}."
+    "claim": "This study compares the saved WTI crude oil predictions of four models (LSTM-GPR, SARIMA, XGBoost, and LightGBM) over 47 months in 2021--2024. The predictions generated by these models were subsequently compared with actual oil prices, as shown in Fig.~\\ref{fig:accuracy}. Evaluation metrics revealed that the LSTM-GPR model outperformed the other models, achieving a coefficient of determination of 0.963 and MAPE of 0.0186. Additionally, the LSTM-GPR model exhibited lower RMSE and MAE values of 2.416 and 1.425, respectively (Table~\\ref{tab:stage1-accuracy}). The saved comparison lacks complete training-origin metadata; separate fixed-origin baseline results are provided in the repository. Recurrent-network inflation forecasting has been examined in previous studies \\cite{PARANHOS2025}."
   }
 ]

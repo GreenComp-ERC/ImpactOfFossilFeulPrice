@@ -41,32 +41,16 @@
  \IEEEauthorblockA{Duke Kunshan University\\
  Suzhou, China}
  \thanks{\IEEEauthorrefmark{1}Corresponding authors: Zhang: luyao.zhang@dukekunshan.edu.cn, Social Science Division and Digital Innovation Research Center; Huang: mingchun.huang@dukekunshan.edu.cn, Natural and Applied Science Division and Digital Innovation Research Center, Duke Kunshan University. Address: No.8 Duke Ave., Kunshan, Jiangsu 215316, China.}
-@@ -35,19 +48,6 @@
- 
- 
- 
--\IEEEaftertitletext{%
--\vspace{-1.0em}
--\begin{center}
--\begin{minipage}{0.96\textwidth}
--\centering
+@@ -40,7 +53,7 @@
+ \begin{center}
+ \begin{minipage}{0.96\textwidth}
+ \centering
 -\includegraphics[width=\linewidth]{fossilfuel_wacc_tensor_framework.drawio-3.pdf}
--\captionof{figure}{End-to-end tensor framework for weighted average cost of capital (WACC) sensitivity analysis. Cleaned fuel, macroeconomic, and regional WACC panels feed a region x fuel x project tensor, regression layer, validation diagnostics, and reproducibility outputs.}
--\label{fig:tensor-framework}
--\end{minipage}
--\end{center}
--\vspace{-0.6em}
--}
--
- \begin{document}
- 
- \maketitle
-@@ -55,11 +55,12 @@
- \input{sections/abstract}
- \input{sections/introduction}
- \input{sections/literature_review}
-+\input{sections/framework}
- \input{sections/methodology}
++\includegraphics[width=\linewidth]{fossilfuel_wacc_tensor_framework_print.pdf}
+ \captionof{figure}{End-to-end tensor framework for weighted average cost of capital (WACC) sensitivity analysis. Cleaned fuel, macroeconomic, and regional WACC panels feed a region x fuel x project tensor, regression layer, validation diagnostics, and reproducibility outputs.}
+ \label{fig:tensor-framework}
+ \end{minipage}
+@@ -59,7 +72,7 @@
  \input{sections/results}
  \input{sections/discussion}
  \input{sections/conclusion}
@@ -1562,7 +1546,7 @@
  Financial risk assessment plays a vital role in accelerating the global energy transition and achieving the 1.5$^\circ$C climate target. This study develops a three-stage machine learning framework to analyze the impact of fossil fuel price volatility on the weighted average cost of capital (WACC) for energy transition projects. First, a hybrid Long Short-Term Memory-Gaussian Process Regression (LSTM-GPR) model forecasts fossil fuel prices, followed by an LSTM-based inflation predictor. In the final stage, an AutoML (AutoGluon) regression model evaluates how variations in fossil fuel prices and inflation influence WACC across nine energy sectors and multiple global regions.
  
 -The results show that WACC in energy-importing regions like Europe ($R^2$=0.67) and China ($R^2$=0.64) is highly sensitive to price shocks, making their decarbonization pathways vulnerable to external market instability. Conversely, the energy-exporting countries in the Middle East ($R^2$=0.54) exhibit lower sensitivity, indicating a fiscal cushion that may reduce the economic impetus for transition. Additional holdout, rolling-origin, and transmission-diagnostic checks are used to interpret these findings as predictive sensitivity and mechanism evidence rather than as formal causal identification. The approach integrates AI-driven forecasting with climate finance modeling, providing an interpretable and data-driven tool to support policy design, green investment strategies, and climate-resilient energy planning.
-+The results show stronger WACC model fit in energy-importing regions like Europe ($R^2$=0.670) and China ($R^2$=0.650), compared with the energy-exporting Middle East ($R^2$=0.547). Solar and wind projects also show stronger fit. Additional holdout, rolling-origin, and transmission-diagnostic checks are used to interpret these findings as predictive sensitivity and mechanism evidence rather than as formal causal identification. The approach integrates AI-driven forecasting with climate finance modeling, providing an interpretable and data-driven tool to support policy design, green investment strategies, and climate-resilient energy planning.
++The results show higher in-sample WACC model fit in energy-importing regions like Europe ($R^2$=0.67) and China ($R^2$=0.65). Conversely, the energy-exporting countries in the Middle East ($R^2$=0.55) exhibit lower model fit. Additional holdout, rolling-origin, and transmission-diagnostic checks are used to interpret these findings as predictive sensitivity and mechanism evidence rather than as formal causal identification. The approach integrates AI-driven forecasting with climate finance modeling, providing an interpretable and data-driven tool to support policy design, green investment strategies, and climate-resilient energy planning.
  \end{abstract}
  
  \begin{IEEEkeywords}
@@ -1575,10 +1559,10 @@
 -
 -Shilin not the authors, only you. 
 -The authors benefited from scholarly exchange with participants in the AAAI-26 Workshop on AI for Environmental Science, held on January 27, 2026, at the Singapore EXPO in Singapore. The presenting author gratefully acknowledges the AAAI AI4ES Travel Grant for supporting participation in the workshop from Duke Kunshan University Office of Academic Service.
-+OpenAI Codex assisted language and consistency revisions throughout the manuscript, preparation of Fig.~\ref{fig:tensor-framework}, and correction of the sensitivity-analysis code. Funding and presenting-author acknowledgments are stated on the first page.
++OpenAI Codex assisted reference checks, consistency revisions, figure-label corrections, and correction of the sensitivity-analysis code. Funding and presenting-author acknowledgments are stated on the first page.
 --- original/sections/appendix.tex
 +++ checked/sections/appendix.tex
-@@ -4,21 +4,22 @@
+@@ -4,14 +4,15 @@
  
  \subsection{Repository and Execution Environment}
  
@@ -1586,7 +1570,7 @@
 -
 -\begin{table}[!h]
 +\begingroup\raggedright
-+All experiments follow the repository workflow used in the original submission. The primary notebooks are \texttt{Price\_Prediction.ipynb}, \texttt{Prediction\_Inflation.ipynb}, and \texttt{Impact\_FossilFuel.ipynb}. The revision diagnostics are generated by \texttt{code/revision\_experiments.py}. The versioned source and corrected diagnostics are available in the \href{https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice}{organization repository}. Experiments were run on macOS with an Apple arm64 10-core CPU and 16GB RAM. The original notebooks specify Python, AutoGluon, TensorFlow/Keras, and scikit-learn. The corrected diagnostic script depends on pandas, NumPy, and openpyxl; its rerun environment and checks are recorded in the versioned repository. Historical notebook environment labels are not an exact lockfile.\par\endgroup
++All experiments follow the repository workflow used in the original submission. The primary notebooks are \texttt{Price\_Prediction.ipynb}, \texttt{Prediction\_Inflation.ipynb}, and \texttt{Impact\_FossilFuel.ipynb}. The revision diagnostics are generated by \texttt{code/revision\_experiments.py}. The versioned source and corrected diagnostics are available in the \href{https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice}{organization repository}. Experiments were run on macOS with an Apple arm64 10-core CPU and 16GB RAM. The original notebooks specify Python, AutoGluon, TensorFlow/Keras, and scikit-learn. The corrected diagnostic script depends on pandas, NumPy, and openpyxl; its rerun environment and checks are recorded in the versioned repository.\par\endgroup
 +
 +\begin{table}[!ht]
  \centering
@@ -1598,14 +1582,6 @@
  \toprule
  \textbf{Folder} & \textbf{File} & \textbf{Purpose} \\
  \midrule
- \texttt{figures/} & \texttt{LSTM.png} & Stage 1 architecture figure \\
- \texttt{figures/} & \texttt{Accuracy.png} & Oil price forecast comparison \\
- \texttt{figures/} & \texttt{figure.png} & Stage 3 regional/project metrics \\
--\texttt{figures/} & Tensor framework PDF & First-page tensor workflow figure \\
-+\texttt{sections/} & \texttt{framework.tex} & Editable tensor workflow figure \\
- \texttt{figures/} & Methodology relations PDF & Three-stage method and model-relation figure \\
- \texttt{data/} & Stage 1 metrics & Forecast metric table \\
- \texttt{data/} & Stage 3 holdout & 2033-2035 holdout checks \\
 @@ -33,7 +34,7 @@
  
  Stage 1 uses historical coal, gas, and oil prices from World Bank commodity data. Stage 2 uses macroeconomic indicators, including consumer price inflation, gross domestic product growth, unemployment, real interest rate, money supply, and trade-balance indicators. Stage 3 combines predicted fuel prices and inflation with WACC projections derived from Calcaterra et al. The cleaned WACC inputs keep a common monthly horizon from 2026-01 to 2035-12 for China, Europe, and the Middle East.
@@ -1743,59 +1719,38 @@
  \midrule
 --- original/sections/conclusion.tex
 +++ checked/sections/conclusion.tex
-@@ -1,5 +1,5 @@
- \section{Conclusion and Future Work}
+@@ -2,4 +2,4 @@
  
--This study introduces a three-stage machine learning model to assess the effects of fossil fuel price volatility on the WACC of energy transition projects. The findings emphasize that achieving the 1.5$^\circ$C target requires region-specific climate finance solutions. Policymakers and investors need to tailor their strategies to address the unique challenges posed by fossil fuel price volatility, since this can promote renewable energy investments that remain financially viable and resilient amid global market shifts. The results also reinforce the SDG framing introduced at the outset: de-risking clean-energy finance supports affordable and clean energy (SDG 7), climate action (SDG 13), open and reproducible innovation infrastructure (SDG 9), and cross-regional research partnerships (SDG 17).
-+This study introduces a three-stage machine learning model to assess the relationship between fossil fuel price volatility and the WACC of energy transition projects. The findings emphasize the importance of region-specific climate finance solutions for the energy transition. Policymakers and investors need to tailor their strategies to address the unique challenges posed by fossil fuel price volatility, since this can promote renewable energy investments that remain financially viable and resilient amid global market shifts. The results also reinforce the SDG framing introduced at the outset: de-risking clean-energy finance supports affordable and clean energy (SDG 7), climate action (SDG 13), open and reproducible innovation infrastructure (SDG 9), and cross-regional research partnerships (SDG 17).
+ This study introduces a three-stage machine learning model to assess the effects of fossil fuel price volatility on the WACC of energy transition projects. The findings emphasize that achieving the 1.5$^\circ$C target requires region-specific climate finance solutions. Policymakers and investors need to tailor their strategies to address the unique challenges posed by fossil fuel price volatility, since this can promote renewable energy investments that remain financially viable and resilient amid global market shifts. The results also reinforce the SDG framing introduced at the outset: de-risking clean-energy finance supports affordable and clean energy (SDG 7), climate action (SDG 13), open and reproducible innovation infrastructure (SDG 9), and cross-regional research partnerships (SDG 17).
  
 -While this study provides some insights into the financial dynamics of the energy transition, further research is also needed. Initially, some datasets and assumptions rely on secondary sources. Future work could enhance the robustness of these findings by incorporating firm-level financial data and longer regional panels. Additionally, future work could transition from quantifying predictive sensitivity to formal causal inference, using techniques such as fixed effects, instrumental variables, Granger causality, or Structural Equation Models to handle policy variables, financial mechanisms, and technological learning rates. Finally, the framework itself can be enhanced by benchmarking against advanced architectures such as Transformers or state-space models and leveraging the GPR model's predictive variance to conduct full uncertainty quantification and stress-testing.
-+While this study provides some insights into the financial dynamics of the energy transition, further research is also needed. Initially, some datasets and assumptions rely on secondary sources. Future work could enhance the robustness of these findings by incorporating firm-level financial data and longer regional panels. Additionally, future work could transition from quantifying predictive sensitivity to formal causal inference, using techniques such as fixed effects, instrumental variables, or Structural Equation Models, with appropriate identifying assumptions, to handle policy variables, financial mechanisms, and technological learning rates. Finally, the framework itself can be enhanced by benchmarking against advanced architectures such as Transformers or state-space models and extending the GPR model's predictive variance to propagate uncertainty across all three stages and conduct stress-testing.
++While this study provides some insights into the financial dynamics of the energy transition, further research is also needed. Initially, some datasets and assumptions rely on secondary sources. Future work could enhance the robustness of these findings by incorporating firm-level financial data and longer regional panels. Additionally, future work could transition from quantifying predictive sensitivity to formal causal inference, using techniques such as fixed effects, instrumental variables, or Structural Equation Models to handle policy variables, financial mechanisms, and technological learning rates. Finally, the framework itself can be enhanced by benchmarking against advanced architectures such as Transformers or state-space models and propagating uncertainty across all three stages, including the GPR predictive variance, for uncertainty quantification and stress-testing.
 --- original/sections/discussion.tex
 +++ checked/sections/discussion.tex
-@@ -4,79 +4,40 @@
- \subsection{Regional Differences}
+@@ -5,72 +5,47 @@
  
  \subsubsection{Europe}
--
+ 
 -As shown in Fig.~\ref{fig:result9}, the WACC of European energy transition projects will continue to be influenced by the volatility of fossil fuel prices ($R^2$=0.67). This conclusion is supported not only by the high $R^2$ calculated by this study, but also by the structural characteristics of Europe's energy system \cite{ROMANCOLLADO2024108009}, limitations in policy regulation \cite{EUETS,RenewableEnergyDirective}, and the amplification of external risks \cite{oecd2021financing}.
-+The original European specifications have the strongest average in-sample fit ($R^2=0.670$). Europe's reliance on imported energy provides a relevant context for examining international price exposure. Rom\'an-Collado and Casado Ru\'iz identify energy dependence, economic activity, and efficiency as drivers of EU-27 energy imports over 2000--2020 \cite{ROMANCOLLADO2024108009}. Li and Leung examine links between energy prices, economic growth, and renewable-energy consumption in Europe \cite{LI20211712}.
++As shown in Fig.~\ref{fig:result9}, the WACC model for European energy transition projects has an average $R^2$ of 0.67. The structural characteristics of Europe's energy system \cite{ROMANCOLLADO2024108009}, policy regulation \cite{EUETS,RenewableEnergyDirective}, and external risks \cite{WEI2024110522} provide context for interpreting regional financing conditions.
  
  \subsubsection{Structural Dependence and Policy Limitations}
--
+ 
 -Despite Europe's global leadership in renewable energy technology promotion, its short-term reliance on fossil fuel imports remains difficult to reverse \cite{LI20211712}. Data indicates that the proportion of fossil fuel imports in Europe increased from 70\% in 2018 to 82\% in 2024 (Table~\ref{tab:energy_import}). This allows global price fluctuations to directly affect the energy market and, consequently, capital costs. Furthermore, the elasticity coefficient of WACC volatility with respect to import ratios in Europe is 0.48, the highest globally \cite{egli2019bias}, underscoring Europe's heightened sensitivity to price transmission.
--
++Despite Europe's global leadership in renewable energy technology promotion, its short-term reliance on fossil fuel imports remains difficult to reverse \cite{LI20211712}. This import dependence allows global price fluctuations to affect the energy market and potentially capital costs.
+ 
 -On the other hand, the regulatory effectiveness of the EU Emissions Trading System exhibits diminishing marginal returns. Research shows that for every 10-euro increase in carbon prices per ton, WACC sensitivity decreases by 0.15 $R^2$ points. However, when carbon prices exceed 100 euros per ton, the smoothing effect diminishes by 40\% \cite{bouzarovski2017energy,eea2022trends}. Additionally, the diffusion of technological innovation faces constraints due to infrastructure bottlenecks \cite{RenewableEnergyDirective}. For example, Germany experienced a wind power curtailment rate of up to 6\% in 2023 due to grid congestion, weakening the optimization potential of accumulated wind power patents on capital costs \cite{schmidt2019projecting}.
-+Carbon pricing and renewable-energy policy shape the investment environment. The EU ETS literature emphasizes the importance of policy design and innovation incentives \cite{EUETS}, while the Renewable Energy Directive provides a framework for renewable deployment \cite{RenewableEnergyDirective}. Policy credibility and predictability matter for both investment risk and expected returns \cite{POLZIN20191249}. These mechanisms motivate explicit policy scenarios in future financing analysis.
++On the other hand, the effectiveness of the EU Emissions Trading System depends on policy design and price incentives \cite{EUETS}. Additionally, renewable energy deployment requires infrastructure development \cite{RenewableEnergyDirective}.
  
  \subsubsection{External Shocks and Financial Risks}
-+The European energy crisis illustrates the importance of energy security and storage planning \cite{WEI2024110522}. Fiscal instruments can also alter the pass-through of energy-price shocks to inflation and output in energy-importing economies \cite{GLOCKER2024103201}. Financing instruments provide a complementary channel: green-bond certification and issuance can influence investor participation and the credibility of environmental commitments \cite{ehlers2017green,flammer2021corporate}.
  
 -Geopolitical risks further amplify the impacts of price fluctuations: during the 2022 Russia-Ukraine conflict, European natural gas prices surged by 380\%, causing a 58-basis-point spike in the WACCs of offshore wind projects. Model simulations indicate that similar crises could raise WACC peaks by an additional 70 basis points \cite{WEI2024110522,COOPER2017115}.
-+\subsubsection{China}
-+China's original average fit is $R^2=0.650$. Research finds time-varying spillovers between international and Chinese energy and commodity markets \cite{SUN2022121642,WANG2023128724}. These links provide a rationale for including international fuel-price signals in regional financing analysis.
++Geopolitical risks can amplify energy-market instability, as illustrated by the European energy crisis \cite{WEI2024110522}.
  
 -Moreover, international capital flows supporting Europe's energy transition amplify risk transmission effects. With 62\% of green bonds denominated in US dollars, Fed interest rate hikes may add 25-40 basis points to financing costs \cite{ehlers2017green}. A \$10-per-barrel increase in oil prices triggers a \$120-million outflow from European clean energy ETFs, further elevating financing costs \cite{flammer2021corporate}.
-+\subsubsection{Import Dependence}
-+Ben-Salha et al. find long-run relationships between fossil fuel prices and renewable-energy consumption in China, but no significant short-run effects in their specification \cite{ben2022assessing}. Their results distinguish short-run price exposure from longer-run substitution toward renewables.
-+
-+\subsubsection{Government Intervention}
-+Price regulation can modify the domestic consequences of international energy-market changes. He and Lin model the economic and emissions effects of natural-gas price control in China \cite{HE2017524}. Policy design, public finance, and risk mitigation are therefore relevant considerations when interpreting regional financing conditions \cite{POLZIN20191249,duma2023risk}.
-+
-+\subsubsection{Middle East}
-+The original Middle Eastern specifications have a lower average fit ($R^2=0.547$). Oil dependence, diversification, and domestic pricing institutions provide possible contextual explanations. Karanfil and Omgba examine structural factors that shape export diversification in oil-dependent economies \cite{karanfil2023energy}.
-+
-+\subsubsection{Economic Structure}
-+Fossil fuel revenues may support public investment and financing capacity, while also exposing public budgets to commodity cycles. A fiscal buffer is therefore a hypothesis to examine using sovereign-finance and project-level data. The corrected sensitivity diagnostics show why this distinction matters: lower model fit in the Middle East can coexist with larger estimated price-response coefficients in some technologies (Appendix Table~\ref{tab:appendix-elasticities}).
-+
-+\subsubsection{Institutional Design}
-+Fattouh and El-Katiri document the importance and economic trade-offs of energy subsidies in the Middle East and North Africa \cite{FATTOUH2013108}. Such arrangements can affect domestic price exposure and investment incentives. Their effects on renewable-project financing also depend on contract design, counterparty risk, and guarantees \cite{duma2023risk}.
-+
-+\subsection{Transmission Diagnostics}
-+Historical Granger-style tests use first-differenced macroeconomic targets and log-differenced annual fuel prices. Table~\ref{tab:granger} reports selected lagged associations: coal-price changes with China's real interest rate at one- and two-year lags, gas-price changes with China's real interest rate at one-year lag, and gas-price changes with European inflation at two-year lag. The reported $p$-values are unadjusted exploratory diagnostics; the complete tested set is provided in the repository. These results are interpreted as transmission diagnostics.
- 
- \begin{table}[t]
- \centering
+-
+-\begin{table}[t]
+-\centering
 -\caption{Fossil Energy Import Ratios (2018-2024)}
 -\label{tab:energy_import}
 -\scriptsize
@@ -1813,79 +1768,81 @@
 -\bottomrule
 -\end{tabular}
 -\end{table}
--
--\subsubsection{China}
--
++Moreover, international capital flows supporting Europe's energy transition create additional financing channels. Green bonds and certification can help mobilize this capital \cite{ehlers2017green,flammer2021corporate}.
+ 
+ \subsubsection{China}
+ 
 -The WACC of China's energy transition projects also exhibits correlation with international fossil energy prices ($R^2$=0.64). It could be mainly driven by structural dependence, policy intervention, and energy heterogeneity.
--
--\subsubsection{Import Dependence}
--
++The WACC model for China's energy transition projects also exhibits relatively high fit ($R^2$=0.65). Structural dependence, policy intervention, and energy heterogeneity may contribute to regional differences.
+ 
+ \subsubsection{Import Dependence}
+ 
 -As one of the world's largest fossil energy importers (Table~\ref{tab:energy_import}), China's energy security and price stability rely heavily on international markets \cite{SUN2022121642,WANG2023128724}. In 2022, import dependence for crude oil and natural gas reached 73.5\% and 42\%, respectively \cite{eea2022trends}. This vulnerability causes international price fluctuations to quickly affect domestic markets through the ``imported inflation-financing premium'' mechanism. For example, a \$10 per barrel rise in Brent crude oil prices raises WACC for photovoltaic projects by 12-18 basis points \cite{ben2022assessing}.
--
--\subsubsection{Government Intervention}
--
++As one of the world's largest fossil energy importers, China's energy security and price stability rely heavily on international markets \cite{SUN2022121642,WANG2023128724}. These links make international price fluctuations relevant to domestic markets. A positive long-run relationship between fossil fuel prices and renewable energy consumption has also been reported for China \cite{ben2022assessing}.
+ 
+ \subsubsection{Government Intervention}
+ 
 -To mitigate the risks of price fluctuations, the Chinese government has developed a distinctive energy price management system \cite{GLOCKER2024103201,HE2017524}. By implementing a ``price corridor,'' the government has constrained thermal coal price fluctuations to within $\pm$15\%. From 2021 to 2023, the standard deviation of China's thermal coal prices was only \$7.2 per ton, markedly lower than the \$18.5 per ton observed in the European API2 index during the same period \cite{GLOCKER2024103201}. Fiscal subsidies have also played a critical role; in 2023, \$44 billion in fossil energy subsidies reduced the volatility of WACC for China's energy transition projects to 3.1\%, equivalent to just 53\% of the volatility in market-oriented countries.
--
--\subsubsection{Middle East}
--
++To mitigate the risks of price fluctuations, the Chinese government has used energy price controls \cite{HE2017524}. More generally, fiscal instruments can affect energy-price pass-through, inflation, and output in importing economies \cite{GLOCKER2024103201}.
+ 
+ \subsubsection{Middle East}
+ 
 -The data from the Middle East region exhibit a relatively low model fit, with an average $R^2$ of 0.54 (Fig.~\ref{fig:result9}), lower than that observed in other regions. This phenomenon can be attributed to its unique position as a fossil fuel exporter, the specific institutional framework, and the entrenched technological path dependence.
--
--\subsubsection{Economic Structure}
--
++The data from the Middle East region exhibit a relatively low model fit, with an average $R^2$ of 0.55 (Fig.~\ref{fig:result9}), lower than that observed in other regions. This regional difference may reflect its position as a fossil fuel exporter and its institutional framework \cite{karanfil2023energy,FATTOUH2013108}.
+ 
+ \subsubsection{Economic Structure}
+ 
 -In the Middle East, revenues from fossil fuel exports constitute 68\% of total fiscal income \cite{WorldBank2023MENAUpdate,FATTOUH2013108}, and their economies are highly dependent on the stable cash flow generated by oil and gas trade \cite{karanfil2023energy}. For example, Saudi Arabia secures its revenue through long-term export contracts, which account for 82\% of its trade volume \cite{GECF2023AGMR}. Additionally, it leverages sovereign wealth funds, such as the Public Investment Fund (PIF) with assets exceeding \$700 billion, to directly invest in renewable energy projects, thereby mitigating market financing risks. 76\% of green hydrogen and photovoltaic projects in the Middle East are financed through sovereign guarantees \cite{IRENA2023Statistics}, resulting in a WACC with a risk premium of only 1.2\%, significantly lower than that in Europe (3.5\%). This ``fiscal cushion'' ensures the rigidity of capital costs; even if international oil prices fluctuate from \$80 per barrel to \$60 per barrel, the WACC for Saudi photovoltaic projects varies by merely 0.3\% \cite{SPGlobal2024GCCInfrastructureOutlook}.
--
--\subsubsection{Institutional Design}
--
++In the Middle East, economies dependent on oil and gas trade face challenges in export diversification \cite{karanfil2023energy}. Sovereign wealth funds could directly invest in renewable energy projects, thereby mitigating market financing risks.
+ 
+ \subsubsection{Institutional Design}
+ 
 -Middle Eastern governments use a three-tier framework to reduce the impact of fossil fuel price volatility on energy transition costs \cite{surkov2023middle}, creating a ``policy isolation layer.''
 -\begin{enumerate}
 -    \item Dual-track system: Low domestic energy prices (Saudi gasoline at \$0.6 per liter, one-third of U.S. rates) suppress alternative energy demand \cite{fattouh2013energy}. Subsidies enhance renewable energy competitiveness; for instance, Gulf countries' fossil fuel subsidies account for 8.2\% of GDP \cite{IMF2023FossilFuelSubsidies}. Long-term agreements, like Dubai Solar Park's 20-year fixed electricity price (4.5 cents/kWh), decouple capital costs from short-term price fluctuations.
 -    \item Strategic reserves and production adjustments: Middle East oil reserves cover 214 days of demand \cite{IMF2023FossilFuelSubsidies}. Governments stabilize prices by adjusting production.
 -    \item Sovereign guaranties: Using the Barakah nuclear power plant in the United Arab Emirates as an example, 90\% of its funding originates from state-owned banks, maintaining a stable debt cost of 3.2\%. The correlation coefficient $R^2$ between its financing costs and oil price fluctuations is only 0.02 \cite{OECDNEA2019LTO}.
 -\end{enumerate}
--
--\subsection{Transmission Diagnostics}
--
++Domestic energy pricing and subsidies shape transition incentives in the region \cite{FATTOUH2013108}. Long-term agreements and guarantees can help manage project financing risks \cite{duma2023risk}. These instruments provide possible channels through which policy can moderate exposure to price fluctuations.
+ 
+ \subsection{Transmission Diagnostics}
+ 
 -The empirical framework mainly estimates predictive sensitivity, but the hypothesized transmission channels can still be examined through diagnostic time-series tests. The Granger-style tests use first-differenced macro targets and log-differenced annual fuel prices. As shown in Table~\ref{tab:granger}, several channels are consistent with the proposed mechanism: coal price changes are associated with China's real interest rate at one- and two-year lags, gas price changes are associated with China's real interest rate at one-year lag, and gas price changes are associated with European inflation at two-year lag. These results are best interpreted as mechanism diagnostics, not as causal identification.
--
--\begin{table}[t]
--\centering
--\caption{Selected Transmission Diagnostics}
-+\caption{Selected Historical Transmission Diagnostics}
- \label{tab:granger}
--\scriptsize
-+\footnotesize
- \begin{tabular}{llrr}
- \toprule
- \textbf{Region/target} & \textbf{Fuel} & \textbf{Lag} & \textbf{$p$-value} \\
-@@ -91,23 +52,14 @@
- \end{table}
++The empirical framework mainly estimates predictive sensitivity, but the hypothesized transmission channels can still be examined through diagnostic time-series tests. The exploratory Granger-style tests use first-differenced macro targets and log-differenced annual fuel prices; $p$-values are not adjusted for multiple testing. As shown in Table~\ref{tab:granger}, several channels are consistent with the proposed mechanism: coal price changes are associated with China's real interest rate at one- and two-year lags, gas price changes are associated with China's real interest rate at one-year lag, and gas price changes are associated with European inflation at two-year lag. These results are best interpreted as mechanism diagnostics, not as causal identification.
+ 
+ \begin{table}[t]
+ \centering
+@@ -92,22 +67,22 @@
  
  \subsection{Environmental Implications of Financial Sensitivity}
--
+ 
 -The regional disparities in WACC sensitivity identified in our results (Fig.~\ref{fig:result9}) are not merely financial metrics; they are proxies for the stability and velocity of decarbonization, linking financial market to tangible climate outcomes.
--
++The regional disparities in WACC model fit identified in our results (Fig.~\ref{fig:result9}) motivate consideration of how financing conditions may influence decarbonization.
+ 
 -For energy-importing regions like Europe and China (average $R^2$=0.67 and 0.65), the strong correlation means that financial risk translates directly into environmental risk. The resulting uncertainty in financing costs can deter or delay the large-scale, capital-intensive investments. Consequently, the pace of their energy transition becomes hostage to the instability of the very markets they aim to exit, jeopardizing the deployment required to align with a 1.5$^\circ$C trajectory.
--
++For energy-importing regions like Europe and China (average $R^2$=0.67 and 0.65), financing risk may have environmental consequences. The resulting uncertainty in financing costs can deter or delay the large-scale, capital-intensive investments. Such delays could affect the deployment required to align with a 1.5$^\circ$C trajectory \cite{ameli2021higher}.
+ 
 -Conversely, the weaker correlation in the Middle East (average $R^2$=0.54) presents a different environmental paradox. The financial stability afforded to renewable projects by a ``fiscal cushion'' from fossil fuel revenues mutes the urgent market-based incentive to transition. While this de-risks individual projects, it can foster a decarbonization pace driven by deliberate policy choices rather than pressing economic necessities. This decoupling may lead to a slower transition, as the region remains insulated from market signals.
--
++In the Middle East, fossil fuel revenues may provide a ``fiscal cushion'' for renewable projects. This could reduce individual project risks while making the pace of decarbonization more dependent on deliberate policy choices. The balance between financing support and transition incentives therefore merits further investigation.
+ 
 -Ultimately, our findings reveal that the financial mechanisms shaping climate outcomes are divergent across the globe. It frames the topic for the next subsection: designing policy that can either mitigate market volatility to ensure a stable transition (as needed in Europe and China) or create sufficient incentives to overcome economic inertia (as in the Middle East).
-+Financing conditions can influence the affordability and timing of renewable investment. Prior modeling shows that regional differences in capital costs can materially change decarbonization pathways \cite{ameli2021higher,calcaterra2024reducing}. The present study adds a framework for comparing fuel-price and inflation signals across regional WACC scenarios. A linked investment or energy-system model could extend the analysis to deployment and emissions.
++These regional differences motivate region-specific climate finance strategies. It frames the topic for the next subsection: designing policy that can either mitigate market volatility to ensure a stable transition (as needed in Europe and China) or create sufficient incentives to overcome economic inertia (as in the Middle East).
  
  \subsection{Regional Community Impact}
--
+ 
 -In Europe, high WACC sensitivity ($R^2 = 0.67$) threatens household energy affordability. The findings support community benefits by justifying green bonds and climate risk insurance that stabilize electricity tariffs and protect vulnerable consumers from fossil price-shock pass-through. In China, as a major fossil fuel importer, volatility affects manufacturing hubs and residential heating; the analysis of government price corridors demonstrates how policy shields 1.4 billion people from imported inflation, ensuring stable energy access. In the Middle East, the fiscal cushion paradox shows that while sovereign wealth stabilizes project finance, it may slow the transition away from fossil fuels; diversifying these funds into local solar and hydrogen projects, such as Dubai Solar Park's 20-year fixed tariffs, creates domestic green jobs and reduces long-term economic dependence on volatile export revenues, directly benefiting local populations.
-+Reliable energy finance is relevant to affordability and a just transition. European research documents substantial geographical differences in energy poverty \cite{bouzarovski2017energy}, and the OECD emphasizes aligning local climate finance with inclusive development \cite{oecd2021financing}. These concerns motivate analysis of financing conditions in Europe, China, and the Middle East.
++In Europe, household energy affordability is an important concern \cite{bouzarovski2017energy}. Green bonds and climate risk insurance could help manage financing risks, while support for vulnerable consumers remains a policy priority. In China, as a major fossil fuel importer, volatility affects manufacturing hubs and residential heating; managing price pass-through is relevant to stable energy access. In the Middle East, diversifying sovereign wealth funds into local solar and hydrogen projects could support domestic green jobs and reduce long-term economic dependence on volatile export revenues. These community benefits depend on policy design and inclusive access to climate finance \cite{oecd2021financing}.
  
  \subsection{Climate Finance \& Policy}
-+In Europe, predictable revenue arrangements and financial instruments such as green bonds, subsidies, and climate risk insurance can support renewable investment by reducing financing risks \cite{POLZIN20191249,duma2023risk,ehlers2017green,flammer2021corporate}.
  
 -In Europe, the WACC for renewable energy projects is highly sensitive to fluctuations in fossil fuel prices. The high $R^2$ and low MAPE values (0.67 and 0.004) indicate that renewable investments remain exposed to energy price volatility. To meet the 1.5$^\circ$C climate target, European policymakers could prioritize developing financial instruments such as green bonds, subsidies, and climate risk insurance. These mechanisms can stabilize financing costs, reduce investor risk, and stimulate greater private investment in renewable energy.
-+China's energy transition also involves government intervention in energy markets. Policymakers could consider more market-driven price mechanisms, complemented by targeted green finance initiatives to reduce capital costs. State-supported financing can help encourage private investment in clean energy while preserving broader economic stability \cite{HE2017524,POLZIN20191249,duma2023risk}.
++In Europe, the WACC model has a relatively high $R^2$ and low MAPE (0.67 and 0.0050). Energy price volatility remains relevant to renewable investment planning. To meet the 1.5$^\circ$C climate target, European policymakers could prioritize developing financial instruments such as green bonds, subsidies, and climate risk insurance. These mechanisms can stabilize financing costs, reduce investor risk, and stimulate greater private investment in renewable energy \cite{POLZIN20191249}.
  
 -China's energy transition exhibits moderate sensitivity ($R^2$=0.64), partly due to government policies. While this intervention brings short-term stability, it may obscure the actual cost competitiveness of renewable energy and potentially deter private sector investment. To align with the 1.5$^\circ$C climate target, policymakers could consider gradually introducing more market-driven price mechanisms, complemented by targeted green finance initiatives to reduce capital costs. Utilizing state-supported low-interest loans to lower WACC can serve as an effective strategy to incentivize private investment in clean energy while preserving broader economic stability.
--
++China's WACC model has an average $R^2$ of 0.65. Government intervention may bring short-term stability, but it may obscure the actual cost competitiveness of renewable energy and potentially deter private sector investment. To align with the 1.5$^\circ$C climate target, policymakers could consider gradually introducing more market-driven price mechanisms, complemented by targeted green finance initiatives to reduce capital costs. Utilizing state-supported low-interest loans to lower WACC can serve as an effective strategy to incentivize private investment in clean energy while preserving broader economic stability.
+ 
 -The Middle East's low sensitivity to fossil fuel price fluctuations is indicated by the $R^2$ of 0.54. It presents a potential risk due to the region's heavy dependence on fossil fuel revenues. To ensure long-term economic resilience and align with global decarbonization objectives, policymakers could prioritize the diversification of the energy mix through increased investment in renewable energy. In this context, sovereign wealth funds can serve as a strategic vehicle by providing long-term, low-cost capital for renewable energy projects, thereby reducing overall financing costs. These funds can strategically allocate capital toward renewable energy infrastructure, enhancing financial stability and mitigating project-related risks.
-+For the Middle East, dependence on fossil fuel revenues makes diversification important for long-term economic resilience. Policymakers could prioritize investment in renewable energy, with sovereign financing capacity providing a possible source of long-term capital \cite{karanfil2023energy,FATTOUH2013108}.
++The Middle East's heavy dependence on fossil fuel revenues presents a potential risk for the energy transition \cite{karanfil2023energy}. To ensure long-term economic resilience and align with global decarbonization objectives, policymakers could prioritize the diversification of the energy mix through increased investment in renewable energy. In this context, sovereign wealth funds can serve as a strategic vehicle by providing long-term, low-cost capital for renewable energy projects, thereby reducing overall financing costs. These funds can strategically allocate capital toward renewable energy infrastructure, enhancing financial stability and mitigating project-related risks.
 --- original/sections/figure_labels.tex
 +++ checked/sections/figure_labels.tex
 @@ -0,0 +1,29 @@
@@ -1918,53 +1875,34 @@
 +\fill[white] (207,176) rectangle (402,273);
 +\node[align=center,inner sep=0,font=\fontsize{15}{20}\selectfont] at (304,227) {$\widehat\Theta_h=\arg\min_{\Theta_h}\mathcal L_h$\\[3bp]$\displaystyle\mathcal L_h=\frac{1}{T-h}\sum_{t=1}^{T-h}\varepsilon_t^2$\\[3bp]$\varepsilon_t=y_{t+h}-G(x_t;\Theta_h)$};
 +\end{tikzpicture}}}
---- original/sections/framework.tex
-+++ checked/sections/framework.tex
-@@ -0,0 +1,15 @@
-+\begin{figure*}[t]
-+\centering
-+\begin{tikzpicture}[font=\footnotesize,>=Latex,
-+ box/.style={draw=black!45,rounded corners=2pt,minimum height=1.18cm,text width=4.65cm,align=center,inner sep=6pt},
-+ arr/.style={->,thick,black!65}]
-+\node[box,fill=blue!4] (prices) {\textbf{1. Fuel-price forecasts}\\Historical coal, oil, and gas prices\\CNN--LSTM/GRU + attention; GPR smoothing};
-+\node[box,fill=blue!4,right=0.45cm of prices] (macro) {\textbf{2. Regional inflation}\\Macroeconomic predictors\\LSTM + feed-forward ensemble};
-+\node[box,fill=blue!4,right=0.45cm of macro] (wacc) {\textbf{3. WACC comparisons}\\Fuel price + regional inflation\\AutoGluon; 3 regions $\times$ 3 fuels $\times$ 9 technologies};
-+\draw[arr] (prices.north)--++(0,0.35)-|(wacc.north);
-+\draw[arr] (macro)--(wacc);
-+\node[below=0.3cm of macro,align=center,text width=15cm] (checks) {\textbf{Data and diagnostics:} 2026--2035 projected WACC panels; archived fit summaries;\\chronological OLS/Ridge checks; corrected log-linear sensitivity; historical transmission diagnostics.};
-+\end{tikzpicture}
-+\caption{Three-stage framework for fuel-price, inflation, and regional WACC analysis. The region--fuel--technology axes organize comparisons; the chronological diagnostics are separate from the original AutoGluon fits.}
-+\label{fig:tensor-framework}
-+\end{figure*}
 --- original/sections/introduction.tex
 +++ checked/sections/introduction.tex
-@@ -1,20 +1,19 @@
+@@ -1,10 +1,10 @@
  \section{Introduction}
  
 -The urgency of mitigating global warming necessitates a rapid energy transition to achieve the Sustainable Development Goals (SDGs) \cite{messerli2019global}. Since energy consumption is the primary source of global greenhouse gas emissions \cite{BOGDANOV2021120467}, a transformation of energy systems is essential. This transition is not solely a technological endeavor \cite{CHEN20191564}; it also encompasses critical economic dimensions, among which the weighted average cost of capital (WACC) is a critical metric \cite{STEWART2022111880}. It represents the average return required by capital providers, balancing the costs of debt and equity financing \cite{BACHNER2019100373}. The environmental consequences of this financial indicator are profound; modeling shows that high capital costs in developing economies can reduce green energy production by 35\% and delay the achievement of net-zero emissions by a full decade \cite{ameli2021higher}.
-+The urgency of mitigating global warming necessitates a rapid energy transition to achieve the Sustainable Development Goals (SDGs) \cite{messerli2019global}. Energy-system transformation is central to climate-change mitigation \cite{BOGDANOV2021120467}. This transition is not solely a technological endeavor \cite{CHEN20191564}; it also encompasses critical economic dimensions, among which the weighted average cost of capital (WACC) is a critical metric \cite{BACHNER2019100373}. It represents the average return required by capital providers, balancing the costs of debt and equity financing \cite{BACHNER2019100373}. The environmental consequences of this financial indicator are profound; Ameli et al. report 35\% lower green electricity production in Africa under region-specific WACC assumptions in a cost-optimal 2$^\circ$C pathway; their financing-policy scenario allows Africa to reach net-zero emissions approximately ten years earlier \cite{ameli2021higher}.
++The urgency of mitigating global warming necessitates a rapid energy transition to achieve the Sustainable Development Goals (SDGs) \cite{messerli2019global}. Since energy consumption is the primary source of global greenhouse gas emissions \cite{BOGDANOV2021120467}, a transformation of energy systems is essential. This transition is not solely a technological endeavor \cite{CHEN20191564}; it also encompasses critical economic dimensions, among which the weighted average cost of capital (WACC) is a critical metric \cite{BACHNER2019100373}. It represents the average return required by capital providers, balancing the costs of debt and equity financing \cite{BACHNER2019100373}. The environmental consequences of this financial indicator are profound; modeling for Africa shows 35\% lower green electricity production under high capital costs in a 2$^\circ$C pathway, while a finance-policy scenario brings net-zero emissions forward by about a decade \cite{ameli2021higher}.
  
 -This study aligns with the UN Sustainable Development Goals (SDGs), specifically SDG 7 (Affordable and Clean Energy) by de-risking renewable project finance, SDG 13 (Climate Action) by quantifying how fossil fuel volatility delays decarbonization and jeopardizes 1.5$^\circ$C trajectories, SDG 9 (Industry, Innovation and Infrastructure) through an open, reproducible three-stage machine learning pipeline, and SDG 17 (Partnerships for the Goals) by releasing harmonized multi-regional panels to support global research collaboration.
-+This study aligns with the UN Sustainable Development Goals (SDGs), specifically SDG 7 (Affordable and Clean Energy) by informing renewable project finance, SDG 13 (Climate Action) by examining how fossil fuel volatility relates to financing conditions for decarbonization, SDG 9 (Industry, Innovation and Infrastructure) through an open, reproducible three-stage machine learning pipeline, and SDG 17 (Partnerships for the Goals) by releasing harmonized multi-regional panels to support global research collaboration.
++This study aligns with the UN Sustainable Development Goals (SDGs), specifically SDG 7 (Affordable and Clean Energy) by informing renewable project finance, SDG 13 (Climate Action) by examining financing conditions relevant to decarbonization, SDG 9 (Industry, Innovation and Infrastructure) through an open, reproducible three-stage machine learning pipeline, and SDG 17 (Partnerships for the Goals) by releasing harmonized multi-regional panels to support global research collaboration.
  
 -A pernicious challenge for the energy transition is its inherent vulnerability to shocks from the legacy fossil fuel system it seeks to replace. Volatility in global oil, gas, and coal prices propagates through the financial system, influencing inflation, interest rates, and investor risk perception, thereby destabilizing the WACC for capital-intensive renewable projects \cite{melodia2022energy}. This financial vulnerability translates directly into environmental risk, as it can slow the pace of decarbonization \cite{egli2019bias}. Existing research has successfully elucidated the impact of fossil fuel price volatility on market risk for energy companies \cite{dobrowolski2022weighted}. However, less attention has been devoted to evaluating its influence on WACC within the context of energy transition projects. Additionally, the varied impacts of fossil fuel price volatility across different energy sectors and regions have not been fully explored.
-+A pernicious challenge for the energy transition is its inherent vulnerability to shocks from the legacy fossil fuel system it seeks to replace. Global oil, gas, and coal price fluctuations can affect inflation and financing conditions, creating potential exposure for capital-intensive renewable projects \cite{melodia2022energy}. Financing assumptions can change modeled investment choices and transition pathways \cite{egli2019bias}. Existing research has examined the relationship between WACC, interest rates, and unstable market conditions in the energy sector \cite{dobrowolski2022weighted}. However, less attention has been devoted to evaluating its influence on WACC within the context of energy transition projects. Additionally, the varied impacts of fossil fuel price volatility across different energy sectors and regions have not been fully explored.
++A pernicious challenge for the energy transition is its inherent vulnerability to shocks from the legacy fossil fuel system it seeks to replace. Volatility in global oil, gas, and coal prices propagates through the financial system, influencing inflation, interest rates, and investor risk perception, potentially affecting the WACC for capital-intensive renewable projects \cite{melodia2022energy,dobrowolski2022weighted}. This financial vulnerability can increase environmental risk, as high capital costs can slow the pace of decarbonization \cite{egli2019bias,ameli2021higher}. Existing research has examined WACC and interest rates under unstable market conditions \cite{dobrowolski2022weighted}. However, less attention has been devoted to evaluating its influence on WACC within the context of energy transition projects. Additionally, the varied impacts of fossil fuel price volatility across different energy sectors and regions have not been fully explored.
  
  Therefore, this study focuses on the upcoming decade and seeks to answer the following questions:
  \begin{itemize}
--    \item How do fossil fuel price fluctuations affect the WACC of energy transition projects, influencing the pace of renewable energy deployment?
-+    \item How do fossil fuel price fluctuations relate to the WACC of energy transition projects?
+@@ -12,9 +12,9 @@
      \item How do these price dynamics relate to capital costs across regions, particularly between fuel-importing and fuel-exporting countries, and how should financing strategies for low-carbon projects be shaped?
  \end{itemize}
  
 -This work contributes an open and reproducible AI framework that translates fossil fuel price signals into actionable climate finance intelligence. By integrating tensor regression with an AutoGluon-based forecasting pipeline, the framework provides decision support for analyzing regional differences in financing conditions, energy costs, and decarbonization pathways. Its outputs can inform efforts to reduce household energy burdens, improve environmental quality, and support more effective climate and energy policy across diverse global regions.
-+This work contributes an open and reproducible AI framework that translates fossil fuel price signals into actionable climate finance intelligence. By organizing regional, fuel, and project comparisons within an AutoGluon-based forecasting pipeline, the framework provides decision support for analyzing regional differences in financing conditions, energy costs, and decarbonization pathways. Its outputs can inform efforts to reduce household energy burdens, improve environmental quality, and support more effective climate and energy policy across diverse global regions.
++This work contributes an open and reproducible AI framework that translates fossil fuel price signals into actionable climate finance intelligence. By integrating a region--fuel--project tensor with an AutoGluon-based forecasting pipeline, the framework provides decision support for analyzing regional differences in financing conditions, energy costs, and decarbonization pathways. Its outputs can inform efforts to reduce household energy burdens, improve environmental quality, and support more effective climate and energy policy across diverse global regions.
  
  
  
 -\textbf{Open Science Statement:} The code, execution instructions, cleaned WACC panels, and forecast artifacts are prepared for public release under the Global Nomad Nexus namespace on GitHub\footnote{\url{https://github.com/Global-Nomad-Nexus/ImpactOfFossilFuelPrice-WACC}} and Hugging Face\footnote{\url{https://huggingface.co/datasets/Global-Nomad-Nexus/ImpactOfFossilFuelPrice-WACC}}.
--
-+\textbf{Open Science Statement:} Code, data-processing instructions, cleaned WACC scenario panels, archived forecast comparisons, and corrected sensitivity diagnostics for this version are available in the organization repository\footnote{\url{https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice}}. An archived dataset snapshot is hosted on Hugging Face\footnote{\url{https://huggingface.co/datasets/global-nomad-nexus/ImpactOfFossilFuelPrice-WACC}}; the repository records the version and provenance of the diagnostics used in this paper. Editable paper, slides, and poster sources are provided in the repository's \texttt{conference/ACAIT2026/} directory.
++\textbf{Open Science Statement:} The code, execution instructions, cleaned WACC panels, forecast artifacts, and corrected diagnostics are available in the organization GitHub repository\footnote{\url{https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice}}. Hugging Face hosts the earlier dataset snapshot\footnote{\url{https://huggingface.co/datasets/global-nomad-nexus/ImpactOfFossilFuelPrice-WACC}}; the current diagnostic corrections are versioned on GitHub. Editable paper, slides, and poster sources are provided in the repository's \texttt{conference/ACAIT2026} directory.
+ 
 --- original/sections/literature_review.tex
 +++ checked/sections/literature_review.tex
 @@ -2,23 +2,23 @@
@@ -1983,16 +1921,17 @@
  \begin{equation}
  WACC_{ct}=\sum_i\left(\frac{\mathrm{Revenue}_{it}}{\mathrm{TotalRevenue}_{ct}}\right)\times WACC_{it}.
  \end{equation}
- where $WACC_{ct}$ represents the weighted average cost of capital for country $c$ at time $t$, $\mathrm{Revenue}_{it}$ is the revenue of firm $i$ at time $t$, and $\mathrm{TotalRevenue}_{ct}$ is the total revenue of country $c$ at time $t$.
+-where $WACC_{ct}$ represents the weighted average cost of capital for country $c$ at time $t$, $\mathrm{Revenue}_{it}$ is the revenue of firm $i$ at time $t$, and $\mathrm{TotalRevenue}_{ct}$ is the total revenue of country $c$ at time $t$.
++where $WACC_{ct}$ represents the weighted average cost of capital for country $c$ at time $t$, $\mathrm{Revenue}_{it}$ is the revenue of firm $i$ at time $t$, and $\mathrm{TotalRevenue}_{ct}$ is the total utilities-market revenue of country $c$ at time $t$.
  
 -After that, Calcaterra et al. \cite{calcaterra2024reducing} introduce a time dimension and financial learning, simulating how technological progress and experience accumulation can lower WACC by reducing technological risks and the required safety margin. The CoC-convergence scenario examines the trend of WACC in developing countries converging towards levels seen in developed countries:
-+After that, Calcaterra et al. \cite{calcaterra2024reducing} introduce a time dimension and financial learning, simulating how technological progress and experience accumulation can lower WACC by reducing technological risks and the required safety margin. In their financial-learning reference scenario, capital costs decrease with cumulative deployment:
++After that, Calcaterra et al. \cite{calcaterra2024reducing} introduce a time dimension and financial learning, simulating how technological progress and experience accumulation can lower WACC by reducing technological risks and the required safety margin. The financial-learning scenario models capital costs as a function of cumulative deployment:
  \begin{equation}
 -\mathrm{CoC}_{tnT}=\mathrm{CoC}_{0n,T}\times\left(\frac{Y_{tn,T}}{Y_{0n,T}}\right)^{-b_T}.
 +\mathrm{CoC}_{tnT}=\mathrm{CoC}_{0n,T}\times\left(\frac{Y_{tn,T}}{Y_{0n,T}}\right)^{b_T}.
  \end{equation}
 -where $\mathrm{CoC}_{tnT}$ is the cost of capital for country $n$ at time $t$ and technology $T$, $\mathrm{CoC}_{0n,T}$ is the initial cost of capital, $Y_{tn,T}$ is cumulative technology deployment, $Y_{0n,T}$ is initial technology deployment, and $b_T$ is a parameter.
-+where $\mathrm{CoC}_{tnT}$ is the cost of capital for country $n$ at time $t$ and technology $T$, $\mathrm{CoC}_{0n,T}$ is the initial cost of capital, $Y_{tn,T}$ is cumulative technology deployment, $Y_{0n,T}$ is initial technology deployment, and $b_T=\log_2(1-0.05)<0$ is the financial-learning exponent. The separate CoC-convergence scenario reduces country-risk differences toward developed-country levels by 2050.
++where $\mathrm{CoC}_{tnT}$ is the cost of capital for country $n$ at time $t$ and technology $T$, $\mathrm{CoC}_{0n,T}$ is the initial cost of capital, $Y_{tn,T}$ is cumulative technology deployment, $Y_{0n,T}$ is initial technology deployment, and $b_T=\log_2(1-0.05)<0$ is the financial-learning exponent. The separate CoC-convergence scenario models convergence towards developed-country financing conditions by 2050.
  
  Utilizing the aforementioned data and assumptions, it can employ a suite of climate-energy-economy models to simulate the WACC across various regions and energy sectors.
  
@@ -2001,10 +1940,10 @@
  where $r_{f,t}$ is the risk-free rate at time $t$, $\beta_i$ is the firm's systematic risk, and $(r_{m,t}-r_{f,t})$ is the equity risk premium (ERP).
  
 -Fossil fuel price could influence each component of the CAPM equation. The substitution effect shows that higher fossil fuel prices enhance the economic competitiveness of renewable energy projects, lowering their perceived risk and thus the overall required return, $r_{Eit}$ \cite{melodia2022energy}. Additionally, the impact on systematic risk ($\beta_i$) is ambiguous. Renewable assets can act as a hedge against fossil fuel price volatility due to their zero fuel cost, implying a lower $\beta$ \cite{millischer2024renewables}. Conversely, if investors focus on substitution logic, renewable energy stock prices may correlate with oil prices, leading to a higher $\beta$ \cite{Lieberman2007RenewableHedge}. On the other hand, persistent fossil fuel price volatility highlights climate transition risks, leading investors to demand a ``brown penalty'' for fossil fuel assets and offer a ``green premium'' for renewables, effectively lowering the required ERP for green projects \cite{su13052573}.
-+Fossil fuel prices can influence renewable-energy financing through several channels. Higher fossil fuel prices can improve the relative competitiveness of renewable generation, while renewables can provide a hedge against fuel-price exposure \cite{Lieberman2007RenewableHedge}. Stock-market evidence is mixed: Vr\^inceanu et al. find no significant effect of oil-price volatility on renewable-stock return volatility in their sample \cite{vrinceanu2020influence}. These observations do not imply a uniform change in CAPM $\beta$ across projects or regions. In India, Shrimali reports different risk and return profiles for renewable and fossil power portfolios \cite{su13052573}.
++Fossil fuel prices could influence the components of the CAPM equation. The substitution effect suggests that higher fossil fuel prices can enhance the economic competitiveness of renewable energy projects and influence perceived risk and the required return, $r_{Eit}$ \cite{Lieberman2007RenewableHedge}. Additionally, the impact on systematic risk ($\beta_i$) is ambiguous. Renewable assets can act as a hedge against fossil fuel price volatility due to their zero fuel cost \cite{Lieberman2007RenewableHedge}. Stock-market evidence varies: Vr\^inceanu et al. find no significant effect of oil-price volatility on renewable-stock return volatility in their sample \cite{vrinceanu2020influence}. Renewable and fossil power portfolios can also differ in financial risk and return, as reported for India \cite{su13052573}.
  
 -Similarly, the cost of debt ($r_{Dit}$) is also susceptible to fossil fuel price shocks, which are a major driver of inflation, often compelling central banks to raise policy rates \cite{vrinceanu2020influence}. This directly increases the economy-wide risk-free rate ($r_{f,t}$), which serves as a benchmark for all borrowing and raises $r_{Dit}$ for capital-intensive renewable projects \cite{kjellevoll2023impact}. At the project level, high fossil fuel prices can improve the value of a renewable project's fixed-price Power Purchase Agreement (PPA), reducing its credit risk and potentially lowering the credit spread component of $r_{Dit}$ \cite{duma2023risk}. This is supported by growing evidence of a ``green premium'' in debt markets, where lenders offer more favorable terms to renewable projects.
-+The cost of debt ($r_{Dit}$) may also respond to the macroeconomic consequences of energy-price changes. Fossil fuel prices are relevant to inflation \cite{melodia2022energy,millischer2024renewables}, and the interest-rate environment matters for WACC \cite{dobrowolski2022weighted}. Project contracts, counterparty risk, and risk-transfer instruments can affect financing conditions \cite{duma2023risk}. Evidence on environmental financial premia is conditional: Wilberg et al. find no association for aggregate ESG scores but a lower cost of capital for a stronger environmental component in their sample \cite{kjellevoll2023impact}. Green-bond issuance and certification provide an additional financing channel \cite{ehlers2017green,flammer2021corporate}.
++Similarly, the cost of debt ($r_{Dit}$) is also susceptible to fossil fuel price shocks, which can contribute to inflation \cite{melodia2022energy,millischer2024renewables}. Changes in the interest-rate environment affect economy-wide borrowing costs and WACC \cite{dobrowolski2022weighted}. At the project level, Power Purchase Agreements (PPAs), counterparty risk, and risk-transfer instruments can affect financing conditions and the credit spread component of $r_{Dit}$ \cite{duma2023risk}. Evidence on environmental financial premia is conditional: Wilberg et al. find no aggregate ESG-score effect but an association between the environmental component and lower capital costs \cite{kjellevoll2023impact}.
  
  Therefore, the final calculated $WACC_{it}$ for a renewable energy firm is a function not only of its internal financial structure ($L_{it}$) but also of these external pressures that alter the fundamental costs of its capital ($r_{Eit}$ and $r_{Dit}$). The interplay of these mechanisms is summarized in Table~\ref{tab:channels}. Ultimately, the net impact on the WACC of renewable energy projects hinges on the relative magnitude of these opposing forces: the project-level advantages stemming from higher fossil fuel prices versus the detrimental consequences of macroeconomic contagion.
  
@@ -2022,10 +1961,10 @@
  \subsection{AI-Based Forecasting for Energy and Climate Applications}
  
 -Recent ACAIT proceedings show a growing interest in using deep learning for environmental, energy, and carbon-related forecasting tasks. Xie et al. \cite{acaitXie2024carbon} evaluate PatchTST for carbon-emission time-series prediction across Chinese provinces and sectors, comparing it with statistical and machine-learning baselines such as ARIMA and Prophet. Their study supports the broader methodological shift from purely statistical forecasting toward deep sequence models for high-frequency environmental data. Chen et al. \cite{acaitChen2023transfer} propose a transfer-based adaptive recurrent neural network for enterprise carbon-emission prediction, highlighting the value of recurrent representations and transfer learning when target-domain carbon data are limited.
-+Recent ACAIT proceedings include deep-learning studies of environmental and carbon-related forecasting. Xie et al. \cite{acaitXie2024carbon} study carbon-emission prediction using deep time-series models. Chen et al. \cite{acaitChen2023transfer} present a transfer-based adaptive recurrent neural-network model for enterprise carbon-emission prediction. These examples illustrate the use of AI forecasting for climate-related indicators.
++Recent ACAIT proceedings show a growing interest in using deep learning for environmental, energy, and carbon-related forecasting tasks. Xie et al. \cite{acaitXie2024carbon} study carbon-emission prediction using deep time-series models. Chen et al. \cite{acaitChen2023transfer} propose a transfer-based adaptive recurrent neural network for enterprise carbon-emission prediction.
  
 -These studies are relevant because they position AI forecasting as a decision-support tool for climate and energy management rather than as a purely technical prediction exercise. However, most existing ACAIT-aligned forecasting studies focus on emissions, load, or enterprise indicators as the final prediction target. They do not explicitly connect fossil fuel price forecasts to macroeconomic transmission channels, regional financing conditions, or project-level WACC. This gap motivates the present study's three-stage design: fossil fuel prices are first predicted with a hybrid sequential model, inflation is then modeled as a macroeconomic covariate, and the resulting signals are finally linked to capital-cost sensitivity for energy transition projects.
-+These studies are relevant because they position AI forecasting as a decision-support tool for climate and energy management rather than as a purely technical prediction exercise. The two cited ACAIT studies focus on carbon emissions as the prediction target. They do not explicitly connect fossil fuel price forecasts to macroeconomic transmission channels, regional financing conditions, or project-level WACC. This gap motivates the present study's three-stage design: fossil fuel prices are first predicted with a hybrid sequential model, inflation is then modeled as a macroeconomic covariate, and the resulting signals are finally linked to capital-cost sensitivity for energy transition projects.
++These studies are relevant because they position AI forecasting as a decision-support tool for climate and energy management rather than as a purely technical prediction exercise. However, the two cited ACAIT studies focus on carbon emissions as the final prediction target. They do not explicitly connect fossil fuel price forecasts to macroeconomic transmission channels, regional financing conditions, or project-level WACC. This gap motivates the present study's three-stage design: fossil fuel prices are first predicted with a hybrid sequential model, inflation is then modeled as a macroeconomic covariate, and the resulting signals are finally linked to capital-cost sensitivity for energy transition projects.
 --- original/sections/methodology.tex
 +++ checked/sections/methodology.tex
 @@ -6,14 +6,14 @@
@@ -2041,16 +1980,11 @@
  \subsection{Stage 1: Prediction of Fossil Fuel Prices}
  
 -Since previous studies have proved the proficiency of Long Short-Term Memory (LSTM) in handling sequence data with long-term dependencies \cite{ALSELWI2024102068,LINDEMANN2021650}, and the advantages of Gaussian Process Regression (GPR) \cite{LAHMIRI2024105008,rasmussen2003gaussian} in predicting fossil energy prices, this study uses a hybrid model combining LSTM and GPR to predict fossil fuel prices (coal, oil, and natural gas) from 2026 to 2035 (Fig.~\ref{fig:lstm}).
-+Since previous studies have proved the proficiency of Long Short-Term Memory (LSTM) in handling sequence data with long-term dependencies \cite{ALSELWI2024102068,LINDEMANN2021650}, and evidence on Gaussian Process Regression (GPR) for fossil-energy forecasting \cite{LAHMIRI2024105008}, together with its probabilistic formulation \cite{rasmussen2003gaussian}, this study uses a hybrid model combining LSTM and GPR to predict fossil fuel prices (coal, oil, and natural gas) from 2026 to 2035 (Fig.~\ref{fig:lstm}).
++Since previous studies have proved the proficiency of Long Short-Term Memory (LSTM) in handling sequence data with long-term dependencies \cite{ALSELWI2024102068,LINDEMANN2021650}, and the advantages of Gaussian Process Regression (GPR) for fossil-energy forecasting \cite{LAHMIRI2024105008} and its probabilistic formulation \cite{rasmussen2003gaussian}, this study uses a hybrid model combining LSTM and GPR to predict fossil fuel prices (coal, oil, and natural gas) from 2026 to 2035 (Fig.~\ref{fig:lstm}).
  
  \subsubsection{Step 1.1: LSTM Model}
  The primary forecasting model is an LSTM network designed to learn intricate non-linear patterns from historical time-series data. To represent the cyclical nature of monthly patterns, we transform the month of the year, $m$, into two continuous sinusoidal features:
-@@ -34,11 +34,11 @@
- \begin{equation}
-     P_e=K(t,X)[K(X,X)+\sigma_n^2 I]^{-1}\mathbf{y}_{DL}.
- \end{equation}
--where $K(t,X)$ is the vector of covariances between the test point $t$ and the training inputs $X$, and $K(X,X)$ is the covariance matrix of the training inputs. The GPR component uses 10 optimizer restarts, a regularization value $\alpha=0.01$, and a fixed random seed of 42. The main LSTM and GPR settings are summarized in Appendix Table~\ref{tab:hyperparameter-summary}.
-+where $K(t,X)$ is the vector of covariances between the test point $t$ and the training inputs $X$, and $K(X,X)$ is the covariance matrix of the training inputs. This GPR stage smooths the neural forecast path; its conditional variance does not capture the full uncertainty of the preceding neural forecast. The GPR component uses 10 optimizer restarts, a regularization value $\alpha=0.01$, and a fixed random seed of 42. The main LSTM and GPR settings are summarized in Appendix Table~\ref{tab:hyperparameter-summary}.
+@@ -38,7 +38,7 @@
  
  \begin{figure}[t]
      \centering
@@ -2064,14 +1998,14 @@
  
  \subsubsection{Inclusion of Inflation Rate as a Covariate}
 -In the model, the inflation rate is included as a crucial covariate. As a macroeconomically sensitive indicator, WACC is directly influenced by the prevailing interest rate environment, and the inflation rate is a primary basis for central banks to adjust monetary policies \cite{en15186655}. Additionally, fossil fuel prices themselves are closely correlated with the macroeconomic inflation levels \cite{KANG2020103257}.
-+In the model, the inflation rate is included as a crucial covariate. As a macroeconomically sensitive indicator, WACC is directly influenced by the prevailing interest rate environment, and inflation is relevant to monetary-policy and financing conditions \cite{dobrowolski2022weighted}. Additionally, fossil fuel prices themselves are closely correlated with macroeconomic inflation \cite{millischer2024renewables}.
++In the model, the inflation rate is included as a crucial covariate. As a macroeconomically sensitive indicator, WACC is directly influenced by the prevailing interest rate environment, and inflation is relevant to financing conditions \cite{dobrowolski2022weighted}. Additionally, fossil fuel prices themselves are closely correlated with the macroeconomic inflation levels \cite{millischer2024renewables}.
  
  \subsubsection{Forecasting Framework}
 -This study adopts a methodology proven to be accurate in predicting inflation rate \cite{PARANHOS2025}, which models the inflation rate as a non-linear function fitting problem:
-+This study adopts an inflation-forecasting architecture informed by the recurrent-network approach of Paranhos \cite{PARANHOS2025}, which models the inflation rate as a non-linear function fitting problem:
++This study adopts an inflation-forecasting methodology informed by recurrent-network research \cite{PARANHOS2025}, which models the inflation rate as a non-linear function fitting problem:
  \begin{equation}
 -y_{z+h}=G(x_z;\Theta_h)+\epsilon_{z+h}.
-+y_{t+h}=G(x_t;\Theta_h)+\epsilon_{t+h}.
++y_{t+h}=G(x_t;\Theta_h)+\epsilon_{z+h}.
  \end{equation}
  where $y_{t+h}$ is the inflation rate at a future horizon $h$, and $x_t$ is the vector of predictor variables containing relevant macroeconomic indicators and their lags.
  
@@ -2102,7 +2036,7 @@
  
  \subsubsection{Modeling Design}
 -This assessment model involves three fossil fuel prices (coal, natural gas, and oil) and nine types of energy transition projects. To isolate variables, we constructed and trained a total of $3\times9=27$ independent regression models. In each model, the independent variables consist of an energy price and the contemporaneous inflation rate, while the dependent variable is the WACC for the project. This approach aims to find a function $f$ for each project type $p$ and energy source $e$, such that:
-+This assessment model involves three fossil fuel prices (coal, natural gas, and oil) and nine types of energy transition projects. For each region, we constructed $3\times9=27$ separate regression specifications, giving 81 region--fuel--project combinations across the three regions. Coal and gas generation are retained as conventional-technology comparisons. The target WACC series are scenario projections derived from Calcaterra et al. \cite{calcaterra2024reducing}, aligned to 120 monthly rows per region for 2026--2035. In each model, the independent variables consist of an energy price and the contemporaneous inflation rate, while the dependent variable is the WACC for the project. This approach aims to find a function $f$ for each project type $p$ and energy source $e$, such that:
++This assessment model involves three fossil fuel prices (coal, natural gas, and oil) and nine types of energy transition projects. For comparison, we constructed and trained $3\times9=27$ independent regression models per region, giving 81 region--fuel--project combinations. In each model, the independent variables consist of an energy price and the contemporaneous inflation rate, while the dependent variable is the WACC for the project. This approach aims to find a function $f$ for each project type $p$ and energy source $e$, such that:
  \begin{equation}
      \mathrm{WACC}_{p}=f(P_e,\hat{y}_{ens,t})+\epsilon.
  \end{equation}
@@ -2110,7 +2044,7 @@
  
  \subsubsection{Automated Modeling with AutoGluon}
 -We selected the AutoGluon-Tabular framework to perform training and optimization. Since it could enhance model robustness and accuracy through the following two techniques:
-+We selected AutoGluon-Tabular for training and optimization \cite{autogluon2025docs}. The implementation uses two ensembling techniques:
++We selected the AutoGluon-Tabular framework to perform training and optimization \cite{autogluon2025docs}. Since it could enhance model robustness and accuracy through the following two techniques:
  \begin{itemize}
      \item \textbf{$j$-fold Cross-Validation Bagging}: It trains multiple base models $h_j$ on different subsets of the training data created via cross-validation. The final result, $\hat{y}_{bag}$, is the average of the output of all base models:
      \begin{equation}
@@ -2123,10 +2057,10 @@
  
  \subsubsection{Model Performance Evaluation}
 -Although AutoGluon has built-in optimization targets during its training process, we conducted an independent performance evaluation for each final model after training was complete. The evaluation metrics included $R^2$, MAPE, and RMSE. These three metrics were chosen to provide a comprehensive assessment of the model's performance from different perspectives: $R^2$ measures the extent to which the model explains the variance in WACC, MAPE intuitively reflects the average percentage of prediction deviation, and RMSE quantifies the dispersion of errors between predicted and actual values. Together, these metrics provide a comprehensive basis for evaluating the predictive power of fossil fuel prices on WACC.
-+The archived AutoGluon implementation evaluates fitted models on the same input rows used for training. Its $R^2$, MAPE, and RMSE therefore summarize in-sample fit. Here $R^2$ measures variance explained by the joint fuel-price and inflation specification; MAPE is reported as a fraction, and RMSE is in decimal WACC units. Fit statistics do not measure the size of a price response.
++Although AutoGluon has built-in optimization targets during its training process, we conducted an in-sample performance evaluation on the training rows for each final model after training was complete. The evaluation metrics included $R^2$, MAPE, and RMSE. These three metrics were chosen to provide a comprehensive assessment of the model's performance from different perspectives: $R^2$ measures the extent to which fuel price and inflation jointly explain the variance in WACC, MAPE intuitively reflects the average percentage of prediction deviation, and RMSE quantifies the dispersion of errors between predicted and actual values. Together, these metrics assess model fit. MAPE is reported as a fraction and RMSE in decimal WACC units.
  
 -In addition to the original fit statistics, this study also uses a fixed holdout split, rolling-origin validation, log-linear price-shock elasticities, and Granger-style transmission diagnostics. These additional checks are designed to distinguish scenario sensitivity from formal causal identification and to examine whether the hypothesized channels through inflation and interest rates are visible in the data.
-+Additional diagnostics use cleaned panels with region-specific inflation. OLS and Ridge specifications are evaluated using a fixed chronological holdout (2026--2032 training; 2033--2035 testing) and rolling-origin folds. These checks examine the stability of the modeled relationships rather than serving as an out-of-sample evaluation of AutoGluon itself. Log-linear specifications control for inflation and a time trend. Slopes are transformed back from standardized inputs, giving the elasticity $\beta_e=\partial\log(\mathrm{WACC})/\partial\log(P_e)$. A 10\% price increase is converted into a WACC change as $10^4\overline{\mathrm{WACC}}[\exp(\beta_e\log(1.1))-1]$ basis points. Granger-style tests examine historical lagged macroeconomic associations.
++In addition to the original fit statistics, this study also uses separate OLS/Ridge specifications on cleaned regional panels for fixed holdout and rolling-origin validation, log-linear price-shock elasticities, and Granger-style transmission diagnostics. These additional checks are designed to distinguish scenario sensitivity from formal causal identification and to examine whether the hypothesized channels through inflation and interest rates are visible in the data.
  
  \begin{figure*}[t]
      \centering
@@ -2138,44 +2072,42 @@
  
  \subsection{Accuracy of the Prediction Models}
 -To validate the accuracy of the LSTM-GPR model, this study employed four models (LSTM-GPR, SARIMA, XGBoost, and LightGBM) to forecast WTI crude oil prices from 2021 to 2024 using data from 1982 to 2020. The predictions generated by these models were subsequently compared with actual oil prices, as shown in Fig.~\ref{fig:accuracy}. Evaluation metrics revealed that the LSTM-GPR model outperformed the other models, achieving a coefficient of determination of 0.963 and MAPE of 0.0186. Additionally, the LSTM-GPR model exhibited lower RMSE and MAE values of 2.416 and 1.425, respectively (Table~\ref{tab:stage1-accuracy}). The accuracy of forecasting the inflation rate has been examined in previous studies \cite{PARANHOS2025}.
-+The archived oil-price comparison contains 47 monthly observations from 2021--2024 for LSTM-GPR, SARIMA, XGBoost, and LightGBM (Fig.~\ref{fig:accuracy}). Recomputing metrics from \texttt{Accuracy\_Prediction-Model.xlsx} gives $R^2=0.963$, MAPE=0.0186, RMSE=2.416, and MAE=1.425 for LSTM-GPR (Table~\ref{tab:stage1-accuracy}). The LSTM-GPR series has the smallest errors among these archived outputs. The saved comparison outputs lack complete training-origin metadata. Fixed-origin baseline forecasts trained through 2020 are therefore reported separately in the repository. The inflation model follows the recurrent-network approach of Paranhos \cite{PARANHOS2025}.
++This study compares the saved WTI crude oil predictions of four models (LSTM-GPR, SARIMA, XGBoost, and LightGBM) over 47 months in 2021--2024. The predictions generated by these models were subsequently compared with actual oil prices, as shown in Fig.~\ref{fig:accuracy}. Evaluation metrics revealed that the LSTM-GPR model outperformed the other models, achieving a coefficient of determination of 0.963 and MAPE of 0.0186. Additionally, the LSTM-GPR model exhibited lower RMSE and MAE values of 2.416 and 1.425, respectively (Table~\ref{tab:stage1-accuracy}). The saved comparison lacks complete training-origin metadata; separate fixed-origin baseline results are provided in the repository. Recurrent-network inflation forecasting has been examined in previous studies \cite{PARANHOS2025}.
  
  \begin{table}[t]
  \centering
 -\caption{Stage 1 Forecast Accuracy for Oil Price Prediction, 2021-2024}
-+\caption{Archived Stage 1 Oil-Price Comparison, 2021--2024}
++\caption{Saved Stage 1 Oil-Price Comparison, 2021--2024}
  \label{tab:stage1-accuracy}
  \scriptsize
  \begin{tabular}{lrrrr}
 --- original/sections/results.tex
 +++ checked/sections/results.tex
-@@ -1,34 +1,34 @@
+@@ -1,19 +1,19 @@
  \begin{figure*}[t]
      \centering
      \includegraphics[width=0.98\textwidth]{figure.png}
 -    \caption{Model performance for each project: comparison of $R^2$, MAPE, and RMSE for estimating WACC across various regions and energy transition projects.}
-+    \caption{Archived in-sample AutoGluon fit by region, fuel, and technology. The joint inputs are fuel price and inflation; $R^2$ describes fit, MAPE is a fraction, and RMSE is in decimal WACC units.}
++    \caption{In-sample model performance for each project: comparison of $R^2$, MAPE, and RMSE for estimating WACC across various regions and energy transition projects.}
      \label{fig:result9}
  \end{figure*}
  
  \section{Results}
  
 -As shown in Fig.~\ref{fig:result9}, the experiment results demonstrate that fossil fuel price fluctuations differentially impact various energy transition projects. Solar and wind (both onshore and offshore) projects demonstrate the highest sensitivity, with average $R^2$ values all exceeding 0.7. In contrast, other projects, including hydropower, biomass, and coal, exhibit a lower level of sensitivity. Their average $R^2$ values are generally 0.5, suggesting that their capital costs are likely driven more by other, non-fossil-fuel-price factors.
-+As shown in Fig.~\ref{fig:result9}, the experiment results demonstrate that model fit varies across energy transition projects. Solar and wind (both onshore and offshore) projects demonstrate the strongest fit, with average $R^2$ values of 0.718, 0.700, and 0.706 for solar, onshore wind, and offshore wind, respectively. In contrast, other projects, including hydropower, biomass, and coal, exhibit lower fit, with average $R^2$ values around 0.58.
++As shown in Fig.~\ref{fig:result9}, the experiment results demonstrate differences in WACC model fit across energy transition projects. Solar and wind (both onshore and offshore) projects demonstrate the highest model fit, with average $R^2$ values all exceeding 0.7. In contrast, other projects, including hydropower, biomass, and coal, exhibit lower model fit, with average $R^2$ values around 0.58.
  
 -From a regional perspective, the impact of fossil fuel prices exhibits clear geographical characteristics. In major energy-importing regions like Europe and China, the influence is considerably more pronounced, with average $R^2$ values of 0.67 and 0.65. Conversely, the impact is markedly weaker in the Middle East, an energy-exporting region, where the average $R^2$ value is only 0.54. This disparity is also reflected in the prediction error, as the Middle East's average MAPE (0.0209) is substantially higher than that of Europe (0.0050) and China (0.0061), implying greater uncertainty in capital cost.
-+From a regional perspective, model fit exhibits clear geographical characteristics. In major energy-importing regions like Europe and China, average $R^2$ values are 0.670 and 0.650. Conversely, model fit is lower in the Middle East, an energy-exporting region, with an average $R^2$ of 0.547. This disparity is also reflected in the prediction error, as the Middle East's average MAPE (0.0209) is higher than that of Europe (0.0050) and China (0.0061).
++From a regional perspective, model fit exhibits clear geographical characteristics. In major energy-importing regions like Europe and China, the model fit is higher, with average $R^2$ values of 0.67 and 0.65. Conversely, the model fit is lower in the Middle East, an energy-exporting region, where the average $R^2$ value is 0.55. This disparity is also reflected in the prediction error, as the Middle East's average MAPE (0.0209) is substantially higher than that of Europe (0.0050) and China (0.0061), indicating larger relative prediction errors.
  
  \subsection{Robustness Checks}
  
 -The additional holdout and rolling-origin checks support a more cautious interpretation of these results. The main results in Fig.~\ref{fig:result9} are useful for measuring scenario sensitivity within the constructed 2026-2035 panel, while the time-split tests examine how stable the fitted relationships remain when later years are held out. The fixed holdout uses 2026-01 to 2032-12 as the training period and 2033-01 to 2035-12 as the test period. Rolling-origin validation trains through one calendar year and tests the following year.
-+The additional holdout and rolling-origin checks support a more cautious interpretation of these results. The main results in Fig.~\ref{fig:result9} are descriptive of the original fitted scenario panels, while the time-split tests examine how stable the fitted relationships remain when later years are held out. The fixed holdout uses 2026-01 to 2032-12 as the training period and 2033-01 to 2035-12 as the test period. Rolling-origin validation trains through one calendar year and tests the following year.
++The additional holdout and rolling-origin checks support a more cautious interpretation of these results. The main results in Fig.~\ref{fig:result9} summarize in-sample fit within the constructed 2026-2035 panel, while the time-split tests examine how stable the fitted relationships remain when later years are held out. The fixed holdout uses 2026-01 to 2032-12 as the training period and 2033-01 to 2035-12 as the test period. Rolling-origin validation trains through one calendar year and tests the following year.
  
--Across these checks, MAPE remains small for level and trend specifications, but $R^2$ is often unstable because the test-period WACC variation is narrow. Therefore, the paper treats the estimated relationships as predictive sensitivity and stress-scenario evidence rather than as formal causal effects. Table~\ref{tab:robustness} summarizes how the robustness outputs are used in interpreting the findings.
-+Across these checks, MAPE remains small for level and trend specifications, but many out-of-sample $R^2$ values are negative. Narrow test-period WACC variation contributes to this behavior, and small percentage errors alone do not establish improvement over a baseline. Therefore, the paper treats the estimated relationships as predictive sensitivity and stress-scenario evidence rather than as formal causal effects. Table~\ref{tab:robustness} summarizes how the robustness outputs are used in interpreting the findings.
+ Across these checks, MAPE remains small for level and trend specifications, but $R^2$ is often unstable because the test-period WACC variation is narrow. Therefore, the paper treats the estimated relationships as predictive sensitivity and stress-scenario evidence rather than as formal causal effects. Table~\ref{tab:robustness} summarizes how the robustness outputs are used in interpreting the findings.
  
- \begin{table}[t]
- \centering
+@@ -22,13 +22,13 @@
  \caption{Robustness Checks Used for Interpretation}
  \label{tab:robustness}
  \scriptsize
@@ -2187,7 +2119,7 @@
  Fixed holdout & Train 2026-2032; test 2033-2035 & Later-year prediction is sensitive to specification; use the main $R^2$ values as scenario-fit evidence. \\
  Rolling origin & Train through one year; test the next year & Percentage errors are small in level/trend specifications, but $R^2$ varies under narrow WACC ranges. \\
 -Incremental $R^2$ & Add fuel price and inflation beyond time trend & Positive cases occur for 8/27 China models, 6/27 Europe models, and about 6/27 Middle East models. \\
-+Incremental $R^2$ & Add fuel price and inflation beyond time trend & Positive cases occur for 8/27 China models, 6/27 Europe models, and 6/27 Middle East Ridge models. \\
++Incremental $R^2$ & Add fuel price and inflation beyond time trend & Positive cases occur for 8/27 China models, 6/27 Europe models, and 6/27 Middle East models (Ridge specifications). \\
  Elasticity checks & Log-linear 10\% price shock conversion & Coefficients are interpreted as price-shock sensitivity, not causal effects. \\
  \bottomrule
  \end{tabular}

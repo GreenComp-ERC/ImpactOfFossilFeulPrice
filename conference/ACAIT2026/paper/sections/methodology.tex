@@ -13,7 +13,7 @@ After that, the third stage evaluates the impact of fossil fuel prices on WACC u
 
 \subsection{Stage 1: Prediction of Fossil Fuel Prices}
 
-Since previous studies have proved the proficiency of Long Short-Term Memory (LSTM) in handling sequence data with long-term dependencies \cite{ALSELWI2024102068,LINDEMANN2021650}, and evidence on Gaussian Process Regression (GPR) for fossil-energy forecasting \cite{LAHMIRI2024105008}, together with its probabilistic formulation \cite{rasmussen2003gaussian}, this study uses a hybrid model combining LSTM and GPR to predict fossil fuel prices (coal, oil, and natural gas) from 2026 to 2035 (Fig.~\ref{fig:lstm}).
+Since previous studies have proved the proficiency of Long Short-Term Memory (LSTM) in handling sequence data with long-term dependencies \cite{ALSELWI2024102068,LINDEMANN2021650}, and the advantages of Gaussian Process Regression (GPR) for fossil-energy forecasting \cite{LAHMIRI2024105008} and its probabilistic formulation \cite{rasmussen2003gaussian}, this study uses a hybrid model combining LSTM and GPR to predict fossil fuel prices (coal, oil, and natural gas) from 2026 to 2035 (Fig.~\ref{fig:lstm}).
 
 \subsubsection{Step 1.1: LSTM Model}
 The primary forecasting model is an LSTM network designed to learn intricate non-linear patterns from historical time-series data. To represent the cyclical nature of monthly patterns, we transform the month of the year, $m$, into two continuous sinusoidal features:
@@ -34,7 +34,7 @@ This kernel incorporates a Radial Basis Function component that encodes the assu
 \begin{equation}
     P_e=K(t,X)[K(X,X)+\sigma_n^2 I]^{-1}\mathbf{y}_{DL}.
 \end{equation}
-where $K(t,X)$ is the vector of covariances between the test point $t$ and the training inputs $X$, and $K(X,X)$ is the covariance matrix of the training inputs. This GPR stage smooths the neural forecast path; its conditional variance does not capture the full uncertainty of the preceding neural forecast. The GPR component uses 10 optimizer restarts, a regularization value $\alpha=0.01$, and a fixed random seed of 42. The main LSTM and GPR settings are summarized in Appendix Table~\ref{tab:hyperparameter-summary}.
+where $K(t,X)$ is the vector of covariances between the test point $t$ and the training inputs $X$, and $K(X,X)$ is the covariance matrix of the training inputs. The GPR component uses 10 optimizer restarts, a regularization value $\alpha=0.01$, and a fixed random seed of 42. The main LSTM and GPR settings are summarized in Appendix Table~\ref{tab:hyperparameter-summary}.
 
 \begin{figure}[t]
     \centering
@@ -46,12 +46,12 @@ where $K(t,X)$ is the vector of covariances between the test point $t$ and the t
 \subsection{Stage 2: Calculation of Inflation Rate}
 
 \subsubsection{Inclusion of Inflation Rate as a Covariate}
-In the model, the inflation rate is included as a crucial covariate. As a macroeconomically sensitive indicator, WACC is directly influenced by the prevailing interest rate environment, and inflation is relevant to monetary-policy and financing conditions \cite{dobrowolski2022weighted}. Additionally, fossil fuel prices themselves are closely correlated with macroeconomic inflation \cite{millischer2024renewables}.
+In the model, the inflation rate is included as a crucial covariate. As a macroeconomically sensitive indicator, WACC is directly influenced by the prevailing interest rate environment, and inflation is relevant to financing conditions \cite{dobrowolski2022weighted}. Additionally, fossil fuel prices themselves are closely correlated with the macroeconomic inflation levels \cite{millischer2024renewables}.
 
 \subsubsection{Forecasting Framework}
-This study adopts an inflation-forecasting architecture informed by the recurrent-network approach of Paranhos \cite{PARANHOS2025}, which models the inflation rate as a non-linear function fitting problem:
+This study adopts an inflation-forecasting methodology informed by recurrent-network research \cite{PARANHOS2025}, which models the inflation rate as a non-linear function fitting problem:
 \begin{equation}
-y_{t+h}=G(x_t;\Theta_h)+\epsilon_{t+h}.
+y_{t+h}=G(x_t;\Theta_h)+\epsilon_{z+h}.
 \end{equation}
 where $y_{t+h}$ is the inflation rate at a future horizon $h$, and $x_t$ is the vector of predictor variables containing relevant macroeconomic indicators and their lags.
 
@@ -77,14 +77,14 @@ The parameters $\Theta_h$ for all models are estimated by minimizing MSE:
 To quantify the impact of fossil fuel price fluctuations on the WACC, we employed an Automated Machine Learning (AutoML) model, which can automate model selection, hyperparameter tuning, and ensembling.
 
 \subsubsection{Modeling Design}
-This assessment model involves three fossil fuel prices (coal, natural gas, and oil) and nine types of energy transition projects. For each region, we constructed $3\times9=27$ separate regression specifications, giving 81 region--fuel--project combinations across the three regions. Coal and gas generation are retained as conventional-technology comparisons. The target WACC series are scenario projections derived from Calcaterra et al. \cite{calcaterra2024reducing}, aligned to 120 monthly rows per region for 2026--2035. In each model, the independent variables consist of an energy price and the contemporaneous inflation rate, while the dependent variable is the WACC for the project. This approach aims to find a function $f$ for each project type $p$ and energy source $e$, such that:
+This assessment model involves three fossil fuel prices (coal, natural gas, and oil) and nine types of energy transition projects. For comparison, we constructed and trained $3\times9=27$ independent regression models per region, giving 81 region--fuel--project combinations. In each model, the independent variables consist of an energy price and the contemporaneous inflation rate, while the dependent variable is the WACC for the project. This approach aims to find a function $f$ for each project type $p$ and energy source $e$, such that:
 \begin{equation}
     \mathrm{WACC}_{p}=f(P_e,\hat{y}_{ens,t})+\epsilon.
 \end{equation}
 where $\mathrm{WACC}_{p}$ is the capital cost for a specific project, $P_e$ is the price, $\hat{y}_{ens,t}$ represents the inflation rate, and $\epsilon$ is the irreducible error term.
 
 \subsubsection{Automated Modeling with AutoGluon}
-We selected AutoGluon-Tabular for training and optimization \cite{autogluon2025docs}. The implementation uses two ensembling techniques:
+We selected the AutoGluon-Tabular framework to perform training and optimization \cite{autogluon2025docs}. Since it could enhance model robustness and accuracy through the following two techniques:
 \begin{itemize}
     \item \textbf{$j$-fold Cross-Validation Bagging}: It trains multiple base models $h_j$ on different subsets of the training data created via cross-validation. The final result, $\hat{y}_{bag}$, is the average of the output of all base models:
     \begin{equation}
@@ -98,9 +98,9 @@ We selected AutoGluon-Tabular for training and optimization \cite{autogluon2025d
 Through this automated process, we generated an optimized model for each region-specific set of 27 regressions, best adapted to its data characteristics.
 
 \subsubsection{Model Performance Evaluation}
-The archived AutoGluon implementation evaluates fitted models on the same input rows used for training. Its $R^2$, MAPE, and RMSE therefore summarize in-sample fit. Here $R^2$ measures variance explained by the joint fuel-price and inflation specification; MAPE is reported as a fraction, and RMSE is in decimal WACC units. Fit statistics do not measure the size of a price response.
+Although AutoGluon has built-in optimization targets during its training process, we conducted an in-sample performance evaluation on the training rows for each final model after training was complete. The evaluation metrics included $R^2$, MAPE, and RMSE. These three metrics were chosen to provide a comprehensive assessment of the model's performance from different perspectives: $R^2$ measures the extent to which fuel price and inflation jointly explain the variance in WACC, MAPE intuitively reflects the average percentage of prediction deviation, and RMSE quantifies the dispersion of errors between predicted and actual values. Together, these metrics assess model fit. MAPE is reported as a fraction and RMSE in decimal WACC units.
 
-Additional diagnostics use cleaned panels with region-specific inflation. OLS and Ridge specifications are evaluated using a fixed chronological holdout (2026--2032 training; 2033--2035 testing) and rolling-origin folds. These checks examine the stability of the modeled relationships rather than serving as an out-of-sample evaluation of AutoGluon itself. Log-linear specifications control for inflation and a time trend. Slopes are transformed back from standardized inputs, giving the elasticity $\beta_e=\partial\log(\mathrm{WACC})/\partial\log(P_e)$. A 10\% price increase is converted into a WACC change as $10^4\overline{\mathrm{WACC}}[\exp(\beta_e\log(1.1))-1]$ basis points. Granger-style tests examine historical lagged macroeconomic associations.
+In addition to the original fit statistics, this study also uses separate OLS/Ridge specifications on cleaned regional panels for fixed holdout and rolling-origin validation, log-linear price-shock elasticities, and Granger-style transmission diagnostics. These additional checks are designed to distinguish scenario sensitivity from formal causal identification and to examine whether the hypothesized channels through inflation and interest rates are visible in the data.
 
 \begin{figure*}[t]
     \centering
@@ -110,11 +110,11 @@ Additional diagnostics use cleaned panels with region-specific inflation. OLS an
 \end{figure*}
 
 \subsection{Accuracy of the Prediction Models}
-The archived oil-price comparison contains 47 monthly observations from 2021--2024 for LSTM-GPR, SARIMA, XGBoost, and LightGBM (Fig.~\ref{fig:accuracy}). Recomputing metrics from \texttt{Accuracy\_Prediction-Model.xlsx} gives $R^2=0.963$, MAPE=0.0186, RMSE=2.416, and MAE=1.425 for LSTM-GPR (Table~\ref{tab:stage1-accuracy}). The LSTM-GPR series has the smallest errors among these archived outputs. The saved comparison outputs lack complete training-origin metadata. Fixed-origin baseline forecasts trained through 2020 are therefore reported separately in the repository. The inflation model follows the recurrent-network approach of Paranhos \cite{PARANHOS2025}.
+This study compares the saved WTI crude oil predictions of four models (LSTM-GPR, SARIMA, XGBoost, and LightGBM) over 47 months in 2021--2024. The predictions generated by these models were subsequently compared with actual oil prices, as shown in Fig.~\ref{fig:accuracy}. Evaluation metrics revealed that the LSTM-GPR model outperformed the other models, achieving a coefficient of determination of 0.963 and MAPE of 0.0186. Additionally, the LSTM-GPR model exhibited lower RMSE and MAE values of 2.416 and 1.425, respectively (Table~\ref{tab:stage1-accuracy}). The saved comparison lacks complete training-origin metadata; separate fixed-origin baseline results are provided in the repository. Recurrent-network inflation forecasting has been examined in previous studies \cite{PARANHOS2025}.
 
 \begin{table}[t]
 \centering
-\caption{Archived Stage 1 Oil-Price Comparison, 2021--2024}
+\caption{Saved Stage 1 Oil-Price Comparison, 2021--2024}
 \label{tab:stage1-accuracy}
 \scriptsize
 \begin{tabular}{lrrrr}

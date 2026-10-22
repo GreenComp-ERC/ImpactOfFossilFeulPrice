@@ -1,13 +1,13 @@
 [
   {
-    "image": "poster-final.png",
+    "image": "render_round3/poster-final.png",
     "decoded": [
       "https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice",
       "https://huggingface.co/datasets/global-nomad-nexus/ImpactOfFossilFuelPrice-WACC"
     ]
   },
   {
-    "image": "round2-slide-15.png",
+    "image": "render_round3/slides-final.png",
     "decoded": [
       "https://github.com/GreenComp-ERC/ImpactOfFossilFeulPrice",
       "https://huggingface.co/datasets/global-nomad-nexus/ImpactOfFossilFuelPrice-WACC"

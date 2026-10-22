@@ -28,7 +28,7 @@
     "metadata_status": "CHECKED",
     "evidence_depth": "PUBLISHER_ABSTRACT",
     "supported_scope": "Energy-system transformation and a renewable-based global transition.",
-    "correction_or_scope_control": "Replaced an unsupported claim about the exact share of emissions with the supported mitigation context.",
+    "correction_or_scope_control": "Retained the original general motivation about energy-system emissions; no exact emissions share is claimed.",
     "final_locations": "sections/introduction.tex:3",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
@@ -51,7 +51,7 @@
     "evidence_depth": "PUBLISHER_ABSTRACT",
     "supported_scope": "Design, price levels, policy goals and innovation incentives in emissions trading.",
     "correction_or_scope_control": "Removed unsupported quantified carbon-price/WACC response.",
-    "final_locations": "sections/discussion.tex:10",
+    "final_locations": "sections/discussion.tex:8; sections/discussion.tex:14",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -62,7 +62,7 @@
     "evidence_depth": "PUBLISHER_ABSTRACT",
     "supported_scope": "Widespread MENA energy subsidies and associated institutional/economic trade-offs.",
     "correction_or_scope_control": "Merged duplicate fattouh2013energy; removed unsupported region-wide fiscal shares and gasoline-price comparisons.",
-    "final_locations": "sections/discussion.tex:31; sections/discussion.tex:65",
+    "final_locations": "sections/discussion.tex:36; sections/discussion.tex:44",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -73,7 +73,7 @@
     "evidence_depth": "PUBLISHER_ABSTRACT",
     "supported_scope": "Fiscal instruments can affect price pass-through, inflation and output in importing economies.",
     "correction_or_scope_control": "Corrected use from unsupported Chinese coal-price statistics to the actual macroeconomic study.",
-    "final_locations": "sections/discussion.tex:13",
+    "final_locations": "sections/discussion.tex:32",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -84,7 +84,7 @@
     "evidence_depth": "PUBLISHER_ABSTRACT",
     "supported_scope": "CGE evaluation of economic and emissions consequences of Chinese natural-gas price control.",
     "correction_or_scope_control": "No coal corridor, coal standard deviation or subsidy-induced WACC volatility attributed to this source.",
-    "final_locations": "sections/discussion.tex:22; sections/discussion.tex:63",
+    "final_locations": "sections/discussion.tex:32",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -106,7 +106,7 @@
     "evidence_depth": "PUBLISHER_ABSTRACT",
     "supported_scope": "Links among energy prices, growth and renewable consumption in Europe.",
     "correction_or_scope_control": "Regional context only; no WACC estimate attributed to it.",
-    "final_locations": "sections/discussion.tex:7",
+    "final_locations": "sections/discussion.tex:12",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -128,7 +128,7 @@
     "evidence_depth": "FULL_REPORT_PDF",
     "supported_scope": "Renewables can hedge electricity-market fuel-price exposure; contracts convey stability benefits.",
     "correction_or_scope_control": "Replaced organization homepage with actual report; no stock-beta inference.",
-    "final_locations": "sections/literature_review.tex:35",
+    "final_locations": "sections/literature_review.tex:35; sections/literature_review.tex:35",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -150,7 +150,7 @@
     "evidence_depth": "PUBLISHER_ABSTRACT",
     "supported_scope": "Policy design, credibility and predictability affect investor risk and return.",
     "correction_or_scope_control": "Moved WACC-equation attribution to Calcaterra; retained policy-review findings.",
-    "final_locations": "sections/discussion.tex:10; sections/discussion.tex:22; sections/discussion.tex:61; sections/discussion.tex:63",
+    "final_locations": "sections/discussion.tex:84",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -161,7 +161,7 @@
     "evidence_depth": "PUBLISHER_ABSTRACT",
     "supported_scope": "Drivers of EU-27 energy imports during 2000-2020, including dependence and efficiency.",
     "correction_or_scope_control": "No 2018-2024 import percentages attributed to this study.",
-    "final_locations": "sections/discussion.tex:7",
+    "final_locations": "sections/discussion.tex:8",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -172,7 +172,7 @@
     "evidence_depth": "OFFICIAL_EUR_LEX",
     "supported_scope": "EU framework for promoting renewable energy deployment.",
     "correction_or_scope_control": "Corrected instrument identity; removed unrelated COM(2021)129 identifier.",
-    "final_locations": "sections/discussion.tex:10",
+    "final_locations": "sections/discussion.tex:8; sections/discussion.tex:14",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -183,7 +183,7 @@
     "evidence_depth": "PUBLISHER_ABSTRACT",
     "supported_scope": "Return and volatility spillovers between global energy and Chinese commodity markets.",
     "correction_or_scope_control": "Regional exposure context only.",
-    "final_locations": "sections/discussion.tex:16",
+    "final_locations": "sections/discussion.tex:28",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -194,7 +194,7 @@
     "evidence_depth": "PUBLISHER_ABSTRACT",
     "supported_scope": "Time-varying international/Chinese energy-price spillovers, amplified by extreme events.",
     "correction_or_scope_control": "No numerical project-finance effect inferred.",
-    "final_locations": "sections/discussion.tex:16",
+    "final_locations": "sections/discussion.tex:28",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -205,7 +205,7 @@
     "evidence_depth": "PUBLISHER_ABSTRACT_TITLE_SCOPE",
     "supported_scope": "European energy crisis and implications for strategic energy storage.",
     "correction_or_scope_control": "Removed unsubstantiated 58/70-basis-point WACC claims.",
-    "final_locations": "sections/discussion.tex:13",
+    "final_locations": "sections/discussion.tex:8; sections/discussion.tex:18",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -238,7 +238,7 @@
     "evidence_depth": "FULL_TEXT_HTML",
     "supported_scope": "Africa-specific 35% green-electricity comparison in a 2 C pathway; about ten years earlier net-zero in a finance-policy scenario.",
     "correction_or_scope_control": "Restored geographic, scenario and comparison scope; values unchanged.",
-    "final_locations": "sections/discussion.tex:55; sections/introduction.tex:3",
+    "final_locations": "sections/discussion.tex:72; sections/introduction.tex:3; sections/introduction.tex:7",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -260,7 +260,7 @@
     "evidence_depth": "PUBLISHER_CROSSREF_ABSTRACT",
     "supported_scope": "Positive long-run fossil-price/renewable-consumption link in China; insignificant short-run effects.",
     "correction_or_scope_control": "Removed unsupported 12-18-basis-point photovoltaic WACC claim.",
-    "final_locations": "sections/discussion.tex:19",
+    "final_locations": "sections/discussion.tex:28",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -271,7 +271,7 @@
     "evidence_depth": "PUBLISHER_CROSSREF_ABSTRACT",
     "supported_scope": "Geographical inequalities in European energy poverty.",
     "correction_or_scope_control": "Moved to community-impact context; no carbon-price/WACC coefficient attributed to it. Print year 2017 retained.",
-    "final_locations": "sections/discussion.tex:58",
+    "final_locations": "sections/discussion.tex:80",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -282,7 +282,7 @@
     "evidence_depth": "FULL_TEXT_HTML_METHODS",
     "supported_scope": "WACC construction, utility-revenue weighting, financing learning, convergence scenario, and source data.",
     "correction_or_scope_control": "Corrected volume 9(10), pages 1241-1251; financial-learning exponent is negative; convergence is a separate scenario.",
-    "final_locations": "sections/discussion.tex:55; sections/literature_review.tex:5; sections/literature_review.tex:5; sections/literature_review.tex:11; sections/literature_review.tex:17; sections/methodology.tex:80",
+    "final_locations": "sections/literature_review.tex:5; sections/literature_review.tex:5; sections/literature_review.tex:11; sections/literature_review.tex:17",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -293,7 +293,7 @@
     "evidence_depth": "PUBLISHER_ABSTRACT_AND_CROSSREF_ABSTRACT",
     "supported_scope": "WACC and interest-rate relationships under unstable market conditions.",
     "correction_or_scope_control": "Merged duplicate en15186655; did not cite it for central-bank reaction-function evidence.",
-    "final_locations": "sections/introduction.tex:7; sections/literature_review.tex:37; sections/methodology.tex:49",
+    "final_locations": "sections/introduction.tex:7; sections/introduction.tex:7; sections/literature_review.tex:37; sections/methodology.tex:49",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -304,7 +304,7 @@
     "evidence_depth": "FULL_REPORT_PDF",
     "supported_scope": "Risk-transfer tools, contracts, counterparty risk and guarantees in renewable-project finance.",
     "correction_or_scope_control": "Corrected full title and two-author list; removed incorrectly included Kruger; added DOI.",
-    "final_locations": "sections/discussion.tex:22; sections/discussion.tex:31; sections/discussion.tex:61; sections/discussion.tex:63; sections/literature_review.tex:37",
+    "final_locations": "sections/discussion.tex:44; sections/literature_review.tex:37",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -326,7 +326,7 @@
     "evidence_depth": "FULL_OFFICIAL_HTML_REPORT",
     "supported_scope": "Green-bond markets and certification, including conditional issuance premia.",
     "correction_or_scope_control": "Removed unsupported 62% USD-denomination and interest-rate basis-point claims; report pages 89-104.",
-    "final_locations": "sections/discussion.tex:13; sections/discussion.tex:61; sections/literature_review.tex:37",
+    "final_locations": "sections/discussion.tex:20",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -337,7 +337,7 @@
     "evidence_depth": "PUBLISHER_ABSTRACT",
     "supported_scope": "Green issuance can signal environmental commitment and attract investors.",
     "correction_or_scope_control": "Removed unsupported oil-price-linked ETF outflow claim; do not describe a guaranteed yield discount.",
-    "final_locations": "sections/discussion.tex:13; sections/discussion.tex:61; sections/literature_review.tex:37",
+    "final_locations": "sections/discussion.tex:20",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -348,7 +348,7 @@
     "evidence_depth": "PUBLISHER_ABSTRACT",
     "supported_scope": "Structural determinants of export diversification in oil-dependent countries.",
     "correction_or_scope_control": "Added DOI; no claim of 68% region-wide fiscal revenue.",
-    "final_locations": "sections/discussion.tex:25; sections/discussion.tex:65",
+    "final_locations": "sections/discussion.tex:36; sections/discussion.tex:40; sections/discussion.tex:88",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {
@@ -403,7 +403,7 @@
     "evidence_depth": "OFFICIAL_OECD_ABSTRACT",
     "supported_scope": "Aligning subnational climate financing with inclusive growth and a just transition.",
     "correction_or_scope_control": "Corrected report year from 2021 to 2019 and series number to 17.",
-    "final_locations": "sections/discussion.tex:58",
+    "final_locations": "sections/discussion.tex:80",
     "verdict": "SUPPORTED_AT_STATED_SCOPE"
   },
   {

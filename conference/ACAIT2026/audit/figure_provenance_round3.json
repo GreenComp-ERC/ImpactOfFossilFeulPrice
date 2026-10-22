@@ -1,0 +1,17 @@
+{
+  "original_file": "figures/fossilfuel_wacc_tensor_framework.drawio-3.pdf",
+  "original_sha256": "86315039053182508bd507934e370f35eb0c5be6ffd94e70c8977ddebbb2afb7",
+  "original_sha256_matches_snapshot": true,
+  "print_copy_sha256": "18ecd6766b6595c8b0a3d8222fff8af432eada278d5b32e71bb790238e6ef55a",
+  "conversion": "Ghostscript pdfwrite -dNoOutputFonts",
+  "visual_design_changed": false,
+  "original_caption_and_first_page_position_restored": true,
+  "render_comparison": {
+    "size": [
+      1700,
+      862
+    ],
+    "mean_absolute_channel_difference_0_255": 2.3715593012146856,
+    "fraction_pixels_difference_over_16": 0.03671011327965061
+  }
+}
