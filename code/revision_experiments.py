@@ -93,14 +93,27 @@ def clean_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 def build_cleaned_wacc_inputs() -> pd.DataFrame:
     """Create region-specific, horizon-aligned WACC files."""
-    inflation = pd.read_excel(DATA_DIR / "inflation_forecasts_2026_2035.xlsx")
-    inflation.columns = inflation.columns.astype(str).str.strip()
+    inflation = clean_columns(pd.read_excel(DATA_DIR / "inflation_forecasts_2026_2035.xlsx"))
+    required_inflation = ["Year", *(spec.inflation_column for spec in REGIONS)]
+    missing_inflation = [name for name in required_inflation if name not in inflation.columns]
+    if missing_inflation:
+        raise ValueError(f"Inflation forecast workbook is missing columns: {missing_inflation}")
+    inflation["Year"] = pd.to_numeric(inflation["Year"], errors="raise").astype(int)
+    if inflation["Year"].duplicated().any():
+        raise ValueError("Inflation forecasts must contain exactly one row per year.")
 
+    expected_months = pd.date_range("2026-01-01", "2035-12-01", freq="MS")
     reports = []
     for spec in REGIONS:
         raw_path = DATA_DIR / spec.raw_file
         raw = clean_columns(pd.read_excel(raw_path))
-        raw["Month"] = pd.to_datetime(raw["Month"])
+        if "Month" not in raw.columns or "inflation rate" not in raw.columns:
+            raise ValueError(f"{spec.raw_file} must include Month and inflation rate.")
+        raw["Month"] = pd.to_datetime(raw["Month"], errors="coerce")
+        if raw["Month"].isna().any():
+            raise ValueError(f"{spec.raw_file} contains invalid monthly timestamps.")
+        if raw["Month"].duplicated().any():
+            raise ValueError(f"{spec.raw_file} contains duplicate months.")
         raw["Year"] = raw["Month"].dt.year
 
         old_inflation = raw[["Month", "inflation rate"]].copy()
@@ -121,8 +134,17 @@ def build_cleaned_wacc_inputs() -> pd.DataFrame:
         if missing:
             raise ValueError(f"{spec.raw_file} is missing required columns: {missing}")
         fixed = fixed[output_columns]
+        if not pd.DatetimeIndex(fixed["Month"]).equals(expected_months):
+            raise ValueError(f"{spec.raw_file} does not cover each month from 2026-01 to 2035-12.")
+        if not np.isfinite(fixed[output_columns[1:]].to_numpy(dtype=float)).all():
+            raise ValueError(f"{spec.raw_file} has missing or non-finite numeric inputs after cleaning.")
 
-        old_common = old_inflation[old_inflation["Month"].isin(fixed["Month"])]
+        # Match original inflation by calendar month, not by position in the raw workbook.
+        old_common = fixed[["Month"]].merge(
+            old_inflation, on="Month", how="left", validate="one_to_one"
+        )
+        if old_common["inflation rate"].isna().any():
+            raise ValueError(f"{spec.raw_file} has missing original inflation observations.")
         diff = fixed["inflation rate"].to_numpy() - old_common["inflation rate"].to_numpy()
 
         cleaned_path = CLEAN_DIR / spec.cleaned_file
@@ -158,8 +180,10 @@ def mae(y_true: np.ndarray, y_pred: np.ndarray) -> float:
 
 
 def mape(y_true: np.ndarray, y_pred: np.ndarray) -> float:
+    """Return fractional MAPE; all-zero targets have undefined MAPE."""
     denom = np.where(np.abs(y_true) < 1e-12, np.nan, np.abs(y_true))
-    return float(np.nanmean(np.abs((y_true - y_pred) / denom)))
+    errors = np.abs((y_true - y_pred) / denom)
+    return float(np.nanmean(errors)) if np.any(np.isfinite(errors)) else float("nan")
 
 
 def r2_score(y_true: np.ndarray, y_pred: np.ndarray) -> float:
@@ -173,6 +197,10 @@ def r2_score(y_true: np.ndarray, y_pred: np.ndarray) -> float:
 def regression_metrics(y_true: Iterable[float], y_pred: Iterable[float]) -> dict[str, float]:
     y = np.asarray(list(y_true), dtype=float)
     pred = np.asarray(list(y_pred), dtype=float)
+    if y.ndim != 1 or pred.ndim != 1 or len(y) == 0 or len(y) != len(pred):
+        raise ValueError("Metric inputs must be nonempty, one-dimensional, and equal in length.")
+    if not np.isfinite(y).all() or not np.isfinite(pred).all():
+        raise ValueError("Metric inputs contain non-finite values.")
     return {
         "R2": r2_score(y, pred),
         "MAPE": mape(y, pred),
@@ -185,6 +213,8 @@ class LinearRegressor:
     """Small standardized linear/ridge regressor with intercept."""
 
     def __init__(self, alpha: float = 0.0):
+        if not np.isfinite(alpha) or alpha < 0:
+            raise ValueError("Ridge regularization alpha must be nonnegative and finite.")
         self.alpha = alpha
         self.x_mean: np.ndarray | None = None
         self.x_std: np.ndarray | None = None
@@ -193,6 +223,10 @@ class LinearRegressor:
     def fit(self, x: pd.DataFrame | np.ndarray, y: pd.Series | np.ndarray) -> "LinearRegressor":
         x_arr = np.asarray(x, dtype=float)
         y_arr = np.asarray(y, dtype=float)
+        if x_arr.ndim != 2 or y_arr.ndim != 1 or len(x_arr) != len(y_arr) or len(y_arr) < 2:
+            raise ValueError("Training inputs must be a 2D feature matrix and matching target.")
+        if x_arr.shape[1] < 1 or not np.isfinite(x_arr).all() or not np.isfinite(y_arr).all():
+            raise ValueError("Training inputs must be nonempty, finite numeric values.")
         self.x_mean = np.nanmean(x_arr, axis=0)
         self.x_std = np.nanstd(x_arr, axis=0)
         self.x_std[self.x_std < 1e-12] = 1.0
@@ -207,6 +241,10 @@ class LinearRegressor:
         if self.beta is None or self.x_mean is None or self.x_std is None:
             raise RuntimeError("Model must be fitted before prediction.")
         x_arr = np.asarray(x, dtype=float)
+        if x_arr.ndim != 2 or x_arr.shape[1] != len(self.x_mean):
+            raise ValueError("Prediction features must match the fitted feature dimensions.")
+        if not np.isfinite(x_arr).all():
+            raise ValueError("Prediction features must be finite.")
         x_scaled = (x_arr - self.x_mean) / self.x_std
         design = np.column_stack([np.ones(len(x_scaled)), x_scaled])
         return design @ self.beta
@@ -634,9 +672,8 @@ def granger_f_test(y: np.ndarray, x: np.ndarray, lags: int) -> tuple[float, floa
     """Manual Granger-style F-test: y_t on y lags vs y and x lags."""
     y = np.asarray(y, dtype=float)
     x = np.asarray(x, dtype=float)
-    valid = np.isfinite(y) & np.isfinite(x)
-    y = y[valid]
-    x = x[valid]
+    if y.ndim != 1 or x.ndim != 1 or len(y) != len(x) or lags < 1:
+        raise ValueError("Granger inputs must be aligned one-dimensional series with positive lags.")
     n = len(y)
     if n <= 2 * lags + 4:
         return float("nan"), float("nan"), lags, 0, 0
@@ -646,7 +683,15 @@ def granger_f_test(y: np.ndarray, x: np.ndarray, lags: int) -> tuple[float, floa
     x_lags = [x[lags - i - 1 : n - i - 1] for i in range(lags)]
     restricted = np.column_stack([np.ones(len(y_dep)), *y_lags])
     unrestricted = np.column_stack([np.ones(len(y_dep)), *y_lags, *x_lags])
+    # Construct lagged rows BEFORE dropping missing observations; removing them
+    # first would incorrectly treat nonadjacent calendar years as adjacent.
+    valid_rows = np.isfinite(y_dep) & np.isfinite(unrestricted).all(axis=1)
+    y_dep = y_dep[valid_rows]
+    restricted = restricted[valid_rows]
+    unrestricted = unrestricted[valid_rows]
 
+    if len(y_dep) <= 2 * lags + 4:
+        return float("nan"), float("nan"), lags, lags, len(y_dep) - unrestricted.shape[1]
     beta_r = np.linalg.pinv(restricted) @ y_dep
     beta_u = np.linalg.pinv(unrestricted) @ y_dep
     resid_r = y_dep - restricted @ beta_r

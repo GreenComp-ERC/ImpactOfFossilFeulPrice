@@ -1,4 +1,22 @@
-
-
 # Manuscripts are linked through official publication records.
 /docs/publications/fossil-fuel-wacc-paper.pdf
+
+# Local Python environments, caches and notebook temporaries
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.DS_Store
+
+# Generated AutoGluon model checkpoints and inference outputs
+/outputs/
+AutogluonModels/
+
+# Local configuration and execution logs
+.env
+.env.*
+*.log

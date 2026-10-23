@@ -1,0 +1,13 @@
+# OPTIONAL original notebook training dependencies (not a verified lockfile).
+# Use a new environment separate from requirements-revision.txt.
+# Exact historical deep-learning/AutoGluon versions and hardware environment
+# have not been re-established; these packages are illustrative requirements.
+numpy
+pandas
+openpyxl
+matplotlib
+scipy
+scikit-learn
+tensorflow
+autogluon.tabular
+jupyterlab
