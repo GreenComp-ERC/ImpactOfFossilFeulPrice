@@ -13,6 +13,8 @@
 | A: Diagnostic replication | Regenerate cleaned data, saved forecast checks, strict fixed-origin baselines, WACC holdout/rolling checks, shock sensitivities and Granger-style transmission diagnostics | `code/revision_experiments.py` and `data/` files | Deterministic analysis with pinned NumPy, pandas and openpyxl; tests exercise core arithmetic and data guards |
 | B: Original model retraining | Retrain CNN/LSTM/GRU+GPR, recurrent inflation ensemble, and AutoGluon regressions | Historical `code/*.ipynb` and original data | **Not asserted**: exact original model checkpoints, training origins, environment and end-to-end rerun have not been re-established |
 
+The source of `Impact_FossilFuel.ipynb` has been made region-selectable and its per-project AutoGluon model directories isolated. The historical default remains Middle East, and the original `time_limit=600` seconds, `best_quality` preset, and model hyperparameter configuration are preserved. Newly trained model checkpoints are deliberately written to untracked `outputs/`, not to this repository's archived results. The original notebook execution-log cells were cleared following portability corrections; earlier logs remain retrievable in Git history.
+
 An earlier saved 2021–2024 LSTM-GPR forecast comparison is retained as a historical benchmark, **not** a verified uniformly trained fixed-origin comparison. The separate fixed-origin baselines use data no later than 2020 for training.
 
 ## Minimal reproducibility commands
