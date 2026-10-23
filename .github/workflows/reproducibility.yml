@@ -37,13 +37,20 @@ jobs:
       - name: Validate notebook JSON
         run: |
           python - <<'PY'
+          import ast
           import json
           from pathlib import Path
+          checked = {'Impact_FossilFuel.ipynb', 'Price_Prediction.ipynb', 'Prediction_Inflation.ipynb'}
           for path in sorted(Path('code').glob('*.ipynb')):
               with path.open(encoding='utf-8') as handle:
                   data = json.load(handle)
               assert data.get('nbformat') == 4, path
               assert isinstance(data.get('cells'), list), path
+              if path.name in checked:
+                  for cell in data['cells']:
+                      if cell.get('cell_type') == 'code':
+                          source = cell['source']
+                          ast.parse(''.join(source) if isinstance(source, list) else source)
               print(f'{path}: {len(data["cells"])} cells')
           PY
       - name: Regenerate diagnostics in CI checkout
