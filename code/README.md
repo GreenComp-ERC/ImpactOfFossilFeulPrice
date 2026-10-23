@@ -28,6 +28,8 @@ The complete analysis performs (1) regional inflation-input corrections, (2) sav
 | 2: inflation | [`Prediction_Inflation.ipynb`](Prediction_Inflation.ipynb) | Recurrent model ensemble with country/region inputs | Annual 2026–2035 inflation scenarios |
 | 3: WACC | [`Impact_FossilFuel.ipynb`](Impact_FossilFuel.ipynb) | AutoGluon regional / fuel / project regressions | Archived model-fit results; **in-sample** and not equal to independent holdout performance |
 
+The Stage 3 notebook defaults to the original `Middle_EAST` region but supports `WACC_REGION=China`, `WACC_REGION=Europe`, or `WACC_REGION=Middle_EAST` for explicit regional execution. Each of its 27 models uses a unique path under untracked `outputs/autogluon/models/`, and its CSV is written to `outputs/autogluon/tables/`. Existing nonempty model paths are not silently overwritten. A fresh run may require substantial computation (the original `600`-second per-model time limit is preserved by default). Model training has **not** been rerun as part of this code review. Previous cell execution logs were cleared after source edits to avoid stale outputs being mistaken for new runs; exported data artifacts and Git history retain historical records.
+
 The original modeling notebooks have substantially heavier requirements (TensorFlow/Keras, scikit-learn, AutoGluon, Matplotlib, and Jupyter) than the minimal diagnostic environment. Their exact historical training environment is not fully locked or reconstructed, so running the diagnostic environment **does not guarantee** reproducibility of the neural-network training runs. Historical notebook outputs remain archival evidence.
 
 ## Data and execution notes
