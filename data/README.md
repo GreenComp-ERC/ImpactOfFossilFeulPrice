@@ -1,33 +1,27 @@
-# Data
+# Data: sources, provenance and derived artifacts
 
-## The Source And Purpose Of The Datase
-The data used for this analysis comes from two primary sources: the WACC data from Calcaterra et al. (2024) and historical fossi fuel(oil,coal, natural gas) price from the dataset of World Bank.
+This directory contains **observed historical commodity and macroeconomic inputs**, **published projection data**, **archived original-model outputs**, and **new diagnostic reanalysis**. These categories must not be confused. In particular, 2026–2035 WACC and inflation scenarios are *projections*, not realized observations; their later-year temporal holdouts are internal robustness checks, not verification against future ground truth.
 
-The purpose of using the historical price dataset is to predict the trend of fossil fuel price prices from 2025 to 2100. Specifically, it will be used as the input to the LSTM and GRP modle. Then, these predicted results will be integrated with the WACC (weighted average cost of capital) forecast results in Calcaterra et al. (2024), which represent the economic conditions under different energy transition scenarios.
+## Reproduction-ready data inventory
 
-The main goal of this analysis is to explore the impact of fossil fuel price fluctuations on future WACC of energy transition projects. By comparing the predicted prices with the estimated WACC results, we can analyze the potential impact of fossil fuel price fluctuations on capital costs, which is a key factor in energy infrastructure investment decision-making. This analysis will provide important insights to help us understand how oil price fluctuations affect the formulation of future energy transition strategies and changes in the financing environment.
+| Location | Data role | Interpretation |
+| --- | --- | --- |
+| `Average_oil_price.xlsx`, `Average_Coal_Price.xlsx`, `Average_Gas_price.xlsx` | Historical fuel prices derived from World Bank commodity data | Source inputs for Stage 1 and annual transmission diagnostics |
+| `comprehensive_economic_data.xlsx` | Historical regional macroeconomic indicators | Stage 2 input and transmission diagnostics |
+| `CalcaterraEtAl_2024_NatEner_data_ED_fig22.csv` | Published scenario data from Calcaterra et al. (2024) | Upstream financing projection source; retain attribution |
+| `China_WACC.xlsx`, `Euope_WACC.xlsx`, `Middle_EAST_WACC.xlsx` | Original region-level WACC workbooks | Source snapshot (original spelling retained deliberately) |
+| `inflation_forecasts_2026_2035.xlsx` | Annual forecast inflation by region | Used to correct region-specific forecast covariates |
+| `Accuracy_Prediction-Model.xlsx`, `Result.xlsx` | Archived original-model comparison / fits | Do not label these independent clean-room retraining results |
+| `revision_cleaned/*.xlsx` | Corrected 2026-01 to 2035-12 monthly regional panels | Derived, reproducible diagnostics inputs |
+| `revision_results/*.csv` | Independent forecast checks, holdout / rolling metrics, sensitivities, transmission diagnostics | Versioned derived results; regenerate with `code/revision_experiments.py` |
 
-## Dataset And Preprocessing Step
+## Provenance and use
 
- 
-  
-1. Price Prediction
+The principal upstream economic-finance model is Calcaterra et al. (2024), *Nature Energy*, DOI [10.1038/s41560-024-01606-7](https://doi.org/10.1038/s41560-024-01606-7). Historical commodity prices originate from the World Bank commodity-price collection. Users must observe upstream dataset licenses and attribution requirements; the repository does not assign new rights to third-party data.
 
-This study collect price sourses from dataset of World Bank, getting the historical price data for [oil](https://github.com/GreenComp-ERC/Shilin_ImpactOfFossilFeulPrice/blob/main/data/Average_oil_price.xlsx),[coal](https://github.com/GreenComp-ERC/Shilin_ImpactOfFossilFeulPrice/blob/main/data/Average_Coal_Price.xlsx), and [natural gas](https://github.com/GreenComp-ERC/Shilin_ImpactOfFossilFeulPrice/blob/main/data/Average_Gas_price.xlsx).
+The corrected panel uses a common 120-month horizon (2026-01 through 2035-12), aligns annual regional inflation forecasts by calendar year, preserves original workbooks, and reports the corrections separately. Europe and Middle East forecast inflation values were corrected from a prior use of China's inflation series. Archived AutoGluon fit values are **not** retrained using these cleaned inputs; OLS/Ridge diagnostics are separately labeled.
 
-2. Test
-
-Initially, this study use the real WACC and fossil fuel price in form 2021 to 2024 to test the accuracy of the modle. We compare the [prediction result](https://github.com/GreenComp-ERC/Shilin_ImpactOfFossilFeulPrice/blob/main/data/Accuracy_Prediction-Model.xlsx), finding out that the LSTM-GRP modle works beeter.
-
-3. Impact Evaluation
-
-Then, this study combine the prediction reslt with Calcaterra et al. (2024)'s [WACC dataset](https://github.com/GreenComp-ERC/Shilin_ImpactOfFossilFeulPrice/blob/main/data/CalcaterraEtAl_2024_NatEner_data_ED_fig22.csv). Subsequently， after data processing, we get the  WACC values with its coresponding predicted fossil fuel data in [Europe](https://github.com/GreenComp-ERC/Shilin_ImpactOfFossilFeulPrice/blob/main/data/Euope_WACC.xlsx), [China]([https://github.com/GreenComp-ERC/Shilin_ImpactOfFossilFeulPrice/blob/main/data/China%2B_WACC_And_Predicted_Price.xlsx](https://github.com/GreenComp-ERC/Shilin_ImpactOfFossilFeulPrice/blob/main/data/China_WACC.xlsx)), [Middel East](https://github.com/GreenComp-ERC/Shilin_ImpactOfFossilFeulPrice/blob/main/data/Middle_EAST_WACC.xlsx).
-
-4. Result
-
-Finally, we get [result](https://github.com/GreenComp-ERC/Shilin_ImpactOfFossilFeulPrice/blob/main/data/Result.xlsx) which demosntrates the imapct of fossil fuel price on WACC of energy transition projects in specificaal regions.
-
-
+To regenerate diagnostics, run `python code/revision_experiments.py` from repository root after installing `code/requirements-revision.txt`. See [`../REPRODUCIBILITY.md`](../REPRODUCIBILITY.md) for validation and caveats. **Running the pipeline overwrites derived files**. The legacy data dictionary below includes historically referenced notebook-generated intermediate outputs that may not be committed to this repository; check file existence before relying on them.
 
 ## Data Dictionary
 
