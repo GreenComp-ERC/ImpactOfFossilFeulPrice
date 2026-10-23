@@ -12,6 +12,10 @@ __pycache__/
 .ipynb_checkpoints/
 .DS_Store
 
+# Generated AutoGluon model checkpoints and inference outputs
+/outputs/
+AutogluonModels/
+
 # Local configuration and execution logs
 .env
 .env.*
